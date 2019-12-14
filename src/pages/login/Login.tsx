@@ -1,12 +1,52 @@
 /** @jsx jsx */
 
-import { jsx } from "@emotion/core";
+import { css, jsx } from "@emotion/core";
 import { LoginWrapper } from "../../components/login-wrapper";
+import { CustomForm } from "../../components/custom-form";
+import { TextField } from "../../components/text-field";
+import * as Yup from "yup";
+
+const LoginSchema = Yup.object().shape({
+    email: Yup.string()
+        .email("Невалидный e-mail")
+        .required("Поле обязательно для заполнения"),
+    password: Yup.string()
+        .min(6, "Пароль должен сожержать минимум 6 символов")
+        .required("Поле обязательно для заполнения"),
+});
 
 export const Login = () => {
+    function onSubmit(data: { email: string; password: string }) {
+        console.log(data);
+    }
+
     return (
-        <LoginWrapper title={"Авторизация"} buttonTitle={"Войти"}>
-            123
-        </LoginWrapper>
+        <CustomForm
+            onSubmit={onSubmit}
+            validationSchema={LoginSchema}
+            validateOnChange={false}
+            render={(form) => (
+                <LoginWrapper
+                    title={"Авторизация"}
+                    buttonTitle={"Войти"}
+                    onSubmit={form?.submitForm}
+                >
+                    <div
+                        css={css`
+                            margin-bottom: 40px;
+                        `}
+                    >
+                        <TextField name={"email"} label={"E-mail"} />
+                    </div>
+                    <div
+                        css={css`
+                            margin-bottom: 40px;
+                        `}
+                    >
+                        <TextField name={"password"} label={"Пароль"} />
+                    </div>
+                </LoginWrapper>
+            )}
+        />
     );
 };

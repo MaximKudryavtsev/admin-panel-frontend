@@ -4,37 +4,49 @@ import { FormikErrors, FormikProps } from "formik/dist/types";
 import { stubObject } from "lodash";
 
 interface ICustomFormProps<T> {
-  data?: T;
-  validationSchema?: any | (() => any);
+    data?: T;
+    validationSchema?: any | (() => any);
+    validateOnChange?: boolean;
+    validateOnBlur?: boolean;
 
-  render(props?: FormikProps<T>): void;
+    render(props?: FormikProps<T>): void;
 
-  onSubmit?(data: T): void;
+    onSubmit?(data: T): void;
 
-  validate?(data: T): void | object | Promise<FormikErrors<T>>;
+    validate?(data: T): void | object | Promise<FormikErrors<T>>;
 }
 
 export const CustomForm = <T extends object>(props: ICustomFormProps<T>) => {
-  const { data = {}, onSubmit, validationSchema, render, validate } = props;
+    const {
+        data = {},
+        onSubmit,
+        validationSchema,
+        render,
+        validate,
+        validateOnBlur = true,
+        validateOnChange = true,
+    } = props;
 
-  const handleSubmit = useCallback(
-    (data: T) => {
-      if (!onSubmit) {
-        return;
-      }
-      onSubmit(data);
-    },
-    [onSubmit]
-  );
+    const handleSubmit = useCallback(
+        (data: T) => {
+            if (!onSubmit) {
+                return;
+            }
+            onSubmit(data);
+        },
+        [onSubmit],
+    );
 
-  return (
-    <Formik
-      initialValues={data || stubObject()}
-      onSubmit={handleSubmit}
-      validate={validate}
-      validationSchema={validationSchema}
-    >
-        {(props) => render(props)}
-    </Formik>
-  );
+    return (
+        <Formik
+            initialValues={data || stubObject()}
+            onSubmit={handleSubmit}
+            validate={validate}
+            validationSchema={validationSchema}
+            validateOnChange={validateOnChange}
+            validateOnBlur={validateOnBlur}
+        >
+            {(props) => render(props)}
+        </Formik>
+    );
 };
