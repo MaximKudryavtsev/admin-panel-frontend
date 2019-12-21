@@ -38,7 +38,7 @@ export const CustomForm = <T extends object>(props: ICustomFormProps<T>) => {
     );
 
     return (
-        <Formik
+        <Formik<T>
             initialValues={data || stubObject()}
             onSubmit={handleSubmit}
             validate={validate}

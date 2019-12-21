@@ -11,8 +11,8 @@ interface ITextFieldProps {
 
 const styles = {
     field: css`
-        width: 100%;      
-    `
+        width: 100%;
+    `,
 };
 
 export const TextField = (props: ITextFieldProps) => {
@@ -26,9 +26,7 @@ export const TextField = (props: ITextFieldProps) => {
                 <FormControl error={!!field.meta.error} css={styles.field}>
                     <InputLabel htmlFor="component-error">{label}</InputLabel>
                     <Input {...field.field} />
-                        <FormHelperText id="component-error-text">
-                            {field.meta.error}
-                        </FormHelperText>
+                    <FormHelperText id="component-error-text">{field.meta.error}</FormHelperText>
                 </FormControl>
             )}
         />

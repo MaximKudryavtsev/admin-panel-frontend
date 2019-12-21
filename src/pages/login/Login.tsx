@@ -15,6 +15,12 @@ const LoginSchema = Yup.object().shape({
         .required("Поле обязательно для заполнения"),
 });
 
+const styles = {
+    mb40: css`
+        margin-bottom: 40px;
+    `,
+};
+
 export const Login = () => {
     function onSubmit(data: { email: string; password: string }) {
         console.log(data);
@@ -31,18 +37,10 @@ export const Login = () => {
                     buttonTitle={"Войти"}
                     onSubmit={form?.submitForm}
                 >
-                    <div
-                        css={css`
-                            margin-bottom: 40px;
-                        `}
-                    >
+                    <div css={styles.mb40}>
                         <TextField name={"email"} label={"E-mail"} />
                     </div>
-                    <div
-                        css={css`
-                            margin-bottom: 40px;
-                        `}
-                    >
+                    <div css={styles.mb40}>
                         <TextField name={"password"} label={"Пароль"} />
                     </div>
                 </LoginWrapper>
