@@ -8,7 +8,7 @@ const App: React.FC = () => {
         <div>
             <Router history={AppContext.getHistory()}>
                 <Switch>
-                    <Route path={"/login"}>
+                    <Route path={"/sign-in"}>
                         <Login />
                     </Route>
                 </Switch>

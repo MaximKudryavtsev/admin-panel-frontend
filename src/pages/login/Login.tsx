@@ -5,6 +5,8 @@ import { LoginWrapper } from "../../components/login-wrapper";
 import { CustomForm } from "../../components/custom-form";
 import { TextField } from "../../components/text-field";
 import * as Yup from "yup";
+import { ILogin } from "../../entities";
+import { signIn } from "../../api";
 
 const LoginSchema = Yup.object().shape({
     email: Yup.string()
@@ -22,8 +24,8 @@ const styles = {
 };
 
 export const Login = () => {
-    function onSubmit(data: { email: string; password: string }) {
-        console.log(data);
+    function onSubmit(data: ILogin) {
+        signIn(data);
     }
 
     return (
