@@ -6,7 +6,8 @@ import { CustomForm } from "../../components/custom-form";
 import { TextField } from "../../components/text-field";
 import * as Yup from "yup";
 import { ILogin } from "../../entities";
-import { signIn } from "../../api";
+import { login, signIn } from "../../api";
+import { Transport } from "../../transport";
 
 const LoginSchema = Yup.object().shape({
     email: Yup.string()
@@ -23,9 +24,18 @@ const styles = {
     `,
 };
 
-export const Login = () => {
+interface ILoginProps {
+    transport: Transport;
+}
+
+export const Login = (props: ILoginProps) => {
+    const { transport } = props;
     function onSubmit(data: ILogin) {
-        signIn(data);
+        signIn(transport, data)
+            .then((response) => transport.setToken(response.data))
+            .then(() => {
+                login(transport);
+            });
     }
 
     return (

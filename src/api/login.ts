@@ -1,8 +1,10 @@
 import { Transport } from "../transport";
-import { ILogin, IToken } from "../entities";
+import { ILogin, IToken, IUser } from "../entities";
 
-const transport = new Transport();
-
-export function signIn(data: ILogin) {
+export function signIn(transport: Transport, data: ILogin) {
     return transport.post<ILogin, IToken>("login/sign-in", data);
+}
+
+export function login(transport: Transport) {
+    return transport.post<{}, IUser>("login/auth")
 }
