@@ -5,9 +5,10 @@ import { LoginWrapper } from "../../components/login-wrapper";
 import { CustomForm } from "../../components/custom-form";
 import { TextField } from "../../components/text-field";
 import * as Yup from "yup";
-import { ILogin } from "../../entities";
+import { ILogin, IToken, TResponse } from "../../entities";
 import { login, signIn } from "../../api";
 import { Transport } from "../../transport";
+import { AppContext } from "../../context";
 
 const LoginSchema = Yup.object().shape({
     email: Yup.string()
@@ -26,15 +27,22 @@ const styles = {
 
 interface ILoginProps {
     transport: Transport;
+
+    onSetLogged?(value: boolean): void;
 }
 
 export const Login = (props: ILoginProps) => {
-    const { transport } = props;
+    const { transport, onSetLogged } = props;
     function onSubmit(data: ILogin) {
         signIn(transport, data)
             .then((response) => transport.setToken(response.data))
             .then(() => {
-                login(transport);
+                login(transport).then(() => {
+                    if (onSetLogged) {
+                        onSetLogged(true);
+                        AppContext.getHistory().push("/");
+                    }
+                });
             });
     }
 

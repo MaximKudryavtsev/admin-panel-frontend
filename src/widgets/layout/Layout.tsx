@@ -1,21 +1,28 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import * as emotion from "emotion";
 import {
     AppBar,
+    Avatar,
     Divider,
     Drawer,
+    IconButton,
     List,
     ListItem,
     ListItemIcon,
     ListItemText,
+    Menu,
+    MenuItem,
     Toolbar,
     Typography,
 } from "@material-ui/core";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
+import { IUser } from "../../entities";
+import { AccountCircle } from "@material-ui/icons";
 
 interface ILayoutProps {
     title: string;
+    user?: IUser;
 }
 
 const styles = {
@@ -39,18 +46,55 @@ const styles = {
     toolbar: emotion.css`
         width: 100%;
         height: 64px;
-    `
+    `,
+    avatarIcon: emotion.css`
+        margin-left: auto !important;
+    `,
 };
 
 export const Layout: FC<ILayoutProps> = (props) => {
-    const { title, children } = props;
+    const { title, children, user } = props;
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    function onMenuOpen(): void {
+        setMenuOpen(true);
+    }
+
+    function onMenuClose(): void {
+        setMenuOpen(false);
+    }
+
     return (
         <div className={styles.root}>
-            <AppBar position={"fixed"} className={styles.appBar}>
+            <AppBar position={"fixed"} className={styles.appBar} color={"primary"}>
                 <Toolbar>
                     <Typography variant="h6" noWrap>
                         {title}
                     </Typography>
+                    <IconButton
+                        onClick={onMenuOpen}
+                        color={"inherit"}
+                        className={styles.avatarIcon}
+                        title={user?.email}
+                    >
+                        {user?.avatar ? <Avatar src={user?.avatar} /> : <AccountCircle />}
+                    </IconButton>
+                    <Menu
+                        anchorOrigin={{
+                            vertical: "top",
+                            horizontal: "right",
+                        }}
+                        keepMounted
+                        transformOrigin={{
+                            vertical: "top",
+                            horizontal: "right",
+                        }}
+                        open={menuOpen}
+                        onClose={onMenuClose}
+                    >
+                        <MenuItem onClick={onMenuClose}>Профиль</MenuItem>
+                        <MenuItem onClick={onMenuClose}>Выход</MenuItem>
+                    </Menu>
                 </Toolbar>
             </AppBar>
             <Drawer
