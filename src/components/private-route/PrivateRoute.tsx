@@ -1,19 +1,23 @@
-import React, { FC } from "react";
-import { Route, Redirect, RouteProps, RouteComponentProps } from "react-router";
+import * as React from "react";
+import { Redirect, Route, RouteComponentProps, RouteProps } from "react-router";
 
 interface IPrivateRouteProps extends RouteProps {
-    path: string;
     auth: boolean;
+    render: ((props: RouteComponentProps) => React.ReactNode);
 }
 
-export const PrivateRoute: FC<IPrivateRouteProps> = ({ component: Component, ...rest }) => {
+export const PrivateRoute = (props: IPrivateRouteProps) => {
+    const {render, auth, ...rest } = props;
     return (
         <Route
             {...rest}
-            render={(props: RouteComponentProps) =>
-                // @ts-ignore
-                rest.auth ? <Component {...props} /> : <Redirect to={"/sign-in"} />
-            }
+            render={(routeProps: RouteComponentProps) => (
+                auth ? (
+                    render(routeProps)
+                ) : (
+                    <Redirect exact push to={"/sign-in"}/>
+                )
+            )}
         />
     );
 };

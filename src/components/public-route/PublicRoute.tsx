@@ -2,17 +2,22 @@ import React, { FC } from "react";
 import { Route, Redirect, RouteProps, RouteComponentProps } from "react-router";
 
 interface IPublicRouteProps extends RouteProps {
-    path: string;
     auth: boolean;
+    restricted?: boolean;
+    render: (props: RouteComponentProps) => React.ReactNode;
 }
 
-export const PublicRoute: FC<IPublicRouteProps> = ({ component: Component, ...rest}) => {
+export const PublicRoute: FC<IPublicRouteProps> = (props) => {
+    const { auth, render, restricted, ...rest } = props;
     return (
         <Route
             {...rest}
-            render={(props: RouteComponentProps) =>
-                // @ts-ignore
-                rest.auth ? <Redirect to={props.location.pathname} /> : <Component {...props} />
+            render={(routeProps: RouteComponentProps) =>
+                auth && restricted ? (
+                    <Redirect exact={true} push={true} to={"/panel/navigation"} />
+                ) : (
+                    render(routeProps)
+                )
             }
         />
     );

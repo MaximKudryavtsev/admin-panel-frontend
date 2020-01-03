@@ -11,5 +11,5 @@ export function login(transport: Transport) {
 }
 
 export function forgotPassword(transport: Transport, data: {email: string}) {
-    return transport.post<{email: string}, void>(ApiPaths.FORGOT_PASSWORD, data);
+    return transport.post<{email: string}, string>(ApiPaths.FORGOT_PASSWORD, data);
 }

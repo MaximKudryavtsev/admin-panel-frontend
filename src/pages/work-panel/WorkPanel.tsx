@@ -9,15 +9,15 @@ interface INavigationProps {
     baseUrl?: string;
     user?: IUser;
 
-    onSetLogout?(): void;
+    onLogout?(): void;
 }
 
 export const WorkPanel = (props: INavigationProps) => {
-    const { user, baseUrl, onSetLogout } = props;
+    const { user, baseUrl, onLogout } = props;
     const [title, setTitle] = useState("");
 
     return (
-        <Layout title={title} user={user} onSetLogout={onSetLogout}>
+        <Layout title={title} user={user} onLogout={onLogout}>
             <Route path={`${baseUrl}/navigation`}>
                 <Navigation setPageTitle={setTitle} />
             </Route>

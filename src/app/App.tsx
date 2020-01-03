@@ -11,14 +11,13 @@ import { PublicRoute } from "../components/public-route";
 import { ForgotPassword } from "../pages/forgot-password";
 
 const App: React.FC = () => {
-    const [logged, setLogged] = useState(false);
     const [user, setUser] = useState<IUser | undefined>(undefined);
     const transport = useMemo(() => new Transport(), []);
+    const [logged, setLogged] = useState(!!localStorage.getItem("token"));
 
     useEffect(() => {
         const tokenString = localStorage.getItem("token");
         if (!tokenString) {
-            setLogged(false);
             localStorage.removeItem("token");
             AppContext.getHistory().push("/sign-in");
             return;
@@ -28,36 +27,47 @@ const App: React.FC = () => {
         login(transport)
             .then((response) => {
                 setUser(response.data);
-                setLogged(true);
             })
-            .catch(() => setLogged(false));
+            .catch(() => {
+                localStorage.removeItem("token");
+            });
     }, [transport]);
+
+    const logout = () => {
+        localStorage.removeItem("token");
+        setLogged(false);
+        AppContext.getHistory().push("/sign-in");
+    };
 
     return (
         <Router history={AppContext.getHistory()}>
             <Switch>
                 <PublicRoute
                     auth={logged}
+                    exact={true}
+                    restricted={true}
                     path={"/sign-in"}
-                    component={() => (
-                        <Login transport={transport} onSetLogged={setLogged} onSetUser={setUser} />
+                    render={() => (
+                        <Login transport={transport}  onSetUser={setUser} onSignIn={() => setLogged(true)} />
                     )}
                 />
                 <PublicRoute
                     auth={logged}
+                    restricted={true}
                     path={"/forgot-password"}
-                    component={() => (
+                    exact={true}
+                    render={() => (
                         <ForgotPassword transport={transport} />
                     )}
                 />
                 <PrivateRoute
                     auth={logged}
                     path={"/panel/:page"}
-                    component={() => (
+                    render={() => (
                         <WorkPanel
                             user={user}
                             baseUrl={"/panel"}
-                            onSetLogout={() => setLogged(false)}
+                            onLogout={logout}
                         />
                     )}
                 />

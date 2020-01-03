@@ -19,7 +19,7 @@ interface ILayoutProps {
     title: string;
     user?: IUser;
 
-    onSetLogout?(): void;
+    onLogout?(): void;
 }
 
 const styles = {
@@ -54,7 +54,7 @@ const styles = {
 };
 
 export const Layout: FC<ILayoutProps> = (props) => {
-    const { title, children, user, onSetLogout } = props;
+    const { title, children, user, onLogout } = props;
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const isMenuOpen = Boolean(anchorEl);
 
@@ -67,11 +67,9 @@ export const Layout: FC<ILayoutProps> = (props) => {
     };
 
     const logout = () => {
-        localStorage.removeItem("token");
-        AppContext.getHistory().push("/sign-in");
         handleMenuClose();
-        if (onSetLogout) {
-            onSetLogout();
+        if (onLogout) {
+            onLogout();
         }
     };
 

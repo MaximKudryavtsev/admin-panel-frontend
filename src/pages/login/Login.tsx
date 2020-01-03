@@ -34,9 +34,9 @@ const LoginSchema = Yup.object().shape({
 interface ILoginProps {
     transport: Transport;
 
-    onSetLogged?(value: boolean): void;
-
     onSetUser?(user: IUser): void;
+
+    onSignIn?(): void;
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: 20
     },
     field: {
-        margin: "0 0 20px 0"
+        margin: "0 0 40px 0"
     },
     row: {
         marginBottom: 20,
@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const Login = (props: ILoginProps) => {
-    const { transport, onSetLogged, onSetUser } = props;
+    const { transport, onSetUser, onSignIn } = props;
     const [loaderVisible, setLoaderVisible] = useState(false);
     const [serverErrorMessage, setServerErrorMessage] = useState<string | undefined>(undefined);
 
@@ -82,17 +82,15 @@ export const Login = (props: ILoginProps) => {
             .then(() => {
                 login(transport)
                     .then((response) => {
-                        if (onSetLogged && onSetUser) {
-                            onSetLogged(true);
+                        if (onSetUser) {
                             onSetUser(response.data);
-                            AppContext.getHistory().push("/panel/navigation");
+                            if (onSignIn) {
+                                onSignIn();
+                                AppContext.getHistory().push("/panel/navigation");
+                            }
                         }
                     })
-                    .catch(() => {
-                        if (onSetLogged) {
-                            onSetLogged(false);
-                        }
-                    });
+                    .catch(() => AppContext.getHistory().push("/sign-in"));
             })
             .catch((error) => {
                 const err = getServerError(error);
@@ -110,7 +108,7 @@ export const Login = (props: ILoginProps) => {
             <CustomForm
                 onSubmit={onSubmit}
                 validationSchema={LoginSchema}
-                validateOnChange={false}
+                validateOnChange
                 render={(form) => (
                     <Container component="main" maxWidth="xs">
                         <CssBaseline />

@@ -72,13 +72,15 @@ export const ForgotPassword = (props: IForgotPasswordProps) => {
     const onSubmit = (data: { email: string }) => {
         setLoaderVisible(true);
         setServerErrorMessage(undefined);
+        setSuccessMessage(undefined);
         forgotPassword(transport, data)
-            .then(() => {
+            .then((response) => {
                 setLoaderVisible(false);
-                setSuccessMessage("Новый пароль отправлен на указанный Вами E-mail")
+                setSuccessMessage(response.data);
             })
             .catch((error) => {
                 const err = getServerError(error);
+                setLoaderVisible(false);
                 setServerErrorMessage(err?.title);
             });
     };
@@ -126,7 +128,7 @@ export const ForgotPassword = (props: IForgotPasswordProps) => {
                                     align={"center"}
                                     className={`${classes.row} ${classes.successMessage}`}
                                 >
-                                    {serverErrorMessage}
+                                    {successMessage}
                                 </Typography>
                             )}
                             <Button
