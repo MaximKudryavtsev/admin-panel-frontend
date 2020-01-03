@@ -13,6 +13,7 @@ import {
 interface ILoginWrapperProps {
     title?: string;
     buttonTitle?: string;
+    buttonDisable?: boolean;
 
     onSubmit?(): void;
 }
@@ -46,7 +47,7 @@ const styles = {
 };
 
 export const LoginWrapper: FC<ILoginWrapperProps> = (props) => {
-    const { title, onSubmit, buttonTitle = "Сохранить", children } = props;
+    const { title, onSubmit, buttonTitle = "Сохранить", children, buttonDisable } = props;
 
     return (
         <div css={styles.container}>
@@ -65,6 +66,7 @@ export const LoginWrapper: FC<ILoginWrapperProps> = (props) => {
                             variant="contained"
                             onClick={onSubmit}
                             css={styles.button}
+                            disabled={buttonDisable}
                         >
                             {buttonTitle}
                         </Button>

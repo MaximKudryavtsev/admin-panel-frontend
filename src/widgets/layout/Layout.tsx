@@ -2,27 +2,24 @@ import React, { FC, useState } from "react";
 import * as emotion from "emotion";
 import {
     AppBar,
-    Avatar,
-    Divider,
-    Drawer,
-    IconButton,
-    List,
-    ListItem,
-    ListItemIcon,
-    ListItemText,
+    Avatar, Divider, Drawer,
+    IconButton, List, ListItem, ListItemText,
     Menu,
     MenuItem,
-    Toolbar,
+    Toolbar, Tooltip,
     Typography,
 } from "@material-ui/core";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
 import { IUser } from "../../entities";
 import { AccountCircle } from "@material-ui/icons";
+import { adminSidebarLinks, sidebarLinks } from "../../config";
+import { AppContext } from "../../context";
+import Helmet from "react-helmet";
 
 interface ILayoutProps {
     title: string;
     user?: IUser;
+
+    onSetLogout?(): void;
 }
 
 const styles = {
@@ -33,53 +30,72 @@ const styles = {
         width: calc(100% - 300px) !important;
         margin-left: 300px;
     `,
+    content: emotion.css`
+        width: calc(100% - 300px) !important;
+        height: calc(100vh - 64px);
+        transform: translate(0, 64px);
+        box-sizing: border-box;
+        overflow-y: auto;
+        padding: 24px;
+    `,
+    avatarIcon: emotion.css`
+        margin-left: auto !important;
+    `,
     drawer: emotion.css`
         width: 300px;
     `,
     drawerPaper: emotion.css`
         width: 300px;
     `,
-    content: emotion.css`
-        width: calc(100% - 300px) !important;
-        padding: 68px 24px 24px 24px;
-    `,
     toolbar: emotion.css`
         width: 100%;
         height: 64px;
     `,
-    avatarIcon: emotion.css`
-        margin-left: auto !important;
-    `,
 };
 
 export const Layout: FC<ILayoutProps> = (props) => {
-    const { title, children, user } = props;
-    const [menuOpen, setMenuOpen] = useState(false);
+    const { title, children, user, onSetLogout } = props;
+    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+    const isMenuOpen = Boolean(anchorEl);
 
-    function onMenuOpen(): void {
-        setMenuOpen(true);
-    }
+    const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+        setAnchorEl(event.currentTarget);
+    };
 
-    function onMenuClose(): void {
-        setMenuOpen(false);
-    }
+    const handleMenuClose = () => {
+        setAnchorEl(null);
+    };
+
+    const logout = () => {
+        localStorage.removeItem("token");
+        AppContext.getHistory().push("/sign-in");
+        handleMenuClose();
+        if (onSetLogout) {
+            onSetLogout();
+        }
+    };
 
     return (
         <div className={styles.root}>
+            <Helmet>
+                <title>{title}</title>
+            </Helmet>
             <AppBar position={"fixed"} className={styles.appBar} color={"primary"}>
                 <Toolbar>
                     <Typography variant="h6" noWrap>
                         {title}
                     </Typography>
-                    <IconButton
-                        onClick={onMenuOpen}
-                        color={"inherit"}
-                        className={styles.avatarIcon}
-                        title={user?.email}
-                    >
-                        {user?.avatar ? <Avatar src={user?.avatar} /> : <AccountCircle />}
-                    </IconButton>
+                    <Tooltip title={user?.login || user?.email || ""}>
+                        <IconButton
+                            onClick={handleProfileMenuOpen}
+                            color={"inherit"}
+                            className={styles.avatarIcon}
+                        >
+                            {user?.avatar ? <Avatar src={user?.avatar} /> : <AccountCircle />}
+                        </IconButton>
+                    </Tooltip>
                     <Menu
+                        anchorEl={anchorEl}
                         anchorOrigin={{
                             vertical: "top",
                             horizontal: "right",
@@ -89,11 +105,11 @@ export const Layout: FC<ILayoutProps> = (props) => {
                             vertical: "top",
                             horizontal: "right",
                         }}
-                        open={menuOpen}
-                        onClose={onMenuClose}
+                        open={isMenuOpen}
+                        onClose={handleMenuClose}
                     >
-                        <MenuItem onClick={onMenuClose}>Профиль</MenuItem>
-                        <MenuItem onClick={onMenuClose}>Выход</MenuItem>
+                        <MenuItem onClick={handleMenuClose}>Профиль</MenuItem>
+                        <MenuItem onClick={logout}>Выход</MenuItem>
                     </Menu>
                 </Toolbar>
             </AppBar>
@@ -110,21 +126,31 @@ export const Layout: FC<ILayoutProps> = (props) => {
                 <List>
                     {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
                         <ListItem button key={text}>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                            </ListItemIcon>
                             <ListItemText primary={text} />
                         </ListItem>
                     ))}
                 </List>
                 <Divider />
                 <List>
-                    {["All mail", "Trash", "Spam"].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
+                    {sidebarLinks.map((item, key) => (
+                        <ListItem
+                            button
+                            key={key}
+                            onClick={() => AppContext.getHistory().push(item.link)}
+                        >
+                            <ListItemText primary={item.title} />
+                        </ListItem>
+                    ))}
+                </List>
+                <Divider />
+                <List>
+                    {adminSidebarLinks.map((item, key) => (
+                        <ListItem
+                            button
+                            key={key}
+                            onClick={() => AppContext.getHistory().push(item.link)}
+                        >
+                            <ListItemText primary={item.title} />
                         </ListItem>
                     ))}
                 </List>

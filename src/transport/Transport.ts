@@ -1,10 +1,8 @@
 import axios from "axios";
-import { ApiPaths, host } from "../config";
+import { host } from "../config";
 import * as qs from "qs";
-import { AxiosRequestConfig, AxiosResponse, AxiosPromise, AxiosError } from "axios";
-import { IServerError, IToken, TResponse, TServerError } from "../entities";
-import { get, keys, includes } from "lodash";
-import { AppContext } from "../context";
+import { AxiosRequestConfig } from "axios";
+import { IToken, TResponse } from "../entities";
 
 export type TransportConfig = Pick<AxiosRequestConfig, "headers" | "baseURL" | "params">;
 
@@ -42,10 +40,6 @@ export class Transport {
     async delete<Response = void>(url: string, params?: object): Promise<TResponse<Response>> {
         const response = await this.instance.delete(url, this.config(params));
         return response.data;
-    }
-
-    private handleSeverError<T>(error: TServerError, request?: () => Promise<TResponse<T>>) {
-        console.log(error);
     }
 
     setToken(token: IToken): void {
