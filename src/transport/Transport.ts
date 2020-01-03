@@ -25,7 +25,7 @@ export class Transport {
         params?: object,
     ): Promise<TResponse<Response>> {
         const response = await this.instance.post(url, qs.stringify(data), this.config(params));
-        return response.data
+        return response.data;
     }
 
     async put<Request, Response>(

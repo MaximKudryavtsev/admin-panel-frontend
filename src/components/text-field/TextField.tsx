@@ -7,6 +7,7 @@ import { FormControl, FormHelperText, Input, InputLabel } from "@material-ui/cor
 interface ITextFieldProps {
     name: string;
     label?: string;
+    error?: boolean;
 }
 
 const styles = {
@@ -16,14 +17,14 @@ const styles = {
 };
 
 export const TextField = (props: ITextFieldProps) => {
-    const { name, label } = props;
+    const { name, label, error } = props;
 
     return (
         <Field
             name={name}
             // @ts-ignore
             render={(field) => (
-                <FormControl error={!!field.meta.error} css={styles.field}>
+                <FormControl error={!!field.meta.error || error} css={styles.field}>
                     <InputLabel htmlFor="component-error">{label}</InputLabel>
                     <Input {...field.field} />
                     <FormHelperText id="component-error-text">{field.meta.error}</FormHelperText>
