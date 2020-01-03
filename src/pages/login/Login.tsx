@@ -1,8 +1,4 @@
-/** @jsx jsx */
-
-import { css, jsx } from "@emotion/core";
 import React from "react";
-import { LoginWrapper } from "../../components/login-wrapper";
 import { CustomForm } from "../../components/custom-form";
 import { TextField } from "../../components/text-field";
 import * as Yup from "yup";
@@ -10,10 +6,21 @@ import { ILogin, IUser } from "../../entities";
 import { login, signIn } from "../../api";
 import { Transport } from "../../transport";
 import { AppContext } from "../../context";
-import { LinearProgress, Typography } from "@material-ui/core";
+import {
+    Avatar,
+    Button,
+    Container,
+    CssBaseline,
+    Grid,
+    LinearProgress,
+    Link,
+    makeStyles,
+    Typography,
+} from "@material-ui/core";
 import { useState } from "react";
 import { getServerError } from "../../utils";
 import Helmet from "react-helmet";
+import { Lock } from "@material-ui/icons";
 
 const LoginSchema = Yup.object().shape({
     email: Yup.string()
@@ -24,17 +31,6 @@ const LoginSchema = Yup.object().shape({
         .required("Поле обязательно для заполнения"),
 });
 
-const styles = {
-    mb20: css`
-        margin-bottom: 20px;
-    `,
-    loader: css`
-        width: 100%;
-        display: flex;
-        justify-content: center;
-    `,
-};
-
 interface ILoginProps {
     transport: Transport;
 
@@ -42,6 +38,36 @@ interface ILoginProps {
 
     onSetUser?(user: IUser): void;
 }
+
+const useStyles = makeStyles((theme) => ({
+    paper: {
+        marginTop: theme.spacing(8),
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+    },
+    avatar: {
+        margin: theme.spacing(1),
+        backgroundColor: theme.palette.secondary.main,
+    },
+    form: {
+        width: "100%", // Fix IE 11 issue.
+        marginTop: theme.spacing(1),
+    },
+    submit: {
+        marginBottom: 20
+    },
+    field: {
+        margin: "0 0 20px 0"
+    },
+    row: {
+        marginBottom: 20,
+    },
+    loader: {
+        width: "100%",
+        marginBottom: 30
+    }
+}));
 
 export const Login = (props: ILoginProps) => {
     const { transport, onSetLogged, onSetUser } = props;
@@ -74,7 +100,7 @@ export const Login = (props: ILoginProps) => {
                 setLoaderVisible(false);
             });
     };
-
+    const classes = useStyles();
     return (
         <React.Fragment>
             <Helmet>
@@ -85,29 +111,52 @@ export const Login = (props: ILoginProps) => {
                 validationSchema={LoginSchema}
                 validateOnChange={false}
                 render={(form) => (
-                    <LoginWrapper
-                        title={"Авторизация"}
-                        buttonTitle={"Войти"}
-                        onSubmit={form?.submitForm}
-                        buttonDisable={loaderVisible}
-                    >
-                        <div css={styles.mb20}>
-                            <TextField name={"email"} label={"E-mail"} error={!!serverErrorMessage} />
-                        </div>
-                        <div css={styles.mb20}>
+                    <Container component="main" maxWidth="xs">
+                        <CssBaseline />
+                        <div className={classes.paper}>
+                            <Avatar className={classes.avatar}>
+                                <Lock />
+                            </Avatar>
+                            <Typography component="h1" variant="h5" className={classes.row}>
+                                Авторизация
+                            </Typography>
+                            <TextField
+                                name={"email"}
+                                label={"E-mail"}
+                                error={!!serverErrorMessage}
+                                classes={{ root: classes.field }}
+                            />
                             <TextField
                                 name={"password"}
                                 label={"Пароль"}
                                 error={!!serverErrorMessage}
+                                classes={{ root: classes.field }}
                             />
+                            {loaderVisible && <LinearProgress className={`${classes.loader} ${classes.row}`} />}
+                            {serverErrorMessage && (
+                                <Typography color={"error"} align={"center"} className={classes.row}>
+                                    {serverErrorMessage}
+                                </Typography>
+                            )}
+                            <Button
+                                fullWidth
+                                variant="contained"
+                                color="primary"
+                                onClick={form?.submitForm}
+                                disabled={loaderVisible}
+                                className={classes.submit}
+                            >
+                                Войти
+                            </Button>
+                            <Grid container>
+                                <Grid item xs>
+                                    <Link href="#" variant="body2">
+                                        Забыли пароль?
+                                    </Link>
+                                </Grid>
+                            </Grid>
                         </div>
-                        {loaderVisible && <LinearProgress />}
-                        {serverErrorMessage && (
-                            <Typography color={"error"} align={"center"}>
-                                {serverErrorMessage}
-                            </Typography>
-                        )}
-                    </LoginWrapper>
+                    </Container>
                 )}
             />
         </React.Fragment>

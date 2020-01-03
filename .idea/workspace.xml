@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/utils/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/serverError.ts" afterDir="false" />
+    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="add showing server error after incorrect sign-in">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/text-field/TextField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/TextField.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/login/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/login/Login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transport/Transport.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/transport/Transport.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +110,7 @@
       <workItem from="1577883686161" duration="5677000" />
       <workItem from="1577949469901" duration="8648000" />
       <workItem from="1577969773398" duration="9487000" />
-      <workItem from="1578037978739" duration="14326000" />
+      <workItem from="1578037978739" duration="18527000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1576310605982</created>
@@ -227,7 +224,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578048302825</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="add showing server error after incorrect sign-in">
+      <created>1578052892459</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1578052892459</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -250,7 +254,8 @@
     <MESSAGE value="add loader while sign in" />
     <MESSAGE value="add permanent sidebar links" />
     <MESSAGE value="refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactoring" />
+    <MESSAGE value="add showing server error after incorrect sign-in" />
+    <option name="LAST_COMMIT_MESSAGE" value="add showing server error after incorrect sign-in" />
   </component>
   <component name="WindowStateProjectService">
     <state x="722" y="327" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1577877480014">
@@ -261,10 +266,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="601" y="291" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1576315906681" />
-    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1578048302285">
+    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1578052960908">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578048302285" />
+    <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578052960908" />
     <state x="184" y="86" key="DiffContextDialog" timestamp="1578048176876">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -293,10 +298,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="461" y="156" key="SettingsEditor/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1577876663464" />
-    <state x="552" y="257" key="Vcs.Push.Dialog.v2" timestamp="1578048307545">
+    <state x="552" y="257" key="Vcs.Push.Dialog.v2" timestamp="1578052897342">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="552" y="257" key="Vcs.Push.Dialog.v2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578048307545" />
+    <state x="552" y="257" key="Vcs.Push.Dialog.v2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578052897342" />
     <state x="92" y="92" width="1736" height="866" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1578046510409">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -309,6 +314,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="632" y="315" key="git4idea.merge.GitPullDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1577796066806" />
+    <state x="616" y="237" key="run.anything.popup" timestamp="1578055202418">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="616" y="237" key="run.anything.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578055202418" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1578047456908">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
