@@ -1,34 +1,42 @@
-/** @jsx jsx */
-
-import { css, jsx } from "@emotion/core";
+import * as emotion from "emotion";
+import React from "react";
 import { Field } from "formik";
-import { FormControl, FormHelperText, Input, InputLabel } from "@material-ui/core";
+import { TextField as MaterialTextField } from "@material-ui/core";
 
 interface ITextFieldProps {
     name: string;
     label?: string;
     error?: boolean;
+    classes?: object;
 }
 
 const styles = {
-    field: css`
-        width: 100%;
-    `,
+    errorMessage: emotion.css`
+        margin: 10px 0 0 0 !important;
+    `
 };
 
 export const TextField = (props: ITextFieldProps) => {
-    const { name, label, error } = props;
+    const { name, label, error, classes } = props;
 
     return (
         <Field
             name={name}
             // @ts-ignore
             render={(field) => (
-                <FormControl error={!!field.meta.error || error} css={styles.field}>
-                    <InputLabel htmlFor="component-error">{label}</InputLabel>
-                    <Input {...field.field} />
-                    <FormHelperText id="component-error-text">{field.meta.error}</FormHelperText>
-                </FormControl>
+                <MaterialTextField
+                    variant="outlined"
+                    fullWidth
+                    label={label}
+                    error={!!field.meta.error || error}
+                    helperText={<>{field.meta.error}</>}
+                    FormHelperTextProps={{
+                        classes: {root: styles.errorMessage}
+                    }}
+                    classes={classes}
+                    margin="normal"
+                    {...field.field}
+                />
             )}
         />
     );
