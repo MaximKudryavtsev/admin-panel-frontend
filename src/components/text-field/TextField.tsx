@@ -8,6 +8,7 @@ interface ITextFieldProps {
     label?: string;
     error?: boolean;
     classes?: object;
+    type?: string;
 }
 
 const styles = {
@@ -17,7 +18,7 @@ const styles = {
 };
 
 export const TextField = (props: ITextFieldProps) => {
-    const { name, label, error, classes } = props;
+    const { name, label, error, classes, type = "text" } = props;
 
     return (
         <Field
@@ -28,6 +29,7 @@ export const TextField = (props: ITextFieldProps) => {
                     variant="outlined"
                     fullWidth
                     label={label}
+                    type={type}
                     error={!!field.meta.error || error}
                     helperText={<>{field.meta.error}</>}
                     FormHelperTextProps={{

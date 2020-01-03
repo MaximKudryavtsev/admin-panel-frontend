@@ -8,6 +8,7 @@ import { IToken, IUser } from "../entities";
 import { login } from "../api";
 import { PrivateRoute } from "../components/private-route";
 import { PublicRoute } from "../components/public-route";
+import { ForgotPassword } from "../pages/forgot-password";
 
 const App: React.FC = () => {
     const [logged, setLogged] = useState(false);
@@ -40,6 +41,13 @@ const App: React.FC = () => {
                     path={"/sign-in"}
                     component={() => (
                         <Login transport={transport} onSetLogged={setLogged} onSetUser={setUser} />
+                    )}
+                />
+                <PublicRoute
+                    auth={logged}
+                    path={"/forgot-password"}
+                    component={() => (
+                        <ForgotPassword transport={transport} />
                     )}
                 />
                 <PrivateRoute

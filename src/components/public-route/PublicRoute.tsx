@@ -12,7 +12,7 @@ export const PublicRoute: FC<IPublicRouteProps> = ({ component: Component, ...re
             {...rest}
             render={(props: RouteComponentProps) =>
                 // @ts-ignore
-                rest.auth ? <Redirect to={"/panel/navigation"} /> : <Component {...props} />
+                rest.auth ? <Redirect to={props.location.pathname} /> : <Component {...props} />
             }
         />
     );

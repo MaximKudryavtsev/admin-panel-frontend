@@ -1,11 +1,7 @@
-import React from "react";
-import { CustomForm } from "../../components/custom-form";
-import { TextField } from "../../components/text-field";
-import * as Yup from "yup";
-import { ILogin, IUser } from "../../entities";
-import { login, signIn } from "../../api";
+import React, { useState } from "react";
 import { Transport } from "../../transport";
-import { AppContext } from "../../context";
+import Helmet from "react-helmet";
+import * as Yup from "yup";
 import {
     Avatar,
     Button,
@@ -16,28 +12,23 @@ import {
     makeStyles,
     Typography,
 } from "@material-ui/core";
-import { useState } from "react";
-import { getServerError } from "../../utils";
-import Helmet from "react-helmet";
 import { Lock } from "@material-ui/icons";
+import { TextField } from "../../components/text-field";
+import { CustomForm } from "../../components/custom-form";
+import { forgotPassword } from "../../api";
+import { getServerError } from "../../utils";
 import { Link } from "react-router-dom";
+import { green } from "@material-ui/core/colors";
 
-const LoginSchema = Yup.object().shape({
+interface IForgotPasswordProps {
+    transport: Transport;
+}
+
+const FormSchema = Yup.object().shape({
     email: Yup.string()
         .email("Невалидный e-mail")
         .required("Поле обязательно для заполнения"),
-    password: Yup.string()
-        .min(6, "Пароль должен сожержать минимум 6 символов")
-        .required("Поле обязательно для заполнения"),
 });
-
-interface ILoginProps {
-    transport: Transport;
-
-    onSetLogged?(value: boolean): void;
-
-    onSetUser?(user: IUser): void;
-}
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -55,61 +46,52 @@ const useStyles = makeStyles((theme) => ({
         marginTop: theme.spacing(1),
     },
     submit: {
-        marginBottom: 20
+        marginBottom: 20,
     },
     field: {
-        margin: "0 0 20px 0"
+        margin: "0 0 20px 0",
     },
     row: {
         marginBottom: 20,
     },
     loader: {
         width: "100%",
-        marginBottom: 30
+        marginBottom: 30,
+    },
+    successMessage: {
+        color: green[600]
     }
 }));
 
-export const Login = (props: ILoginProps) => {
-    const { transport, onSetLogged, onSetUser } = props;
+export const ForgotPassword = (props: IForgotPasswordProps) => {
+    const { transport } = props;
     const [loaderVisible, setLoaderVisible] = useState(false);
     const [serverErrorMessage, setServerErrorMessage] = useState<string | undefined>(undefined);
+    const [successMessage, setSuccessMessage] = useState<string | undefined>(undefined);
 
-    const onSubmit = (data: ILogin) => {
+    const onSubmit = (data: { email: string }) => {
         setLoaderVisible(true);
         setServerErrorMessage(undefined);
-        signIn(transport, data)
-            .then((response) => transport.setToken(response.data))
+        forgotPassword(transport, data)
             .then(() => {
-                login(transport)
-                    .then((response) => {
-                        if (onSetLogged && onSetUser) {
-                            onSetLogged(true);
-                            onSetUser(response.data);
-                            AppContext.getHistory().push("/panel/navigation");
-                        }
-                    })
-                    .catch(() => {
-                        if (onSetLogged) {
-                            onSetLogged(false);
-                        }
-                    });
+                setLoaderVisible(false);
+                setSuccessMessage("Новый пароль отправлен на указанный Вами E-mail")
             })
             .catch((error) => {
                 const err = getServerError(error);
                 setServerErrorMessage(err?.title);
-                setLoaderVisible(false);
             });
     };
-    const classes = useStyles();
 
+    const classes = useStyles();
     return (
-        <React.Fragment>
+        <>
             <Helmet>
-                <title>Авторизация</title>
+                <title>Восстановление пароля</title>
             </Helmet>
             <CustomForm
                 onSubmit={onSubmit}
-                validationSchema={LoginSchema}
+                validationSchema={FormSchema}
                 validateOnChange={false}
                 render={(form) => (
                     <Container component="main" maxWidth="xs">
@@ -119,7 +101,7 @@ export const Login = (props: ILoginProps) => {
                                 <Lock />
                             </Avatar>
                             <Typography component="h1" variant="h5" className={classes.row}>
-                                Авторизация
+                                Восстановление пароля
                             </Typography>
                             <TextField
                                 name={"email"}
@@ -127,16 +109,23 @@ export const Login = (props: ILoginProps) => {
                                 error={!!serverErrorMessage}
                                 classes={{ root: classes.field }}
                             />
-                            <TextField
-                                name={"password"}
-                                label={"Пароль"}
-                                error={!!serverErrorMessage}
-                                type={"password"}
-                                classes={{ root: classes.field }}
-                            />
-                            {loaderVisible && <LinearProgress className={`${classes.loader} ${classes.row}`} />}
+                            {loaderVisible && (
+                                <LinearProgress className={`${classes.loader} ${classes.row}`} />
+                            )}
                             {serverErrorMessage && (
-                                <Typography color={"error"} align={"center"} className={classes.row}>
+                                <Typography
+                                    color={"error"}
+                                    align={"center"}
+                                    className={classes.row}
+                                >
+                                    {serverErrorMessage}
+                                </Typography>
+                            )}
+                            {successMessage && (
+                                <Typography
+                                    align={"center"}
+                                    className={`${classes.row} ${classes.successMessage}`}
+                                >
                                     {serverErrorMessage}
                                 </Typography>
                             )}
@@ -148,12 +137,12 @@ export const Login = (props: ILoginProps) => {
                                 disabled={loaderVisible}
                                 className={classes.submit}
                             >
-                                Войти
+                                Отправить
                             </Button>
                             <Grid container>
                                 <Grid item xs>
-                                    <Link to="/forgot-password">
-                                        Забыли пароль?
+                                    <Link to="/sign-in">
+                                        Войти
                                     </Link>
                                 </Grid>
                             </Grid>
@@ -161,6 +150,6 @@ export const Login = (props: ILoginProps) => {
                     </Container>
                 )}
             />
-        </React.Fragment>
+        </>
     );
 };

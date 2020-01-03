@@ -9,3 +9,7 @@ export function signIn(transport: Transport, data: ILogin) {
 export function login(transport: Transport) {
     return transport.post<{}, IUser>(ApiPaths.AUTH);
 }
+
+export function forgotPassword(transport: Transport, data: {email: string}) {
+    return transport.post<{email: string}, void>(ApiPaths.FORGOT_PASSWORD, data);
+}
