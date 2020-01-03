@@ -1,18 +1,19 @@
-import React, { Component, FC } from "react";
-import { Route, Redirect, RouteProps } from "react-router";
+import React, { FC } from "react";
+import { Route, Redirect, RouteProps, RouteComponentProps } from "react-router";
 
-interface IPrivateRouteProps extends RouteProps {
+interface IPublicRouteProps extends RouteProps {
     path: string;
     auth: boolean;
 }
 
-export const PublicRoute: FC<IPrivateRouteProps> = (props) => {
-    const { auth, children, path, ...rest } = props;
+export const PublicRoute: FC<IPublicRouteProps> = ({ component: Component, ...rest}) => {
     return (
         <Route
-            path={path}
             {...rest}
-            render={() => (!auth ? children : <Redirect to={""} />)}
+            render={(props: RouteComponentProps) =>
+                // @ts-ignore
+                rest.auth ? <Redirect to={"/panel/navigation"} /> : <Component {...props} />
+            }
         />
     );
 };
