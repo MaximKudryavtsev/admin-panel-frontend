@@ -3,6 +3,7 @@ import { host } from "../config";
 import * as qs from "qs";
 import { AxiosRequestConfig } from "axios";
 import { IToken, TResponse } from "../entities";
+import { mapValues, isString } from "lodash";
 
 export type TransportConfig = Pick<AxiosRequestConfig, "headers" | "baseURL" | "params">;
 
@@ -45,6 +46,18 @@ export class Transport {
     setToken(token: IToken): void {
         this.token = token;
         localStorage.setItem("token", JSON.stringify(token));
+    }
+
+    formatToFormData(params: {}): FormData {
+        const formData = new FormData();
+        mapValues(params, (value: string | File, key) => {
+            const isFile = !isString(value) && (value as {}) instanceof File;
+            if (!isFile && !isString(value)) {
+                return formData.append(key, JSON.stringify(value));
+            }
+            formData.append(key, value);
+        });
+        return formData;
     }
 
     private config(params?: object): TransportConfig {

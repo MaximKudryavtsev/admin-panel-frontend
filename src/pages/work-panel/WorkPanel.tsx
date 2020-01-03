@@ -4,6 +4,7 @@ import { Route } from "react-router";
 import { Navigation } from "../navigation";
 import { Footer } from "../footer";
 import { Layout } from "../../widgets/layout";
+import { Profile } from "../profile";
 
 interface INavigationProps {
     baseUrl?: string;
@@ -23,6 +24,9 @@ export const WorkPanel = (props: INavigationProps) => {
             </Route>
             <Route path={`${baseUrl}/footer`}>
                 <Footer setPageTitle={setTitle} />
+            </Route>
+            <Route path={`${baseUrl}/profile`}>
+                <Profile setPageTitle={setTitle} />
             </Route>
         </Layout>
     );

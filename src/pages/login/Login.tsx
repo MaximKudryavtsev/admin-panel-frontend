@@ -3,7 +3,7 @@ import { CustomForm } from "../../components/custom-form";
 import { TextField } from "../../components/text-field";
 import * as Yup from "yup";
 import { ILogin, IUser } from "../../entities";
-import { login, signIn } from "../../api";
+import { fetchUser, signIn } from "../../api";
 import { Transport } from "../../transport";
 import { AppContext } from "../../context";
 import {
@@ -80,7 +80,7 @@ export const Login = (props: ILoginProps) => {
         signIn(transport, data)
             .then((response) => transport.setToken(response.data))
             .then(() => {
-                login(transport)
+                fetchUser(transport)
                     .then((response) => {
                         if (onSetUser) {
                             onSetUser(response.data);

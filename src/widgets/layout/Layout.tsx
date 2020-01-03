@@ -73,6 +73,11 @@ export const Layout: FC<ILayoutProps> = (props) => {
         }
     };
 
+    const goToProfile = () => {
+        AppContext.getHistory().push("/panel/profile");
+        handleMenuClose();
+    };
+
     return (
         <div className={styles.root}>
             <Helmet>
@@ -106,7 +111,7 @@ export const Layout: FC<ILayoutProps> = (props) => {
                         open={isMenuOpen}
                         onClose={handleMenuClose}
                     >
-                        <MenuItem onClick={handleMenuClose}>Профиль</MenuItem>
+                        <MenuItem onClick={goToProfile}>Профиль</MenuItem>
                         <MenuItem onClick={logout}>Выход</MenuItem>
                     </Menu>
                 </Toolbar>

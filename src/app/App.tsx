@@ -5,7 +5,7 @@ import { Login } from "../pages/login";
 import { WorkPanel } from "../pages/work-panel";
 import { Transport } from "../transport";
 import { IToken, IUser } from "../entities";
-import { login } from "../api";
+import { fetchUser } from "../api";
 import { PrivateRoute } from "../components/private-route";
 import { PublicRoute } from "../components/public-route";
 import { ForgotPassword } from "../pages/forgot-password";
@@ -24,7 +24,7 @@ const App: React.FC = () => {
         }
         const token: IToken = JSON.parse(tokenString);
         transport.setToken(token);
-        login(transport)
+        fetchUser(transport)
             .then((response) => {
                 setUser(response.data);
             })

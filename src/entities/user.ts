@@ -7,3 +7,12 @@ export interface IUser {
     isBlocked?: boolean;
     isDeleted?: boolean;
 }
+
+export interface IUpdateUserPassword {
+    password: string;
+    newPassword: string;
+}
+
+export interface IUpdateAvatar {
+    avatar: File;
+}
