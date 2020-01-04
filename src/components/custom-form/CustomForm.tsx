@@ -45,6 +45,7 @@ export const CustomForm = <T extends object>(props: ICustomFormProps<T>) => {
             validationSchema={validationSchema}
             validateOnChange={validateOnChange}
             validateOnBlur={validateOnBlur}
+            enableReinitialize
         >
             {(props) => render(props)}
         </Formik>

@@ -1,15 +1,17 @@
 import * as emotion from "emotion";
 import React from "react";
 import { Field } from "formik";
-import { TextField as MaterialTextField } from "@material-ui/core";
+import { TextField as MaterialTextField, InputLabelProps } from "@material-ui/core";
 import ErrorIcon from "@material-ui/icons/Error";
 
 interface ITextFieldProps {
     name: string;
+    InputLabelProps?: InputLabelProps;
     label?: string;
     error?: boolean;
     classes?: object;
     type?: string;
+    size?: "small" | "medium";
 }
 
 const styles = {
@@ -24,7 +26,7 @@ const styles = {
 };
 
 export const TextField = (props: ITextFieldProps) => {
-    const { name, label, error, classes, type = "text" } = props;
+    const { name, label, error, classes, type = "text", size, InputLabelProps } = props;
 
     return (
         <Field
@@ -37,6 +39,8 @@ export const TextField = (props: ITextFieldProps) => {
                     label={label}
                     type={type}
                     error={!!field.meta.error || error}
+                    size={size}
+                    InputLabelProps={InputLabelProps}
                     helperText={
                         field.meta.error && (
                             <>

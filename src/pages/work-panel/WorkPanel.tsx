@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IUser } from "../../entities";
 import { Route } from "react-router";
 import { Navigation } from "../navigation";
@@ -14,8 +14,13 @@ interface INavigationProps {
 }
 
 export const WorkPanel = (props: INavigationProps) => {
-    const { user, baseUrl, onLogout } = props;
+    const { baseUrl, onLogout } = props;
+    const [user, setUser] = useState<IUser | undefined>(props.user);
     const [title, setTitle] = useState("");
+
+    useEffect(() => {
+        setUser(props.user);
+    }, [props.user]);
 
     return (
         <Layout title={title} user={user} onLogout={onLogout}>
@@ -26,7 +31,7 @@ export const WorkPanel = (props: INavigationProps) => {
                 <Footer setPageTitle={setTitle} />
             </Route>
             <Route path={`${baseUrl}/profile`}>
-                <Profile setPageTitle={setTitle} />
+                <Profile setPageTitle={setTitle} onSetUser={setUser} />
             </Route>
         </Layout>
     );
