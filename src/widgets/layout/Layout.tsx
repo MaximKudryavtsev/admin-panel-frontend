@@ -2,11 +2,17 @@ import React, { FC, useState } from "react";
 import * as emotion from "emotion";
 import {
     AppBar,
-    Avatar, Divider, Drawer,
-    IconButton, List, ListItem, ListItemText,
+    Avatar,
+    Divider,
+    Drawer,
+    IconButton,
+    List,
+    ListItem,
+    ListItemText,
     Menu,
     MenuItem,
-    Toolbar, Tooltip,
+    Toolbar,
+    Tooltip,
     Typography,
 } from "@material-ui/core";
 import { IUser } from "../../entities";
@@ -14,6 +20,7 @@ import { AccountCircle } from "@material-ui/icons";
 import { adminSidebarLinks, sidebarLinks } from "../../config";
 import { AppContext } from "../../context";
 import Helmet from "react-helmet";
+import { ConfirmPopup } from "../../components/confirm-popup";
 
 interface ILayoutProps {
     title: string;
@@ -57,6 +64,15 @@ export const Layout: FC<ILayoutProps> = (props) => {
     const { title, children, user, onLogout } = props;
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const isMenuOpen = Boolean(anchorEl);
+    const [logoutPopupVisible, setLogoutPopupVisible] = useState(false);
+
+    function onOpenLogoutPopup(): void {
+        setLogoutPopupVisible(true);
+    }
+
+    function onCloseLogoutPopup(): void {
+        setLogoutPopupVisible(false);
+    }
 
     const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
@@ -112,7 +128,7 @@ export const Layout: FC<ILayoutProps> = (props) => {
                         onClose={handleMenuClose}
                     >
                         <MenuItem onClick={goToProfile}>Профиль</MenuItem>
-                        <MenuItem onClick={logout}>Выход</MenuItem>
+                        <MenuItem onClick={onOpenLogoutPopup}>Выход</MenuItem>
                     </Menu>
                 </Toolbar>
             </AppBar>
@@ -159,6 +175,13 @@ export const Layout: FC<ILayoutProps> = (props) => {
                 </List>
             </Drawer>
             <div className={styles.content}>{children}</div>
+            <ConfirmPopup
+                title={"Вы действительно хотите выйти?"}
+                submitTitle={"Выйти"}
+                open={logoutPopupVisible}
+                onClose={onCloseLogoutPopup}
+                onSubmit={logout}
+            />
         </div>
     );
 };
