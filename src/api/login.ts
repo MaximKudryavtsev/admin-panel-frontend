@@ -1,5 +1,5 @@
 import { Transport } from "../transport";
-import { ILogin, IToken, IUser } from "../entities";
+import { ILogin, IToken } from "../entities";
 import { ApiPaths } from "../config";
 
 export function signIn(transport: Transport, data: ILogin) {

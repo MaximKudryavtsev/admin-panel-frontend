@@ -44,6 +44,7 @@ const styles = {
         box-sizing: border-box;
         overflow-y: auto;
         padding: 24px;
+        background: #f5f5f5;
     `,
     avatarIcon: emotion.css`
         margin-left: auto !important;
@@ -143,7 +144,7 @@ export const Layout: FC<ILayoutProps> = (props) => {
                 <div className={styles.toolbar} />
                 <Divider />
                 <List>
-                    {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+                    {["Inbox", "Starred", "Send email", "Drafts"].map((text) => (
                         <ListItem button key={text}>
                             <ListItemText primary={text} />
                         </ListItem>

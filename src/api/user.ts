@@ -1,5 +1,5 @@
 import {Transport } from "../transport";
-import { IUpdateUserPassword, IUser } from "../entities";
+import { IUpdateAvatar, IUpdateUserPassword, IUser } from "../entities";
 import { ApiPaths } from "../config";
 
 export function fetchUser(transport: Transport) {
@@ -20,4 +20,8 @@ export function deleteUser(transport: Transport) {
 
 export function updateAvatar(transport: Transport, data: FormData) {
     return transport.put<FormData, IUser>(ApiPaths.UPDATE_AVATAR, data);
+}
+
+export function deleteAvatar(transport: Transport) {
+    return transport.delete<IUser>(ApiPaths.DELETE_AVATAR);
 }

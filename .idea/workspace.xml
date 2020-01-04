@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/avatar/Avatar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/avatar/default.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/avatar/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/avatar/user.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/card/Card.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/card/index.ts" afterDir="false" />
+    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="add roles and avatar to profile">
       <change afterPath="$PROJECT_DIR$/src/utils/file.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widgets/upload-avatar/UploadAvatar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widgets/upload-avatar/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/login.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/login.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/user.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config/ApiPaths.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/ApiPaths.ts" afterDir="false" />
@@ -22,7 +13,6 @@
       <change beforePath="$PROJECT_DIR$/src/transport/Transport.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/transport/Transport.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/widgets/layout/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/layout/Layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +120,7 @@
       <workItem from="1577949469901" duration="8648000" />
       <workItem from="1577969773398" duration="9487000" />
       <workItem from="1578037978739" duration="35714000" />
-      <workItem from="1578120151599" duration="19938000" />
+      <workItem from="1578120151599" duration="20225000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1576310605982</created>
@@ -293,7 +283,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578126521813</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="add uploading avatar">
+      <created>1578153621654</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1578153621654</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -333,7 +330,9 @@
     <MESSAGE value="fix PrivateRoute" />
     <MESSAGE value="add Profile page, move actions with user to separate hook" />
     <MESSAGE value="add popup, confirm popup" />
-    <option name="LAST_COMMIT_MESSAGE" value="add popup, confirm popup" />
+    <MESSAGE value="add uploading avatar" />
+    <MESSAGE value="add roles and avatar to profile" />
+    <option name="LAST_COMMIT_MESSAGE" value="add roles and avatar to profile" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="182" key="#Scopes" timestamp="1578082972079">
@@ -348,15 +347,15 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="601" y="291" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1576315906681" />
-    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1578126521429">
+    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1578153677485">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578126521429" />
+    <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578153677485" />
     <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578090956191" />
-    <state x="184" y="86" width="1536" height="840" key="DiffContextDialog" timestamp="1578153054921">
+    <state x="184" y="86" width="1536" height="840" key="DiffContextDialog" timestamp="1578153638346">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="184" y="86" width="1536" height="840" key="DiffContextDialog/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578153054921" />
+    <state x="184" y="86" width="1536" height="840" key="DiffContextDialog/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578153638346" />
     <state x="184" y="86" key="DiffContextDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578090966601" />
     <state x="740" y="279" key="FileChooserDialogImpl" timestamp="1577956099449">
       <screen x="0" y="0" width="1920" height="1050" />

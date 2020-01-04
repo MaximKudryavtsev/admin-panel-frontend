@@ -1,7 +1,7 @@
 import { IUpdateAvatar, IUpdateUserPassword, IUser, TResponse } from "../entities";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Transport } from "../transport";
-import { deleteUser, fetchUser, updateAvatar, updatePassword, updateUser } from "../api";
+import { deleteAvatar, deleteUser, fetchUser, updateAvatar, updatePassword, updateUser } from "../api";
 
 export function useUser(): {
     user: IUser | null;
@@ -10,6 +10,7 @@ export function useUser(): {
     deleteUser: () => Promise<TResponse<void>>;
     updatePassword: (data: IUpdateUserPassword) => Promise<TResponse<void>>;
     updateAvatar: (data: IUpdateAvatar) => Promise<void>;
+    deleteAvatar: () => Promise<void>;
 } {
     const [user, setUser] = useState<IUser | null>(null);
     const transport = useMemo(() => new Transport(), []);
@@ -42,7 +43,7 @@ export function useUser(): {
         [transport],
     );
 
-    const avatar = useCallback(
+    const onUpdateAvatar = useCallback(
         (data: IUpdateAvatar) => {
             return updateAvatar(transport, transport.formatToFormData(data)).then((response) =>
                 setUser(response.data),
@@ -50,6 +51,10 @@ export function useUser(): {
         },
         [transport],
     );
+
+    const onDeleteAvatar = useCallback(() => {
+        return deleteAvatar(transport).then((response) => setUser(response.data));
+    }, [transport]);
 
     useEffect(() => {
         fetchOne();
@@ -61,6 +66,7 @@ export function useUser(): {
         updateUser: update,
         deleteUser: delUser,
         updatePassword: updatePass,
-        updateAvatar: avatar,
+        updateAvatar: onUpdateAvatar,
+        deleteAvatar: onDeleteAvatar
     };
 }

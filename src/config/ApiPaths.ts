@@ -7,5 +7,6 @@ export const ApiPaths = {
     UPDATE_USER: "user/update",
     UPDATE_PASSWORD: "user/update-password",
     DELETE_USER: "user/delete",
-    UPDATE_AVATAR: "user/avatar"
+    UPDATE_AVATAR: "user/avatar/update",
+    DELETE_AVATAR: "user/avatar/delete",
 };

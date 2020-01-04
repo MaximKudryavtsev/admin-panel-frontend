@@ -1,6 +1,5 @@
 import axios from "axios";
 import { host } from "../config";
-import * as qs from "qs";
 import { AxiosRequestConfig } from "axios";
 import { IToken, TResponse } from "../entities";
 import { mapValues, isString } from "lodash";
@@ -25,7 +24,7 @@ export class Transport {
         data?: Request,
         params?: object,
     ): Promise<TResponse<Response>> {
-        const response = await this.instance.post(url, qs.stringify(data), this.config(params));
+        const response = await this.instance.post(url, data, this.config(params));
         return response.data;
     }
 
@@ -34,7 +33,7 @@ export class Transport {
         data: Request,
         params?: object,
     ): Promise<TResponse<Response>> {
-        const response = await this.instance.put(url, qs.stringify(data), this.config(params));
+        const response = await this.instance.put(url, data, this.config(params));
         return response.data;
     }
 
@@ -66,7 +65,7 @@ export class Transport {
             headers: {
                 ...this.headers,
                 ...this.token,
-                // "Content-Type": "application/json",
+                "Content-Type": "application/json",
             },
             params,
         };
