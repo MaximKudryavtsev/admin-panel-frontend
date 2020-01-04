@@ -4,15 +4,15 @@ import { Transport } from "../transport";
 import { deleteAvatar, deleteUser, fetchUser, updateAvatar, updatePassword, updateUser } from "../api";
 
 export function useUser(): {
-    user: IUser | null;
+    user?: IUser;
     fetchOne: () => Promise<void>;
-    updateUser: (user: IUser) => Promise<void>;
+    updateLogin: (user: Partial<IUser>) => Promise<void>;
     deleteUser: () => Promise<TResponse<void>>;
     updatePassword: (data: IUpdateUserPassword) => Promise<TResponse<void>>;
     updateAvatar: (data: IUpdateAvatar) => Promise<void>;
     deleteAvatar: () => Promise<void>;
 } {
-    const [user, setUser] = useState<IUser | null>(null);
+    const [user, setUser] = useState<IUser | undefined>(undefined);
     const transport = useMemo(() => new Transport(), []);
     const tokenString = localStorage.getItem("token");
     transport.setToken(JSON.parse(tokenString!));
@@ -26,7 +26,7 @@ export function useUser(): {
     );
 
     const update = useCallback(
-        (user: IUser) => {
+        (user: Partial<IUser>) => {
             return updateUser(transport, user).then((response) => setUser(response.data));
         },
         [transport, setUser],
@@ -63,7 +63,7 @@ export function useUser(): {
     return {
         user,
         fetchOne,
-        updateUser: update,
+        updateLogin: update,
         deleteUser: delUser,
         updatePassword: updatePass,
         updateAvatar: onUpdateAvatar,
