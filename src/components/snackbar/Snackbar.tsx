@@ -8,7 +8,6 @@ import {
     Error as ErrorIcon,
 } from "@material-ui/icons";
 import * as React from "react";
-import { colors } from "../../config/colors";
 import { green, red } from "@material-ui/core/colors";
 
 interface ISnackbarProps {
@@ -27,13 +26,13 @@ export const Snackbar: React.FC<ISnackbarProps> = ({ message, error, open, onClo
                 horizontal: "right",
             }}
             open={open}
-            autoHideDuration={7000}
+            autoHideDuration={5000}
             onClose={onClose}
         >
             <SnackbarContent
                 css={css({
                     background: error ?  red[600] : green[600],
-                    boxShadow: `0 4px 8px ${error ? red[600] : green[600]}50`,
+                    boxShadow: `0 4px 8px ${error ? red[600] : green[600]}`,
                 })}
                 message={
                     <span

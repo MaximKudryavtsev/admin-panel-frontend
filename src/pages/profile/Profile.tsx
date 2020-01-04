@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { css } from "emotion";
-import { Chip, Grid, IconButton } from "@material-ui/core";
+import { Button, Chip, Grid, IconButton, Tooltip } from "@material-ui/core";
 import { useSnackbar, useUser } from "../../hooks";
 import { Card } from "../../components/card";
 import { UploadAvatar } from "../../widgets/upload-avatar";
@@ -8,8 +8,9 @@ import { Snackbar } from "../../components/snackbar";
 import { CustomForm } from "../../components/custom-form";
 import { IUser } from "../../entities";
 import { TextField } from "../../components/text-field";
-import { Save } from "@material-ui/icons";
 import * as Yup from "yup";
+import { Info, Save } from "@material-ui/icons";
+import cn from "classnames";
 
 interface IProfileProps {
     setPageTitle(title: string): void;
@@ -25,9 +26,22 @@ const classes = {
     left: css`
         padding-right: 24px;
     `,
+    field: css`
+        margin-bottom: 20px !important;
+    `,
+    emailWrapper: css`
+        display: flex;
+        align-items: center;
+    `,
+    info: css`
+        margin-left: 20px;
+    `,
 };
 
 const ValidationSchema = Yup.object().shape({
+    email: Yup.string()
+        .email("Невалидный e-mail")
+        .required("Поле обязательно для заполнения"),
     login: Yup.string()
         .required("Поле обязательно для заполнения")
         .min(2, "Минимальная длина логина 2 символа"),
@@ -99,34 +113,43 @@ export const Profile = (props: IProfileProps) => {
                                     onSubmit={onUpdateLogin}
                                     validationSchema={ValidationSchema}
                                     render={(form) => (
-                                        <div
-                                            className={css`
-                                                display: flex;
-                                                width: 100%;
-                                                align-items: center;
-                                            `}
-                                        >
+                                        <>
                                             <TextField
                                                 name={"login"}
                                                 label={"Логин"}
                                                 classes={{
-                                                    root: css`
-                                                        width: 90%;
-                                                    `,
+                                                    root: classes.field,
                                                 }}
                                                 InputLabelProps={{ shrink: !!form?.values?.login }}
-                                                size={"small"}
                                             />
-                                            <IconButton
-                                                className={css`
-                                                    margin-left: 20px !important;
-                                                `}
-                                                color={"primary"}
+                                            <div
+                                                className={cn(classes.emailWrapper, classes.field)}
+                                            >
+                                                <TextField
+                                                    name={"email"}
+                                                    label={"E-mail"}
+                                                    InputLabelProps={{
+                                                        shrink: !!form?.values?.email,
+                                                    }}
+                                                />
+                                                <Tooltip
+                                                    title={
+                                                        "Если Вы смените E-mail, то Вам нужно будет подвердить новый E-mail, и после смены E-mail'a Вы будете разлогинены"
+                                                    }
+                                                    className={classes.info}
+                                                >
+                                                    <Info color={"primary"} />
+                                                </Tooltip>
+                                            </div>
+                                            <Button
+                                                variant="contained"
+                                                color="primary"
+                                                startIcon={<Save />}
                                                 onClick={form?.submitForm}
                                             >
-                                                <Save />
-                                            </IconButton>
-                                        </div>
+                                                Сохранить
+                                            </Button>
+                                        </>
                                     )}
                                 />
                             </Card>
