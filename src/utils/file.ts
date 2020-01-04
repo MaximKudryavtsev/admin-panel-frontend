@@ -1,4 +1,5 @@
-import { head, last } from "lodash";
+import { head, last, get } from "lodash";
+import fileType from "file-type";
 
 export function dataURLtoFile(dataurl: string, filename: string): File {
     const type = head(dataurl.split(","));
@@ -15,4 +16,21 @@ export function dataURLtoFile(dataurl: string, filename: string): File {
     const blob = new Blob([u8arr], { type: mime });
     const file = new File([blob], filename, { type: mime });
     return file;
+}
+
+export function getExtension(resolve: (ext: string) => void, file: File): void {
+    const reader = new FileReader();
+    if (!file) {
+        return;
+    }
+    reader.readAsArrayBuffer(file);
+    (reader.onloadend = () => {
+        const result = reader.result as ArrayBuffer;
+        const ext = get(fileType(result), "ext", "");
+        resolve(ext);
+    });
+}
+
+export function getUnsafeExtension(file: File): string {
+    return (last(file.name.split(".")) || "").toLowerCase();
 }

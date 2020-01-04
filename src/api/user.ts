@@ -1,5 +1,5 @@
 import {Transport } from "../transport";
-import { IUpdateAvatar, IUpdateUserPassword, IUser } from "../entities";
+import { IUpdateUserPassword, IUser } from "../entities";
 import { ApiPaths } from "../config";
 
 export function fetchUser(transport: Transport) {

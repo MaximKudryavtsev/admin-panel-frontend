@@ -1,11 +1,10 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import { css } from "emotion";
-import { Button, IconButton, LinearProgress } from "@material-ui/core";
+import { Button, IconButton, LinearProgress, Typography } from "@material-ui/core";
 import { Close, CloudUpload, Edit } from "@material-ui/icons";
 import { Avatar } from "../../components/avatar";
 import { ConfirmPopup } from "../../components/confirm-popup";
-import { fromEvent } from "rxjs/internal/observable/fromEvent";
-import { dataURLtoFile } from "../../utils";
+import { useFile } from "../../hooks";
 
 interface IUploadAvatarProps {
     src?: string;
@@ -47,6 +46,9 @@ const styles = {
     progress: css`
         width: 100%;
         margin-top: 20px;
+    `,
+    error: css`
+        margin-top: 20px !important;
     `
 };
 
@@ -54,12 +56,14 @@ export const UploadAvatar = (props: IUploadAvatarProps) => {
     const { onDeleteAvatar, uploadAvatar, loading } = props;
     const [modalOpen, setModalOpen] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
-    const [src, setSrc] = useState<string | undefined>(undefined);
-    const [file, setFile] = useState<File | null>(null);
+    const { src, file, error, setSrc, deleteFile, loadFile } = useFile({
+        whiteList: ["png", "jpg", "pdf", "gif", "jpeg"],
+        maxFileSize: 1048576,
+    });
 
     useEffect(() => {
         setSrc(props.src);
-    }, [props.src]);
+    }, [props.src, setSrc]);
 
     function onModalOpen(): void {
         setModalOpen(true);
@@ -81,24 +85,11 @@ export const UploadAvatar = (props: IUploadAvatarProps) => {
         if (!file) {
             return;
         }
-        loadImage(file);
-    };
-
-    const loadImage = (file: File) =>  {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        fromEvent(reader, "loadend").subscribe(async () => {
-            try {
-                setSrc(reader.result as string);
-                setFile(dataURLtoFile(reader.result as string, file.name));
-            } catch (error) {
-                // Nothing here
-            }
-        });
+        loadFile(file);
     };
 
     const deleteAvatar = () => {
-        setSrc(undefined);
+        deleteFile();
         onModalClose();
         if (onDeleteAvatar) {
             onDeleteAvatar();
@@ -136,7 +127,12 @@ export const UploadAvatar = (props: IUploadAvatarProps) => {
                 >
                     Загрузить
                 </Button>
-                <input type="file" className={styles.input} ref={inputRef} onChange={onChange}/>
+                {error && (
+                    <Typography color={"error"} align={"center"} className={styles.error}>
+                        {error}
+                    </Typography>
+                )}
+                <input type="file" className={styles.input} ref={inputRef} onChange={onChange} />
             </div>
             {loading && <LinearProgress className={styles.progress} />}
             <ConfirmPopup
