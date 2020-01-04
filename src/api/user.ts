@@ -7,7 +7,7 @@ export function fetchUser(transport: Transport) {
 }
 
 export function updateUser(transport: Transport, user: Partial<IUser>) {
-    return transport.put<Partial<IUser>, IUser>(ApiPaths.UPDATE_LOGIN, user);
+    return transport.put<Partial<IUser>, IUser>(ApiPaths.UPDATE_USER, user);
 }
 
 export function updatePassword(transport: Transport, data: IUpdateUserPassword) {

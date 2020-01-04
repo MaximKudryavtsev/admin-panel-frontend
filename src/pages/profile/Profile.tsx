@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { css } from "emotion";
-import { Button, Chip, Grid, IconButton, Tooltip } from "@material-ui/core";
+import { Button, Chip, Grid, Tooltip } from "@material-ui/core";
 import { useSnackbar, useUser } from "../../hooks";
 import { Card } from "../../components/card";
 import { UploadAvatar } from "../../widgets/upload-avatar";
@@ -49,7 +49,7 @@ const ValidationSchema = Yup.object().shape({
 
 export const Profile = (props: IProfileProps) => {
     const { setPageTitle, onSetUser } = props;
-    const { user, updateLogin, deleteUser, updateAvatar, updatePassword, deleteAvatar } = useUser();
+    const { user, updateUser, deleteUser, updateAvatar, updatePassword, deleteAvatar } = useUser();
     const { error, snackbar, setSnackbarError, setSnackbarState, onSnackbarClose } = useSnackbar();
     const [avatarLoaderVisible, setAvatarLoaderVisible] = useState(false);
 
@@ -79,7 +79,7 @@ export const Profile = (props: IProfileProps) => {
     };
 
     const onUpdateLogin = (user: Partial<IUser>) => {
-        updateLogin(user)
+        updateUser(user)
             .then(() => setSnackbarState({ open: true, message: "Логин изенен!" }))
             .catch(() => {
                 setSnackbarError(true);

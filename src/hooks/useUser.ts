@@ -6,7 +6,7 @@ import { deleteAvatar, deleteUser, fetchUser, updateAvatar, updatePassword, upda
 export function useUser(): {
     user?: IUser;
     fetchOne: () => Promise<void>;
-    updateLogin: (user: Partial<IUser>) => Promise<void>;
+    updateUser: (user: Partial<IUser>) => Promise<void>;
     deleteUser: () => Promise<TResponse<void>>;
     updatePassword: (data: IUpdateUserPassword) => Promise<TResponse<void>>;
     updateAvatar: (data: IUpdateAvatar) => Promise<void>;
@@ -63,7 +63,7 @@ export function useUser(): {
     return {
         user,
         fetchOne,
-        updateLogin: update,
+        updateUser: update,
         deleteUser: delUser,
         updatePassword: updatePass,
         updateAvatar: onUpdateAvatar,
