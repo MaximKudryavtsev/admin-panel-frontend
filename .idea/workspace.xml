@@ -2,12 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/confirm-popup/ConfirmPopup.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/confirm-popup/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/popup/Popup.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/popup/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/avatar/Avatar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/avatar/default.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/avatar/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/avatar/user.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/card/Card.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/card/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/file.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/upload-avatar/UploadAvatar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/upload-avatar/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/login.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/login.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/ApiPaths.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/ApiPaths.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useUser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useUser.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/profile/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/profile/Profile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transport/Transport.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/transport/Transport.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/widgets/layout/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/layout/Layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +57,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/pages" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/avatar" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -55,14 +70,15 @@
     <property name="ts.external.directory.path" value="C:\omega\admin-panel-frontend\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\omega\admin-panel-frontend\src\app" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\omega\admin-panel-frontend\src\components\avatar" />
       <recent name="C:\omega\admin-panel-frontend\src\pages" />
       <recent name="C:\omega\admin-panel-frontend\src\components" />
       <recent name="C:\omega\admin-panel-frontend\src\entities" />
       <recent name="C:\omega\admin-panel-frontend" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\omega\admin-panel-frontend\src\app" />
     </key>
   </component>
   <component name="RunManager" selected="npm.npm start">
@@ -114,7 +130,7 @@
       <workItem from="1577949469901" duration="8648000" />
       <workItem from="1577969773398" duration="9487000" />
       <workItem from="1578037978739" duration="35714000" />
-      <workItem from="1578120151599" duration="4041000" />
+      <workItem from="1578120151599" duration="19938000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1576310605982</created>
@@ -270,11 +286,28 @@
       <option name="project" value="LOCAL" />
       <updated>1578090956518</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="add popup, confirm popup">
+      <created>1578126521813</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1578126521813</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
@@ -299,7 +332,8 @@
     <MESSAGE value="add forgot password page" />
     <MESSAGE value="fix PrivateRoute" />
     <MESSAGE value="add Profile page, move actions with user to separate hook" />
-    <option name="LAST_COMMIT_MESSAGE" value="add Profile page, move actions with user to separate hook" />
+    <MESSAGE value="add popup, confirm popup" />
+    <option name="LAST_COMMIT_MESSAGE" value="add popup, confirm popup" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="182" key="#Scopes" timestamp="1578082972079">
@@ -314,13 +348,15 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="601" y="291" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1576315906681" />
-    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1578090956191">
+    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1578126521429">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
+    <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578126521429" />
     <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578090956191" />
-    <state x="184" y="86" key="DiffContextDialog" timestamp="1578090966601">
+    <state x="184" y="86" width="1536" height="840" key="DiffContextDialog" timestamp="1578153054921">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
+    <state x="184" y="86" width="1536" height="840" key="DiffContextDialog/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578153054921" />
     <state x="184" y="86" key="DiffContextDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578090966601" />
     <state x="740" y="279" key="FileChooserDialogImpl" timestamp="1577956099449">
       <screen x="0" y="0" width="1920" height="1050" />
@@ -366,14 +402,15 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="632" y="315" key="git4idea.merge.GitPullDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1577796066806" />
-    <state x="616" y="237" key="run.anything.popup" timestamp="1578055202418">
+    <state x="616" y="237" key="run.anything.popup" timestamp="1578145423257">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
+    <state x="616" y="237" key="run.anything.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578145423257" />
     <state x="616" y="237" key="run.anything.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578055202418" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1578121277996">
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1578149379438">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578121277996" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578149379438" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578089763936" />
   </component>
 </project>
