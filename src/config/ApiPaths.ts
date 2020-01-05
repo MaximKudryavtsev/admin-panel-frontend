@@ -8,4 +8,12 @@ export const ApiPaths = {
     DELETE_USER: "user/delete",
     UPDATE_AVATAR: "user/avatar/update",
     DELETE_AVATAR: "user/avatar/delete",
+    // navigation
+    GET_NAVIGATION: "/navigations/:id",
+    GET_NAVIGATION_TYPES: "/navigations/types",
+    GET_NAVIGATION_LIST: "/navigations/list",
+    UPDATE_NAVIGATION: "/navigations/:id/update",
+    CREATE_NAVIGATION: "/navigations/create",
+    REORDER_NAVIGATION: "/navigation/reorder",
+    DELETE_NAVIGATION: "/navigations/:id/delete"
 };

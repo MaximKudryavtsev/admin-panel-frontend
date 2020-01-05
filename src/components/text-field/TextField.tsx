@@ -31,7 +31,7 @@ export const TextField = (props: ITextFieldProps) => {
 
     return (
         <Field name={name}>
-            {({field, meta}: FieldProps) => (
+            {({ field, meta }: FieldProps) => (
                 <MaterialTextField
                     variant="outlined"
                     fullWidth
@@ -57,6 +57,5 @@ export const TextField = (props: ITextFieldProps) => {
                 />
             )}
         </Field>
-
     );
 };
