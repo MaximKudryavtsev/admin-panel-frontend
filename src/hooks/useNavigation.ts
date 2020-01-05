@@ -1,16 +1,17 @@
 import { Transport } from "../transport";
 import { INavigation, INavigationOrder, INavigationType, TLang } from "../entities";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import {
-    createNavigation, deleteNavigation,
+    createNavigation,
+    deleteNavigation,
     getNavigation,
     getNavigationList,
-    getNavigationTypes, reorderNavigations,
+    getNavigationTypes,
+    reorderNavigations,
     updateNavigation,
 } from "../api";
 
 export function useNavigation(
-    transport: Transport,
     lang: TLang,
 ): {
     navigationTypes: INavigationType[];
@@ -25,6 +26,10 @@ export function useNavigation(
     const [navigationTypes, setNavigationTypes] = useState<INavigationType[]>([]);
     const [navigations, setNavigations] = useState<INavigation[]>([]);
     const [navigation, setNavigation] = useState<INavigation | undefined>(undefined);
+
+    const transport = useMemo(() => new Transport(), []);
+    const tokenString = localStorage.getItem("token");
+    transport.setToken(JSON.parse(tokenString!));
 
     const getTypes = useCallback(() => {
         return getNavigationTypes(transport).then((response) => setNavigationTypes(response.data));
@@ -59,13 +64,23 @@ export function useNavigation(
         [transport],
     );
 
-    const onDeleteNavigation = useCallback((id: string) => {
-        return deleteNavigation(transport, id, lang).then((response) => setNavigations(response.data));
-    }, [transport, lang]);
+    const onDeleteNavigation = useCallback(
+        (id: string) => {
+            return deleteNavigation(transport, id, lang).then((response) =>
+                setNavigations(response.data),
+            );
+        },
+        [transport, lang],
+    );
 
-    const reorder = useCallback((order: INavigationOrder[]) => {
-        return reorderNavigations(transport, order, lang).then((response) => setNavigations(response.data));
-    }, [transport, lang]);
+    const reorder = useCallback(
+        (order: INavigationOrder[]) => {
+            return reorderNavigations(transport, order, lang).then((response) =>
+                setNavigations(response.data),
+            );
+        },
+        [transport, lang],
+    );
 
     useEffect(() => {
         getTypes();
@@ -80,6 +95,6 @@ export function useNavigation(
         createNavigation: create,
         updateNavigation: update,
         deleteNavigation: onDeleteNavigation,
-        reorderNavigation: reorder
+        reorderNavigation: reorder,
     };
 }

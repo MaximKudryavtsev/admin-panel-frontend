@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useNavigation } from "../../hooks";
 
 interface INavigationProps {
     setPageTitle(title: string): void;
@@ -10,6 +11,8 @@ export const Navigation = (props: INavigationProps) => {
     useEffect(() => {
         setPageTitle("Навигация");
     }, [setPageTitle]);
+
+    const { navigations } = useNavigation("en");
 
     return (
         <h1>

@@ -11,6 +11,7 @@ export interface INavigation {
     position: number;
     navigationType: INavigationType;
     isVisible: boolean;
+    hasChild: boolean;
     lang: string;
 }
 

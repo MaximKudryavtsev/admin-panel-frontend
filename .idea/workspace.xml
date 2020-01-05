@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/api/navigation.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entities/lang.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entities/navigation.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hooks/useNavigation.ts" afterDir="false" />
+    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="add api and hooks for navigation">
+      <change afterPath="$PROJECT_DIR$/src/pages/navigation/navigation-content/NavigationContent.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/navigation/navigation-content/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/text-field/TextField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/TextField.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/ApiPaths.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/ApiPaths.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/navigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/navigation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useNavigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useNavigation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/navigation/Navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/navigation/Navigation.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +120,7 @@
       <workItem from="1577969773398" duration="9487000" />
       <workItem from="1578037978739" duration="35714000" />
       <workItem from="1578120151599" duration="35892000" />
-      <workItem from="1578212505909" duration="22012000" />
+      <workItem from="1578212505909" duration="23859000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1576310605982</created>
@@ -357,7 +353,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578254835660</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="add api and hooks for navigation">
+      <created>1578258608882</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1578258608882</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -374,7 +377,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add getting user data after login" />
     <MESSAGE value="add private route" />
     <MESSAGE value="fix private route" />
     <MESSAGE value="add public route" />
@@ -399,7 +401,8 @@
     <MESSAGE value="move update user form to separate component" />
     <MESSAGE value="add changing password" />
     <MESSAGE value="change textfield" />
-    <option name="LAST_COMMIT_MESSAGE" value="change textfield" />
+    <MESSAGE value="add api and hooks for navigation" />
+    <option name="LAST_COMMIT_MESSAGE" value="add api and hooks for navigation" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="182" key="#ESLint" timestamp="1578156507884">
@@ -418,11 +421,11 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="601" y="291" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1576315906681" />
-    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1578254835422">
+    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1578260449921">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172968703" />
-    <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578254835422" />
+    <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578260449921" />
     <state x="184" y="86" width="1536" height="840" key="DiffContextDialog" timestamp="1578254826194">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -480,10 +483,10 @@
     </state>
     <state x="616" y="237" key="run.anything.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578145423257" />
     <state x="616" y="237" key="run.anything.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578055202418" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1578257671213">
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1578259731810">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578170577061" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578257671213" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578259731810" />
   </component>
 </project>
