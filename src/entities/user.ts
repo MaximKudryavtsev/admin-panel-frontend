@@ -16,11 +16,12 @@ export interface IUser {
     isDeleteAvailable: boolean;
 }
 
-export interface IUpdateUserPassword {
-    password: string;
-    newPassword: string;
-}
-
 export interface IUpdateAvatar {
     avatar: File;
+}
+
+export interface IChangePasswordData {
+    currentPassword: string;
+    newPassword: string;
+    repeatPassword: string;
 }

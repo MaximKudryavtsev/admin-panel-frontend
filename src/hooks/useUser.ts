@@ -1,4 +1,4 @@
-import { IUpdateAvatar, IUpdateUserPassword, IUser, TResponse } from "../entities";
+import { IUpdateAvatar, IChangePasswordData, IUser, TResponse } from "../entities";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Transport } from "../transport";
 import { deleteAvatar, deleteUser, fetchUser, updateAvatar, updatePassword, updateUser } from "../api";
@@ -8,7 +8,7 @@ export function useUser(): {
     fetchOne: () => Promise<void>;
     updateUser: (user: Partial<IUser>) => Promise<void>;
     deleteUser: () => Promise<TResponse<void>>;
-    updatePassword: (data: IUpdateUserPassword) => Promise<TResponse<void>>;
+    updatePassword: (data: IChangePasswordData) => Promise<TResponse<void>>;
     updateAvatar: (data: IUpdateAvatar) => Promise<void>;
     deleteAvatar: () => Promise<void>;
 } {
@@ -37,7 +37,7 @@ export function useUser(): {
     }, [transport]);
 
     const updatePass = useCallback(
-        (data: IUpdateUserPassword) => {
+        (data: IChangePasswordData) => {
             return updatePassword(transport, data);
         },
         [transport],

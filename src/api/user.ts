@@ -1,5 +1,5 @@
 import {Transport } from "../transport";
-import { IUpdateUserPassword, IUser } from "../entities";
+import { IChangePasswordData, IUser } from "../entities";
 import { ApiPaths } from "../config";
 
 export function fetchUser(transport: Transport) {
@@ -10,8 +10,8 @@ export function updateUser(transport: Transport, user: Partial<IUser>) {
     return transport.put<Partial<IUser>, IUser>(ApiPaths.UPDATE_USER, user);
 }
 
-export function updatePassword(transport: Transport, data: IUpdateUserPassword) {
-    return transport.put<IUpdateUserPassword, void>(ApiPaths.UPDATE_PASSWORD, data);
+export function updatePassword(transport: Transport, data: IChangePasswordData) {
+    return transport.put<IChangePasswordData, void>(ApiPaths.UPDATE_PASSWORD, data);
 }
 
 export function deleteUser(transport: Transport) {

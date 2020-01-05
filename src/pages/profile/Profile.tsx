@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { css } from "emotion";
-import { Chip, Grid } from "@material-ui/core";
+import { Chip, Divider, Grid, Typography } from "@material-ui/core";
 import { useSnackbar, useUser } from "../../hooks";
 import { Card } from "../../components/card";
 import { UploadAvatar } from "../../widgets/upload-avatar";
 import { Snackbar } from "../../components/snackbar";
-import { IUser } from "../../entities";
+import { IChangePasswordData, IUser } from "../../entities";
 import { UpdateUserForm } from "../../widgets/update-user-form";
+import { ChangePassword } from "../../widgets/change-password";
+import { getServerError } from "../../utils";
 
 interface IProfileProps {
     setPageTitle(title: string): void;
@@ -29,6 +31,7 @@ export const Profile = (props: IProfileProps) => {
     const { user, updateUser, deleteUser, updateAvatar, updatePassword, deleteAvatar } = useUser();
     const { error, snackbar, setSnackbarError, setSnackbarState, onSnackbarClose } = useSnackbar();
     const [avatarLoaderVisible, setAvatarLoaderVisible] = useState(false);
+    const [passwordError, setPasswordError] = useState<string | undefined>(undefined);
 
     useEffect(() => {
         setPageTitle(`Профиль пользователя ${user?.login || user?.email}`);
@@ -57,10 +60,23 @@ export const Profile = (props: IProfileProps) => {
 
     const onUpdateUser = (user: Partial<IUser>) => {
         updateUser(user)
-            .then(() => setSnackbarState({ open: true, message: "Логин изенен!" }))
+            .then(() => setSnackbarState({ open: true, message: "Логин изменен!" }))
             .catch(() => {
                 setSnackbarError(true);
                 setSnackbarState({ open: true, message: "Ошибка сервера" });
+            });
+    };
+
+    const onUpdatePassword = (data: IChangePasswordData) => {
+        setPasswordError(undefined);
+        updatePassword(data)
+            .then(() => setSnackbarState({ open: true, message: "Пароль изменен!" }))
+            .catch((error) => {
+                const serverError = getServerError(error);
+                if (!serverError) {
+                    return;
+                }
+                setPasswordError(serverError.title);
             });
     };
 
@@ -86,6 +102,19 @@ export const Profile = (props: IProfileProps) => {
                         >
                             <Card title={"Личная информация"}>
                                 <UpdateUserForm user={user} onSubmit={onUpdateUser} />
+                                <Divider
+                                    className={css`
+                                        margin: 20px 0 !important;
+                                    `}
+                                />
+                                <Typography
+                                    className={css`
+                                        margin-bottom: 20px !important;
+                                    `}
+                                >
+                                    Сменить пароль
+                                </Typography>
+                                <ChangePassword error={passwordError} onSubmit={onUpdatePassword} />
                             </Card>
                         </Grid>
                         <Grid item xs={6}>

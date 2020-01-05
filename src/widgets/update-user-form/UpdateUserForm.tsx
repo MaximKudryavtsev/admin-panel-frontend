@@ -2,7 +2,7 @@ import React from "react";
 import { IUser } from "../../entities";
 import { TextField } from "../../components/text-field";
 import cn from "classnames";
-import { Button, Tooltip } from "@material-ui/core";
+import { Button, IconButton, Tooltip } from "@material-ui/core";
 import { Info, Save } from "@material-ui/icons";
 import { isEqual } from "lodash";
 import { CustomForm } from "../../components/custom-form";
@@ -72,7 +72,9 @@ export const UpdateUserForm = (props: IUpdateFormProps) => {
                             }
                             className={classes.info}
                         >
-                            <Info color={"primary"} />
+                            <IconButton>
+                                <Info color={"primary"} />
+                            </IconButton>
                         </Tooltip>
                     </div>
                     <Button
