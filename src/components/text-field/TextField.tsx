@@ -3,6 +3,7 @@ import React from "react";
 import { Field } from "formik";
 import { TextField as MaterialTextField, InputLabelProps } from "@material-ui/core";
 import ErrorIcon from "@material-ui/icons/Error";
+import { FieldProps } from "formik/dist/Field";
 
 interface ITextFieldProps {
     name: string;
@@ -29,23 +30,21 @@ export const TextField = (props: ITextFieldProps) => {
     const { name, label, error, classes, type = "text", size, InputLabelProps } = props;
 
     return (
-        <Field
-            name={name}
-            // @ts-ignore
-            render={(field) => (
+        <Field name={name}>
+            {({field, meta}: FieldProps) => (
                 <MaterialTextField
                     variant="outlined"
                     fullWidth
                     label={label}
                     type={type}
-                    error={!!field.meta.error || error}
+                    error={!!meta.error || error}
                     size={size}
                     InputLabelProps={InputLabelProps}
                     helperText={
-                        field.meta.error && (
+                        meta.error && (
                             <>
                                 <ErrorIcon />
-                                <span className={styles.errorText}>{field.meta.error}</span>
+                                <span className={styles.errorText}>{meta.error}</span>
                             </>
                         )
                     }
@@ -54,9 +53,10 @@ export const TextField = (props: ITextFieldProps) => {
                     }}
                     classes={classes}
                     margin="normal"
-                    {...field.field}
+                    {...field}
                 />
             )}
-        />
+        </Field>
+
     );
 };
