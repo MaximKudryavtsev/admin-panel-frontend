@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { css } from "emotion";
-import { Button, Chip, Grid, Tooltip } from "@material-ui/core";
+import { Chip, Grid } from "@material-ui/core";
 import { useSnackbar, useUser } from "../../hooks";
 import { Card } from "../../components/card";
 import { UploadAvatar } from "../../widgets/upload-avatar";
 import { Snackbar } from "../../components/snackbar";
-import { CustomForm } from "../../components/custom-form";
 import { IUser } from "../../entities";
-import { TextField } from "../../components/text-field";
-import * as Yup from "yup";
-import { Info, Save } from "@material-ui/icons";
-import cn from "classnames";
+import { UpdateUserForm } from "../../widgets/update-user-form";
 
 interface IProfileProps {
     setPageTitle(title: string): void;
@@ -26,26 +22,7 @@ const classes = {
     left: css`
         padding-right: 24px;
     `,
-    field: css`
-        margin-bottom: 20px !important;
-    `,
-    emailWrapper: css`
-        display: flex;
-        align-items: center;
-    `,
-    info: css`
-        margin-left: 20px;
-    `,
 };
-
-const ValidationSchema = Yup.object().shape({
-    email: Yup.string()
-        .email("Невалидный e-mail")
-        .required("Поле обязательно для заполнения"),
-    login: Yup.string()
-        .required("Поле обязательно для заполнения")
-        .min(2, "Минимальная длина логина 2 символа"),
-});
 
 export const Profile = (props: IProfileProps) => {
     const { setPageTitle, onSetUser } = props;
@@ -78,7 +55,7 @@ export const Profile = (props: IProfileProps) => {
         });
     };
 
-    const onUpdateLogin = (user: Partial<IUser>) => {
+    const onUpdateUser = (user: Partial<IUser>) => {
         updateUser(user)
             .then(() => setSnackbarState({ open: true, message: "Логин изенен!" }))
             .catch(() => {
@@ -108,50 +85,7 @@ export const Profile = (props: IProfileProps) => {
                             `}
                         >
                             <Card title={"Личная информация"}>
-                                <CustomForm<IUser>
-                                    data={user}
-                                    onSubmit={onUpdateLogin}
-                                    validationSchema={ValidationSchema}
-                                    render={(form) => (
-                                        <>
-                                            <TextField
-                                                name={"login"}
-                                                label={"Логин"}
-                                                classes={{
-                                                    root: classes.field,
-                                                }}
-                                                InputLabelProps={{ shrink: !!form?.values?.login }}
-                                            />
-                                            <div
-                                                className={cn(classes.emailWrapper, classes.field)}
-                                            >
-                                                <TextField
-                                                    name={"email"}
-                                                    label={"E-mail"}
-                                                    InputLabelProps={{
-                                                        shrink: !!form?.values?.email,
-                                                    }}
-                                                />
-                                                <Tooltip
-                                                    title={
-                                                        "Если Вы смените E-mail, то Вам нужно будет подвердить новый E-mail, и после смены E-mail'a Вы будете разлогинены"
-                                                    }
-                                                    className={classes.info}
-                                                >
-                                                    <Info color={"primary"} />
-                                                </Tooltip>
-                                            </div>
-                                            <Button
-                                                variant="contained"
-                                                color="primary"
-                                                startIcon={<Save />}
-                                                onClick={form?.submitForm}
-                                            >
-                                                Сохранить
-                                            </Button>
-                                        </>
-                                    )}
-                                />
+                                <UpdateUserForm user={user} onSubmit={onUpdateUser} />
                             </Card>
                         </Grid>
                         <Grid item xs={6}>
