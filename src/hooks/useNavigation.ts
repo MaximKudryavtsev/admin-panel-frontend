@@ -4,7 +4,7 @@ import {
     INavigationOrder,
     INavigationType,
     TCreateNavigationRequest,
-    TLang,
+    TLang, TUpdateNavigationRequest,
 } from "../entities";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import {
@@ -25,7 +25,7 @@ export function useNavigation(
     navigation?: INavigation;
     getNavigation: (id: string) => Promise<void>;
     createNavigation: (navigation: TCreateNavigationRequest) => Promise<void>;
-    updateNavigation: (navigation: INavigation) => Promise<void>;
+    updateNavigation: (navigation: TUpdateNavigationRequest) => Promise<void>;
     deleteNavigation: (id: string) => Promise<void>;
     reorderNavigation: (order: INavigationOrder[]) => Promise<void>;
 } {
@@ -62,7 +62,7 @@ export function useNavigation(
     );
 
     const update = useCallback(
-        (navigation: INavigation) => {
+        (navigation: TUpdateNavigationRequest) => {
             return updateNavigation(transport, navigation._id, navigation).then((response) =>
                 setNavigations(response.data),
             );

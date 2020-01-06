@@ -19,6 +19,8 @@ interface INavigationItemProps {
     onEdit?(id: string): void;
 
     onDelete?(id: string): void;
+
+    onOpenChildren?(id: string): void;
 }
 
 const styles = {
@@ -56,7 +58,7 @@ const styles = {
 };
 
 export const NavigationItem = (props: INavigationItemProps) => {
-    const { navigation, onChangeVisibility, onDelete, onEdit } = props;
+    const { navigation, onChangeVisibility, onDelete, onEdit, onOpenChildren } = props;
 
     const handleChangeVisibility = () => {
         if (!onChangeVisibility) {
@@ -72,28 +74,44 @@ export const NavigationItem = (props: INavigationItemProps) => {
         onEdit(navigation._id);
     };
 
+    const handleDelete = () => {
+        if (!onDelete) {
+            return;
+        }
+        onDelete(navigation._id);
+    };
+
+    const handleOpenChildren = () => {
+        if (!onOpenChildren) {
+            return;
+        }
+        onOpenChildren(navigation._id);
+    };
+
     return (
-        <Paper className={styles.item}>
-            <IconButton className={styles.icon}>
-                <DragIndicator />
-            </IconButton>
-            <Typography className={styles.title}>{navigation.title}</Typography>
-            <div className={styles.icons}>
-                <IconButton className={styles.icon} onClick={handleChangeVisibility}>
-                    {navigation.isVisible ? <Visibility /> : <VisibilityOff />}
-                </IconButton>
-                <IconButton className={styles.icon} onClick={handleGetNavigation}>
-                    <Edit />
-                </IconButton>
+        <>
+            <Paper className={styles.item}>
                 <IconButton className={styles.icon}>
-                    <Delete />
+                    <DragIndicator />
                 </IconButton>
-                {navigation.hasChild && (
-                    <IconButton className={styles.icon}>
-                        <ArrowForwardIos />
+                <Typography className={styles.title}>{navigation.title}</Typography>
+                <div className={styles.icons}>
+                    <IconButton className={styles.icon} onClick={handleChangeVisibility}>
+                        {navigation.isVisible ? <Visibility /> : <VisibilityOff />}
                     </IconButton>
-                )}
-            </div>
-        </Paper>
+                    <IconButton className={styles.icon} onClick={handleGetNavigation}>
+                        <Edit />
+                    </IconButton>
+                    <IconButton className={styles.icon} onClick={handleDelete}>
+                        <Delete />
+                    </IconButton>
+                    {navigation.hasChild && (
+                        <IconButton className={styles.icon} onClick={handleOpenChildren}>
+                            <ArrowForwardIos />
+                        </IconButton>
+                    )}
+                </div>
+            </Paper>
+        </>
     );
 };

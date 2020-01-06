@@ -8,6 +8,8 @@ import { Select } from "../../components/select";
 import { Button } from "@material-ui/core";
 import { Save } from "@material-ui/icons";
 import { SwitchField } from "../../components/switch-field";
+import { isEqual } from "lodash";
+import * as Yup from "yup";
 
 export interface ICreateNavigation {
     title: string;
@@ -22,6 +24,8 @@ interface IAddNavigationProps {
     navigationsTypes: INavigationType[];
     parentId?: string;
     navigation?: INavigation;
+    title?: string;
+    isChildren?: boolean;
 
     onSubmit?(navigation: ICreateNavigation): void;
 
@@ -38,21 +42,36 @@ const styles = {
     `,
 };
 
-export const NavigationPopup = (props: IAddNavigationProps) => {
-    const { open, navigationsTypes, onClose, onSubmit, parentId, navigation } = props;
+const ValidationSchema = Yup.object().shape({
+    title: Yup.string().required("Поле обязательно для заполнения"),
+    navigationTypeId: Yup.string().required("Поле обязательно для заполнения"),
+    link: Yup.string().required("Поле обязательно для заполнения"),
+});
 
-    const handleSubmit = (data: Omit<ICreateNavigation, "parentId">) => {
+export const NavigationPopup = (props: IAddNavigationProps) => {
+    const {
+        open,
+        navigationsTypes,
+        onClose,
+        onSubmit,
+        navigation,
+        title = "Добавить навигацию",
+        isChildren,
+    } = props;
+
+    const handleSubmit = (data: ICreateNavigation) => {
         if (!onSubmit) {
             return;
         }
-        onSubmit({ ...data, parentId });
+        onSubmit(data);
     };
 
     return (
-        <Popup title={"Добавить навигацию"} open={open} onClose={onClose}>
+        <Popup title={title} open={open} onClose={onClose}>
             <CustomForm<Partial<ICreateNavigation>>
                 onSubmit={handleSubmit}
                 data={transform(navigation)}
+                validationSchema={ValidationSchema}
                 render={(form) => (
                     <div className={styles.content}>
                         <TextField
@@ -60,7 +79,6 @@ export const NavigationPopup = (props: IAddNavigationProps) => {
                             label={"Название"}
                             classes={{ root: styles.field }}
                         />
-                        {console.log(form?.values)}
                         <Select
                             name={"navigationTypeId"}
                             label={"Тип ссылки"}
@@ -71,17 +89,19 @@ export const NavigationPopup = (props: IAddNavigationProps) => {
                             classes={{ root: styles.field }}
                         />
                         <TextField name={"link"} label={"Сылка"} classes={{ root: styles.field }} />
-                        <SwitchField
-                            name={"hasChild"}
-                            label={"Второй уровень"}
-                            classes={{ root: styles.field }}
-                        />
+                        {!isChildren && (
+                            <SwitchField
+                                name={"hasChild"}
+                                label={"Второй уровень"}
+                                classes={{ root: styles.field }}
+                            />
+                        )}
                         <Button
                             variant="contained"
                             color="primary"
                             startIcon={<Save />}
                             onClick={form?.submitForm}
-                            disabled={!form?.isValid}
+                            disabled={!form?.isValid || isEqual(form?.values, form?.initialValues)}
                         >
                             Сохранить
                         </Button>
@@ -94,7 +114,7 @@ export const NavigationPopup = (props: IAddNavigationProps) => {
 
 export function transform(navigation?: INavigation): Partial<ICreateNavigation> {
     if (!navigation) {
-        return {hasChild: false};
+        return { hasChild: false };
     }
     return { ...navigation, navigationTypeId: navigation.navigationType._id };
 }

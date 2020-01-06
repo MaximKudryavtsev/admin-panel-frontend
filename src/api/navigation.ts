@@ -14,8 +14,8 @@ export function getNavigation(transport: Transport, id: string) {
     return transport.get<INavigation>(ApiPaths.GET_NAVIGATION.replace(":id", id));
 }
 
-export function updateNavigation(transport: Transport, id: string, navigation: INavigation) {
-    return transport.put<INavigation, INavigation[]>(
+export function updateNavigation(transport: Transport, id: string, navigation: Partial<INavigation>) {
+    return transport.put<Partial<INavigation>, INavigation[]>(
         ApiPaths.UPDATE_NAVIGATION.replace(":id", id),
         navigation,
     );
