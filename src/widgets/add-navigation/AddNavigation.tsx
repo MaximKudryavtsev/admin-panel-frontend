@@ -7,10 +7,12 @@ import { TextField } from "../../components/text-field";
 import { Select } from "../../components/select";
 import { Button } from "@material-ui/core";
 import { Save } from "@material-ui/icons";
+import { SwitchField } from "../../components/switch-field";
 
 export interface ICreateNavigation {
     title: string;
     navigationTypeId: string;
+    hasChild: boolean;
     link: string;
     parentId?: string;
 }
@@ -31,6 +33,7 @@ const styles = {
     `,
     field: css`
         margin: 0 0 30px 0 !important;
+        display: flex !important;
     `,
 };
 
@@ -41,13 +44,14 @@ export const AddNavigation = (props: IAddNavigationProps) => {
         if (!onSubmit) {
             return;
         }
-        onSubmit({...data, parentId})
+        onSubmit({ ...data, parentId });
     };
 
     return (
         <Popup title={"Добавить навигацию"} open={open} onClose={onClose}>
-            <CustomForm
+            <CustomForm<Partial<ICreateNavigation>>
                 onSubmit={handleSubmit}
+                data={{hasChild: false}}
                 render={(form) => (
                     <div className={styles.content}>
                         <TextField
@@ -65,6 +69,11 @@ export const AddNavigation = (props: IAddNavigationProps) => {
                             classes={{ root: styles.field }}
                         />
                         <TextField name={"link"} label={"Сылка"} classes={{ root: styles.field }} />
+                        <SwitchField
+                            name={"hasChild"}
+                            label={"Второй уровень"}
+                            classes={{ root: styles.field }}
+                        />
                         <Button
                             variant="contained"
                             color="primary"
