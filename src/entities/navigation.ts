@@ -19,6 +19,11 @@ export interface INavigation {
 export type TCreateNavigationRequest = Omit<INavigation, "_id" | "hasChild">;
 export type TUpdateNavigationRequest = Partial<INavigation> & {_id: string};
 
+export interface IClientNavigation {
+    navigation: INavigation;
+    children?: IClientNavigation[];
+}
+
 export interface INavigationOrder {
     _id: string;
     position: number;

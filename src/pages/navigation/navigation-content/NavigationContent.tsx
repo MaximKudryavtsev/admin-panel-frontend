@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { INavigation, TLang } from "../../../entities";
 import { useNavigation } from "../../../hooks";
 import { css } from "emotion";
@@ -6,6 +6,8 @@ import { NavigationPanel } from "../../../widgets/navigation-panel";
 
 interface INavigationContentProps {
     lang: TLang;
+
+    onSetNavigations?(navigations: INavigation[]): void;
 }
 
 const styles = {
@@ -18,9 +20,7 @@ const styles = {
 };
 
 export const NavigationContent = (props: INavigationContentProps) => {
-    const { lang } = props;
-    const [childrenVisible, setChildrenVisible] = useState(false);
-    const [children, setChildren] = useState<INavigation[]>([]);
+    const { lang, onSetNavigations } = props;
     const {
         navigations,
         navigation,
@@ -31,6 +31,13 @@ export const NavigationContent = (props: INavigationContentProps) => {
         createNavigation,
         getNavigation,
     } = useNavigation(lang);
+
+    useEffect(() => {
+        if (!onSetNavigations) {
+            return;
+        }
+        onSetNavigations(navigations);
+    }, [navigations]);
 
     return (
         <NavigationPanel

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { IUser } from "../../entities";
+import { INavigation, IUser } from "../../entities";
 import { Route } from "react-router";
 import { Navigation } from "../navigation";
 import { Footer } from "../footer";
@@ -16,6 +16,7 @@ interface INavigationProps {
 export const WorkPanel = (props: INavigationProps) => {
     const { baseUrl, onLogout } = props;
     const [user, setUser] = useState<IUser | undefined>(props.user);
+    const [navigations, setNavigations] = useState<INavigation[]>([]);
     const [title, setTitle] = useState("");
 
     useEffect(() => {
@@ -23,9 +24,9 @@ export const WorkPanel = (props: INavigationProps) => {
     }, [props.user]);
 
     return (
-        <Layout title={title} user={user} onLogout={onLogout}>
+        <Layout title={title} user={user} onLogout={onLogout} navigations={navigations}>
             <Route path={`${baseUrl}/navigation`}>
-                <Navigation setPageTitle={setTitle} />
+                <Navigation setPageTitle={setTitle} setNavigations={setNavigations} />
             </Route>
             <Route path={`${baseUrl}/footer`}>
                 <Footer setPageTitle={setTitle} />

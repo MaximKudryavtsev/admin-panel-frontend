@@ -1,8 +1,9 @@
-import React, { FC, useState } from "react";
+import React, { FC, useCallback, useState } from "react";
 import * as emotion from "emotion";
 import {
     AppBar,
     Avatar,
+    Collapse,
     Divider,
     Drawer,
     IconButton,
@@ -15,7 +16,7 @@ import {
     Tooltip,
     Typography,
 } from "@material-ui/core";
-import { IUser } from "../../entities";
+import { IClientNavigation, INavigation, IUser } from "../../entities";
 import { AccountCircle } from "@material-ui/icons";
 import { adminSidebarLinks, sidebarLinks } from "../../config";
 import { AppContext } from "../../context";
@@ -25,6 +26,7 @@ import { ConfirmPopup } from "../../components/confirm-popup";
 interface ILayoutProps {
     title: string;
     user?: IUser;
+    navigations: INavigation[];
 
     onLogout?(): void;
 }
@@ -59,10 +61,13 @@ const styles = {
         width: 100%;
         height: 64px;
     `,
+    childrenNav: emotion.css`
+        padding-left: 40px !important;
+    `,
 };
 
 export const Layout: FC<ILayoutProps> = (props) => {
-    const { title, children, user, onLogout } = props;
+    const { title, children, user, onLogout, navigations } = props;
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const isMenuOpen = Boolean(anchorEl);
     const [logoutPopupVisible, setLogoutPopupVisible] = useState(false);
@@ -94,6 +99,18 @@ export const Layout: FC<ILayoutProps> = (props) => {
         AppContext.getHistory().push("/panel/profile");
         handleMenuClose();
     };
+
+    const transformNavigations = useCallback(() => {
+        const result: IClientNavigation[] = [];
+        navigations.map((item) => !item.parentId && result.push({ navigation: item }));
+        result.map((item, index) => {
+            if (item.navigation.hasChild) {
+                const children = navigations.filter((nav) => nav.parentId === item.navigation._id);
+                result[index].children = children.map((nav) => ({ navigation: nav }));
+            }
+        });
+        return result;
+    }, [navigations]);
 
     return (
         <div className={styles.root}>
@@ -144,10 +161,27 @@ export const Layout: FC<ILayoutProps> = (props) => {
                 <div className={styles.toolbar} />
                 <Divider />
                 <List>
-                    {["Inbox", "Starred", "Send email", "Drafts"].map((text) => (
-                        <ListItem button key={text}>
-                            <ListItemText primary={text} />
-                        </ListItem>
+                    {transformNavigations().map((item) => (
+                        <>
+                            <ListItem button key={item.navigation._id}>
+                                <ListItemText primary={item.navigation.title} />
+                            </ListItem>
+                            {item.children && (
+                                <Collapse in={true}>
+                                    <List>
+                                        {item.children.map((child) => (
+                                            <ListItem
+                                                button
+                                                key={child.navigation._id}
+                                                className={styles.childrenNav}
+                                            >
+                                                <ListItemText primary={child.navigation.title} />
+                                            </ListItem>
+                                        ))}
+                                    </List>
+                                </Collapse>
+                            )}
+                        </>
                     ))}
                 </List>
                 <Divider />
