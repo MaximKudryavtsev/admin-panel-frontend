@@ -21,8 +21,8 @@ export function updateNavigation(transport: Transport, id: string, navigation: I
     );
 }
 
-export function createNavigation(transport: Transport, navigation: INavigation, lang: TLang) {
-    return transport.post<INavigation, INavigation[]>(ApiPaths.CREATE_NAVIGATION, navigation, {
+export function createNavigation(transport: Transport, navigation:  Omit<INavigation, "_id">, lang: TLang) {
+    return transport.post< Omit<INavigation, "_id">, INavigation[]>(ApiPaths.CREATE_NAVIGATION, navigation, {
         lang,
     });
 }

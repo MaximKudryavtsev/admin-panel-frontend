@@ -18,7 +18,7 @@ export function useNavigation(
     navigations: INavigation[];
     navigation?: INavigation;
     getNavigation: (id: string) => Promise<void>;
-    createNavigation: (navigation: INavigation) => Promise<void>;
+    createNavigation: (navigation: Omit<INavigation, "_id">) => Promise<void>;
     updateNavigation: (navigation: INavigation) => Promise<void>;
     deleteNavigation: (id: string) => Promise<void>;
     reorderNavigation: (order: INavigationOrder[]) => Promise<void>;
@@ -47,7 +47,7 @@ export function useNavigation(
     );
 
     const create = useCallback(
-        (navigation: INavigation) => {
+        (navigation: Omit<INavigation, "_id">) => {
             return createNavigation(transport, navigation, lang).then((response) =>
                 setNavigations(response.data),
             );

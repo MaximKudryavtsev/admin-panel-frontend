@@ -1,6 +1,7 @@
 export interface INavigationType {
     _id: string;
     title: string;
+    label: string;
 }
 
 export interface INavigation {

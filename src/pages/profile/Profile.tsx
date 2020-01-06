@@ -3,11 +3,9 @@ import { css } from "emotion";
 import { Chip, Divider, Grid, Typography } from "@material-ui/core";
 import { useSnackbar, useUser } from "../../hooks";
 import { Card } from "../../components/card";
-import { UploadAvatar } from "../../widgets/upload-avatar";
 import { Snackbar } from "../../components/snackbar";
 import { IChangePasswordData, IUser } from "../../entities";
-import { UpdateUserForm } from "../../widgets/update-user-form";
-import { ChangePassword } from "../../widgets/change-password";
+import { UpdateUserForm, ChangePassword, UploadAvatar } from "../../widgets";
 import { getServerError } from "../../utils";
 
 interface IProfileProps {
