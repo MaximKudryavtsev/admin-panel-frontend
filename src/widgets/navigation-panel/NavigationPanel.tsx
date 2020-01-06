@@ -8,8 +8,8 @@ import {
 } from "../../entities";
 import { css } from "emotion";
 import { NavigationItem } from "../../components/navigation-item";
-import { Fab } from "@material-ui/core";
-import { Add } from "@material-ui/icons";
+import { Fab, IconButton } from "@material-ui/core";
+import { Add, Close } from "@material-ui/icons";
 import { ICreateNavigation, NavigationPopup } from "../add-navigation";
 import { ConfirmPopup } from "../../components/confirm-popup";
 
@@ -42,6 +42,11 @@ const styles = {
     `,
     children: css`
         margin-left: 20px;
+        display: flex;
+    `,
+    closeChildren: css`
+        margin-left: 10px;
+        height: fit-content;
     `,
 };
 
@@ -67,6 +72,13 @@ export const NavigationPanel = (props: INavigationPanelProps) => {
 
     useEffect(() => {
         setChildren(navigations.filter((item) => item.parentId === parentId));
+        // если список потомков открыт и мы выключаем второй уровень у родителя, то список потомков скрывается
+        const nav = navigations.find((item) => item._id === parentId);
+        if (nav) {
+            if (!nav.hasChild) {
+                onCloseChildren();
+            }
+        }
     }, [navigations, parentId]);
 
     function onCreateOpen(): void {
@@ -106,7 +118,10 @@ export const NavigationPanel = (props: INavigationPanelProps) => {
             parentId: props.parentId,
             isVisible: false,
             lang,
-            position: navigations.length + 1,
+            position:
+                navigations.filter((item) =>
+                    item.parentId ? item.parentId === props.parentId : !item.parentId,
+                ).length + 1,
         };
         createNavigation(nav).then(onCreateClose);
     };
@@ -144,7 +159,14 @@ export const NavigationPanel = (props: INavigationPanelProps) => {
         if (!deleteNavigation || !currentNavigationId) {
             return;
         }
-        deleteNavigation(currentNavigationId).then(onDeleteClose);
+        deleteNavigation(currentNavigationId).then(() => {
+            onDeleteClose();
+            if (currentNavigationId === parentId) {
+                setChildrenVisible(false);
+                setParentId(undefined);
+                setChildren([]);
+            }
+        });
     };
 
     const onOpenChildren = (id: string) => {
@@ -152,6 +174,12 @@ export const NavigationPanel = (props: INavigationPanelProps) => {
         const childrenNavigation = navigations.filter((item) => item.parentId === id);
         setChildren(childrenNavigation);
         setChildrenVisible(true);
+    };
+
+    const onCloseChildren = () => {
+        setChildrenVisible(false);
+        setParentId(undefined);
+        setChildren([]);
     };
 
     return (
@@ -216,6 +244,9 @@ export const NavigationPanel = (props: INavigationPanelProps) => {
                         updateNavigation={updateNavigation}
                         isChildren
                     />
+                    <IconButton className={styles.closeChildren} onClick={onCloseChildren}>
+                        <Close />
+                    </IconButton>
                 </div>
             )}
         </div>
