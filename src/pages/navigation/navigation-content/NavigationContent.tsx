@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { INavigation, TLang } from "../../../entities";
+import { INavigation, TCreateNavigationRequest, TLang } from "../../../entities";
 import { useNavigation } from "../../../hooks";
 import { NavigationItem } from "../../../components/navigation-item";
 import { css } from "emotion";
@@ -43,24 +43,34 @@ export const NavigationContent = (props: INavigationContentProps) => {
     }
 
     const onCreateNavigation = (data: ICreateNavigation) => {
-        const type = navigationTypes.find((item) => item._id === data.navigationTypeId) || navigationTypes[0];
-        const nav: Omit<INavigation, "_id"> = {
+        const type =
+            navigationTypes.find((item) => item._id === data.navigationTypeId) ||
+            navigationTypes[0];
+        const nav: TCreateNavigationRequest = {
             ...data,
             navigationType: type,
             parentId: data.parentId,
-            hasChild: false,
             isVisible: false,
             lang,
-            position: navigations.length + 1
+            position: navigations.length + 1,
         };
         createNavigation(nav).then(onCreateClose);
+    };
+
+    const onChangeVisibility = (navigation: INavigation) => {
+        navigation.isVisible = !navigation.isVisible;
+        updateNavigation({ ...navigation });
     };
 
     return (
         <div className={styles.wrapper}>
             <div className={styles.content}>
                 {navigations.map((item) => (
-                    <NavigationItem navigation={item} key={item._id} />
+                    <NavigationItem
+                        navigation={item}
+                        key={item._id}
+                        onChangeVisibility={onChangeVisibility}
+                    />
                 ))}
             </div>
             <Fab color="primary" aria-label="add" onClick={onCreateOpen}>

@@ -16,6 +16,8 @@ export interface INavigation {
     lang: string;
 }
 
+export type TCreateNavigationRequest = Omit<INavigation, "_id" | "hasChild">;
+
 export interface INavigationOrder {
     _id: string;
     position: number;

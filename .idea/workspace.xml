@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="add api and hooks for navigation">
-      <change afterPath="$PROJECT_DIR$/src/components/navigation-item/NavigationItem.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/navigation-item/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/select/Select.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/select/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widgets/add-navigation/AddNavigation.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widgets/add-navigation/index.ts" afterDir="false" />
+    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/switch-field/SwitchField.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/switch-field/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/navigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/navigation.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/navigation-item/NavigationItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navigation-item/NavigationItem.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/navigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/navigation.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hooks/useNavigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useNavigation.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/navigation/Navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/navigation/Navigation.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/navigation/navigation-content/NavigationContent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/navigation/navigation-content/NavigationContent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/profile/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/profile/Profile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/add-navigation/AddNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/add-navigation/AddNavigation.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +124,7 @@
       <workItem from="1578037978739" duration="35714000" />
       <workItem from="1578120151599" duration="35892000" />
       <workItem from="1578212505909" duration="23859000" />
-      <workItem from="1578296803263" duration="7979000" />
+      <workItem from="1578296803263" duration="10453000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1576310605982</created>
@@ -370,7 +364,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578258608882</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="add creating and getting navigations">
+      <created>1578305297944</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1578305297944</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -387,7 +388,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add private route" />
     <MESSAGE value="fix private route" />
     <MESSAGE value="add public route" />
     <MESSAGE value="add footer and navigation pages" />
@@ -412,7 +412,8 @@
     <MESSAGE value="add changing password" />
     <MESSAGE value="change textfield" />
     <MESSAGE value="add api and hooks for navigation" />
-    <option name="LAST_COMMIT_MESSAGE" value="add api and hooks for navigation" />
+    <MESSAGE value="add creating and getting navigations" />
+    <option name="LAST_COMMIT_MESSAGE" value="add creating and getting navigations" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="182" key="#ESLint" timestamp="1578156507884">
@@ -423,19 +424,19 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="552" y="182" key="#Scopes/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578082972079" />
-    <state x="722" y="327" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1577877480014">
+    <state x="722" y="327" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1578308267117">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="722" y="327" key="#com.intellij.fileTypes.FileTypeChooser/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1577877480014" />
+    <state x="722" y="327" key="#com.intellij.fileTypes.FileTypeChooser/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578308267117" />
     <state x="601" y="291" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog" timestamp="1576315906681">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="601" y="291" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1576315906681" />
-    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1578260503674">
+    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1578305297637">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172968703" />
-    <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578260503674" />
+    <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578305297637" />
     <state x="184" y="86" width="1536" height="840" key="DiffContextDialog" timestamp="1578254826194">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -466,11 +467,11 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="461" y="156" key="SettingsEditor/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1577876663464" />
-    <state x="552" y="257" key="Vcs.Push.Dialog.v2" timestamp="1578260529388">
+    <state x="552" y="257" key="Vcs.Push.Dialog.v2" timestamp="1578305302883">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="552" y="257" key="Vcs.Push.Dialog.v2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172973521" />
-    <state x="552" y="257" key="Vcs.Push.Dialog.v2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578260529388" />
+    <state x="552" y="257" key="Vcs.Push.Dialog.v2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578305302883" />
     <state x="92" y="92" width="1736" height="866" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1578046510409">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>

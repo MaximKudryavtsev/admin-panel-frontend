@@ -12,7 +12,13 @@ import {
 } from "@material-ui/icons";
 
 interface INavigationItemProps {
-    navigation: Partial<INavigation>;
+    navigation: INavigation;
+
+    onChangeVisibility?(navigation: INavigation): void;
+
+    onEdit?(id: string): void;
+
+    onDelete?(id: string): void;
 }
 
 const styles = {
@@ -22,6 +28,7 @@ const styles = {
         width: 500px;
         padding: 5px 10px;
         border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+        border-radius: 0 !important;
         :first-child {
             border-radius: 4px 4px 0 0 !important;
         }
@@ -49,7 +56,14 @@ const styles = {
 };
 
 export const NavigationItem = (props: INavigationItemProps) => {
-    const { navigation } = props;
+    const { navigation, onChangeVisibility, onDelete, onEdit } = props;
+
+    const handleChangeVisibility = () => {
+        if (!onChangeVisibility) {
+            return;
+        }
+        onChangeVisibility(navigation);
+    };
 
     return (
         <Paper className={styles.item}>
@@ -58,7 +72,7 @@ export const NavigationItem = (props: INavigationItemProps) => {
             </IconButton>
             <Typography className={styles.title}>{navigation.title}</Typography>
             <div className={styles.icons}>
-                <IconButton className={styles.icon}>
+                <IconButton className={styles.icon} onClick={handleChangeVisibility}>
                     {navigation.isVisible ? <Visibility /> : <VisibilityOff />}
                 </IconButton>
                 <IconButton className={styles.icon}>

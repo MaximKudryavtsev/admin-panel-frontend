@@ -1,5 +1,5 @@
 import { Transport } from "../transport";
-import { INavigation, INavigationOrder, INavigationType, TLang } from "../entities";
+import { INavigation, INavigationOrder, INavigationType, TCreateNavigationRequest, TLang } from "../entities";
 import { ApiPaths } from "../config";
 
 export function getNavigationTypes(transport: Transport) {
@@ -21,8 +21,8 @@ export function updateNavigation(transport: Transport, id: string, navigation: I
     );
 }
 
-export function createNavigation(transport: Transport, navigation:  Omit<INavigation, "_id">, lang: TLang) {
-    return transport.post< Omit<INavigation, "_id">, INavigation[]>(ApiPaths.CREATE_NAVIGATION, navigation, {
+export function createNavigation(transport: Transport, navigation: TCreateNavigationRequest, lang: TLang) {
+    return transport.post<TCreateNavigationRequest, INavigation[]>(ApiPaths.CREATE_NAVIGATION, navigation, {
         lang,
     });
 }

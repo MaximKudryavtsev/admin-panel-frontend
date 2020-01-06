@@ -1,5 +1,11 @@
 import { Transport } from "../transport";
-import { INavigation, INavigationOrder, INavigationType, TLang } from "../entities";
+import {
+    INavigation,
+    INavigationOrder,
+    INavigationType,
+    TCreateNavigationRequest,
+    TLang,
+} from "../entities";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import {
     createNavigation,
@@ -18,7 +24,7 @@ export function useNavigation(
     navigations: INavigation[];
     navigation?: INavigation;
     getNavigation: (id: string) => Promise<void>;
-    createNavigation: (navigation: Omit<INavigation, "_id">) => Promise<void>;
+    createNavigation: (navigation: TCreateNavigationRequest) => Promise<void>;
     updateNavigation: (navigation: INavigation) => Promise<void>;
     deleteNavigation: (id: string) => Promise<void>;
     reorderNavigation: (order: INavigationOrder[]) => Promise<void>;
@@ -47,7 +53,7 @@ export function useNavigation(
     );
 
     const create = useCallback(
-        (navigation: Omit<INavigation, "_id">) => {
+        (navigation: TCreateNavigationRequest) => {
             return createNavigation(transport, navigation, lang).then((response) =>
                 setNavigations(response.data),
             );
