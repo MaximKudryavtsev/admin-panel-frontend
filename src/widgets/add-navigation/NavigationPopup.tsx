@@ -1,5 +1,5 @@
 import React from "react";
-import { INavigationType } from "../../entities";
+import { INavigation, INavigationType } from "../../entities";
 import { Popup } from "../../components/popup";
 import { CustomForm } from "../../components/custom-form";
 import { css } from "emotion";
@@ -21,6 +21,7 @@ interface IAddNavigationProps {
     open: boolean;
     navigationsTypes: INavigationType[];
     parentId?: string;
+    navigation?: INavigation;
 
     onSubmit?(navigation: ICreateNavigation): void;
 
@@ -37,8 +38,8 @@ const styles = {
     `,
 };
 
-export const AddNavigation = (props: IAddNavigationProps) => {
-    const { open, navigationsTypes, onClose, onSubmit, parentId } = props;
+export const NavigationPopup = (props: IAddNavigationProps) => {
+    const { open, navigationsTypes, onClose, onSubmit, parentId, navigation } = props;
 
     const handleSubmit = (data: Omit<ICreateNavigation, "parentId">) => {
         if (!onSubmit) {
@@ -51,7 +52,7 @@ export const AddNavigation = (props: IAddNavigationProps) => {
         <Popup title={"Добавить навигацию"} open={open} onClose={onClose}>
             <CustomForm<Partial<ICreateNavigation>>
                 onSubmit={handleSubmit}
-                data={{hasChild: false}}
+                data={transform(navigation)}
                 render={(form) => (
                     <div className={styles.content}>
                         <TextField
@@ -59,6 +60,7 @@ export const AddNavigation = (props: IAddNavigationProps) => {
                             label={"Название"}
                             classes={{ root: styles.field }}
                         />
+                        {console.log(form?.values)}
                         <Select
                             name={"navigationTypeId"}
                             label={"Тип ссылки"}
@@ -89,3 +91,10 @@ export const AddNavigation = (props: IAddNavigationProps) => {
         </Popup>
     );
 };
+
+export function transform(navigation?: INavigation): Partial<ICreateNavigation> {
+    if (!navigation) {
+        return {hasChild: false};
+    }
+    return { ...navigation, navigationTypeId: navigation.navigationType._id };
+}

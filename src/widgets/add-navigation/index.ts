@@ -1,1 +1,1 @@
-export * from "./AddNavigation";
+export * from "./NavigationPopup";

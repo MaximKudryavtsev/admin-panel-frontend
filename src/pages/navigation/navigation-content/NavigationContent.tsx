@@ -5,7 +5,7 @@ import { NavigationItem } from "../../../components/navigation-item";
 import { css } from "emotion";
 import { Fab } from "@material-ui/core";
 import { Add } from "@material-ui/icons";
-import { AddNavigation, ICreateNavigation } from "../../../widgets/add-navigation";
+import { NavigationPopup, ICreateNavigation } from "../../../widgets/add-navigation";
 
 interface INavigationContentProps {
     lang: TLang;
@@ -23,6 +23,7 @@ const styles = {
 export const NavigationContent = (props: INavigationContentProps) => {
     const { lang } = props;
     const [createOpen, setCreateOpen] = useState(false);
+    const [editOpen, setEditOpen] = useState(false);
     const {
         navigations,
         navigation,
@@ -40,6 +41,14 @@ export const NavigationContent = (props: INavigationContentProps) => {
 
     function onCreateClose(): void {
         setCreateOpen(false);
+    }
+
+    function onEditOpen(): void {
+        setEditOpen(true);
+    }
+
+    function onEditClose(): void {
+        setEditOpen(false);
     }
 
     const onCreateNavigation = (data: ICreateNavigation) => {
@@ -62,6 +71,10 @@ export const NavigationContent = (props: INavigationContentProps) => {
         updateNavigation({ ...navigation });
     };
 
+    const onGetNavigation = (id: string) => {
+        getNavigation(id).then(onEditOpen);
+    };
+
     return (
         <div className={styles.wrapper}>
             <div className={styles.content}>
@@ -70,17 +83,24 @@ export const NavigationContent = (props: INavigationContentProps) => {
                         navigation={item}
                         key={item._id}
                         onChangeVisibility={onChangeVisibility}
+                        onEdit={onGetNavigation}
                     />
                 ))}
             </div>
             <Fab color="primary" aria-label="add" onClick={onCreateOpen}>
                 <Add />
             </Fab>
-            <AddNavigation
+            <NavigationPopup
                 open={createOpen}
                 navigationsTypes={navigationTypes}
                 onClose={onCreateClose}
                 onSubmit={onCreateNavigation}
+            />
+            <NavigationPopup
+                navigation={navigation}
+                open={editOpen}
+                navigationsTypes={navigationTypes}
+                onClose={onEditClose}
             />
         </div>
     );

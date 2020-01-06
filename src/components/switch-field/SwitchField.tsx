@@ -18,7 +18,7 @@ export const SwitchField = (props: ISwitchFieldProps) => {
             {({ field, meta }: FieldProps) => (
                 <FormControlLabel
                     classes={classes}
-                    control={<Switch color={color} {...field} />}
+                    control={<Switch color={color} checked={field.value} {...field} />}
                     label={label}
                 />
             )}

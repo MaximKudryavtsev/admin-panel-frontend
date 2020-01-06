@@ -31,7 +31,7 @@ export const Select = (props: ISelectProps) => {
                     <InputLabel ref={inputLabel}>{label}</InputLabel>
                     <MaterialSelect labelWidth={labelWidth} {...field}>
                         {options.map((option) => (
-                            <MenuItem value={option.value}>{option.label}</MenuItem>
+                            <MenuItem value={option.value} key={option.value}>{option.label}</MenuItem>
                         ))}
                     </MaterialSelect>
                 </FormControl>

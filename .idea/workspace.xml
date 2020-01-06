@@ -2,15 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/switch-field/SwitchField.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/switch-field/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/navigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/navigation.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/navigation-item/NavigationItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navigation-item/NavigationItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/navigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/navigation.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useNavigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useNavigation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/select/Select.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/select/Select.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/switch-field/SwitchField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/switch-field/SwitchField.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/navigation/navigation-content/NavigationContent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/navigation/navigation-content/NavigationContent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/add-navigation/AddNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/add-navigation/AddNavigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/add-navigation/AddNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/add-navigation/NavigationPopup.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/add-navigation/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/add-navigation/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +122,7 @@
       <workItem from="1578037978739" duration="35714000" />
       <workItem from="1578120151599" duration="35892000" />
       <workItem from="1578212505909" duration="23859000" />
-      <workItem from="1578296803263" duration="10453000" />
+      <workItem from="1578296803263" duration="11685000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1576310605982</created>
@@ -371,7 +369,21 @@
       <option name="project" value="LOCAL" />
       <updated>1578305297944</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="add change visibility of navigation">
+      <created>1578308904364</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1578308904364</updated>
+    </task>
+    <task id="LOCAL-00037" summary="add switch field">
+      <created>1578308930279</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1578308930279</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -388,8 +400,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix private route" />
-    <MESSAGE value="add public route" />
     <MESSAGE value="add footer and navigation pages" />
     <MESSAGE value="add loader while sign in" />
     <MESSAGE value="add permanent sidebar links" />
@@ -413,7 +423,9 @@
     <MESSAGE value="change textfield" />
     <MESSAGE value="add api and hooks for navigation" />
     <MESSAGE value="add creating and getting navigations" />
-    <option name="LAST_COMMIT_MESSAGE" value="add creating and getting navigations" />
+    <MESSAGE value="add change visibility of navigation" />
+    <MESSAGE value="add switch field" />
+    <option name="LAST_COMMIT_MESSAGE" value="add switch field" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="182" key="#ESLint" timestamp="1578156507884">
@@ -432,11 +444,11 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="601" y="291" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1576315906681" />
-    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1578308903976">
+    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1578308929982">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172968703" />
-    <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578308903976" />
+    <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578308929982" />
     <state x="184" y="86" width="1536" height="840" key="DiffContextDialog" timestamp="1578254826194">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>

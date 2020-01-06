@@ -65,6 +65,13 @@ export const NavigationItem = (props: INavigationItemProps) => {
         onChangeVisibility(navigation);
     };
 
+    const handleGetNavigation = () => {
+        if (!onEdit) {
+            return;
+        }
+        onEdit(navigation._id);
+    };
+
     return (
         <Paper className={styles.item}>
             <IconButton className={styles.icon}>
@@ -75,7 +82,7 @@ export const NavigationItem = (props: INavigationItemProps) => {
                 <IconButton className={styles.icon} onClick={handleChangeVisibility}>
                     {navigation.isVisible ? <Visibility /> : <VisibilityOff />}
                 </IconButton>
-                <IconButton className={styles.icon}>
+                <IconButton className={styles.icon} onClick={handleGetNavigation}>
                     <Edit />
                 </IconButton>
                 <IconButton className={styles.icon}>
