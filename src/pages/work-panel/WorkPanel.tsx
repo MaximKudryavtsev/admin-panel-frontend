@@ -22,13 +22,8 @@ export const WorkPanel = (props: INavigationProps) => {
 
     const { navigations: navs } = useNavigation("ru");
 
-    useEffect(() => {
-        setUser(props.user);
-    }, [props.user]);
-
-    useEffect(() => {
-        setNavigations(navs);
-    }, [navs]);
+    useEffect(() => setUser(props.user), [props.user]);
+    useEffect(() => setNavigations(navs), [navs]);
 
     return (
         <Layout title={title} user={user} onLogout={onLogout} navigations={navigations}>
