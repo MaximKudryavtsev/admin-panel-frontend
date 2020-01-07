@@ -5,6 +5,10 @@ interface ISidebarLink {
 
 export const sidebarLinks: ISidebarLink[] = [
     {
+        title: "Хедер",
+        link: "/panel/header"
+    },
+    {
         title: "Навигация",
         link: "/panel/navigation"
     },

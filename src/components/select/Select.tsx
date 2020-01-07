@@ -1,13 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { Field } from "formik";
 import { FieldProps } from "formik/dist/Field";
-import { Select as MaterialSelect, FormControl, MenuItem, InputLabel, FormHelperText } from "@material-ui/core";
+import {
+    Select as MaterialSelect,
+    FormControl,
+    MenuItem,
+    InputLabel,
+    FormHelperText,
+} from "@material-ui/core";
 import ErrorIcon from "@material-ui/icons/Error";
 import * as emotion from "emotion";
 
 export interface IOption {
     value: string | number;
-    label: string;
+    label?: string;
+
+    handler?(): void;
 }
 
 interface ISelectProps {

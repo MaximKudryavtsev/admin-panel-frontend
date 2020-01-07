@@ -30,6 +30,7 @@ const App: React.FC = () => {
             })
             .catch(() => {
                 localStorage.removeItem("token");
+                AppContext.getHistory().push("/sign-in");
             });
     }, [transport]);
 
@@ -48,7 +49,11 @@ const App: React.FC = () => {
                     restricted={true}
                     path={"/sign-in"}
                     render={() => (
-                        <Login transport={transport}  onSetUser={setUser} onSignIn={() => setLogged(true)} />
+                        <Login
+                            transport={transport}
+                            onSetUser={setUser}
+                            onSignIn={() => setLogged(true)}
+                        />
                     )}
                 />
                 <PublicRoute
@@ -56,20 +61,12 @@ const App: React.FC = () => {
                     restricted={true}
                     path={"/forgot-password"}
                     exact={true}
-                    render={() => (
-                        <ForgotPassword transport={transport} />
-                    )}
+                    render={() => <ForgotPassword transport={transport} />}
                 />
                 <PrivateRoute
                     auth={logged}
                     path={"/panel/:page"}
-                    render={() => (
-                        <WorkPanel
-                            user={user}
-                            baseUrl={"/panel"}
-                            onLogout={logout}
-                        />
-                    )}
+                    render={() => <WorkPanel user={user} baseUrl={"/panel"} onLogout={logout} />}
                 />
             </Switch>
         </Router>

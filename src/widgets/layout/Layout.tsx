@@ -1,27 +1,20 @@
-import React, { FC, useCallback, useState } from "react";
+import React, { FC, useState } from "react";
 import * as emotion from "emotion";
 import {
     AppBar,
     Avatar,
-    Collapse,
-    Divider,
-    Drawer,
     IconButton,
-    List,
-    ListItem,
-    ListItemText,
-    Menu,
-    MenuItem,
     Toolbar,
     Tooltip,
     Typography,
 } from "@material-ui/core";
-import { IClientNavigation, INavigation, IUser } from "../../entities";
+import { INavigation, IUser } from "../../entities";
 import { AccountCircle } from "@material-ui/icons";
-import { adminSidebarLinks, sidebarLinks } from "../../config";
 import { AppContext } from "../../context";
 import Helmet from "react-helmet";
 import { ConfirmPopup } from "../../components/confirm-popup";
+import { Sidebar } from "../sidebar";
+import { Menu } from "../../components/menu";
 
 interface ILayoutProps {
     title: string;
@@ -100,18 +93,6 @@ export const Layout: FC<ILayoutProps> = (props) => {
         handleMenuClose();
     };
 
-    const transformNavigations = useCallback(() => {
-        const result: IClientNavigation[] = [];
-        navigations.map((item) => !item.parentId && result.push({ navigation: item }));
-        result.map((item, index) => {
-            if (item.navigation.hasChild) {
-                const children = navigations.filter((nav) => nav.parentId === item.navigation._id);
-                result[index].children = children.map((nav) => ({ navigation: nav }));
-            }
-        });
-        return result;
-    }, [navigations]);
-
     return (
         <div className={styles.root}>
             <Helmet>
@@ -132,83 +113,23 @@ export const Layout: FC<ILayoutProps> = (props) => {
                         </IconButton>
                     </Tooltip>
                     <Menu
-                        anchorEl={anchorEl}
-                        anchorOrigin={{
-                            vertical: "top",
-                            horizontal: "right",
-                        }}
-                        keepMounted
-                        transformOrigin={{
-                            vertical: "top",
-                            horizontal: "right",
-                        }}
+                        anchor={anchorEl}
                         open={isMenuOpen}
                         onClose={handleMenuClose}
-                    >
-                        <MenuItem onClick={goToProfile}>Профиль</MenuItem>
-                        <MenuItem onClick={onOpenLogoutPopup}>Выход</MenuItem>
-                    </Menu>
+                        options={[
+                            {
+                                value: "Профиль",
+                                handler: goToProfile,
+                            },
+                            {
+                                value: "Выход",
+                                handler: onOpenLogoutPopup,
+                            },
+                        ]}
+                    />
                 </Toolbar>
             </AppBar>
-            <Drawer
-                variant={"permanent"}
-                anchor={"left"}
-                className={styles.drawer}
-                classes={{
-                    paper: styles.drawerPaper,
-                }}
-            >
-                <div className={styles.toolbar} />
-                <Divider />
-                <List>
-                    {transformNavigations().map((item) => (
-                        <>
-                            <ListItem button key={item.navigation._id}>
-                                <ListItemText primary={item.navigation.title} />
-                            </ListItem>
-                            {item.children && (
-                                <Collapse in={true}>
-                                    <List>
-                                        {item.children.map((child) => (
-                                            <ListItem
-                                                button
-                                                key={child.navigation._id}
-                                                className={styles.childrenNav}
-                                            >
-                                                <ListItemText primary={child.navigation.title} />
-                                            </ListItem>
-                                        ))}
-                                    </List>
-                                </Collapse>
-                            )}
-                        </>
-                    ))}
-                </List>
-                <Divider />
-                <List>
-                    {sidebarLinks.map((item, key) => (
-                        <ListItem
-                            button
-                            key={key}
-                            onClick={() => AppContext.getHistory().push(item.link)}
-                        >
-                            <ListItemText primary={item.title} />
-                        </ListItem>
-                    ))}
-                </List>
-                <Divider />
-                <List>
-                    {adminSidebarLinks.map((item, key) => (
-                        <ListItem
-                            button
-                            key={key}
-                            onClick={() => AppContext.getHistory().push(item.link)}
-                        >
-                            <ListItemText primary={item.title} />
-                        </ListItem>
-                    ))}
-                </List>
-            </Drawer>
+            <Sidebar navigations={navigations} />
             <div className={styles.content}>{children}</div>
             <ConfirmPopup
                 title={"Вы действительно хотите выйти?"}
