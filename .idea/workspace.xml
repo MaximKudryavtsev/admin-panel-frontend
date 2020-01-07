@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/menu/Menu.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/menu/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widgets/sidebar/Sidebar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widgets/sidebar/index.ts" afterDir="false" />
+    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="move sidebar to separate component">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/select/Select.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/select/Select.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/sidebarLinks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/sidebarLinks.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/layout/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/layout/Layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/work-panel/WorkPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/work-panel/WorkPanel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/sidebar/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/sidebar/Sidebar.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +120,7 @@
       <workItem from="1578120151599" duration="35892000" />
       <workItem from="1578212505909" duration="23859000" />
       <workItem from="1578296803263" duration="28140000" />
-      <workItem from="1578383853520" duration="5328000" />
+      <workItem from="1578383853520" duration="6041000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1576310605982</created>
@@ -407,7 +402,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578328937941</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="move sidebar to separate component">
+      <created>1578395388650</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1578395388650</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -424,7 +426,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactoring" />
     <MESSAGE value="add showing server error after incorrect sign-in" />
     <MESSAGE value="redesign Login.tsx" />
     <MESSAGE value="refactoring TextField.tsx" />
@@ -449,7 +450,8 @@
     <MESSAGE value="add getting navigation item" />
     <MESSAGE value="add showing navigation children" />
     <MESSAGE value="add hiding children if parent deleted" />
-    <option name="LAST_COMMIT_MESSAGE" value="add hiding children if parent deleted" />
+    <MESSAGE value="move sidebar to separate component" />
+    <option name="LAST_COMMIT_MESSAGE" value="move sidebar to separate component" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="182" key="#ESLint" timestamp="1578156507884">
@@ -468,16 +470,16 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="601" y="291" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1576315906681" />
-    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1578342571224">
+    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1578395967684">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172968703" />
-    <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578342571224" />
-    <state x="184" y="86" width="1536" height="840" key="DiffContextDialog" timestamp="1578328920480">
+    <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578395967684" />
+    <state x="184" y="86" width="1536" height="840" key="DiffContextDialog" timestamp="1578395958460">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="184" y="86" width="1536" height="840" key="DiffContextDialog/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172950313" />
-    <state x="184" y="86" key="DiffContextDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578328920480" />
+    <state x="184" y="86" key="DiffContextDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578395958460" />
     <state x="740" y="279" key="FileChooserDialogImpl" timestamp="1578163730639">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -530,10 +532,10 @@
     </state>
     <state x="616" y="237" key="run.anything.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578145423257" />
     <state x="616" y="237" key="run.anything.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578055202418" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1578390549946">
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1578395918412">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578170577061" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578390549946" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578395918412" />
   </component>
 </project>

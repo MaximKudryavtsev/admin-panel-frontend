@@ -25,7 +25,6 @@ const styles = {
     `,
 };
 
-
 export const Sidebar = (props: ISidebarProps) => {
     const { navigations = [] } = props;
 

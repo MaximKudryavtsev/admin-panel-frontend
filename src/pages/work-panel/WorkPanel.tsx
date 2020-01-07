@@ -5,6 +5,7 @@ import { Navigation } from "../navigation";
 import { Footer } from "../footer";
 import { Layout } from "../../widgets/layout";
 import { Profile } from "../profile";
+import { useNavigation } from "../../hooks";
 
 interface INavigationProps {
     baseUrl?: string;
@@ -19,9 +20,15 @@ export const WorkPanel = (props: INavigationProps) => {
     const [navigations, setNavigations] = useState<INavigation[]>([]);
     const [title, setTitle] = useState("");
 
+    const { navigations: navs } = useNavigation("ru");
+
     useEffect(() => {
         setUser(props.user);
     }, [props.user]);
+
+    useEffect(() => {
+        setNavigations(navs);
+    }, [navs]);
 
     return (
         <Layout title={title} user={user} onLogout={onLogout} navigations={navigations}>
