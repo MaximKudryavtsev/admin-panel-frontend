@@ -37,7 +37,7 @@ export const NavigationContent = (props: INavigationContentProps) => {
             return;
         }
         onSetNavigations(navigations);
-    }, [navigations]);
+    }, [navigations, onSetNavigations]);
 
     return (
         <NavigationPanel

@@ -19,9 +19,7 @@ const styles = {
 export const Navigation = (props: INavigationProps) => {
     const { setPageTitle, setNavigations } = props;
 
-    useEffect(() => {
-        setPageTitle("Навигация");
-    }, [setPageTitle]);
+    useEffect(() => setPageTitle("Навигация"), [setPageTitle]);
 
     const [value, setValue] = useState(0);
 

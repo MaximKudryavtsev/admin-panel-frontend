@@ -56,9 +56,7 @@ export const UpdateUserForm = (props: IUpdateFormProps) => {
                         }}
                         InputLabelProps={{ shrink: !!form?.values?.login }}
                     />
-                    <div
-                        className={cn(classes.emailWrapper, classes.field)}
-                    >
+                    <div className={cn(classes.emailWrapper, classes.field)}>
                         <TextField
                             name={"email"}
                             label={"E-mail"}

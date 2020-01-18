@@ -12,6 +12,8 @@ import { Fab, IconButton } from "@material-ui/core";
 import { Add, Close } from "@material-ui/icons";
 import { ICreateNavigation, NavigationPopup } from "../add-navigation";
 import { ConfirmPopup } from "../../components/confirm-popup";
+import { DragDropContext, Droppable, Draggable, DropResult } from "react-beautiful-dnd";
+import { reorder } from "../../utils";
 
 interface INavigationPanelProps {
     navigations: INavigation[];
@@ -52,7 +54,6 @@ const styles = {
 
 export const NavigationPanel = (props: INavigationPanelProps) => {
     const {
-        navigations = [],
         currentNavigation,
         navigationTypes = [],
         createNavigation,
@@ -69,17 +70,22 @@ export const NavigationPanel = (props: INavigationPanelProps) => {
     const [deleteOpen, setDeleteOpen] = useState(false);
     const [childrenVisible, setChildrenVisible] = useState(false);
     const [children, setChildren] = useState<INavigation[]>([]);
+    const [navigations, setNavigations] = useState<INavigation[]>(props.navigations ?? []);
 
     useEffect(() => {
-        setChildren(navigations.filter((item) => item.parentId === parentId));
+        setNavigations(props.navigations);
+    }, [props.navigations]);
+
+    useEffect(() => {
+        setChildren(props.navigations.filter((item) => item.parentId === parentId));
         // если список потомков открыт и мы выключаем второй уровень у родителя, то список потомков скрывается
-        const nav = navigations.find((item) => item._id === parentId);
+        const nav = props.navigations.find((item) => item._id === parentId);
         if (nav) {
             if (!nav.hasChild) {
                 onCloseChildren();
             }
         }
-    }, [navigations, parentId]);
+    }, [props.navigations, parentId]);
 
     function onCreateOpen(): void {
         setCreateOpen(true);
@@ -182,25 +188,51 @@ export const NavigationPanel = (props: INavigationPanelProps) => {
         setChildren([]);
     };
 
+    const data = navigations.filter((item) =>
+        item.parentId ? item.parentId === props.parentId : !item.parentId,
+    );
+
+    const onDragEnd = (result: DropResult) => {
+        if (!result.destination) {
+            return;
+        }
+        const items = reorder(data, result.source.index, result.destination.index);
+        setNavigations(items);
+    };
+
     return (
         <div className={styles.container}>
             <div className={styles.wrapper}>
-                <div className={styles.content}>
-                    {navigations
-                        .filter((item) =>
-                            item.parentId ? item.parentId === props.parentId : !item.parentId,
-                        )
-                        .map((item) => (
-                            <NavigationItem
-                                navigation={item}
-                                key={item._id}
-                                onChangeVisibility={onChangeVisibility}
-                                onEdit={onGetNavigation}
-                                onDelete={onDeleteNavigation}
-                                onOpenChildren={onOpenChildren}
-                            />
-                        ))}
-                </div>
+                <DragDropContext onDragEnd={onDragEnd}>
+                    <Droppable droppableId={"navigation"} direction={"vertical"}>
+                        {(provided) => (
+                            <div
+                                className={styles.content}
+                                ref={provided.innerRef}
+                                {...provided.droppableProps}
+                            >
+                                {data.map((item, index) => (
+                                    <Draggable index={index} draggableId={item._id} key={item._id}>
+                                        {(provided) => (
+                                            <NavigationItem
+                                                innerRef={provided.innerRef}
+                                                draggableProps={provided.draggableProps}
+                                                dragHandleProps={provided.dragHandleProps}
+                                                navigation={item}
+                                                key={item._id}
+                                                onChangeVisibility={onChangeVisibility}
+                                                onEdit={onGetNavigation}
+                                                onDelete={onDeleteNavigation}
+                                                onOpenChildren={onOpenChildren}
+                                            />
+                                        )}
+                                    </Draggable>
+                                ))}
+                                {provided.placeholder}
+                            </div>
+                        )}
+                    </Droppable>
+                </DragDropContext>
                 <Fab color="primary" aria-label="add" onClick={onCreateOpen}>
                     <Add />
                 </Fab>

@@ -53,7 +53,7 @@ export const Sidebar = (props: ISidebarProps) => {
             <Divider />
             <List>
                 {transformNavigations().map((item) => (
-                    <>
+                    <React.Fragment key={item.navigation._id}>
                         <ListItem button key={item.navigation._id}>
                             <ListItemText primary={item.navigation.title} />
                         </ListItem>
@@ -64,13 +64,14 @@ export const Sidebar = (props: ISidebarProps) => {
                                         button
                                         key={child.navigation._id}
                                         className={styles.childrenNav}
+                                        onClick={() => AppContext.getHistory().push(`/panel/page/${item.navigation._id}`)}
                                     >
                                         <ListItemText primary={child.navigation.title} />
                                     </ListItem>
                                 ))}
                             </List>
                         )}
-                    </>
+                    </React.Fragment>
                 ))}
             </List>
             <Divider />

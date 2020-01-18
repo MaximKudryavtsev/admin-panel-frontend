@@ -10,9 +10,14 @@ import {
     Visibility,
     VisibilityOff,
 } from "@material-ui/icons";
+import { DraggableProvidedDraggableProps, DraggableProvidedDragHandleProps } from "react-beautiful-dnd";
 
 interface INavigationItemProps {
     navigation: INavigation;
+    draggableProps: DraggableProvidedDraggableProps;
+    dragHandleProps: DraggableProvidedDragHandleProps | null;
+
+    innerRef(element?: HTMLElement | null): any;
 
     onChangeVisibility?(navigation: INavigation): void;
 
@@ -58,7 +63,16 @@ const styles = {
 };
 
 export const NavigationItem = (props: INavigationItemProps) => {
-    const { navigation, onChangeVisibility, onDelete, onEdit, onOpenChildren } = props;
+    const {
+        navigation,
+        onChangeVisibility,
+        onDelete,
+        onEdit,
+        onOpenChildren,
+        dragHandleProps,
+        draggableProps,
+        innerRef
+    } = props;
 
     const handleChangeVisibility = () => {
         if (!onChangeVisibility) {
@@ -90,10 +104,12 @@ export const NavigationItem = (props: INavigationItemProps) => {
 
     return (
         <>
-            <Paper className={styles.item}>
-                <IconButton className={styles.icon}>
-                    <DragIndicator />
-                </IconButton>
+            <Paper className={styles.item} ref={innerRef} {...draggableProps}>
+                <div {...dragHandleProps}>
+                    <IconButton className={styles.icon}>
+                        <DragIndicator />
+                    </IconButton>
+                </div>
                 <Typography className={styles.title}>{navigation.title}</Typography>
                 <div className={styles.icons}>
                     <IconButton className={styles.icon} onClick={handleChangeVisibility}>

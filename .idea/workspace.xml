@@ -2,8 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/utils/react-beautiful-dnd.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/work-panel/WorkPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/work-panel/WorkPanel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/navigation-item/NavigationItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navigation-item/NavigationItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/navigation/Navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/navigation/Navigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/navigation/navigation-content/NavigationContent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/navigation/navigation-content/NavigationContent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/navigation-panel/NavigationPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/navigation-panel/NavigationPanel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/sidebar/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/sidebar/Sidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/update-user-form/UpdateUserForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/update-user-form/UpdateUserForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +127,12 @@
       <workItem from="1578120151599" duration="35892000" />
       <workItem from="1578212505909" duration="23859000" />
       <workItem from="1578296803263" duration="28140000" />
-      <workItem from="1578383853520" duration="6225000" />
+      <workItem from="1578383853520" duration="6874000" />
+      <workItem from="1578816591634" duration="7959000" />
+      <workItem from="1579281124872" duration="1263000" />
+      <workItem from="1579338720498" duration="5641000" />
+      <workItem from="1579371730427" duration="435000" />
+      <workItem from="1579372174595" duration="596000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1576310605982</created>
@@ -414,7 +428,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578396190121</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="refactoring">
+      <created>1578396289129</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1578396289129</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -431,7 +452,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="redesign Login.tsx" />
     <MESSAGE value="refactoring TextField.tsx" />
     <MESSAGE value="add forgot password page" />
     <MESSAGE value="fix PrivateRoute" />
@@ -456,7 +476,8 @@
     <MESSAGE value="add hiding children if parent deleted" />
     <MESSAGE value="move sidebar to separate component" />
     <MESSAGE value="add fetching navigation on mount work panel" />
-    <option name="LAST_COMMIT_MESSAGE" value="add fetching navigation on mount work panel" />
+    <MESSAGE value="refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactoring" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="182" key="#ESLint" timestamp="1578156507884">
@@ -475,11 +496,11 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="601" y="291" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1576315906681" />
-    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1578396189778">
+    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1578397081976">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172968703" />
-    <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578396189778" />
+    <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578397081976" />
     <state x="184" y="86" width="1536" height="840" key="DiffContextDialog" timestamp="1578396136860">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -490,31 +511,31 @@
     </state>
     <state x="740" y="279" key="FileChooserDialogImpl/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578163730639" />
     <state x="740" y="279" key="FileChooserDialogImpl/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1577956099449" />
-    <state width="1898" height="274" key="GridCell.Tab.0.bottom" timestamp="1577883536919">
+    <state width="1898" height="274" key="GridCell.Tab.0.bottom" timestamp="1579372164910">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1898" height="274" key="GridCell.Tab.0.bottom/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1577883536919" />
-    <state width="1898" height="274" key="GridCell.Tab.0.center" timestamp="1577883536919">
+    <state width="1898" height="274" key="GridCell.Tab.0.bottom/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579372164910" />
+    <state width="1898" height="274" key="GridCell.Tab.0.center" timestamp="1579372164910">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1898" height="274" key="GridCell.Tab.0.center/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1577883536919" />
-    <state width="1898" height="274" key="GridCell.Tab.0.left" timestamp="1577883536919">
+    <state width="1898" height="274" key="GridCell.Tab.0.center/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579372164910" />
+    <state width="1898" height="274" key="GridCell.Tab.0.left" timestamp="1579372164910">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1898" height="274" key="GridCell.Tab.0.left/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1577883536919" />
-    <state width="1898" height="274" key="GridCell.Tab.0.right" timestamp="1577883536919">
+    <state width="1898" height="274" key="GridCell.Tab.0.left/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579372164910" />
+    <state width="1898" height="274" key="GridCell.Tab.0.right" timestamp="1579372164910">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1898" height="274" key="GridCell.Tab.0.right/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1577883536919" />
+    <state width="1898" height="274" key="GridCell.Tab.0.right/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579372164910" />
     <state x="461" y="156" key="SettingsEditor" timestamp="1577876663464">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="461" y="156" key="SettingsEditor/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1577876663464" />
-    <state x="552" y="257" key="Vcs.Push.Dialog.v2" timestamp="1578396197168">
+    <state x="552" y="257" key="Vcs.Push.Dialog.v2" timestamp="1578397086138">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="552" y="257" key="Vcs.Push.Dialog.v2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172973521" />
-    <state x="552" y="257" key="Vcs.Push.Dialog.v2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578396197168" />
+    <state x="552" y="257" key="Vcs.Push.Dialog.v2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578397086138" />
     <state x="92" y="92" width="1736" height="866" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1578046510409">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -537,10 +558,10 @@
     </state>
     <state x="616" y="237" key="run.anything.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578145423257" />
     <state x="616" y="237" key="run.anything.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578055202418" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1578395918412">
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1579371685392">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578170577061" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578395918412" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579371685392" />
   </component>
 </project>
