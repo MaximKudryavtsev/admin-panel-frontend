@@ -49,6 +49,7 @@ export const NavigationContent = (props: INavigationContentProps) => {
             createNavigation={createNavigation}
             getNavigation={getNavigation}
             updateNavigation={updateNavigation}
+            reorderNavigation={reorderNavigation}
         />
     );
 };

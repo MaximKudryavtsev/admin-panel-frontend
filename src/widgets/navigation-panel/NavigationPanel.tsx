@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
-    INavigation,
+    INavigation, INavigationOrder,
     INavigationType,
     TCreateNavigationRequest,
     TLang,
@@ -13,7 +13,6 @@ import { Add, Close } from "@material-ui/icons";
 import { ICreateNavigation, NavigationPopup } from "../add-navigation";
 import { ConfirmPopup } from "../../components/confirm-popup";
 import { DragDropContext, Droppable, Draggable, DropResult } from "react-beautiful-dnd";
-import { reorder } from "../../utils";
 
 interface INavigationPanelProps {
     navigations: INavigation[];
@@ -30,6 +29,8 @@ interface INavigationPanelProps {
     deleteNavigation?(id: string): Promise<void>;
 
     getNavigation?(id: string): Promise<void>;
+
+    reorderNavigation?(order: INavigationOrder): void;
 }
 
 const styles = {
@@ -62,6 +63,8 @@ export const NavigationPanel = (props: INavigationPanelProps) => {
         updateNavigation,
         lang,
         isChildren,
+        reorderNavigation,
+        navigations = []
     } = props;
     const [createOpen, setCreateOpen] = useState(false);
     const [editOpen, setEditOpen] = useState(false);
@@ -70,22 +73,18 @@ export const NavigationPanel = (props: INavigationPanelProps) => {
     const [deleteOpen, setDeleteOpen] = useState(false);
     const [childrenVisible, setChildrenVisible] = useState(false);
     const [children, setChildren] = useState<INavigation[]>([]);
-    const [navigations, setNavigations] = useState<INavigation[]>(props.navigations ?? []);
 
     useEffect(() => {
-        setNavigations(props.navigations);
-    }, [props.navigations]);
-
-    useEffect(() => {
-        setChildren(props.navigations.filter((item) => item.parentId === parentId));
+        const childItems = navigations.filter((item) => item.parentId === parentId);
+        setChildren(childItems);
         // если список потомков открыт и мы выключаем второй уровень у родителя, то список потомков скрывается
-        const nav = props.navigations.find((item) => item._id === parentId);
+        const nav = navigations.find((item) => item._id === parentId);
         if (nav) {
             if (!nav.hasChild) {
                 onCloseChildren();
             }
         }
-    }, [props.navigations, parentId]);
+    }, [navigations, parentId]);
 
     function onCreateOpen(): void {
         setCreateOpen(true);
@@ -111,23 +110,24 @@ export const NavigationPanel = (props: INavigationPanelProps) => {
         setDeleteOpen(false);
     }
 
-    const onCreateNavigation = (data: ICreateNavigation) => {
+    const data = navigations
+        .filter((item) => (item.parentId ? item.parentId === props.parentId : !item.parentId))
+        .sort((left, right) => (left.position > right.position ? 1 : -1));
+
+    const onCreateNavigation = (navigation: ICreateNavigation) => {
         if (!createNavigation) {
             return;
         }
         const type =
-            navigationTypes.find((item) => item._id === data.navigationTypeId) ||
+            navigationTypes.find((item) => item._id === navigation.navigationTypeId) ||
             navigationTypes[0];
         const nav: TCreateNavigationRequest = {
-            ...data,
+            ...navigation,
             navigationType: type,
             parentId: props.parentId,
             isVisible: false,
             lang,
-            position:
-                navigations.filter((item) =>
-                    item.parentId ? item.parentId === props.parentId : !item.parentId,
-                ).length + 1,
+            position: data.length,
         };
         createNavigation(nav).then(onCreateClose);
     };
@@ -188,16 +188,12 @@ export const NavigationPanel = (props: INavigationPanelProps) => {
         setChildren([]);
     };
 
-    const data = navigations.filter((item) =>
-        item.parentId ? item.parentId === props.parentId : !item.parentId,
-    );
-
     const onDragEnd = (result: DropResult) => {
-        if (!result.destination) {
+        if (!result.destination || !reorderNavigation) {
             return;
         }
-        const items = reorder(data, result.source.index, result.destination.index);
-        setNavigations(items);
+        const id = data[result.source.index]._id;
+        reorderNavigation({_id: id, position: result.destination.index, parentId});
     };
 
     return (
@@ -275,6 +271,7 @@ export const NavigationPanel = (props: INavigationPanelProps) => {
                         getNavigation={getNavigation}
                         updateNavigation={updateNavigation}
                         isChildren
+                        reorderNavigation={reorderNavigation}
                     />
                     <IconButton className={styles.closeChildren} onClick={onCloseChildren}>
                         <Close />

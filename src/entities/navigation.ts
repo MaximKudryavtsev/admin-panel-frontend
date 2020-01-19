@@ -27,4 +27,5 @@ export interface IClientNavigation {
 export interface INavigationOrder {
     _id: string;
     position: number;
+    parentId?: string;
 }

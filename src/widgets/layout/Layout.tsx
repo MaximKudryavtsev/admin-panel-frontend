@@ -35,7 +35,7 @@ const styles = {
     content: emotion.css`
         width: calc(100% - 300px) !important;
         height: calc(100vh - 64px);
-        transform: translate(0, 64px);
+        margin-top: 64px;
         box-sizing: border-box;
         overflow-y: auto;
         padding: 24px;

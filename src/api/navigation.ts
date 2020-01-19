@@ -31,8 +31,8 @@ export function deleteNavigation(transport: Transport, id: string, lang: TLang) 
     return transport.delete<INavigation[]>(ApiPaths.DELETE_NAVIGATION.replace(":id", id), { lang });
 }
 
-export function reorderNavigations(transport: Transport, reorder: INavigationOrder[], lang: TLang) {
-    return transport.put<INavigationOrder[], INavigation[]>(ApiPaths.REORDER_NAVIGATION, reorder, {
+export function reorderNavigations(transport: Transport, reorder: INavigationOrder, lang: TLang) {
+    return transport.put<INavigationOrder, INavigation[]>(ApiPaths.REORDER_NAVIGATION, reorder, {
         lang,
     });
 }

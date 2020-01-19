@@ -27,7 +27,7 @@ export function useNavigation(
     createNavigation: (navigation: TCreateNavigationRequest) => Promise<void>;
     updateNavigation: (navigation: TUpdateNavigationRequest) => Promise<void>;
     deleteNavigation: (id: string) => Promise<void>;
-    reorderNavigation: (order: INavigationOrder[]) => Promise<void>;
+    reorderNavigation: (order: INavigationOrder) => Promise<void>;
 } {
     const [navigationTypes, setNavigationTypes] = useState<INavigationType[]>([]);
     const [navigations, setNavigations] = useState<INavigation[]>([]);
@@ -80,7 +80,7 @@ export function useNavigation(
     );
 
     const reorder = useCallback(
-        (order: INavigationOrder[]) => {
+        (order: INavigationOrder) => {
             return reorderNavigations(transport, order, lang).then((response) =>
                 setNavigations(response.data),
             );
