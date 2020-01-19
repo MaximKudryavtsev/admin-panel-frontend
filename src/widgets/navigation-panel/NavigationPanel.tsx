@@ -193,9 +193,8 @@ export const NavigationPanel = (props: INavigationPanelProps) => {
             return;
         }
         const id = data[result.source.index]._id;
-        reorderNavigation({_id: id, position: result.destination.index, parentId});
+        reorderNavigation({_id: id, position: result.destination.index, parentId: props.parentId});
     };
-
     return (
         <div className={styles.container}>
             <div className={styles.wrapper}>
