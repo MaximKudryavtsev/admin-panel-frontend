@@ -30,7 +30,7 @@ export const Sidebar = (props: ISidebarProps) => {
 
     const transformNavigations = useCallback(() => {
         const result: IClientNavigation[] = [];
-        navigations.map((item) => !item.parentId && result.push({ navigation: item }));
+        navigations.map((item) => !item.parentId && item.isVisible && result.push({ navigation: item }));
         result.map((item, index) => {
             if (item.navigation.hasChild) {
                 const children = navigations.filter((nav) => nav.parentId === item.navigation._id);
@@ -54,7 +54,13 @@ export const Sidebar = (props: ISidebarProps) => {
             <List>
                 {transformNavigations().map((item) => (
                     <React.Fragment key={item.navigation._id}>
-                        <ListItem button key={item.navigation._id}>
+                        <ListItem
+                            button
+                            key={item.navigation._id}
+                            onClick={() =>
+                                AppContext.getHistory().push(`/panel/page/${item.navigation._id}`)
+                            }
+                        >
                             <ListItemText primary={item.navigation.title} />
                         </ListItem>
                         {item.children && (
@@ -64,7 +70,11 @@ export const Sidebar = (props: ISidebarProps) => {
                                         button
                                         key={child.navigation._id}
                                         className={styles.childrenNav}
-                                        onClick={() => AppContext.getHistory().push(`/panel/page/${item.navigation._id}`)}
+                                        onClick={() =>
+                                            AppContext.getHistory().push(
+                                                `/panel/page/${child.navigation._id}`,
+                                            )
+                                        }
                                     >
                                         <ListItemText primary={child.navigation.title} />
                                     </ListItem>
@@ -100,4 +110,4 @@ export const Sidebar = (props: ISidebarProps) => {
             </List>
         </Drawer>
     );
-}
+};
