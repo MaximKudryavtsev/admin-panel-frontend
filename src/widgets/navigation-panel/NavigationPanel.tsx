@@ -4,7 +4,7 @@ import {
     INavigationType,
     TCreateNavigationRequest,
     TLang,
-    TUpdateNavigationRequest,
+    TUpdateNavigationRequest, TypeNavigation,
 } from "../../entities";
 import { css } from "emotion";
 import { NavigationItem } from "../../components/navigation-item";
@@ -21,6 +21,7 @@ interface INavigationPanelProps {
     parentId?: string;
     lang: TLang;
     isChildren?: boolean;
+    type?: TypeNavigation;
 
     createNavigation?(navigation: TCreateNavigationRequest): Promise<void>;
 
@@ -64,7 +65,8 @@ export const NavigationPanel = (props: INavigationPanelProps) => {
         lang,
         isChildren,
         reorderNavigation,
-        navigations = []
+        navigations = [],
+        type = "navigation"
     } = props;
     const [createOpen, setCreateOpen] = useState(false);
     const [editOpen, setEditOpen] = useState(false);
@@ -118,16 +120,17 @@ export const NavigationPanel = (props: INavigationPanelProps) => {
         if (!createNavigation) {
             return;
         }
-        const type =
+        const navigationType =
             navigationTypes.find((item) => item._id === navigation.navigationTypeId) ||
             navigationTypes[0];
         const nav: TCreateNavigationRequest = {
             ...navigation,
-            navigationType: type,
+            navigationType,
             parentId: props.parentId,
             isVisible: false,
             lang,
             position: data.length,
+            type
         };
         createNavigation(nav).then(onCreateClose);
     };

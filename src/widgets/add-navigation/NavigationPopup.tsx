@@ -88,7 +88,7 @@ export const NavigationPopup = (props: IAddNavigationProps) => {
                             }))}
                             classes={{ root: styles.field }}
                         />
-                        <TextField name={"link"} label={"Сылка"} classes={{ root: styles.field }} />
+                        <TextField name={"link"} label={"Ссылка"} classes={{ root: styles.field }} />
                         {!isChildren && (
                             <SwitchField
                                 name={"hasChild"}

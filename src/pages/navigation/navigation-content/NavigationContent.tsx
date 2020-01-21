@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { INavigation, TLang } from "../../../entities";
+import React, { useEffect } from "react";
+import { INavigation, TLang, TypeNavigation } from "../../../entities";
 import { useNavigation } from "../../../hooks";
 import { css } from "emotion";
 import { NavigationPanel } from "../../../widgets/navigation-panel";
 
 interface INavigationContentProps {
     lang: TLang;
+    type: TypeNavigation;
 
     onSetNavigations?(navigations: INavigation[]): void;
 }
@@ -20,7 +21,7 @@ const styles = {
 };
 
 export const NavigationContent = (props: INavigationContentProps) => {
-    const { lang, onSetNavigations } = props;
+    const { lang, onSetNavigations, type } = props;
     const {
         navigations,
         navigation,
@@ -30,7 +31,7 @@ export const NavigationContent = (props: INavigationContentProps) => {
         updateNavigation,
         createNavigation,
         getNavigation,
-    } = useNavigation(lang);
+    } = useNavigation(lang, type);
 
     useEffect(() => {
         if (!onSetNavigations) {
@@ -50,6 +51,7 @@ export const NavigationContent = (props: INavigationContentProps) => {
             getNavigation={getNavigation}
             updateNavigation={updateNavigation}
             reorderNavigation={reorderNavigation}
+            type={type}
         />
     );
 };

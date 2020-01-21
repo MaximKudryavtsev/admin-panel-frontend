@@ -42,8 +42,8 @@ export const Navigation = (props: INavigationProps) => {
                 </Tabs>
             </Paper>
             <div className={styles.wrapper}>
-                {value === 0 && <NavigationContent onSetNavigations={setNavigations} lang={"ru"} />}
-                {value === 1 && <NavigationContent onSetNavigations={setNavigations} lang={"en"} />}
+                {value === 0 && <NavigationContent onSetNavigations={setNavigations} lang={"ru"} type={"navigation"} />}
+                {value === 1 && <NavigationContent onSetNavigations={setNavigations} lang={"en"} type={"navigation"} />}
             </div>
         </div>
     );

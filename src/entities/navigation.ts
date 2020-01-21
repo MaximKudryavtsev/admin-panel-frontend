@@ -14,6 +14,7 @@ export interface INavigation {
     isVisible: boolean;
     hasChild: boolean;
     lang: string;
+    type: TypeNavigation;
 }
 
 export type TCreateNavigationRequest = Omit<INavigation, "_id" | "hasChild">;
@@ -29,3 +30,5 @@ export interface INavigationOrder {
     position: number;
     parentId?: string;
 }
+
+export type TypeNavigation = "navigation" | "footer";

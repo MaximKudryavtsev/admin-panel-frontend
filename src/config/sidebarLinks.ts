@@ -16,6 +16,10 @@ export const sidebarLinks: ISidebarLink[] = [
         title: "Футер",
         link: "/panel/footer"
     },
+    {
+        title: "Страницы",
+        link: "/panel/pages"
+    },
 ];
 
 export const adminSidebarLinks: ISidebarLink[] = [
