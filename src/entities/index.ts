@@ -4,3 +4,4 @@ export * from "./user";
 export * from "./response";
 export * from "./navigation";
 export * from "./lang";
+export * from "./pages";

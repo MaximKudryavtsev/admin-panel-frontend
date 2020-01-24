@@ -2,15 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/entities/pages.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/table-wrapper/TableWrapper.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/table-wrapper/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useNavigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useNavigation.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/navigation/Navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/navigation/Navigation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/pages/Pages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/pages-list/PagesList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/pages/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/pages-list/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/work-panel/WorkPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/work-panel/WorkPanel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/layout/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/layout/Layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/navigation-panel/NavigationPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/navigation-panel/NavigationPanel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/sidebar/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/sidebar/Sidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/pages-list/PagesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/pages-list/PagesList.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,14 +131,7 @@
       <workItem from="1579418811710" duration="7591000" />
       <workItem from="1579429414247" duration="11764000" />
       <workItem from="1579623941806" duration="6259000" />
-      <workItem from="1579871515320" duration="6165000" />
-    </task>
-    <task id="LOCAL-00001" summary="Initial commit">
-      <created>1576310605982</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1576310605982</updated>
+      <workItem from="1579871515320" duration="11508000" />
     </task>
     <task id="LOCAL-00002" summary="add packages">
       <created>1576311079865</created>
@@ -479,7 +469,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579634357212</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="refactoring">
+      <created>1579884941472</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1579884941473</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -514,14 +511,14 @@
     <MESSAGE value="add hiding children if parent deleted" />
     <MESSAGE value="move sidebar to separate component" />
     <MESSAGE value="add fetching navigation on mount work panel" />
-    <MESSAGE value="refactoring" />
     <MESSAGE value="add dragging navigations" />
     <MESSAGE value="finished dragging navigations" />
     <MESSAGE value="add dragging children of navigation" />
     <MESSAGE value="showing only visible navigations in sidebar" />
     <MESSAGE value="add footer page" />
     <MESSAGE value="add зфпуы page" />
-    <option name="LAST_COMMIT_MESSAGE" value="add зфпуы page" />
+    <MESSAGE value="refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactoring" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="182" key="#ESLint" timestamp="1578156507884">
@@ -540,11 +537,11 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="601" y="291" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1576315906681" />
-    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1579634356879">
+    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1579893856558">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172968703" />
-    <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579634356879" />
+    <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579893856558" />
     <state x="184" y="86" width="1536" height="840" key="DiffContextDialog" timestamp="1579461403342">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -602,10 +599,10 @@
     </state>
     <state x="616" y="237" key="run.anything.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578145423257" />
     <state x="616" y="237" key="run.anything.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578055202418" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1579884812308">
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1579885418007">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578170577061" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579884812308" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579885418007" />
   </component>
 </project>
