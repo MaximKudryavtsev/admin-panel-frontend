@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { INavigation, IUser } from "../../entities";
-import { Route } from "react-router";
+import { Route, Switch } from "react-router";
 import { Navigation } from "../navigation";
 import { Footer } from "../footer";
 import { Layout } from "../../widgets/layout";
 import { Profile } from "../profile";
 import { useNavigation } from "../../hooks";
+import { PagesList } from "../pages-list";
 
 interface INavigationProps {
     baseUrl?: string;
@@ -27,15 +28,20 @@ export const WorkPanel = (props: INavigationProps) => {
 
     return (
         <Layout title={title} user={user} onLogout={onLogout} navigations={navigations}>
-            <Route path={`${baseUrl}/navigation`}>
-                <Navigation setPageTitle={setTitle} setNavigations={setNavigations} />
-            </Route>
-            <Route path={`${baseUrl}/footer`}>
-                <Footer setPageTitle={setTitle} />
-            </Route>
-            <Route path={`${baseUrl}/profile`}>
-                <Profile setPageTitle={setTitle} onSetUser={setUser} />
-            </Route>
+            <Switch>
+                <Route path={`${baseUrl}/navigation`}>
+                    <Navigation setPageTitle={setTitle}  />
+                </Route>
+                <Route path={`${baseUrl}/footer`}>
+                    <Footer setPageTitle={setTitle} />
+                </Route>
+                <Route path={`${baseUrl}/profile`}>
+                    <Profile setPageTitle={setTitle} onSetUser={setUser} />
+                </Route>
+                <Route path={`${baseUrl}/pages`}>
+                    <PagesList setPageTitle={setTitle} />
+                </Route>
+            </Switch>
         </Layout>
     );
 };

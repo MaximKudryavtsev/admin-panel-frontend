@@ -68,7 +68,7 @@ export function useNavigation(
                 setNavigations(response.data),
             );
         },
-        [transport, type],
+        [transport],
     );
 
     const onDeleteNavigation = useCallback(

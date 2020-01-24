@@ -129,7 +129,7 @@ export const Layout: FC<ILayoutProps> = (props) => {
                     />
                 </Toolbar>
             </AppBar>
-            <Sidebar navigations={navigations} />
+            <Sidebar />
             <div className={styles.content}>{children}</div>
             <ConfirmPopup
                 title={"Вы действительно хотите выйти?"}

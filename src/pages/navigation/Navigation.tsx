@@ -2,12 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Paper, Tab, Tabs } from "@material-ui/core";
 import { NavigationContent } from "./navigation-content";
 import { css } from "emotion";
-import { INavigation } from "../../entities";
 
 interface INavigationProps {
     setPageTitle(title: string): void;
-
-    setNavigations(navigations: INavigation[]): void;
 }
 
 const styles = {
@@ -17,7 +14,7 @@ const styles = {
 };
 
 export const Navigation = (props: INavigationProps) => {
-    const { setPageTitle, setNavigations } = props;
+    const { setPageTitle } = props;
 
     useEffect(() => setPageTitle("Навигация"), [setPageTitle]);
 
@@ -42,8 +39,8 @@ export const Navigation = (props: INavigationProps) => {
                 </Tabs>
             </Paper>
             <div className={styles.wrapper}>
-                {value === 0 && <NavigationContent onSetNavigations={setNavigations} lang={"ru"} type={"navigation"} />}
-                {value === 1 && <NavigationContent onSetNavigations={setNavigations} lang={"en"} type={"navigation"} />}
+                {value === 0 && <NavigationContent lang={"ru"} type={"navigation"} />}
+                {value === 1 && <NavigationContent lang={"en"} type={"navigation"} />}
             </div>
         </div>
     );

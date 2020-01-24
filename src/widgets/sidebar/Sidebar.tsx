@@ -1,13 +1,8 @@
-import React, { useCallback } from "react";
-import { IClientNavigation, INavigation } from "../../entities";
+import React from "react";
 import { Divider, Drawer, List, ListItem, ListItemText } from "@material-ui/core";
 import { adminSidebarLinks, sidebarLinks } from "../../config";
 import { AppContext } from "../../context";
 import * as emotion from "emotion";
-
-interface ISidebarProps {
-    navigations: INavigation[];
-}
 
 const styles = {
     drawer: emotion.css`
@@ -25,21 +20,7 @@ const styles = {
     `,
 };
 
-export const Sidebar = (props: ISidebarProps) => {
-    const { navigations = [] } = props;
-
-    const transformNavigations = useCallback(() => {
-        const result: IClientNavigation[] = [];
-        navigations.map((item) => !item.parentId && item.isVisible && result.push({ navigation: item }));
-        result.map((item, index) => {
-            if (item.navigation.hasChild) {
-                const children = navigations.filter((nav) => nav.parentId === item.navigation._id);
-                result[index].children = children.map((nav) => ({ navigation: nav }));
-            }
-        });
-        return result;
-    }, [navigations]);
-
+export const Sidebar = () => {
     return (
         <Drawer
             variant={"permanent"}
@@ -50,40 +31,6 @@ export const Sidebar = (props: ISidebarProps) => {
             }}
         >
             <div className={styles.toolbar} />
-            <Divider />
-            <List>
-                {transformNavigations().map((item) => (
-                    <React.Fragment key={item.navigation._id}>
-                        <ListItem
-                            button
-                            key={item.navigation._id}
-                            onClick={() =>
-                                AppContext.getHistory().push(`/panel/page/${item.navigation._id}`)
-                            }
-                        >
-                            <ListItemText primary={item.navigation.title} />
-                        </ListItem>
-                        {item.children && (
-                            <List>
-                                {item.children.map((child) => (
-                                    <ListItem
-                                        button
-                                        key={child.navigation._id}
-                                        className={styles.childrenNav}
-                                        onClick={() =>
-                                            AppContext.getHistory().push(
-                                                `/panel/page/${child.navigation._id}`,
-                                            )
-                                        }
-                                    >
-                                        <ListItemText primary={child.navigation.title} />
-                                    </ListItem>
-                                ))}
-                            </List>
-                        )}
-                    </React.Fragment>
-                ))}
-            </List>
             <Divider />
             <List>
                 {sidebarLinks.map((item, key) => (

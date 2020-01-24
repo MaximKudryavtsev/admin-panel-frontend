@@ -274,6 +274,7 @@ export const NavigationPanel = (props: INavigationPanelProps) => {
                         updateNavigation={updateNavigation}
                         isChildren
                         reorderNavigation={reorderNavigation}
+                        type={type}
                     />
                     <IconButton className={styles.closeChildren} onClick={onCloseChildren}>
                         <Close />
