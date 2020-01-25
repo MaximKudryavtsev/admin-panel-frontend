@@ -9,5 +9,6 @@ export interface IPagesTableRow {
         _id: string;
         title: string;
     };
+    cratedAt: string;
     updatedAt: string;
 }

@@ -72,6 +72,8 @@ export const NavigationPopup = (props: IAddNavigationProps) => {
                 onSubmit={handleSubmit}
                 data={transform(navigation)}
                 validationSchema={ValidationSchema}
+                validateOnChange={false}
+                validateOnBlur={false}
                 render={(form) => (
                     <div className={styles.content}>
                         <TextField
