@@ -3,12 +3,13 @@ import { css } from "emotion";
 import { Popup } from "../../components/popup";
 import { CustomForm } from "../../components/custom-form";
 import { TextField } from "../../components/text-field";
-import { Button } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 import * as Yup from "yup";
 import { Save } from "@material-ui/icons";
 
 interface ICreatePagePopupProps {
     visible: boolean;
+    error?: string;
 
     onClose?(): void;
 
@@ -29,11 +30,11 @@ const ValidationSchema = Yup.object().shape({
 });
 
 export const CreatePagePopup = (props: ICreatePagePopupProps) => {
-    const { visible, onClose, onSubmit } = props;
+    const { visible, onClose, onSubmit, error } = props;
 
     return (
         <Popup title={"Добавить страницу"} open={visible} onClose={onClose}>
-            <CustomForm<{title: string}>
+            <CustomForm<{ title: string }>
                 onSubmit={onSubmit}
                 validationSchema={ValidationSchema}
                 validateOnChange={false}
@@ -45,6 +46,15 @@ export const CreatePagePopup = (props: ICreatePagePopupProps) => {
                             classes={{ root: classNames.field }}
                             label={"Название страницы"}
                         />
+                        {error && (
+                            <Typography
+                                color={"error"}
+                                align={"center"}
+                                className={classNames.field}
+                            >
+                                {error}
+                            </Typography>
+                        )}
                         <Button
                             variant="contained"
                             color="primary"

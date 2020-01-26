@@ -1,6 +1,10 @@
 import { Transport } from "../transport";
-import { ICreatePageRequest, ICreatePageResponse, IPage, IPagesTableRow, TLang } from "../entities";
+import { ICreatePageRequest, ICreatePageResponse, IPage, IPagesTableRow, IPageStatus, TLang } from "../entities";
 import { ApiPaths } from "../config";
+
+export function fetchPageStatusList(transport: Transport) {
+    return transport.get<IPageStatus[]>(ApiPaths.GET_PAGE_STATUSES);
+}
 
 export function fetchPageList(transport: Transport, lang: TLang) {
     return transport.get<IPagesTableRow[]>(ApiPaths.GET_PAGE_LIST, {lang});

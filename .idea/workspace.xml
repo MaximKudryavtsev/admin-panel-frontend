@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/page/Pages.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/page/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widgets/language-tab/LanguageTab.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widgets/language-tab/index.ts" afterDir="false" />
+    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="refactoring">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/navigation/navigation-content/NavigationContent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/navigation/navigation-content/NavigationContent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/page.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/ApiPaths.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/ApiPaths.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/pages.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/pages.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/page/usePage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/page/usePage.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/pages-list/PagesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/pages-list/PagesList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/work-panel/WorkPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/work-panel/WorkPanel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/layout/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/layout/Layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/table-wrapper/TableWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/table-wrapper/TableWrapper.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/create-page-popup/CreatePagePopup.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/create-page-popup/CreatePagePopup.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,14 +136,7 @@
       <workItem from="1579871515320" duration="11683000" />
       <workItem from="1579935878834" duration="5653000" />
       <workItem from="1580027568866" duration="3474000" />
-      <workItem from="1580044939912" duration="6528000" />
-    </task>
-    <task id="LOCAL-00005" summary="add validation for login form">
-      <created>1576325373882</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1576325373882</updated>
+      <workItem from="1580044939912" duration="13331000" />
     </task>
     <task id="LOCAL-00006" summary="move styles in login page to separate object">
       <created>1576946070215</created>
@@ -483,7 +474,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580048116980</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="refactoring">
+      <created>1580052900875</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1580052900875</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -521,11 +519,11 @@
     <MESSAGE value="showing only visible navigations in sidebar" />
     <MESSAGE value="add footer page" />
     <MESSAGE value="add зфпуы page" />
-    <MESSAGE value="refactoring" />
     <MESSAGE value="add list of pages" />
     <MESSAGE value="add popup for creating page" />
     <MESSAGE value="add getting list of pages, creating and getting page" />
-    <option name="LAST_COMMIT_MESSAGE" value="add getting list of pages, creating and getting page" />
+    <MESSAGE value="refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactoring" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="182" key="#ESLint" timestamp="1578156507884">
@@ -544,16 +542,16 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="601" y="291" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1576315906681" />
-    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1580048113867">
+    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1580060583094">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172968703" />
-    <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580048113867" />
-    <state x="184" y="86" width="1536" height="840" key="DiffContextDialog" timestamp="1579893943132">
+    <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580060583094" />
+    <state x="184" y="86" width="1536" height="840" key="DiffContextDialog" timestamp="1580060583090">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="184" y="86" width="1536" height="840" key="DiffContextDialog/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172950313" />
-    <state x="184" y="86" key="DiffContextDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579893943132" />
+    <state x="184" y="86" key="DiffContextDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580060583090" />
     <state x="740" y="279" key="FileChooserDialogImpl" timestamp="1578163730639">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -579,11 +577,11 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="461" y="156" key="SettingsEditor/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1577876663464" />
-    <state x="552" y="257" key="Vcs.Push.Dialog.v2" timestamp="1579941700288">
+    <state x="552" y="257" key="Vcs.Push.Dialog.v2" timestamp="1580052906673">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="552" y="257" key="Vcs.Push.Dialog.v2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172973521" />
-    <state x="552" y="257" key="Vcs.Push.Dialog.v2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579941700288" />
+    <state x="552" y="257" key="Vcs.Push.Dialog.v2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580052906673" />
     <state x="92" y="92" width="1736" height="866" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1578046510409">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -606,10 +604,10 @@
     </state>
     <state x="616" y="237" key="run.anything.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578145423257" />
     <state x="616" y="237" width="672" height="677" key="run.anything.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579939819522" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1580051718418">
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1580060256540">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578170577061" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580051718418" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580060256540" />
   </component>
 </project>

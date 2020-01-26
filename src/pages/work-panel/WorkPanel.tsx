@@ -33,8 +33,11 @@ export const WorkPanel = (props: INavigationProps) => {
                 <Route path={`${baseUrl}/profile`}>
                     <Profile setPageTitle={setTitle} onSetUser={setUser} />
                 </Route>
-                <Route path={`${baseUrl}/pages`}>
+                <Route path={`${baseUrl}/pages`} exact>
                     <Pages setPageTitle={setTitle} />
+                </Route>
+                <Route path={`${baseUrl}/pages/:id`} exact>
+                    <h1>123</h1>
                 </Route>
             </Switch>
         </Layout>

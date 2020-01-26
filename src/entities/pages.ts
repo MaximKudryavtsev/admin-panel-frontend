@@ -1,3 +1,9 @@
+export interface IPageStatus {
+    _id: string;
+    title: string;
+    label: string;
+}
+
 export interface IPagesTableRow {
     _id: string;
     author: {
@@ -5,11 +11,8 @@ export interface IPagesTableRow {
         title: string;
     };
     title: string;
-    status: {
-        _id: string;
-        title: string;
-    };
-    cratedAt: string;
+    status: IPageStatus;
+    createdAt: string;
     updatedAt: string;
 }
 

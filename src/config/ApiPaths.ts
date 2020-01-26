@@ -19,5 +19,6 @@ export const ApiPaths = {
     // pages
     CREATE_PAGE: "/page/create",
     GET_PAGE_LIST: "/page/list",
-    GET_PAGE: "/page/:id"
+    GET_PAGE: "/page/:id",
+    GET_PAGE_STATUSES: "/page/statuses",
 };

@@ -1,12 +1,13 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { TableWrapper } from "../../widgets/table-wrapper";
-import { Paper, Table, TableBody, TableCell, TableHead, TableRow } from "@material-ui/core";
+import { Link, Paper, Table, TableBody, TableCell, TableHead, TableRow } from "@material-ui/core";
 import { css } from "emotion";
 import { ICreatePageRequest, IPagesTableRow, TLang } from "../../entities";
 import moment from "moment";
 import { CreatePagePopup } from "../../widgets/create-page-popup";
 import { usePage } from "../../hooks/page";
 import { AppContext } from "../../context";
+import { getServerError } from "../../utils";
 
 interface IPageListProps {
     body?: IPagesTableRow[];
@@ -31,6 +32,7 @@ export const PagesList = (props: IPageListProps) => {
     const { body = [], setLanguage, lang = "ru" } = props;
 
     const [modalVisible, setModalVisible] = useState(false);
+    const [error, setError] = useState<undefined | string>(undefined);
 
     useEffect(() => setLanguage(lang), [lang, setLanguage]);
 
@@ -46,12 +48,22 @@ export const PagesList = (props: IPageListProps) => {
 
     const onCreatePage = useCallback(
         (data: ICreatePageRequest) => {
-            createPage(data).then((response) =>
-                AppContext.getHistory().push(`/panel/pages/${response.data._id}`),
-            );
+            createPage(data)
+                .then((response) => {
+                    AppContext.getHistory().push(`/panel/pages/${response.data._id}`);
+                    setError(undefined);
+                })
+                .catch((error) => {
+                    const err = getServerError(error);
+                    setError(err?.title);
+                });
         },
         [createPage],
     );
+
+    const onClickRow = (id: string) => {
+        AppContext.getHistory().push(`/panel/pages/${id}`);
+    };
 
     return (
         <React.Fragment>
@@ -83,12 +95,27 @@ export const PagesList = (props: IPageListProps) => {
                         </TableHead>
                         <TableBody>
                             {body.map((item) => (
-                                <TableRow classes={{ root: classNames.bodyRow }} key={item._id}>
-                                    <TableCell>{item.author.title}</TableCell>
+                                <TableRow
+                                    classes={{ root: classNames.bodyRow }}
+                                    key={item._id}
+                                    onClick={() => onClickRow(item._id)}
+                                >
+                                    <TableCell>
+                                        <Link
+                                            onMouseDown={() =>
+                                                AppContext.getHistory().push(
+                                                    `/users/${item.author._id}`,
+                                                )
+                                            }
+                                            component={"button"}
+                                        >
+                                            {item.author.title}
+                                        </Link>
+                                    </TableCell>
                                     <TableCell>{item.title}</TableCell>
                                     <TableCell>{item.status.title}</TableCell>
                                     <TableCell>
-                                        {moment(item.cratedAt).format("DD.MM.YYYY HH:mm")}
+                                        {moment(item.createdAt).format("DD.MM.YYYY HH:mm")}
                                     </TableCell>
                                     <TableCell>
                                         {moment(item.updatedAt).format("DD.MM.YYYY HH:mm")}
@@ -103,6 +130,7 @@ export const PagesList = (props: IPageListProps) => {
                 visible={modalVisible}
                 onClose={onModalClose}
                 onSubmit={onCreatePage}
+                error={error}
             />
         </React.Fragment>
     );

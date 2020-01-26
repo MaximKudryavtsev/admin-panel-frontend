@@ -1,14 +1,16 @@
 import { Transport } from "../../transport";
-import { ICreatePageRequest, ICreatePageResponse, IPage, TLang, TResponse } from "../../entities";
+import { ICreatePageRequest, ICreatePageResponse, IPage, IPageStatus, TLang, TResponse } from "../../entities";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { createPage, fetchPage } from "../../api/page";
+import { createPage, fetchPage, fetchPageStatusList } from "../../api/page";
 
 export function usePage(lang: TLang, pageId?: string): {
     page?: IPage;
     getPage: () => Promise<void> | undefined;
-    createPage: (data: ICreatePageRequest) => Promise<TResponse<ICreatePageResponse>>
+    createPage: (data: ICreatePageRequest) => Promise<TResponse<ICreatePageResponse>>;
+    statuses: IPageStatus[];
 } {
     const [page, setPage] = useState<IPage | undefined>(undefined);
+    const [statuses, setStatuses] = useState<IPageStatus[]>([]);
 
     const transport = useMemo(() => new Transport(), []);
     const tokenString = localStorage.getItem("token");
@@ -25,9 +27,16 @@ export function usePage(lang: TLang, pageId?: string): {
         return  createPage(transport, data, lang);
     }, [transport, lang]);
 
-    useEffect(() => {
-        getPage();
-    }, [getPage]);
+    const getStatuses = useCallback(() => {
+        fetchPageStatusList(transport).then((response) => setStatuses(response.data));
+    }, [transport]);
 
-    return {page, getPage, createPage: create}
+    useEffect(() => {
+        if (pageId) {
+            getPage();
+            getStatuses();
+        }
+    }, [getPage, pageId, getStatuses]);
+
+    return {page, getPage, createPage: create, statuses}
 }
