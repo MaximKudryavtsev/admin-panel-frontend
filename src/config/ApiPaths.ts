@@ -15,5 +15,9 @@ export const ApiPaths = {
     UPDATE_NAVIGATION: "/navigations/:id/update",
     CREATE_NAVIGATION: "/navigations/create",
     REORDER_NAVIGATION: "/navigations/reorder",
-    DELETE_NAVIGATION: "/navigations/:id/delete"
+    DELETE_NAVIGATION: "/navigations/:id/delete",
+    // pages
+    CREATE_PAGE: "/page/create",
+    GET_PAGE_LIST: "/page/list",
+    GET_PAGE: "/page/:id"
 };

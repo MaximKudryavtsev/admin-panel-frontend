@@ -12,3 +12,19 @@ export interface IPagesTableRow {
     cratedAt: string;
     updatedAt: string;
 }
+
+export interface IPage extends IPagesTableRow {
+    link?: string;
+    blocks?: Array<{
+        type: string;
+        data: any;
+    }>
+}
+
+export interface ICreatePageRequest {
+    title: string;
+}
+
+export interface ICreatePageResponse {
+    _id: string;
+}
