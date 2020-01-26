@@ -1,0 +1,40 @@
+import React, { Children, FC, useState } from "react";
+import { Paper, Tab, Tabs } from "@material-ui/core";
+import { css } from "emotion";
+
+const classNames = {
+    content: css`
+        margin-top: 20px;
+    `
+};
+
+export const LanguageTab: FC = (props) => {
+    const { children } = props;
+
+    const [value, setValue] = useState(0);
+
+    const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+        setValue(newValue);
+    };
+
+    return (
+        <div>
+            <Paper>
+                <Tabs
+                    variant="fullWidth"
+                    value={value}
+                    onChange={handleChange}
+                    indicatorColor="secondary"
+                    textColor="secondary"
+                >
+                    <Tab label="Русский сайт" />
+                    <Tab label="Английский сайт" />
+                </Tabs>
+            </Paper>
+            <div className={classNames.content}>
+                {value === 0 && Children.map(children, (child) => child)[0]}
+                {value === 1 && Children.map(children, (child) => child)[1]}
+            </div>
+        </div>
+    );
+};

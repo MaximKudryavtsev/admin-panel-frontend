@@ -11,14 +11,12 @@ interface ITableWrapperProps {
 
 const styles = {
     wrapper: css`
-        width: calc(100% + 48px);
         height: 100%;
-        transform: translateX(-24px);
     `,
     button: css`
         position: fixed !important;
         right: 24px;
-        bottom: 0;
+        bottom: 24px;
         z-index: 10;
     `,
 };

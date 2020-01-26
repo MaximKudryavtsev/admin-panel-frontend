@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { TableWrapper } from "../../widgets/table-wrapper";
 import { Paper, Table, TableBody, TableCell, TableHead, TableRow } from "@material-ui/core";
 import { css } from "emotion";
-import { IPagesTableRow } from "../../entities";
+import { ICreatePageRequest, IPagesTableRow, TLang } from "../../entities";
 import moment from "moment";
 import { CreatePagePopup } from "../../widgets/create-page-popup";
+import { usePage } from "../../hooks/page";
+import { AppContext } from "../../context";
 
 interface IPageListProps {
     body?: IPagesTableRow[];
+    lang?: TLang;
 
-    setPageTitle(title: string): void;
+    setLanguage(lang: TLang): void;
 }
 
 const classNames = {
@@ -21,14 +24,17 @@ const classNames = {
         :hover {
             background: rgba(0, 0, 0, 0.04);
         }
-    `
+    `,
 };
 
 export const PagesList = (props: IPageListProps) => {
-    const { setPageTitle, body = [] } = props;
+    const { body = [], setLanguage, lang = "ru" } = props;
+
     const [modalVisible, setModalVisible] = useState(false);
 
-    useEffect(() => setPageTitle("Страницы"), [setPageTitle]);
+    useEffect(() => setLanguage(lang), [lang, setLanguage]);
+
+    const { createPage } = usePage(lang);
 
     function onModalOpen(): void {
         setModalVisible(true);
@@ -38,35 +44,66 @@ export const PagesList = (props: IPageListProps) => {
         setModalVisible(false);
     }
 
+    const onCreatePage = useCallback(
+        (data: ICreatePageRequest) => {
+            createPage(data).then((response) =>
+                AppContext.getHistory().push(`/panel/pages/${response.data._id}`),
+            );
+        },
+        [createPage],
+    );
+
     return (
         <React.Fragment>
             <TableWrapper handler={onModalOpen}>
                 <Paper>
-                    <Table classes={{root: css`table-layout: fixed;`}}>
+                    <Table
+                        classes={{
+                            root: css`
+                                table-layout: fixed;
+                            `,
+                        }}
+                    >
                         <TableHead>
                             <TableRow>
-                                <TableCell classes={{root: classNames.headCell}}>Автор</TableCell>
-                                <TableCell classes={{root: classNames.headCell}}>Название</TableCell>
-                                <TableCell classes={{root: classNames.headCell}}>Статус</TableCell>
-                                <TableCell classes={{root: classNames.headCell}}>Дата создания</TableCell>
-                                <TableCell classes={{root: classNames.headCell}}>Последнее изменение</TableCell>
+                                <TableCell classes={{ root: classNames.headCell }}>Автор</TableCell>
+                                <TableCell classes={{ root: classNames.headCell }}>
+                                    Название
+                                </TableCell>
+                                <TableCell classes={{ root: classNames.headCell }}>
+                                    Статус
+                                </TableCell>
+                                <TableCell classes={{ root: classNames.headCell }}>
+                                    Дата создания
+                                </TableCell>
+                                <TableCell classes={{ root: classNames.headCell }}>
+                                    Последнее изменение
+                                </TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {body.map((item) => (
-                                <TableRow classes={{root: classNames.bodyRow}} key={item._id}>
+                                <TableRow classes={{ root: classNames.bodyRow }} key={item._id}>
                                     <TableCell>{item.author.title}</TableCell>
                                     <TableCell>{item.title}</TableCell>
                                     <TableCell>{item.status.title}</TableCell>
-                                    <TableCell>{moment(item.cratedAt).format("DD.MM.YYYY HH:mm")}</TableCell>
-                                    <TableCell>{moment(item.updatedAt).format("DD.MM.YYYY HH:mm")}</TableCell>
+                                    <TableCell>
+                                        {moment(item.cratedAt).format("DD.MM.YYYY HH:mm")}
+                                    </TableCell>
+                                    <TableCell>
+                                        {moment(item.updatedAt).format("DD.MM.YYYY HH:mm")}
+                                    </TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
                     </Table>
                 </Paper>
             </TableWrapper>
-            <CreatePagePopup visible={modalVisible} onClose={onModalClose} />
+            <CreatePagePopup
+                visible={modalVisible}
+                onClose={onModalClose}
+                onSubmit={onCreatePage}
+            />
         </React.Fragment>
     );
 };

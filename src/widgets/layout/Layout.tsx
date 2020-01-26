@@ -8,7 +8,7 @@ import {
     Tooltip,
     Typography,
 } from "@material-ui/core";
-import { INavigation, IUser } from "../../entities";
+import { IUser } from "../../entities";
 import { AccountCircle } from "@material-ui/icons";
 import { AppContext } from "../../context";
 import Helmet from "react-helmet";
@@ -19,7 +19,6 @@ import { Menu } from "../../components/menu";
 interface ILayoutProps {
     title: string;
     user?: IUser;
-    navigations: INavigation[];
 
     onLogout?(): void;
 }
@@ -60,7 +59,7 @@ const styles = {
 };
 
 export const Layout: FC<ILayoutProps> = (props) => {
-    const { title, children, user, onLogout, navigations } = props;
+    const { title, children, user, onLogout } = props;
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const isMenuOpen = Boolean(anchorEl);
     const [logoutPopupVisible, setLogoutPopupVisible] = useState(false);

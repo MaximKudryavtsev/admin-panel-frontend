@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="add popup for creating page">
-      <change afterPath="$PROJECT_DIR$/src/api/page.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hooks/page/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hooks/page/usePage.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hooks/page/usePageList.ts" afterDir="false" />
+    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/pages/page/Pages.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/page/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/language-tab/LanguageTab.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/language-tab/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/ApiPaths.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/ApiPaths.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/pages.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/pages.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/navigation/navigation-content/NavigationContent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/navigation/navigation-content/NavigationContent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/pages-list/PagesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/pages-list/PagesList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/work-panel/WorkPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/work-panel/WorkPanel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/layout/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/layout/Layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/table-wrapper/TableWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/table-wrapper/TableWrapper.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,14 +138,7 @@
       <workItem from="1579871515320" duration="11683000" />
       <workItem from="1579935878834" duration="5653000" />
       <workItem from="1580027568866" duration="3474000" />
-      <workItem from="1580044939912" duration="2286000" />
-    </task>
-    <task id="LOCAL-00004" summary="add 'yup' package for validation forms">
-      <created>1576322189956</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1576322189956</updated>
+      <workItem from="1580044939912" duration="6528000" />
     </task>
     <task id="LOCAL-00005" summary="add validation for login form">
       <created>1576325373882</created>
@@ -481,7 +476,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579941695519</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="add getting list of pages, creating and getting page">
+      <created>1580048116980</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1580048116980</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -498,7 +500,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add snackbar" />
     <MESSAGE value="add updating login" />
     <MESSAGE value="add tooltip to info page near the email field" />
     <MESSAGE value="change route of updating user path" />
@@ -523,7 +524,8 @@
     <MESSAGE value="refactoring" />
     <MESSAGE value="add list of pages" />
     <MESSAGE value="add popup for creating page" />
-    <option name="LAST_COMMIT_MESSAGE" value="add popup for creating page" />
+    <MESSAGE value="add getting list of pages, creating and getting page" />
+    <option name="LAST_COMMIT_MESSAGE" value="add getting list of pages, creating and getting page" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="182" key="#ESLint" timestamp="1578156507884">
@@ -542,11 +544,11 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="601" y="291" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1576315906681" />
-    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1580048070534">
+    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1580048113867">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172968703" />
-    <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580048070534" />
+    <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580048113867" />
     <state x="184" y="86" width="1536" height="840" key="DiffContextDialog" timestamp="1579893943132">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -604,10 +606,10 @@
     </state>
     <state x="616" y="237" key="run.anything.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578145423257" />
     <state x="616" y="237" width="672" height="677" key="run.anything.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579939819522" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1580047645812">
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1580051718418">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578170577061" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580047645812" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580051718418" />
   </component>
 </project>
