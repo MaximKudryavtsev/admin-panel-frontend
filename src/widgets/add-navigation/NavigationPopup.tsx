@@ -98,15 +98,17 @@ export const NavigationPopup = (props: IAddNavigationProps) => {
                                 classes={{ root: styles.field }}
                             />
                         )}
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            startIcon={<Save />}
-                            onClick={form?.submitForm}
-                            disabled={!form?.isValid || isEqual(form?.values, form?.initialValues)}
-                        >
-                            Сохранить
-                        </Button>
+                        <div className={css`display: flex; justify-content: flex-end;`}>
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                startIcon={<Save />}
+                                onClick={form?.submitForm}
+                                disabled={!form?.isValid || isEqual(form?.values, form?.initialValues)}
+                            >
+                                Сохранить
+                            </Button>
+                        </div>
                     </div>
                 )}
             />

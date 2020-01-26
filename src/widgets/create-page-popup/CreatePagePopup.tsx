@@ -55,15 +55,17 @@ export const CreatePagePopup = (props: ICreatePagePopupProps) => {
                                 {error}
                             </Typography>
                         )}
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            startIcon={<Save />}
-                            onClick={form?.submitForm}
-                            disabled={!form?.isValid}
-                        >
-                            Сохранить
-                        </Button>
+                        <div className={css`display: flex; justify-content: flex-end;`}>
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                startIcon={<Save />}
+                                onClick={form?.submitForm}
+                                disabled={!form?.isValid}
+                            >
+                                Сохранить
+                            </Button>
+                        </div>
                     </div>
                 )}
             />

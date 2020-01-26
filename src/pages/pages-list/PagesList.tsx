@@ -3,11 +3,10 @@ import { TableWrapper } from "../../widgets/table-wrapper";
 import { Link, Paper, Table, TableBody, TableCell, TableHead, TableRow } from "@material-ui/core";
 import { css } from "emotion";
 import { ICreatePageRequest, IPagesTableRow, TLang } from "../../entities";
-import moment from "moment";
 import { CreatePagePopup } from "../../widgets/create-page-popup";
-import { usePage } from "../../hooks/page";
+import { useCreatePage } from "../../hooks/page";
 import { AppContext } from "../../context";
-import { getServerError } from "../../utils";
+import { formatData, getServerError } from "../../utils";
 
 interface IPageListProps {
     body?: IPagesTableRow[];
@@ -36,7 +35,7 @@ export const PagesList = (props: IPageListProps) => {
 
     useEffect(() => setLanguage(lang), [lang, setLanguage]);
 
-    const { createPage } = usePage(lang);
+    const { createPage } = useCreatePage(lang);
 
     function onModalOpen(): void {
         setModalVisible(true);
@@ -115,10 +114,10 @@ export const PagesList = (props: IPageListProps) => {
                                     <TableCell>{item.title}</TableCell>
                                     <TableCell>{item.status.title}</TableCell>
                                     <TableCell>
-                                        {moment(item.createdAt).format("DD.MM.YYYY HH:mm")}
+                                        {formatData(item.createdAt, "DD.MM.YYYY HH:mm")}
                                     </TableCell>
                                     <TableCell>
-                                        {moment(item.updatedAt).format("DD.MM.YYYY HH:mm")}
+                                        {formatData(item.updatedAt, "DD.MM.YYYY HH:mm")}
                                     </TableCell>
                                 </TableRow>
                             ))}

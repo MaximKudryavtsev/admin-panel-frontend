@@ -1,15 +1,22 @@
 import { Transport } from "../../transport";
-import { ICreatePageRequest, ICreatePageResponse, IPage, IPageStatus, TLang, TResponse } from "../../entities";
+import {
+    IPage,
+    IPageAuthor,
+    IPageStatus,
+    TLang,
+} from "../../entities";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { createPage, fetchPage, fetchPageStatusList } from "../../api/page";
+import { fetchPage, fetchPageAuthor, fetchPageStatusList, updatePage } from "../../api/page";
 
-export function usePage(lang: TLang, pageId?: string): {
+export function usePage(pageId: string, lang: TLang = "ru"): {
     page?: IPage;
     getPage: () => Promise<void> | undefined;
-    createPage: (data: ICreatePageRequest) => Promise<TResponse<ICreatePageResponse>>;
     statuses: IPageStatus[];
+    pageAuthor?: IPageAuthor;
+    updatePage: (data: Partial<IPage>) => Promise<void>;
 } {
     const [page, setPage] = useState<IPage | undefined>(undefined);
+    const [pageAuthor, setPageAuthor] = useState<IPageAuthor | undefined>(undefined);
     const [statuses, setStatuses] = useState<IPageStatus[]>([]);
 
     const transport = useMemo(() => new Transport(), []);
@@ -17,26 +24,28 @@ export function usePage(lang: TLang, pageId?: string): {
     transport.setToken(JSON.parse(tokenString!));
 
     const getPage = useCallback(() => {
-        if (!pageId) {
-            return;
-        }
         return fetchPage(transport, pageId).then((response) => setPage(response.data));
     }, [pageId, transport]);
 
-    const create = useCallback((data: ICreatePageRequest) => {
-        return  createPage(transport, data, lang);
-    }, [transport, lang]);
-
     const getStatuses = useCallback(() => {
-        fetchPageStatusList(transport).then((response) => setStatuses(response.data));
+        return fetchPageStatusList(transport).then((response) => setStatuses(response.data));
     }, [transport]);
+
+    const getAuthor = useCallback(() => {
+        fetchPageAuthor(transport, pageId).then((response) => setPageAuthor(response.data));
+    }, [transport, pageId]);
+
+    const update = useCallback((data: Partial<IPage>) => {
+        return updatePage(transport, pageId, data).then((response) => setPage(response.data));
+    }, [transport, pageId]);
 
     useEffect(() => {
         if (pageId) {
-            getPage();
             getStatuses();
+            getPage();
+            getAuthor();
         }
-    }, [getPage, pageId, getStatuses]);
+    }, [getPage, pageId, getStatuses, getAuthor]);
 
-    return {page, getPage, createPage: create, statuses}
+    return {page, getPage, statuses, pageAuthor, updatePage: update}
 }

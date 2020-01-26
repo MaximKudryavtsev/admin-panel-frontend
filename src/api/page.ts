@@ -1,5 +1,13 @@
 import { Transport } from "../transport";
-import { ICreatePageRequest, ICreatePageResponse, IPage, IPagesTableRow, IPageStatus, TLang } from "../entities";
+import {
+    ICreatePageRequest,
+    ICreatePageResponse,
+    IPage,
+    IPageAuthor,
+    IPagesTableRow,
+    IPageStatus,
+    TLang,
+} from "../entities";
 import { ApiPaths } from "../config";
 
 export function fetchPageStatusList(transport: Transport) {
@@ -16,4 +24,12 @@ export function createPage(transport: Transport, data: ICreatePageRequest, lang:
 
 export function fetchPage(transport: Transport, id: string) {
     return transport.get<IPage>(ApiPaths.GET_PAGE.replace(":id", id));
+}
+
+export function fetchPageAuthor(transport: Transport, id: string) {
+    return transport.get<IPageAuthor>(ApiPaths.GET_PAGE_AUTHOR.replace(":id", id));
+}
+
+export function updatePage(transport: Transport, id: string, data: Partial<IPage>) {
+    return transport.put<Partial<IPage>, IPage>(ApiPaths.GET_PAGE.replace(":id", id), data);
 }

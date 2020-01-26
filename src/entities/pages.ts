@@ -18,6 +18,7 @@ export interface IPagesTableRow {
 
 export interface IPage extends IPagesTableRow {
     link?: string;
+    statusId: string;
     blocks?: Array<{
         type: string;
         data: any;
@@ -30,4 +31,10 @@ export interface ICreatePageRequest {
 
 export interface ICreatePageResponse {
     _id: string;
+}
+
+export interface IPageAuthor {
+    _id: string;
+    title: string;
+    avatar?: string;
 }

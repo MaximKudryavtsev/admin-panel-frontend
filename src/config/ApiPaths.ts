@@ -21,4 +21,5 @@ export const ApiPaths = {
     GET_PAGE_LIST: "/page/list",
     GET_PAGE: "/page/:id",
     GET_PAGE_STATUSES: "/page/statuses",
+    GET_PAGE_AUTHOR: "/page/:id/author",
 };

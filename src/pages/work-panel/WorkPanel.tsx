@@ -5,7 +5,8 @@ import { Navigation } from "../navigation";
 import { Footer } from "../footer";
 import { Layout } from "../../widgets/layout";
 import { Profile } from "../profile";
-import { Pages } from "../page";
+import { Pages } from "../pages";
+import { Page } from "../page";
 
 interface INavigationProps {
     baseUrl?: string;
@@ -37,7 +38,7 @@ export const WorkPanel = (props: INavigationProps) => {
                     <Pages setPageTitle={setTitle} />
                 </Route>
                 <Route path={`${baseUrl}/pages/:id`} exact>
-                    <h1>123</h1>
+                    <Page setPageTitle={setTitle} />
                 </Route>
             </Switch>
         </Layout>

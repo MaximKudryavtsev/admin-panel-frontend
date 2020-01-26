@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="refactoring">
+    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/hooks/page/useCreatePage.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/page/Page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/pages/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/date.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/page.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config/ApiPaths.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/ApiPaths.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/pages.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/pages.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/page/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/page/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hooks/page/usePage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/page/usePage.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/page/Pages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/pages/Pages.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/page/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/page/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/pages-list/PagesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/pages-list/PagesList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/work-panel/WorkPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/work-panel/WorkPanel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/add-navigation/NavigationPopup.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/add-navigation/NavigationPopup.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/widgets/create-page-popup/CreatePagePopup.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/create-page-popup/CreatePagePopup.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,7 +54,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/hooks/page" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -61,15 +70,15 @@
     <property name="ts.external.directory.path" value="C:\omega\admin-panel-frontend\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\omega\admin-panel-frontend\src\app" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\omega\admin-panel-frontend\src\hooks\page" />
       <recent name="C:\omega\admin-panel-frontend\src\components" />
       <recent name="C:\omega\admin-panel-frontend\src\hooks" />
       <recent name="C:\omega\admin-panel-frontend\src\components\avatar" />
       <recent name="C:\omega\admin-panel-frontend\src\pages" />
-      <recent name="C:\omega\admin-panel-frontend\src\entities" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\omega\admin-panel-frontend\src\app" />
     </key>
   </component>
   <component name="RunManager" selected="npm.npm start">
@@ -136,14 +145,7 @@
       <workItem from="1579871515320" duration="11683000" />
       <workItem from="1579935878834" duration="5653000" />
       <workItem from="1580027568866" duration="3474000" />
-      <workItem from="1580044939912" duration="13331000" />
-    </task>
-    <task id="LOCAL-00006" summary="move styles in login page to separate object">
-      <created>1576946070215</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1576946070215</updated>
+      <workItem from="1580044939912" duration="26243000" />
     </task>
     <task id="LOCAL-00007" summary="add crud methods">
       <created>1577819817824</created>
@@ -481,7 +483,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580052900875</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="add showing error if page already exists">
+      <created>1580061956153</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1580061956153</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -498,7 +507,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add updating login" />
     <MESSAGE value="add tooltip to info page near the email field" />
     <MESSAGE value="change route of updating user path" />
     <MESSAGE value="move update user form to separate component" />
@@ -523,7 +531,8 @@
     <MESSAGE value="add popup for creating page" />
     <MESSAGE value="add getting list of pages, creating and getting page" />
     <MESSAGE value="refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactoring" />
+    <MESSAGE value="add showing error if page already exists" />
+    <option name="LAST_COMMIT_MESSAGE" value="add showing error if page already exists" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="182" key="#ESLint" timestamp="1578156507884">
@@ -542,16 +551,16 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="601" y="291" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1576315906681" />
-    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1580060583094">
+    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1580061955837">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172968703" />
-    <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580060583094" />
-    <state x="184" y="86" width="1536" height="840" key="DiffContextDialog" timestamp="1580060583090">
+    <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580061955837" />
+    <state x="184" y="86" width="1536" height="840" key="DiffContextDialog" timestamp="1580061885455">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="184" y="86" width="1536" height="840" key="DiffContextDialog/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172950313" />
-    <state x="184" y="86" key="DiffContextDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580060583090" />
+    <state x="184" y="86" key="DiffContextDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580061885455" />
     <state x="740" y="279" key="FileChooserDialogImpl" timestamp="1578163730639">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -573,15 +582,15 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1898" height="274" key="GridCell.Tab.0.right/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579429389605" />
-    <state x="461" y="156" key="SettingsEditor" timestamp="1577876663464">
+    <state x="461" y="156" key="SettingsEditor" timestamp="1580064364254">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="461" y="156" key="SettingsEditor/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1577876663464" />
-    <state x="552" y="257" key="Vcs.Push.Dialog.v2" timestamp="1580052906673">
+    <state x="461" y="156" key="SettingsEditor/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580064364254" />
+    <state x="552" y="257" key="Vcs.Push.Dialog.v2" timestamp="1580061963356">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="552" y="257" key="Vcs.Push.Dialog.v2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172973521" />
-    <state x="552" y="257" key="Vcs.Push.Dialog.v2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580052906673" />
+    <state x="552" y="257" key="Vcs.Push.Dialog.v2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580061963356" />
     <state x="92" y="92" width="1736" height="866" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1578046510409">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -604,10 +613,10 @@
     </state>
     <state x="616" y="237" key="run.anything.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578145423257" />
     <state x="616" y="237" width="672" height="677" key="run.anything.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579939819522" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1580060256540">
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1580073150882">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578170577061" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580060256540" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580073150882" />
   </component>
 </project>
