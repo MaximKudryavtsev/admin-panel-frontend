@@ -2,23 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/hooks/page/useCreatePage.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/page/Page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/pages/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/date.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/publish.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/page.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/ApiPaths.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/ApiPaths.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/pages.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/pages.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/page/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/page/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/page/usePage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/page/usePage.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/page/Pages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/pages/Pages.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/page/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/page/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/pages-list/PagesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/pages-list/PagesList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/work-panel/WorkPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/work-panel/WorkPanel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/add-navigation/NavigationPopup.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/add-navigation/NavigationPopup.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/create-page-popup/CreatePagePopup.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/create-page-popup/CreatePagePopup.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +41,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/hooks/page" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/node_modules" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -70,19 +57,29 @@
     <property name="ts.external.directory.path" value="C:\omega\admin-panel-frontend\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\omega\admin-panel-frontend\src\hooks\page" />
-      <recent name="C:\omega\admin-panel-frontend\src\components" />
-      <recent name="C:\omega\admin-panel-frontend\src\hooks" />
-      <recent name="C:\omega\admin-panel-frontend\src\components\avatar" />
-      <recent name="C:\omega\admin-panel-frontend\src\pages" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\omega\admin-panel-frontend\src\app" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\omega-admin-panel\admin-panel-frontend\node_modules" />
+      <recent name="C:\omega-admin-panel\admin-panel-frontend" />
+      <recent name="C:\omega\admin-panel-frontend\src\hooks\page" />
+      <recent name="C:\omega\admin-panel-frontend\src\components" />
+      <recent name="C:\omega\admin-panel-frontend\src\hooks" />
+    </key>
   </component>
-  <component name="RunManager" selected="npm.npm start">
+  <component name="RunManager" selected="npm.build">
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
+      <method v="2" />
+    </configuration>
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
       <method v="2" />
     </configuration>
     <configuration name="npm start" type="js.build_tools.npm">
@@ -95,6 +92,11 @@
       <envs />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.build" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -146,6 +148,7 @@
       <workItem from="1579935878834" duration="5653000" />
       <workItem from="1580027568866" duration="3474000" />
       <workItem from="1580044939912" duration="26243000" />
+      <workItem from="1580127915655" duration="2386000" />
     </task>
     <task id="LOCAL-00007" summary="add crud methods">
       <created>1577819817824</created>
@@ -539,6 +542,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="552" y="182" key="#ESLint/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578156507884" />
+    <state x="552" y="178" key="#Prettier" timestamp="1580128813684">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="178" key="#Prettier/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580128813684" />
     <state x="552" y="182" key="#Scopes" timestamp="1578082972079">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -566,21 +573,25 @@
     </state>
     <state x="740" y="279" key="FileChooserDialogImpl/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578163730639" />
     <state x="740" y="279" key="FileChooserDialogImpl/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1577956099449" />
-    <state width="1898" height="274" key="GridCell.Tab.0.bottom" timestamp="1579429389605">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1580128829310">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1899" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580128829310" />
     <state width="1898" height="274" key="GridCell.Tab.0.bottom/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579429389605" />
-    <state width="1898" height="274" key="GridCell.Tab.0.center" timestamp="1579429389605">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state width="1899" height="282" key="GridCell.Tab.0.center" timestamp="1580128829309">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1899" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580128829309" />
     <state width="1898" height="274" key="GridCell.Tab.0.center/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579429389605" />
-    <state width="1898" height="274" key="GridCell.Tab.0.left" timestamp="1579429389605">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state width="1899" height="282" key="GridCell.Tab.0.left" timestamp="1580128829309">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1899" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580128829309" />
     <state width="1898" height="274" key="GridCell.Tab.0.left/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579429389605" />
-    <state width="1898" height="274" key="GridCell.Tab.0.right" timestamp="1579429389605">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state width="1899" height="282" key="GridCell.Tab.0.right" timestamp="1580128829309">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1899" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580128829309" />
     <state width="1898" height="274" key="GridCell.Tab.0.right/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579429389605" />
     <state x="461" y="156" key="SettingsEditor" timestamp="1580064364254">
       <screen x="0" y="0" width="1920" height="1050" />
