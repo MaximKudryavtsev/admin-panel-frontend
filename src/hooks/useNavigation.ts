@@ -4,12 +4,12 @@ import {
     INavigationOrder,
     INavigationType,
     TCreateNavigationRequest,
-    TLang, TUpdateNavigationRequest, TypeNavigation,
+    TLang, TNavigationPage, TUpdateNavigationRequest, TypeNavigation,
 } from "../entities";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import {
     createNavigation,
-    deleteNavigation,
+    deleteNavigation, fetchNavigationPages,
     getNavigation,
     getNavigationList,
     getNavigationTypes,
@@ -29,10 +29,12 @@ export function useNavigation(
     updateNavigation: (navigation: TUpdateNavigationRequest) => Promise<void>;
     deleteNavigation: (id: string) => Promise<void>;
     reorderNavigation: (order: INavigationOrder) => Promise<void>;
+    navigationsPages: TNavigationPage[];
 } {
     const [navigationTypes, setNavigationTypes] = useState<INavigationType[]>([]);
     const [navigations, setNavigations] = useState<INavigation[]>([]);
     const [navigation, setNavigation] = useState<INavigation | undefined>(undefined);
+    const [pages, setPages] = useState<TNavigationPage[]>([]);
 
     const transport = useMemo(() => new Transport(), []);
     const tokenString = localStorage.getItem("token");
@@ -89,10 +91,15 @@ export function useNavigation(
         [transport, type, lang],
     );
 
+    const fetchPages = useCallback(() => {
+        return fetchNavigationPages(transport, lang).then((response) => setPages(response.data));
+    }, [lang, transport]);
+
     useEffect(() => {
         getTypes();
         getList();
-    }, [getTypes, getList]);
+        fetchPages();
+    }, [getTypes, getList, fetchPages]);
 
     return {
         navigationTypes,
@@ -103,5 +110,6 @@ export function useNavigation(
         updateNavigation: update,
         deleteNavigation: onDeleteNavigation,
         reorderNavigation: reorder,
+        navigationsPages: pages
     };
 }

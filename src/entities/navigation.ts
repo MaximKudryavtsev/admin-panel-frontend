@@ -32,3 +32,9 @@ export interface INavigationOrder {
 }
 
 export type TypeNavigation = "navigation" | "footer";
+export type TNavigationPage = Pick<INavigation, "_id" | "title">;
+
+export enum ENavigationType {
+    INTERNAL = "internalLink",
+    EXTERNAL = "externalLink"
+}

@@ -4,7 +4,7 @@ import {
     INavigationOrder,
     INavigationType,
     TCreateNavigationRequest,
-    TLang,
+    TLang, TNavigationPage,
     TypeNavigation,
 } from "../entities";
 import { ApiPaths } from "../config";
@@ -43,4 +43,8 @@ export function reorderNavigations(transport: Transport, reorder: INavigationOrd
     return transport.put<INavigationOrder, INavigation[]>(ApiPaths.REORDER_NAVIGATION, reorder, {
         lang, type
     });
+}
+
+export function fetchNavigationPages(transport: Transport, lang: TLang) {
+    return transport.get<TNavigationPage[]>(ApiPaths.GET_INTERNAL_PAGES_LIST, {lang});
 }
