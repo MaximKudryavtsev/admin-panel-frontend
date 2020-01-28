@@ -3,7 +3,7 @@ import {
     INavigation, INavigationOrder,
     INavigationType,
     TCreateNavigationRequest,
-    TLang,
+    TLang, TNavigationPage,
     TUpdateNavigationRequest, TypeNavigation,
 } from "../../entities";
 import { css } from "emotion";
@@ -22,6 +22,7 @@ interface INavigationPanelProps {
     lang: TLang;
     isChildren?: boolean;
     type?: TypeNavigation;
+    pages?: TNavigationPage[];
 
     createNavigation?(navigation: TCreateNavigationRequest): Promise<void>;
 
@@ -32,6 +33,8 @@ interface INavigationPanelProps {
     getNavigation?(id: string): Promise<void>;
 
     reorderNavigation?(order: INavigationOrder): void;
+
+    setLanguage?(lang: TLang): void;
 }
 
 const styles = {
@@ -66,7 +69,9 @@ export const NavigationPanel = (props: INavigationPanelProps) => {
         isChildren,
         reorderNavigation,
         navigations = [],
-        type = "navigation"
+        type = "navigation",
+        setLanguage,
+        pages = []
     } = props;
     const [createOpen, setCreateOpen] = useState(false);
     const [editOpen, setEditOpen] = useState(false);
@@ -75,6 +80,12 @@ export const NavigationPanel = (props: INavigationPanelProps) => {
     const [deleteOpen, setDeleteOpen] = useState(false);
     const [childrenVisible, setChildrenVisible] = useState(false);
     const [children, setChildren] = useState<INavigation[]>([]);
+
+    useEffect(() => {
+        if (setLanguage) {
+            setLanguage(lang)
+        }
+    }, [lang, setLanguage]);
 
     useEffect(() => {
         const childItems = navigations.filter((item) => item.parentId === parentId);
@@ -234,6 +245,7 @@ export const NavigationPanel = (props: INavigationPanelProps) => {
                     onClose={onCreateClose}
                     onSubmit={onCreateNavigation}
                     isChildren={isChildren}
+                    pages={pages}
                 />
                 <NavigationPopup
                     navigation={currentNavigation}
@@ -243,6 +255,7 @@ export const NavigationPanel = (props: INavigationPanelProps) => {
                     onSubmit={onUpdateNavigation}
                     title={"Редактировать навигацию"}
                     isChildren={isChildren}
+                    pages={pages}
                 />
                 <ConfirmPopup
                     open={deleteOpen}

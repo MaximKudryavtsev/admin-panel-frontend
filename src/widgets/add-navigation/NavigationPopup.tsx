@@ -1,5 +1,5 @@
 import React from "react";
-import { INavigation, INavigationType } from "../../entities";
+import { ENavigationType, INavigation, INavigationType, TNavigationPage } from "../../entities";
 import { Popup } from "../../components/popup";
 import { CustomForm } from "../../components/custom-form";
 import { css } from "emotion";
@@ -18,6 +18,7 @@ interface IAddNavigationProps {
     navigation?: INavigation;
     title?: string;
     isChildren?: boolean;
+    pages?: TNavigationPage[];
 
     onSubmit?(navigation: INavigation): void;
 
@@ -40,12 +41,12 @@ const ValidationSchema = Yup.object().shape({
     navigationType: Yup.string().when("hasChild", {
         is: false,
         then: Yup.string().required("Поле обязательно для заполнения"),
-        otherwise: Yup.string().notRequired()
+        otherwise: Yup.string().notRequired(),
     }),
     link: Yup.string().when("hasChild", {
         is: false,
         then: Yup.string().required("Поле обязательно для заполнения"),
-        otherwise: Yup.string().notRequired()
+        otherwise: Yup.string().notRequired(),
     }),
 });
 
@@ -58,6 +59,7 @@ export const NavigationPopup = (props: IAddNavigationProps) => {
         navigation,
         title = "Добавить навигацию",
         isChildren,
+        pages = [],
     } = props;
 
     const handleSubmit = (data: INavigation) => {
@@ -71,10 +73,9 @@ export const NavigationPopup = (props: IAddNavigationProps) => {
         <Popup title={title} open={open} onClose={onClose}>
             <CustomForm<Partial<INavigation>>
                 onSubmit={handleSubmit}
-                data={{...navigation, hasChild: false}}
+                data={{ ...navigation, hasChild: false }}
                 validationSchema={ValidationSchema}
                 validateOnChange={false}
-                validateOnBlur={true}
                 render={(form) => (
                     <div className={styles.content}>
                         <TextField
@@ -83,7 +84,11 @@ export const NavigationPopup = (props: IAddNavigationProps) => {
                             classes={{ root: styles.field }}
                         />
                         {!isChildren && (
-                            <div className={css`display: flex`}>
+                            <div
+                                className={css`
+                                    display: flex;
+                                `}
+                            >
                                 <SwitchField
                                     name={"hasChild"}
                                     label={"Второй уровень"}
@@ -102,11 +107,28 @@ export const NavigationPopup = (props: IAddNavigationProps) => {
                                     }))}
                                     classes={{ root: styles.field }}
                                 />
-                                <TextField
-                                    name={"link"}
-                                    label={"Ссылка"}
-                                    classes={{ root: styles.field }}
-                                />
+                                {console.log(navigationsTypes.find(
+                                    (item) => item._id === form?.values.navigationType,
+                                ))}
+                                {navigationsTypes.find(
+                                    (item) => item._id === form?.values.navigationType,
+                                )?.label === ENavigationType.INTERNAL ? (
+                                    <Select
+                                        name={"link"}
+                                        label={"Страница"}
+                                        options={pages.map((page) => ({
+                                            value: page._id,
+                                            label: page.title,
+                                        }))}
+                                        classes={{ root: styles.field }}
+                                    />
+                                ) : (
+                                    <TextField
+                                        name={"link"}
+                                        label={"Ссылка"}
+                                        classes={{ root: styles.field }}
+                                    />
+                                )}
                             </React.Fragment>
                         )}
                         <div

@@ -1,47 +1,61 @@
 import React, { useEffect, useState } from "react";
-import { Paper, Tab, Tabs } from "@material-ui/core";
-import { NavigationContent } from "./navigation-content";
-import { css } from "emotion";
+import { TLang } from "../../entities";
+import { useNavigation } from "../../hooks";
+import { LanguageTab } from "../../widgets/language-tab";
+import { NavigationPanel } from "../../widgets/navigation-panel";
 
 interface INavigationProps {
     setPageTitle(title: string): void;
 }
 
-const styles = {
-    wrapper: css`
-        margin-top: 20px;
-    `,
-};
-
 export const Navigation = (props: INavigationProps) => {
     const { setPageTitle } = props;
 
     useEffect(() => setPageTitle("Навигация"), [setPageTitle]);
+    const [language, setLanguage] = useState<TLang>("ru");
 
-    const [value, setValue] = useState(0);
-
-    const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
-        setValue(newValue);
-    };
+    const {
+        navigations,
+        navigation,
+        navigationTypes,
+        reorderNavigation,
+        deleteNavigation,
+        updateNavigation,
+        createNavigation,
+        getNavigation,
+        navigationsPages
+    } = useNavigation(language, "navigation");
 
     return (
-        <div>
-            <Paper>
-                <Tabs
-                    variant="fullWidth"
-                    value={value}
-                    onChange={handleChange}
-                    indicatorColor="secondary"
-                    textColor="secondary"
-                >
-                    <Tab label="Русский сайт" />
-                    <Tab label="Английский сайт" />
-                </Tabs>
-            </Paper>
-            <div className={styles.wrapper}>
-                {value === 0 && <NavigationContent lang={"ru"} type={"navigation"} />}
-                {value === 1 && <NavigationContent lang={"en"} type={"navigation"} />}
-            </div>
-        </div>
+        <LanguageTab>
+            <NavigationPanel
+                lang={"ru"}
+                navigations={navigations}
+                currentNavigation={navigation}
+                navigationTypes={navigationTypes}
+                deleteNavigation={deleteNavigation}
+                createNavigation={createNavigation}
+                getNavigation={getNavigation}
+                updateNavigation={updateNavigation}
+                reorderNavigation={reorderNavigation}
+                type={"navigation"}
+                setLanguage={setLanguage}
+                pages={navigationsPages}
+            />
+            <NavigationPanel
+                lang={"en"}
+                navigations={navigations}
+                currentNavigation={navigation}
+                navigationTypes={navigationTypes}
+                deleteNavigation={deleteNavigation}
+                createNavigation={createNavigation}
+                getNavigation={getNavigation}
+                updateNavigation={updateNavigation}
+                reorderNavigation={reorderNavigation}
+                type={"navigation"}
+                setLanguage={setLanguage}
+                pages={navigationsPages}
+            />
+        </LanguageTab>
     );
 };
