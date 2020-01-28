@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="add showing success message after updating page">
+    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="add">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/navigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/navigation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/ApiPaths.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/ApiPaths.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/navigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/navigation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useNavigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useNavigation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/footer/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/footer/Footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/navigation/Navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/navigation/Navigation.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/widgets/add-navigation/NavigationPopup.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/add-navigation/NavigationPopup.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/widgets/navigation-panel/NavigationPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/navigation-panel/NavigationPanel.tsx" afterDir="false" />
     </list>
@@ -152,14 +157,7 @@
       <workItem from="1580127915655" duration="2386000" />
       <workItem from="1580188273068" duration="360000" />
       <workItem from="1580189189417" duration="3104000" />
-      <workItem from="1580198210125" duration="1049000" />
-    </task>
-    <task id="LOCAL-00009" summary="add getting user data after login">
-      <created>1577908588619</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1577908588619</updated>
+      <workItem from="1580198210125" duration="5346000" />
     </task>
     <task id="LOCAL-00010" summary="add private route">
       <created>1577992204055</created>
@@ -497,7 +495,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580189887880</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="change structure of navigation">
+      <created>1580199296743</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1580199296743</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -514,7 +519,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="move update user form to separate component" />
     <MESSAGE value="add changing password" />
     <MESSAGE value="change textfield" />
     <MESSAGE value="add api and hooks for navigation" />
@@ -539,7 +543,8 @@
     <MESSAGE value="add showing error if page already exists" />
     <MESSAGE value="add .htaccess" />
     <MESSAGE value="add showing success message after updating page" />
-    <option name="LAST_COMMIT_MESSAGE" value="add showing success message after updating page" />
+    <MESSAGE value="change structure of navigation" />
+    <option name="LAST_COMMIT_MESSAGE" value="change structure of navigation" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="182" key="#ESLint" timestamp="1578156507884">
@@ -562,16 +567,16 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="601" y="291" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1576315906681" />
-    <state x="585" y="117" key="CommitChangelistDialog2" timestamp="1580195463985">
+    <state x="585" y="117" key="CommitChangelistDialog2" timestamp="1580203956107">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580195463985" />
+    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580203956107" />
     <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172968703" />
     <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580061955837" />
-    <state x="184" y="85" width="1536" height="840" key="DiffContextDialog" timestamp="1580195457908">
+    <state x="184" y="85" width="1536" height="840" key="DiffContextDialog" timestamp="1580203698333">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="184" y="85" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580195457908" />
+    <state x="184" y="85" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580203698333" />
     <state x="184" y="86" width="1536" height="840" key="DiffContextDialog/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172950313" />
     <state x="184" y="86" key="DiffContextDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580061885455" />
     <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1580190318530">
@@ -605,10 +610,10 @@
     </state>
     <state x="461" y="155" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580190321312" />
     <state x="461" y="156" key="SettingsEditor/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580064364254" />
-    <state x="552" y="255" key="Vcs.Push.Dialog.v2" timestamp="1580132880455">
+    <state x="552" y="255" key="Vcs.Push.Dialog.v2" timestamp="1580199303485">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="255" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580132880455" />
+    <state x="552" y="255" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580199303485" />
     <state x="552" y="257" key="Vcs.Push.Dialog.v2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172973521" />
     <state x="552" y="257" key="Vcs.Push.Dialog.v2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580061963356" />
     <state x="92" y="92" width="1736" height="866" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1578046510409">
@@ -619,9 +624,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="603" y="139" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578060723974" />
-    <state x="657" y="257" width="606" height="536" key="find.popup" timestamp="1580042037677">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state x="657" y="255" width="606" height="536" key="find.popup" timestamp="1580201657278">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="657" y="255" width="606" height="536" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580201657278" />
     <state x="657" y="257" width="606" height="536" key="find.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578166842732" />
     <state x="657" y="257" width="606" height="536" key="find.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580042037677" />
     <state x="632" y="315" key="git4idea.merge.GitPullDialog" timestamp="1578328943129">
@@ -633,10 +639,10 @@
     </state>
     <state x="616" y="237" key="run.anything.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578145423257" />
     <state x="616" y="237" width="672" height="677" key="run.anything.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579939819522" />
-    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup" timestamp="1580199254470">
+    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup" timestamp="1580203967689">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580199254470" />
+    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580203967689" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578170577061" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580073150882" />
   </component>
