@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router";
 import { usePage } from "../../hooks/page";
 import { IPage } from "../../entities";
-import { IconButton } from "@material-ui/core";
+import { IconButton, Tooltip } from "@material-ui/core";
 import { ArrowBack } from "@material-ui/icons";
 import { getServerError } from "../../utils";
 import { AppContext } from "../../context";
@@ -66,9 +66,11 @@ export const Page = (props: IPageProps) => {
 
     return (
         <React.Fragment>
-            <IconButton onClick={goToList}>
-                <ArrowBack />
-            </IconButton>
+            <Tooltip title={"К списку страниц"} placement={"right"}>
+                <IconButton onClick={goToList}>
+                    <ArrowBack />
+                </IconButton>
+            </Tooltip>
             <PageInfo
                 page={page}
                 pageAuthor={pageAuthor}

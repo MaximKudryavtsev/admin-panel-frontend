@@ -8,7 +8,7 @@ import {
     CircularProgress,
     IconButton,
     Link,
-    Paper,
+    Paper, Tooltip,
     Typography,
 } from "@material-ui/core";
 import { AccountCircle, Delete, Save } from "@material-ui/icons";
@@ -36,8 +36,9 @@ const classNames = {
     `,
     backdrop: css`
         color: #fff;
-        z-index: 10000 !important;
-    `
+        z-index: 10000;
+    `,
+    title: css`margin-bottom: 24px`
 };
 
 interface IPageInfoProps {
@@ -73,6 +74,7 @@ export const PageInfo = (props: IPageInfoProps) => {
 
     return (
         <React.Fragment>
+            <Typography className={classNames.title} variant={"h6"}>Основная информация</Typography>
             <Paper className={classNames.content}>
                 {!!page ? (
                     <React.Fragment>
@@ -154,14 +156,16 @@ export const PageInfo = (props: IPageInfoProps) => {
                                     {formatData(page.updatedAt, "DD.MM.YYYY HH:mm")}
                                 </Typography>
                             </div>
-                            <IconButton
-                                className={css`
+                            <Tooltip title={"Удалить страницу"} placement={"left"}>
+                                <IconButton
+                                    className={css`
                                     margin-left: auto !important;
                                 `}
-                                onClick={onDeleteModalOpen}
-                            >
-                                <Delete />
-                            </IconButton>
+                                    onClick={onDeleteModalOpen}
+                                >
+                                    <Delete />
+                                </IconButton>
+                            </Tooltip>
                         </div>
                         <CustomForm<IPage>
                             onSubmit={onUpdate}
