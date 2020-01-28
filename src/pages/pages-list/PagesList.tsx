@@ -49,7 +49,7 @@ export const PagesList = (props: IPageListProps) => {
         (data: ICreatePageRequest) => {
             createPage(data)
                 .then((response) => {
-                    AppContext.getHistory().push(`/panel/pages/${response.data._id}`);
+                    AppContext.getHistory().push(`/pages/${response.data._id}`);
                     setError(undefined);
                 })
                 .catch((error) => {
@@ -61,7 +61,7 @@ export const PagesList = (props: IPageListProps) => {
     );
 
     const onClickRow = (id: string) => {
-        AppContext.getHistory().push(`/panel/pages/${id}`);
+        AppContext.getHistory().push(`/pages/${id}`);
     };
 
     return (

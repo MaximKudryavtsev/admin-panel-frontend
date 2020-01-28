@@ -7,7 +7,6 @@ import {
     Button,
     CircularProgress,
     IconButton,
-    Link,
     Paper, Tooltip,
     Typography,
 } from "@material-ui/core";
@@ -18,6 +17,7 @@ import { TextField } from "../../components/text-field";
 import { Select } from "../../components/select";
 import { isEqual } from "lodash";
 import { ConfirmPopup } from "../../components/confirm-popup";
+import { Link } from "react-router-dom";
 
 const classNames = {
     line: css`
@@ -106,7 +106,7 @@ export const PageInfo = (props: IPageInfoProps) => {
                                     <AccountCircle />
                                 )}
                                 <Link
-                                    href={`/user/${pageAuthor?._id}`}
+                                    to={`/user/${pageAuthor?._id}`}
                                     className={css`
                                         margin-left: 5px !important;
                                     `}

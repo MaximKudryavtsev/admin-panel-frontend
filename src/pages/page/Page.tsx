@@ -11,6 +11,7 @@ import { useBlock, useSnackbar } from "../../hooks";
 import { PageInfo } from "../../widgets/page-info";
 import { AddBlockPopup } from "../../widgets/add-block-popup";
 import { css } from "emotion";
+import { Description } from "../../blocks/description";
 
 interface IPageProps {
     setPageTitle(title: string): void;
@@ -47,7 +48,7 @@ export const Page = (props: IPageProps) => {
     }
 
     const goToList = () => {
-        AppContext.getHistory().push("/panel/pages");
+        AppContext.getHistory().push("/pages");
     };
 
     const onUpdate = (data: Partial<IPage>) => {
@@ -106,6 +107,7 @@ export const Page = (props: IPageProps) => {
             >
                 Добавить блок
             </Button>
+            <Description statuses={statuses} />
             <Snackbar
                 open={snackbar.open}
                 message={snackbar.message}

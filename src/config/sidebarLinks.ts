@@ -6,29 +6,29 @@ interface ISidebarLink {
 export const sidebarLinks: ISidebarLink[] = [
     {
         title: "Хедер",
-        link: "/panel/header"
+        link: "/header"
     },
     {
         title: "Навигация",
-        link: "/panel/navigation"
+        link: "/navigation"
     },
     {
         title: "Футер",
-        link: "/panel/footer"
+        link: "/footer"
     },
     {
         title: "Страницы",
-        link: "/panel/pages"
+        link: "/pages"
     },
 ];
 
 export const adminSidebarLinks: ISidebarLink[] = [
     {
         title: "Пользователи",
-        link: "/panel/users"
+        link: "/users"
     },
     {
         title: "Журнал",
-        link: "/panel/journal"
+        link: "/journal"
     },
 ];

@@ -24,5 +24,6 @@ export const ApiPaths = {
     GET_PAGE_STATUSES: "/page/statuses",
     GET_PAGE_AUTHOR: "/page/:id/author",
     //block
-    GET_BLOCK_TYPES: "/block/types"
+    GET_BLOCK_TYPES: "/block/types",
+    CREATE_BLOCK: "/block/create"
 };

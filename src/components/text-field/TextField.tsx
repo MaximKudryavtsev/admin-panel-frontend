@@ -1,9 +1,8 @@
 import * as emotion from "emotion";
 import React from "react";
-import { Field } from "formik";
+import { Field, FieldProps, FieldValidator } from "formik";
 import { TextField as MaterialTextField, InputLabelProps } from "@material-ui/core";
 import ErrorIcon from "@material-ui/icons/Error";
-import { FieldProps } from "formik/dist/Field";
 
 interface ITextFieldProps {
     name: string;
@@ -13,6 +12,8 @@ interface ITextFieldProps {
     classes?: object;
     type?: string;
     size?: "small" | "medium";
+    textarea?: boolean;
+    validate?: FieldValidator;
 }
 
 const styles = {
@@ -27,10 +28,20 @@ const styles = {
 };
 
 export const TextField = (props: ITextFieldProps) => {
-    const { name, label, error, classes, type = "text", size, InputLabelProps } = props;
+    const {
+        name,
+        label,
+        error,
+        classes,
+        type = "text",
+        size,
+        InputLabelProps,
+        textarea = false,
+        validate
+    } = props;
 
     return (
-        <Field name={name}>
+        <Field name={name} validate={validate}>
             {({ field, meta }: FieldProps) => (
                 <MaterialTextField
                     variant="outlined"
@@ -40,6 +51,7 @@ export const TextField = (props: ITextFieldProps) => {
                     error={!!meta.error || error}
                     size={size}
                     InputLabelProps={InputLabelProps}
+                    multiline={textarea}
                     helperText={
                         meta.error && (
                             <>

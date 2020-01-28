@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/jss-provider/JssProvider.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/jss-provider/index.ts" afterDir="false" />
+    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="add showing error if page already exists">
+      <change afterPath="$PROJECT_DIR$/src/entities/block.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/block.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/block.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/description/Description.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/description/Description.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/text-field/TextField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/TextField.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/ApiPaths.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/ApiPaths.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/sidebarLinks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/sidebarLinks.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useBlock.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useBlock.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/page/Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/page/Page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/pages-list/PagesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/pages-list/PagesList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/block-wrapper/BlockWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/block-wrapper/BlockWrapper.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/widgets/page-info/PageInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/page-info/PageInfo.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,9 +63,9 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="prettierjs.PrettierConfiguration.NodeInterpreter" value="project" />
-    <property name="prettierjs.PrettierConfiguration.Package" value="C:\omega-admin-panel\admin-panel-frontend\node_modules\prettier" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="C:\omega\admin-panel-frontend\node_modules\prettier" />
     <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
-    <property name="ts.external.directory.path" value="C:\omega-admin-panel\admin-panel-frontend\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="C:\omega\admin-panel-frontend\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -578,37 +584,37 @@
     <state x="184" y="85" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580211244820" />
     <state x="184" y="86" width="1536" height="840" key="DiffContextDialog/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172950313" />
     <state x="184" y="86" key="DiffContextDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580061885455" />
-    <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1580190318530">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="740" y="279" key="FileChooserDialogImpl" timestamp="1580242638997">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580190318530" />
     <state x="740" y="279" key="FileChooserDialogImpl/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578163730639" />
-    <state x="740" y="279" key="FileChooserDialogImpl/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1577956099449" />
-    <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1580195628050">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="740" y="279" key="FileChooserDialogImpl/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580242638997" />
+    <state width="1898" height="274" key="GridCell.Tab.0.bottom" timestamp="1580242498646">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1899" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580195628050" />
-    <state width="1898" height="274" key="GridCell.Tab.0.bottom/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579429389605" />
-    <state width="1899" height="282" key="GridCell.Tab.0.center" timestamp="1580195628050">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1898" height="274" key="GridCell.Tab.0.bottom/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580242498646" />
+    <state width="1898" height="274" key="GridCell.Tab.0.center" timestamp="1580242498645">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1899" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580195628050" />
-    <state width="1898" height="274" key="GridCell.Tab.0.center/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579429389605" />
-    <state width="1899" height="282" key="GridCell.Tab.0.left" timestamp="1580195628050">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1898" height="274" key="GridCell.Tab.0.center/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580242498645" />
+    <state width="1898" height="274" key="GridCell.Tab.0.left" timestamp="1580242498645">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1899" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580195628050" />
-    <state width="1898" height="274" key="GridCell.Tab.0.left/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579429389605" />
-    <state width="1899" height="282" key="GridCell.Tab.0.right" timestamp="1580195628050">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1898" height="274" key="GridCell.Tab.0.left/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580242498645" />
+    <state width="1898" height="274" key="GridCell.Tab.0.right" timestamp="1580242498645">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1899" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580195628050" />
-    <state width="1898" height="274" key="GridCell.Tab.0.right/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579429389605" />
-    <state x="461" y="155" key="SettingsEditor" timestamp="1580190321312">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1898" height="274" key="GridCell.Tab.0.right/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580242498645" />
+    <state x="461" y="156" key="SettingsEditor" timestamp="1580242641740">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="461" y="155" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580190321312" />
-    <state x="461" y="156" key="SettingsEditor/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580064364254" />
+    <state x="461" y="156" key="SettingsEditor/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580242641740" />
     <state x="552" y="255" key="Vcs.Push.Dialog.v2" timestamp="1580211261312">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -623,12 +629,12 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="603" y="139" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578060723974" />
-    <state x="657" y="255" width="606" height="536" key="find.popup" timestamp="1580201657278">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="657" y="257" width="606" height="536" key="find.popup" timestamp="1580234609390">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="657" y="255" width="606" height="536" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580201657278" />
     <state x="657" y="257" width="606" height="536" key="find.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578166842732" />
-    <state x="657" y="257" width="606" height="536" key="find.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580042037677" />
+    <state x="657" y="257" width="606" height="536" key="find.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580234609390" />
     <state x="632" y="315" key="git4idea.merge.GitPullDialog" timestamp="1578328943129">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -638,11 +644,11 @@
     </state>
     <state x="616" y="237" key="run.anything.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578145423257" />
     <state x="616" y="237" width="672" height="677" key="run.anything.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579939819522" />
-    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup" timestamp="1580216557081">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1580243613174">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="623" y="225" width="672" height="672" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580216557081" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578170577061" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580073150882" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580243613174" />
   </component>
 </project>

@@ -65,11 +65,11 @@ const App: React.FC = () => {
                 />
                 <PrivateRoute
                     auth={logged}
-                    path={"/panel/:page"}
+                    path={"/:page"}
                     render={() => (
                         <WorkPanel
                             user={user}
-                            baseUrl={"/panel"}
+                            baseUrl={""}
                             onLogout={logout}
                         />
                     )}
