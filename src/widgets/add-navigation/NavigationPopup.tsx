@@ -11,14 +11,6 @@ import { SwitchField } from "../../components/switch-field";
 import { isEqual } from "lodash";
 import * as Yup from "yup";
 
-export interface ICreateNavigation {
-    title: string;
-    navigationTypeId: string;
-    hasChild: boolean;
-    link: string;
-    parentId?: string;
-}
-
 interface IAddNavigationProps {
     open: boolean;
     navigationsTypes: INavigationType[];
@@ -27,7 +19,7 @@ interface IAddNavigationProps {
     title?: string;
     isChildren?: boolean;
 
-    onSubmit?(navigation: ICreateNavigation): void;
+    onSubmit?(navigation: INavigation): void;
 
     onClose?(): void;
 }
@@ -44,8 +36,17 @@ const styles = {
 
 const ValidationSchema = Yup.object().shape({
     title: Yup.string().required("Поле обязательно для заполнения"),
-    navigationTypeId: Yup.string().required("Поле обязательно для заполнения"),
-    link: Yup.string().required("Поле обязательно для заполнения"),
+    hasChild: Yup.boolean(),
+    navigationType: Yup.string().when("hasChild", {
+        is: false,
+        then: Yup.string().required("Поле обязательно для заполнения"),
+        otherwise: Yup.string().notRequired()
+    }),
+    link: Yup.string().when("hasChild", {
+        is: false,
+        then: Yup.string().required("Поле обязательно для заполнения"),
+        otherwise: Yup.string().notRequired()
+    }),
 });
 
 export const NavigationPopup = (props: IAddNavigationProps) => {
@@ -59,7 +60,7 @@ export const NavigationPopup = (props: IAddNavigationProps) => {
         isChildren,
     } = props;
 
-    const handleSubmit = (data: ICreateNavigation) => {
+    const handleSubmit = (data: INavigation) => {
         if (!onSubmit) {
             return;
         }
@@ -68,12 +69,12 @@ export const NavigationPopup = (props: IAddNavigationProps) => {
 
     return (
         <Popup title={title} open={open} onClose={onClose}>
-            <CustomForm<Partial<ICreateNavigation>>
+            <CustomForm<Partial<INavigation>>
                 onSubmit={handleSubmit}
-                data={transform(navigation)}
+                data={{...navigation, hasChild: false}}
                 validationSchema={ValidationSchema}
                 validateOnChange={false}
-                validateOnBlur={false}
+                validateOnBlur={true}
                 render={(form) => (
                     <div className={styles.content}>
                         <TextField
@@ -81,30 +82,47 @@ export const NavigationPopup = (props: IAddNavigationProps) => {
                             label={"Название"}
                             classes={{ root: styles.field }}
                         />
-                        <Select
-                            name={"navigationTypeId"}
-                            label={"Тип ссылки"}
-                            options={navigationsTypes.map((item) => ({
-                                value: item._id,
-                                label: item.title,
-                            }))}
-                            classes={{ root: styles.field }}
-                        />
-                        <TextField name={"link"} label={"Ссылка"} classes={{ root: styles.field }} />
                         {!isChildren && (
-                            <SwitchField
-                                name={"hasChild"}
-                                label={"Второй уровень"}
-                                classes={{ root: styles.field }}
-                            />
+                            <div className={css`display: flex`}>
+                                <SwitchField
+                                    name={"hasChild"}
+                                    label={"Второй уровень"}
+                                    classes={{ root: styles.field }}
+                                />
+                            </div>
                         )}
-                        <div className={css`display: flex; justify-content: flex-end;`}>
+                        {!form?.values.hasChild && (
+                            <React.Fragment>
+                                <Select
+                                    name={"navigationType"}
+                                    label={"Тип ссылки"}
+                                    options={navigationsTypes.map((item) => ({
+                                        value: item._id,
+                                        label: item.title,
+                                    }))}
+                                    classes={{ root: styles.field }}
+                                />
+                                <TextField
+                                    name={"link"}
+                                    label={"Ссылка"}
+                                    classes={{ root: styles.field }}
+                                />
+                            </React.Fragment>
+                        )}
+                        <div
+                            className={css`
+                                display: flex;
+                                justify-content: flex-end;
+                            `}
+                        >
                             <Button
                                 variant="contained"
                                 color="primary"
                                 startIcon={<Save />}
                                 onClick={form?.submitForm}
-                                disabled={!form?.isValid || isEqual(form?.values, form?.initialValues)}
+                                disabled={
+                                    !form?.isValid || isEqual(form?.values, form?.initialValues)
+                                }
                             >
                                 Сохранить
                             </Button>
@@ -115,10 +133,3 @@ export const NavigationPopup = (props: IAddNavigationProps) => {
         </Popup>
     );
 };
-
-export function transform(navigation?: INavigation): Partial<ICreateNavigation> {
-    if (!navigation) {
-        return { hasChild: false };
-    }
-    return { ...navigation, navigationTypeId: navigation.navigationType._id };
-}

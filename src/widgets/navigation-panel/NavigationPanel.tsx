@@ -10,7 +10,7 @@ import { css } from "emotion";
 import { NavigationItem } from "../../components/navigation-item";
 import { Fab, IconButton } from "@material-ui/core";
 import { Add, Close } from "@material-ui/icons";
-import { ICreateNavigation, NavigationPopup } from "../add-navigation";
+import { NavigationPopup } from "../add-navigation";
 import { ConfirmPopup } from "../../components/confirm-popup";
 import { DragDropContext, Droppable, Draggable, DropResult } from "react-beautiful-dnd";
 
@@ -116,16 +116,12 @@ export const NavigationPanel = (props: INavigationPanelProps) => {
         .filter((item) => (item.parentId ? item.parentId === props.parentId : !item.parentId))
         .sort((left, right) => (left.position > right.position ? 1 : -1));
 
-    const onCreateNavigation = (navigation: ICreateNavigation) => {
+    const onCreateNavigation = (navigation: INavigation) => {
         if (!createNavigation) {
             return;
         }
-        const navigationType =
-            navigationTypes.find((item) => item._id === navigation.navigationTypeId) ||
-            navigationTypes[0];
         const nav: TCreateNavigationRequest = {
             ...navigation,
-            navigationType,
             parentId: props.parentId,
             isVisible: false,
             lang,
@@ -155,13 +151,11 @@ export const NavigationPanel = (props: INavigationPanelProps) => {
         onDeleteOpen();
     };
 
-    const onUpdateNavigation = (data: ICreateNavigation) => {
+    const onUpdateNavigation = (data: INavigation) => {
         if (!currentNavigation || !updateNavigation) {
             return;
         }
-        const type = navigationTypes.find((item) => item._id === data.navigationTypeId);
-        currentNavigation.navigationType = type || navigationTypes[0];
-        updateNavigation({ ...currentNavigation, ...data, navigationType: type }).then(onEditClose);
+        updateNavigation({ ...currentNavigation, ...data }).then(onEditClose);
     };
 
     const confirmDelete = () => {

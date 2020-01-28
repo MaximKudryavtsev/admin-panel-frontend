@@ -8,9 +8,9 @@ export interface INavigation {
     _id: string;
     title: string;
     parentId?: string;
-    link: string;
+    link?: string;
     position: number;
-    navigationType: INavigationType;
+    navigationType?: string;
     isVisible: boolean;
     hasChild: boolean;
     lang: string;
