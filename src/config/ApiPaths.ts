@@ -9,18 +9,20 @@ export const ApiPaths = {
     UPDATE_AVATAR: "user/avatar/update",
     DELETE_AVATAR: "user/avatar/delete",
     // navigation
-    GET_NAVIGATION: "/navigations/:id",
-    GET_NAVIGATION_TYPES: "/navigations/types",
-    GET_NAVIGATION_LIST: "/navigations/list",
-    UPDATE_NAVIGATION: "/navigations/:id/update",
-    CREATE_NAVIGATION: "/navigations/create",
-    REORDER_NAVIGATION: "/navigations/reorder",
-    DELETE_NAVIGATION: "/navigations/:id/delete",
-    GET_INTERNAL_PAGES_LIST: "/navigations/pages",
+    GET_NAVIGATION: "/navigation/:id",
+    GET_NAVIGATION_TYPES: "/navigation/types",
+    GET_NAVIGATION_LIST: "/navigation/list",
+    UPDATE_NAVIGATION: "/navigation/:id/update",
+    CREATE_NAVIGATION: "/navigation/create",
+    REORDER_NAVIGATION: "/navigation/reorder",
+    DELETE_NAVIGATION: "/navigation/:id/delete",
+    GET_INTERNAL_PAGES_LIST: "/navigation/pages",
     // pages
     CREATE_PAGE: "/page/create",
     GET_PAGE_LIST: "/page/list",
     PAGE: "/page/:id",
     GET_PAGE_STATUSES: "/page/statuses",
     GET_PAGE_AUTHOR: "/page/:id/author",
+    //block
+    GET_BLOCK_TYPES: "/block/types"
 };
