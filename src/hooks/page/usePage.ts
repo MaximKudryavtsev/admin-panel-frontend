@@ -3,17 +3,18 @@ import {
     IPage,
     IPageAuthor,
     IPageStatus,
-    TLang,
+    TResponse,
 } from "../../entities";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { fetchPage, fetchPageAuthor, fetchPageStatusList, updatePage } from "../../api/page";
+import { deletePage, fetchPage, fetchPageAuthor, fetchPageStatusList, updatePage } from "../../api/page";
 
-export function usePage(pageId: string, lang: TLang = "ru"): {
+export function usePage(pageId: string): {
     page?: IPage;
     getPage: () => Promise<void> | undefined;
     statuses: IPageStatus[];
     pageAuthor?: IPageAuthor;
     updatePage: (data: Partial<IPage>) => Promise<void>;
+    deletePage: () => Promise<TResponse<void>>;
 } {
     const [page, setPage] = useState<IPage | undefined>(undefined);
     const [pageAuthor, setPageAuthor] = useState<IPageAuthor | undefined>(undefined);
@@ -39,6 +40,10 @@ export function usePage(pageId: string, lang: TLang = "ru"): {
         return updatePage(transport, pageId, data).then((response) => setPage(response.data));
     }, [transport, pageId]);
 
+    const del = useCallback(() => {
+        return deletePage(transport, pageId);
+    }, [transport, pageId]);
+
     useEffect(() => {
         if (pageId) {
             getStatuses();
@@ -47,5 +52,5 @@ export function usePage(pageId: string, lang: TLang = "ru"): {
         }
     }, [getPage, pageId, getStatuses, getAuthor]);
 
-    return {page, getPage, statuses, pageAuthor, updatePage: update}
+    return {page, getPage, statuses, pageAuthor, updatePage: update, deletePage: del}
 }

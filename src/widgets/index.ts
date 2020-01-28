@@ -5,3 +5,4 @@ export * from "./upload-avatar";
 export * from "./create-page-popup";
 export * from "./navigation-panel";
 export * from "./add-navigation";
+export * from "./page-info";

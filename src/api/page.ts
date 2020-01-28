@@ -23,7 +23,7 @@ export function createPage(transport: Transport, data: ICreatePageRequest, lang:
 }
 
 export function fetchPage(transport: Transport, id: string) {
-    return transport.get<IPage>(ApiPaths.GET_PAGE.replace(":id", id));
+    return transport.get<IPage>(ApiPaths.PAGE.replace(":id", id));
 }
 
 export function fetchPageAuthor(transport: Transport, id: string) {
@@ -31,5 +31,9 @@ export function fetchPageAuthor(transport: Transport, id: string) {
 }
 
 export function updatePage(transport: Transport, id: string, data: Partial<IPage>) {
-    return transport.put<Partial<IPage>, IPage>(ApiPaths.GET_PAGE.replace(":id", id), data);
+    return transport.put<Partial<IPage>, IPage>(ApiPaths.PAGE.replace(":id", id), data);
+}
+
+export function deletePage(transport: Transport, id: string) {
+    return transport.delete(ApiPaths.PAGE.replace(":id", id))
 }
