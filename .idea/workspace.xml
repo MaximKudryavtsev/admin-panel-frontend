@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/page/Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/page/Page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/language-tab/LanguageTab.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/language-tab/LanguageTab.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +53,7 @@
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="prettierjs.PrettierConfiguration.Package" value="C:\omega\admin-panel-frontend\node_modules\prettier" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-    <property name="ts.external.directory.path" value="C:\omega\admin-panel-frontend\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="C:\omega-admin-panel\admin-panel-frontend\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -146,14 +148,8 @@
       <workItem from="1580027568866" duration="3474000" />
       <workItem from="1580044939912" duration="26243000" />
       <workItem from="1580127915655" duration="2386000" />
-      <workItem from="1580188273068" duration="164000" />
-    </task>
-    <task id="LOCAL-00007" summary="add crud methods">
-      <created>1577819817824</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1577819817824</updated>
+      <workItem from="1580188273068" duration="360000" />
+      <workItem from="1580189189417" duration="570000" />
     </task>
     <task id="LOCAL-00008" summary="add response for log in method">
       <created>1577873008370</created>
@@ -491,7 +487,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580061956153</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="add .htaccess">
+      <created>1580188475848</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1580188475849</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -508,7 +511,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add tooltip to info page near the email field" />
     <MESSAGE value="change route of updating user path" />
     <MESSAGE value="move update user form to separate component" />
     <MESSAGE value="add changing password" />
@@ -533,7 +535,8 @@
     <MESSAGE value="add getting list of pages, creating and getting page" />
     <MESSAGE value="refactoring" />
     <MESSAGE value="add showing error if page already exists" />
-    <option name="LAST_COMMIT_MESSAGE" value="add showing error if page already exists" />
+    <MESSAGE value="add .htaccess" />
+    <option name="LAST_COMMIT_MESSAGE" value="add .htaccess" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="182" key="#ESLint" timestamp="1578156507884">
@@ -556,10 +559,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="601" y="291" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1576315906681" />
-    <state x="585" y="117" key="CommitChangelistDialog2" timestamp="1580132875033">
+    <state x="585" y="117" key="CommitChangelistDialog2" timestamp="1580188474635">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580132875033" />
+    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580188474635" />
     <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172968703" />
     <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580061955837" />
     <state x="184" y="85" width="1536" height="840" key="DiffContextDialog" timestamp="1580132859515">
@@ -625,9 +628,10 @@
     </state>
     <state x="616" y="237" key="run.anything.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578145423257" />
     <state x="616" y="237" width="672" height="677" key="run.anything.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579939819522" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1580073150882">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup" timestamp="1580189693832">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580189693832" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578170577061" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580073150882" />
   </component>

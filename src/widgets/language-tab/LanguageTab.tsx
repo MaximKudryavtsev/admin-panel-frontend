@@ -17,6 +17,8 @@ export const LanguageTab: FC = (props) => {
         setValue(newValue);
     };
 
+    const childArray = Children.map(children, (child) => child);
+
     return (
         <div>
             <Paper>
@@ -32,8 +34,8 @@ export const LanguageTab: FC = (props) => {
                 </Tabs>
             </Paper>
             <div className={classNames.content}>
-                {value === 0 && Children.map(children, (child) => child)[0]}
-                {value === 1 && Children.map(children, (child) => child)[1]}
+                {value === 0 && childArray && childArray[0] && childArray[0]}
+                {value === 1 && childArray && childArray[1] && childArray[1]}
             </div>
         </div>
     );

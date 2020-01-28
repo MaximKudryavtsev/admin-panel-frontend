@@ -55,7 +55,13 @@ export const Page = (props: IPageProps) => {
     };
 
     const onUpdate = (data: Partial<IPage>) => {
-         updatePage(data).catch((error) => {
+         updatePage(data).then(() => {
+             setSnackbarError(false);
+             setSnackbarState({
+                 open: true,
+                 message: "Успешно сохранено"
+             });
+         }).catch((error) => {
              const err = getServerError(error);
              setSnackbarError(true);
              setSnackbarState({
