@@ -5,20 +5,21 @@ import { IBlock, IDictionary } from "../../entities";
 import { CustomForm } from "../../components/custom-form";
 import { Select } from "../../components/select";
 import * as Yup from "yup";
-import { Delete, Save } from "@material-ui/icons";
+import { Delete, Edit, Save } from "@material-ui/icons";
 import { ConfirmPopup } from "../../components/confirm-popup";
 import { SwitchField } from "../../components/switch-field";
+import { isEqual } from "lodash";
 
 interface IBlockWrapperProps<T> {
     block?: IBlock<T>;
     statuses?: IDictionary[];
     validationSchema: Yup.ObjectSchema<any>;
 
-    render(values?: Partial<IBlock<T>>): ReactNode;
+    render(values?: Partial<IBlock<T>>, editable?: boolean): ReactNode;
 
     onDelete?(id: string): void;
 
-    onSubmit?(data: Partial<IBlock<T>>): void;
+    onSubmit?(id: string, data: Partial<IBlock<T>>): void;
 }
 
 const classNames = {
@@ -43,19 +44,20 @@ const classNames = {
     deleteButton: css`
         margin-left: auto;
     `,
-    switch: css`
+    icon: css`
         margin-right: 10px;
-    `
+    `,
 };
 
 const ValidationSchema = Yup.object().shape({
     statusId: Yup.string().required("Поле обязательно для заполнения"),
-    open: Yup.boolean()
+    open: Yup.boolean(),
 });
 
 export const BlockWrapper = <T extends any>(props: IBlockWrapperProps<T>) => {
     const { block, statuses = [], validationSchema, render, onDelete, onSubmit } = props;
     const [deleteVisible, setDeleteVisible] = useState(false);
+    const [editable, setEditable] = useState(false);
 
     function onDeleteOpen(): void {
         setDeleteVisible(true);
@@ -71,9 +73,15 @@ export const BlockWrapper = <T extends any>(props: IBlockWrapperProps<T>) => {
         }
     };
 
+    const handleSubmit = (data: Partial<IBlock<T>>) => {
+        if (block && onSubmit) {
+            onSubmit(block._id, data);
+        }
+    };
+
     const changeVisibility = (data: Partial<IBlock<any>>) => {
         if (onSubmit) {
-            onSubmit(data)
+            handleSubmit(data);
         }
     };
 
@@ -83,15 +91,15 @@ export const BlockWrapper = <T extends any>(props: IBlockWrapperProps<T>) => {
                 <CustomForm<Partial<IBlock<T>>>
                     validationSchema={ValidationSchema.concat(validationSchema)}
                     data={block}
-                    onSubmit={onSubmit}
+                    onSubmit={handleSubmit}
                     validateOnChange={false}
                     render={(form) => (
                         <React.Fragment>
                             <div className={classNames.header}>
                                 <SwitchField
                                     name={"open"}
-                                    classes={{ root: classNames.switch }}
-                                    onChange={(value) => changeVisibility({open: value})}
+                                    classes={{ root: classNames.icon }}
+                                    onChange={(value) => changeVisibility({ open: value })}
                                 />
                                 <Typography variant={"h6"} className={classNames.field}>
                                     {block?.type?.title}
@@ -105,20 +113,29 @@ export const BlockWrapper = <T extends any>(props: IBlockWrapperProps<T>) => {
                                     }))}
                                     classes={{ root: classNames.field }}
                                 />
-                                <Tooltip
-                                    title={"Удалить блок"}
-                                    placement={"left"}
-                                    className={classNames.deleteButton}
-                                >
-                                    <IconButton onClick={onDeleteOpen}>
-                                        <Delete />
-                                    </IconButton>
-                                </Tooltip>
+                                <div className={classNames.deleteButton}>
+                                    <Tooltip
+                                        title={editable ? "Запретить редактирование" : "Разрешить редактирование"}
+                                        placement={"top"}
+                                        className={classNames.icon}
+                                    >
+                                        <IconButton onClick={() => setEditable(!editable)}>
+                                            <Edit />
+                                        </IconButton>
+                                    </Tooltip>
+                                    <Tooltip title={"Удалить блок"} placement={"top"}>
+                                        <IconButton onClick={onDeleteOpen}>
+                                            <Delete />
+                                        </IconButton>
+                                    </Tooltip>
+                                </div>
                             </div>
                             {block?.open && (
                                 <React.Fragment>
                                     <Divider />
-                                    <div className={classNames.content}>{render(form?.values)}</div>
+                                    <div className={classNames.content}>
+                                        {render(form?.values, editable)}
+                                    </div>
                                     <Divider />
                                     <div className={classNames.buttonWrapper}>
                                         <Button
@@ -126,7 +143,10 @@ export const BlockWrapper = <T extends any>(props: IBlockWrapperProps<T>) => {
                                             color="primary"
                                             startIcon={<Save />}
                                             onClick={form?.submitForm}
-                                            disabled={!form?.isValid}
+                                            disabled={
+                                                !form?.isValid ||
+                                                isEqual(form?.values, form?.initialValues)
+                                            }
                                         >
                                             Сохранить
                                         </Button>

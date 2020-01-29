@@ -1,5 +1,4 @@
 import React from "react";
-import { IBlock, IDictionary } from "../../entities";
 import { BlockWrapper } from "../../widgets/block-wrapper";
 import * as Yup from "yup";
 import { css } from "emotion";
@@ -8,19 +7,11 @@ import { Card, IconButton } from "@material-ui/core";
 import { TextField } from "../../components/text-field";
 import { Add, Delete } from "@material-ui/icons";
 import { SwitchField } from "../../components/switch-field";
+import { IBlockProps } from "../IBlockProps";
 
 export interface IFactBlock {
     title: string;
     description: string;
-}
-
-interface IFactsBlockProps {
-    block?: IBlock<IFactBlock[]>;
-    statuses?: IDictionary[];
-
-    onDelete?(id: string): void;
-
-    onSubmit?(data: IBlock<any>): void;
 }
 
 const ValidationSchema = Yup.object().shape({
@@ -59,7 +50,7 @@ const classNames = {
     `
 };
 
-export const FactsBlock = (props: IFactsBlockProps) => {
+export const FactsBlock = (props: IBlockProps<IFactBlock[]>) => {
     const { block, statuses, onDelete, onSubmit } = props;
 
     return (
@@ -69,7 +60,7 @@ export const FactsBlock = (props: IFactsBlockProps) => {
             validationSchema={ValidationSchema}
             onDelete={onDelete}
             onSubmit={onSubmit}
-            render={(values) => (
+            render={(values, editable) => (
                 <FieldArray name={"data"}>
                     {(array) => (
                         <div>
@@ -80,8 +71,9 @@ export const FactsBlock = (props: IFactsBlockProps) => {
                                             <SwitchField
                                                 name={`data.${index}.visible`}
                                                 classes={{ root: classNames.switch }}
+                                                disable={!editable}
                                             />
-                                            <IconButton onClick={() => array.remove(index)}>
+                                            <IconButton onClick={() => array.remove(index)} disabled={!editable}>
                                                 <Delete />
                                             </IconButton>
                                         </div>
@@ -89,11 +81,13 @@ export const FactsBlock = (props: IFactsBlockProps) => {
                                             name={`data.${index}.title`}
                                             label={"Заголовок"}
                                             classes={{ root: classNames.field }}
+                                            disable={!editable}
                                         />
                                         <TextField
                                             name={`data.${index}.description`}
                                             label={"Подпись"}
                                             classes={{ root: classNames.field }}
+                                            disable={!editable}
                                         />
                                     </Card>
                                 ))}

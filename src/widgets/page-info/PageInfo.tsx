@@ -156,7 +156,7 @@ export const PageInfo = (props: IPageInfoProps) => {
                                     {formatData(page.updatedAt, "DD.MM.YYYY HH:mm")}
                                 </Typography>
                             </div>
-                            <Tooltip title={"Удалить страницу"} placement={"left"}>
+                            <Tooltip title={"Удалить страницу"} placement={"top"}>
                                 <IconButton
                                     className={css`
                                     margin-left: auto !important;

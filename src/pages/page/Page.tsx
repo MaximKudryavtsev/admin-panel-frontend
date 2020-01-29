@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { createElement, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { usePage } from "../../hooks/page";
 import { IBlock, IPage } from "../../entities";
@@ -11,10 +11,7 @@ import { useBlock, useSnackbar } from "../../hooks";
 import { PageInfo } from "../../widgets/page-info";
 import { AddBlockPopup } from "../../widgets/add-block-popup";
 import { css } from "emotion";
-import { Description } from "../../blocks/description";
-import { BlockWrapper } from "../../widgets/block-wrapper";
-import * as Yup from "yup";
-import { FactsBlock } from "../../blocks/facts";
+import { getBlock, IBlockProps } from "../../blocks";
 
 interface IPageProps {
     setPageTitle(title: string): void;
@@ -25,10 +22,6 @@ const classNames = {
         margin: 30px 0;
     `,
 };
-
-const ValidationSchema = Yup.object().shape({
-    data: Yup.array().of(Yup.string().required("Поле обязательно для заполнения")),
-});
 
 export const Page = (props: IPageProps) => {
     const { setPageTitle } = props;
@@ -95,13 +88,13 @@ export const Page = (props: IPageProps) => {
     };
 
     const onUpdateBlock = (id: string, data: IBlock<any>) => {
-          updateBlock(id, data).then(() => {
-              setSnackbarError(false);
-              setSnackbarState({
-                  open: true,
-                  message: "Успешно сохранено",
-              });
-          });
+        updateBlock(id, data).then(() => {
+            setSnackbarError(false);
+            setSnackbarState({
+                open: true,
+                message: "Успешно сохранено",
+            });
+        });
     };
 
     return (
@@ -128,15 +121,19 @@ export const Page = (props: IPageProps) => {
             >
                 Добавить блок
             </Button>
-            {/*<Description statuses={statuses} />*/}
             {blocks.map((item) => (
-                <div key={item._id} className={css`margin-bottom: 20px;`}>
-                    <FactsBlock
-                        block={item}
-                        statuses={statuses}
-                        onDelete={deleteBlock}
-                        onSubmit={(data) => onUpdateBlock(item._id, data)}
-                    />
+                <div
+                    key={item._id}
+                    className={css`
+                        margin-bottom: 20px;
+                    `}
+                >
+                    {createElement<IBlockProps>(getBlock(item.type.label), {
+                        block: item,
+                        statuses,
+                        onDelete: deleteBlock,
+                        onSubmit: onUpdateBlock,
+                    })}
                 </div>
             ))}
             <Snackbar

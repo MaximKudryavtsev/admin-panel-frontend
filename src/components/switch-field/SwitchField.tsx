@@ -8,12 +8,13 @@ interface ISwitchFieldProps {
     label?: string;
     color?: "primary" | "default" | "secondary";
     classes?: object;
+    disable?: boolean;
 
     onChange?(value: boolean): void;
 }
 
 export const SwitchField = (props: ISwitchFieldProps) => {
-    const { name, color = "primary", label, classes, onChange } = props;
+    const { name, color = "primary", label, classes, onChange, disable } = props;
 
     const handleChange = (value: boolean) => {
         if (onChange) {
@@ -30,6 +31,7 @@ export const SwitchField = (props: ISwitchFieldProps) => {
                         <Switch
                             color={color}
                             checked={field.value}
+                            disabled={disable}
                             {...field}
                             onClick={() => handleChange(!field.value)}
                         />

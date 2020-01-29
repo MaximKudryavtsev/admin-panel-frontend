@@ -37,7 +37,7 @@ export function useBlock(
 
     const update = useCallback((id: string, data: IBlock<any>) => {
         return updateBlock(transport, id, data).then(fetchList);
-    }, [transport]);
+    }, [transport, fetchList]);
 
     useEffect(() => {
         fetchTypes();

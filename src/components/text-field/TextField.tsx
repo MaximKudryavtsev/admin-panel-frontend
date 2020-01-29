@@ -14,6 +14,7 @@ interface ITextFieldProps {
     size?: "small" | "medium";
     textarea?: boolean;
     validate?: FieldValidator;
+    disable?: boolean;
 }
 
 const styles = {
@@ -37,7 +38,8 @@ export const TextField = (props: ITextFieldProps) => {
         size,
         InputLabelProps,
         textarea = false,
-        validate
+        validate,
+        disable
     } = props;
 
     return (
@@ -52,6 +54,7 @@ export const TextField = (props: ITextFieldProps) => {
                     size={size}
                     InputLabelProps={InputLabelProps}
                     multiline={textarea}
+                    disabled={disable}
                     helperText={
                         meta.error && (
                             <>
