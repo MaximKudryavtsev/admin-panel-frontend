@@ -13,6 +13,8 @@ interface IAddBlockPopupProps {
     types?: IDictionary[];
 
     onClose?(): void;
+
+    onSubmit?(data: {type: string}): void;
 }
 
 const classNames = {
@@ -33,12 +35,13 @@ const ValidationSchema = Yup.object().shape({
 });
 
 export const AddBlockPopup = (props: IAddBlockPopupProps) => {
-    const { open, onClose, types = [] } = props;
+    const { open, onClose, types = [], onSubmit } = props;
 
     return (
         <Popup open={open} title={"Добавить блок"} onClose={onClose}>
             <CustomForm
                 validationSchema={ValidationSchema}
+                onSubmit={onSubmit}
                 render={(form) => (
                     <div className={classNames.wrapper}>
                         <Select

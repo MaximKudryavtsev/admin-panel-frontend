@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { usePage } from "../../hooks/page";
-import { IPage } from "../../entities";
+import { IBlock, IPage } from "../../entities";
 import { Button, IconButton, Tooltip } from "@material-ui/core";
 import { Add, ArrowBack } from "@material-ui/icons";
 import { getServerError } from "../../utils";
@@ -12,6 +12,9 @@ import { PageInfo } from "../../widgets/page-info";
 import { AddBlockPopup } from "../../widgets/add-block-popup";
 import { css } from "emotion";
 import { Description } from "../../blocks/description";
+import { BlockWrapper } from "../../widgets/block-wrapper";
+import * as Yup from "yup";
+import { FactsBlock } from "../../blocks/facts";
 
 interface IPageProps {
     setPageTitle(title: string): void;
@@ -20,8 +23,12 @@ interface IPageProps {
 const classNames = {
     button: css`
         margin: 30px 0;
-    `
+    `,
 };
+
+const ValidationSchema = Yup.object().shape({
+    data: Yup.array().of(Yup.string().required("Поле обязательно для заполнения")),
+});
 
 export const Page = (props: IPageProps) => {
     const { setPageTitle } = props;
@@ -29,7 +36,7 @@ export const Page = (props: IPageProps) => {
     const [addBlockVisible, setAddBlockVisible] = useState(false);
 
     const { page, statuses, pageAuthor, updatePage, deletePage } = usePage(String(id));
-    const { blockTypes } = useBlock(String(id));
+    const { blockTypes, createBlock, blocks, deleteBlock, updateBlock } = useBlock(String(id));
     const { error, snackbar, setSnackbarError, setSnackbarState, onSnackbarClose } = useSnackbar();
 
     useEffect(() => {
@@ -51,7 +58,7 @@ export const Page = (props: IPageProps) => {
         AppContext.getHistory().push("/pages");
     };
 
-    const onUpdate = (data: Partial<IPage>) => {
+    const onUpdatePage = (data: Partial<IPage>) => {
         updatePage(data)
             .then(() => {
                 setSnackbarError(false);
@@ -70,7 +77,7 @@ export const Page = (props: IPageProps) => {
             });
     };
 
-    const onDelete = () => {
+    const onDeletePage = () => {
         return deletePage()
             .then(goToList)
             .catch((error) => {
@@ -81,6 +88,20 @@ export const Page = (props: IPageProps) => {
                     message: err?.title ?? "",
                 });
             });
+    };
+
+    const onCreateBlock = (data: { type: string }) => {
+        createBlock(data.type).then(onAddBlockClose);
+    };
+
+    const onUpdateBlock = (id: string, data: IBlock<any>) => {
+          updateBlock(id, data).then(() => {
+              setSnackbarError(false);
+              setSnackbarState({
+                  open: true,
+                  message: "Успешно сохранено",
+              });
+          });
     };
 
     return (
@@ -94,8 +115,8 @@ export const Page = (props: IPageProps) => {
                 page={page}
                 pageAuthor={pageAuthor}
                 statuses={statuses}
-                onUpdate={onUpdate}
-                onDelete={onDelete}
+                onUpdate={onUpdatePage}
+                onDelete={onDeletePage}
             />
             <Button
                 variant="contained"
@@ -107,14 +128,29 @@ export const Page = (props: IPageProps) => {
             >
                 Добавить блок
             </Button>
-            <Description statuses={statuses} />
+            {/*<Description statuses={statuses} />*/}
+            {blocks.map((item) => (
+                <div key={item._id} className={css`margin-bottom: 20px;`}>
+                    <FactsBlock
+                        block={item}
+                        statuses={statuses}
+                        onDelete={deleteBlock}
+                        onSubmit={(data) => onUpdateBlock(item._id, data)}
+                    />
+                </div>
+            ))}
             <Snackbar
                 open={snackbar.open}
                 message={snackbar.message}
                 error={error}
                 onClose={onSnackbarClose}
             />
-            <AddBlockPopup open={addBlockVisible} types={blockTypes} onClose={onAddBlockClose} />
+            <AddBlockPopup
+                open={addBlockVisible}
+                types={blockTypes}
+                onClose={onAddBlockClose}
+                onSubmit={onCreateBlock}
+            />
         </React.Fragment>
     );
 };

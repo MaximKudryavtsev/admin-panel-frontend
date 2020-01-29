@@ -8,17 +8,32 @@ interface ISwitchFieldProps {
     label?: string;
     color?: "primary" | "default" | "secondary";
     classes?: object;
+
+    onChange?(value: boolean): void;
 }
 
 export const SwitchField = (props: ISwitchFieldProps) => {
-    const { name, color = "primary", label, classes } = props;
+    const { name, color = "primary", label, classes, onChange } = props;
+
+    const handleChange = (value: boolean) => {
+        if (onChange) {
+            onChange(value);
+        }
+    };
 
     return (
         <Field name={name}>
             {({ field, meta }: FieldProps) => (
                 <FormControlLabel
                     classes={classes}
-                    control={<Switch color={color} checked={field.value} {...field} />}
+                    control={
+                        <Switch
+                            color={color}
+                            checked={field.value}
+                            {...field}
+                            onClick={() => handleChange(!field.value)}
+                        />
+                    }
                     label={label}
                 />
             )}

@@ -10,5 +10,6 @@ export interface IBlock<T> {
     pageId: string;
     type: IDictionary;
     statusId: string;
+    open: boolean;
     data?: T;
 }
