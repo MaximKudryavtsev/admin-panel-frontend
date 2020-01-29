@@ -88,7 +88,7 @@ export const Layout: FC<ILayoutProps> = (props) => {
     };
 
     const goToProfile = () => {
-        AppContext.getHistory().push("/panel/profile");
+        AppContext.getHistory().push("/profile");
         handleMenuClose();
     };
 
