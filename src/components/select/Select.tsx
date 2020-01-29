@@ -23,6 +23,7 @@ interface ISelectProps {
     options: IOption[];
     label?: string;
     classes?: object;
+    disable?: boolean;
 }
 
 const styles = {
@@ -37,7 +38,7 @@ const styles = {
 };
 
 export const Select = (props: ISelectProps) => {
-    const { name, options, label, classes } = props;
+    const { name, options, label, classes, disable } = props;
     const inputLabel = React.useRef<HTMLLabelElement>(null);
 
     const [labelWidth, setLabelWidth] = useState(0);
@@ -48,7 +49,13 @@ export const Select = (props: ISelectProps) => {
     return (
         <Field name={name}>
             {({ field, meta }: FieldProps) => (
-                <FormControl variant={"outlined"} fullWidth classes={classes} error={!!meta.error}>
+                <FormControl
+                    variant={"outlined"}
+                    fullWidth
+                    classes={classes}
+                    error={!!meta.error}
+                    disabled={disable}
+                >
                     <InputLabel ref={inputLabel}>{label}</InputLabel>
                     <MaterialSelect labelWidth={labelWidth} {...field}>
                         {options.map((option) => (

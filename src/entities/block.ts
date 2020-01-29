@@ -14,6 +14,7 @@ export interface IBlock<T> {
     _id: string;
     pageId: string;
     type: IDictionary;
+    status: IDictionary;
     statusId: string;
     open: boolean;
     data?: T;

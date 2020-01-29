@@ -76,7 +76,7 @@ export const BlockWrapper = <T extends any>(props: IBlockWrapperProps<T>) => {
     }
 
     const handleDelete = () => {
-        if (onDelete && block) {
+        if (onDelete && block && block.open) {
             onDelete(block._id);
         }
     };
@@ -120,6 +120,7 @@ export const BlockWrapper = <T extends any>(props: IBlockWrapperProps<T>) => {
                                         label: item.title,
                                     }))}
                                     classes={{ root: classNames.field }}
+                                    disable={!block?.open}
                                 />
                                 <div className={classNames.deleteButton}>
                                     <Tooltip
@@ -131,12 +132,15 @@ export const BlockWrapper = <T extends any>(props: IBlockWrapperProps<T>) => {
                                         placement={"top"}
                                         className={classNames.icon}
                                     >
-                                        <IconButton onClick={() => setEditable(!editable)}>
+                                        <IconButton
+                                            onClick={() => setEditable(!editable)}
+                                            disabled={!block?.open}
+                                        >
                                             <Edit />
                                         </IconButton>
                                     </Tooltip>
                                     <Tooltip title={"Удалить блок"} placement={"top"}>
-                                        <IconButton onClick={onDeleteOpen}>
+                                        <IconButton onClick={onDeleteOpen} disabled={!block?.open}>
                                             <Delete />
                                         </IconButton>
                                     </Tooltip>

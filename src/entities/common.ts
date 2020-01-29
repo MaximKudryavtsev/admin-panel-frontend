@@ -3,3 +3,8 @@ export interface IDictionary {
     title: string;
     label: string;
 }
+
+export enum EPageStatusLabel {
+    DRAFT = "draft",
+    PUBLISHED = "published"
+}
