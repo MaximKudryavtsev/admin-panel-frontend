@@ -1,22 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="add showing error if page already exists">
-      <change afterPath="$PROJECT_DIR$/src/blocks/IBlockProps.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blocks/blockList.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blocks/quote/QuoteBlock.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blocks/quote/index.ts" afterDir="false" />
+    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/description/Description.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/description/Description.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/blocks/facts/FactsBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/facts/FactsBlock.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/switch-field/SwitchField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/switch-field/SwitchField.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/text-field/TextField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/text-field/TextField.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/block.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/block.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useBlock.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useBlock.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/page/Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/page/Page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/widgets/block-wrapper/BlockWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/block-wrapper/BlockWrapper.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/page-info/PageInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/page-info/PageInfo.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,13 +154,6 @@
       <workItem from="1580198210125" duration="13284000" />
       <workItem from="1580288040105" duration="1138000" />
       <workItem from="1580302177185" duration="8931000" />
-    </task>
-    <task id="LOCAL-00016" summary="refactoring">
-      <created>1578048302825</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1578048302825</updated>
     </task>
     <task id="LOCAL-00017" summary="add showing server error after incorrect sign-in">
       <created>1578052892459</created>
@@ -510,7 +491,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580288774309</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="add component for quote block">
+      <created>1580329156200</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1580329156201</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -527,7 +515,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add getting navigation item" />
     <MESSAGE value="add showing navigation children" />
     <MESSAGE value="add hiding children if parent deleted" />
     <MESSAGE value="move sidebar to separate component" />
@@ -552,7 +539,8 @@
     <MESSAGE value="move info about site to separate component" />
     <MESSAGE value="add deleting page" />
     <MESSAGE value="fix incorrect link to profile" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix incorrect link to profile" />
+    <MESSAGE value="add component for quote block" />
+    <option name="LAST_COMMIT_MESSAGE" value="add component for quote block" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="182" key="#ESLint" timestamp="1578156507884">
@@ -575,12 +563,12 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="601" y="291" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1576315906681" />
-    <state x="585" y="117" key="CommitChangelistDialog2" timestamp="1580288773393">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1580329155761">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580288773393" />
     <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172968703" />
-    <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580061955837" />
+    <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580329155761" />
     <state x="184" y="85" width="1536" height="840" key="DiffContextDialog" timestamp="1580288753893">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

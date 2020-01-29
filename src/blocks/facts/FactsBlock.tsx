@@ -95,6 +95,7 @@ export const FactsBlock = (props: IBlockProps<IFactBlock[]>) => {
                             <IconButton
                                 onClick={() => array.push({ title: "", description: "", visible: true })}
                                 color="primary"
+                                disabled={!editable}
                             >
                                 <Add />
                             </IconButton>

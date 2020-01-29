@@ -1,5 +1,13 @@
 import React, { ReactNode, useState } from "react";
-import { Button, Divider, IconButton, Paper, Tooltip, Typography } from "@material-ui/core";
+import {
+    Button,
+    Collapse,
+    Divider,
+    IconButton,
+    Paper,
+    Tooltip,
+    Typography,
+} from "@material-ui/core";
 import { css } from "emotion";
 import { IBlock, IDictionary } from "../../entities";
 import { CustomForm } from "../../components/custom-form";
@@ -115,7 +123,11 @@ export const BlockWrapper = <T extends any>(props: IBlockWrapperProps<T>) => {
                                 />
                                 <div className={classNames.deleteButton}>
                                     <Tooltip
-                                        title={editable ? "Запретить редактирование" : "Разрешить редактирование"}
+                                        title={
+                                            editable
+                                                ? "Запретить редактирование"
+                                                : "Разрешить редактирование"
+                                        }
                                         placement={"top"}
                                         className={classNames.icon}
                                     >
@@ -130,29 +142,27 @@ export const BlockWrapper = <T extends any>(props: IBlockWrapperProps<T>) => {
                                     </Tooltip>
                                 </div>
                             </div>
-                            {block?.open && (
-                                <React.Fragment>
-                                    <Divider />
-                                    <div className={classNames.content}>
-                                        {render(form?.values, editable)}
-                                    </div>
-                                    <Divider />
-                                    <div className={classNames.buttonWrapper}>
-                                        <Button
-                                            variant="contained"
-                                            color="primary"
-                                            startIcon={<Save />}
-                                            onClick={form?.submitForm}
-                                            disabled={
-                                                !form?.isValid ||
-                                                isEqual(form?.values, form?.initialValues)
-                                            }
-                                        >
-                                            Сохранить
-                                        </Button>
-                                    </div>
-                                </React.Fragment>
-                            )}
+                            <Collapse in={block?.open} unmountOnExit>
+                                <Divider />
+                                <div className={classNames.content}>
+                                    {render(form?.values, editable)}
+                                </div>
+                                <Divider />
+                                <div className={classNames.buttonWrapper}>
+                                    <Button
+                                        variant="contained"
+                                        color="primary"
+                                        startIcon={<Save />}
+                                        onClick={form?.submitForm}
+                                        disabled={
+                                            !form?.isValid ||
+                                            isEqual(form?.values, form?.initialValues)
+                                        }
+                                    >
+                                        Сохранить
+                                    </Button>
+                                </div>
+                            </Collapse>
                         </React.Fragment>
                     )}
                 />
