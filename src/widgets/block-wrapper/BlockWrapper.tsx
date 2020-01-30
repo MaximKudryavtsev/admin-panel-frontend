@@ -13,7 +13,7 @@ import { IBlock, IDictionary } from "../../entities";
 import { CustomForm } from "../../components/custom-form";
 import { Select } from "../../components/select";
 import * as Yup from "yup";
-import { Delete, Save } from "@material-ui/icons";
+import { Delete, DragIndicator, Save } from "@material-ui/icons";
 import { ConfirmPopup } from "../../components/confirm-popup";
 import { SwitchField } from "../../components/switch-field";
 import { isEqual } from "lodash";
@@ -104,6 +104,9 @@ export const BlockWrapper = <T extends any>(props: IBlockWrapperProps<T>) => {
                     render={(form) => (
                         <React.Fragment>
                             <div className={classNames.header}>
+                                <IconButton classes={{root: classNames.icon}}>
+                                    <DragIndicator />
+                                </IconButton>
                                 <SwitchField
                                     name={"open"}
                                     classes={{ root: classNames.icon }}

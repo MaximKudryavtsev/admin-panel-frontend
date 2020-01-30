@@ -74,7 +74,7 @@ export const BlockTabs = (props: IBlockTabsProps) => {
                             margin-bottom: 20px;
                         `}
                             >
-                                {createElement<IBlockProps>(getBlock(item.type.label) || <React.Fragment />, {
+                                {createElement<IBlockProps>(getBlock(item.type.label), {
                                     block: item,
                                     statuses,
                                     onDelete: handleDeleteBlock,
@@ -93,7 +93,7 @@ export const BlockTabs = (props: IBlockTabsProps) => {
                             margin-bottom: 20px;
                         `}
                             >
-                                {createElement<IBlockProps>(getBlock(item.type.label) || <React.Fragment />, {
+                                {createElement<IBlockProps>(getBlock(item.type.label), {
                                     block: item,
                                     statuses,
                                     onDelete: handleDeleteBlock,
