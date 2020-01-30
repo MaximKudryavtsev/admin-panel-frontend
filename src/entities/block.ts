@@ -4,7 +4,8 @@ export enum EBlockTypes {
     FACTS = "facts",
     QUOTE = "quote",
     CONTACTS = "contacts",
-    BLOG = "blog"
+    BLOG = "blog",
+    DESCRIPTION = "description"
 }
 
 export interface ICreateBlockRequest {

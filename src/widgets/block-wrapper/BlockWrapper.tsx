@@ -75,14 +75,14 @@ export const BlockWrapper = <T extends any>(props: IBlockWrapperProps<T>) => {
     }
 
     const handleDelete = () => {
-        if (onDelete && block && block.open) {
+        if (onDelete && block && block.open && block._id) {
             onDelete(block._id);
             onDeleteClose();
         }
     };
 
     const handleSubmit = (data: Partial<IBlock<T>>) => {
-        if (block && onSubmit) {
+        if (block && onSubmit && block._id) {
             onSubmit(block._id, data);
         }
     };

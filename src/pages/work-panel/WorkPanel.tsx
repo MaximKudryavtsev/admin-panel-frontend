@@ -7,6 +7,7 @@ import { Layout } from "../../widgets/layout";
 import { Profile } from "../profile";
 import { Pages } from "../pages";
 import { Page } from "../page";
+import { Main } from "../main";
 
 interface INavigationProps {
     baseUrl?: string;
@@ -25,13 +26,13 @@ export const WorkPanel = (props: INavigationProps) => {
     return (
         <Layout title={title} user={user} onLogout={onLogout}>
             <Switch>
-                <Route path={`${baseUrl}/navigation`}>
+                <Route path={`${baseUrl}/navigation`} exact>
                     <Navigation setPageTitle={setTitle}  />
                 </Route>
-                <Route path={`${baseUrl}/footer`}>
+                <Route path={`${baseUrl}/footer`} exact>
                     <Footer setPageTitle={setTitle} />
                 </Route>
-                <Route path={`${baseUrl}/profile`}>
+                <Route path={`${baseUrl}/profile`} exact>
                     <Profile setPageTitle={setTitle} onSetUser={setUser} />
                 </Route>
                 <Route path={`${baseUrl}/pages`} exact>
@@ -39,6 +40,9 @@ export const WorkPanel = (props: INavigationProps) => {
                 </Route>
                 <Route path={`${baseUrl}/pages/:id`} exact>
                     <Page setPageTitle={setTitle} />
+                </Route>
+                <Route path={"/main"} exact>
+                    <Main  />
                 </Route>
             </Switch>
         </Layout>

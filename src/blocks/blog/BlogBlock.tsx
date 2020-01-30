@@ -46,7 +46,7 @@ const classNames = {
         box-sizing: border-box;
     `,
     image: css`
-        height: 140px;
+        height: 180px;
     `,
     link: css`
         text-decoration: none;

@@ -9,8 +9,12 @@ import { Add, Delete } from "@material-ui/icons";
 import { IBlockProps } from "../IBlockProps";
 
 const classNames = {
-    half: css`
-        width: 50%;
+    wrapper: css`
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-row-gap: 24px;
+        grid-column-gap: 24px;
+        margin-bottom: 24px;
     `,
     field: css`
         width: 400px;
@@ -24,51 +28,60 @@ const classNames = {
     row: css`
         display: flex;
         align-items: center;
-    `
+    `,
 };
 
 const ValidationSchema = Yup.object().shape({
-    data: Yup.array().of(Yup.string().required("Поле обязательно для заполнения"))
+    data: Yup.array().of(Yup.string().required("Поле обязательно для заполнения")),
 });
 
-export const Description = (props: IBlockProps<string[][]>) => {
-    const { statuses, block, onSubmit } = props;
+export const Description = (props: IBlockProps<string[]>) => {
+    const { statuses, block, onSubmit, onDelete } = props;
 
     return (
-        <BlockWrapper<string[][]>
+        <BlockWrapper<string[]>
             block={block}
             validationSchema={ValidationSchema}
             statuses={statuses}
             onSubmit={onSubmit}
+            onDelete={onDelete}
             render={(values) => (
                 <React.Fragment>
-                    <FieldArray
-                        name={"data"}
-                        render={(array) => (
-                            <div className={css`display: flex;`}>
-                                {values?.data && values.data.map((item, index) => (
-                                    <div className={classNames.half} key={index}>
-                                        {item.map((row, rowIndex) => (
-                                            <div className={classNames.row} key={index}>
-                                                <TextField
-                                                    name={`data.${index}.${rowIndex}`}
-                                                    label={`Текст ${index + 1}`}
-                                                    textarea
-                                                    classes={{root: classNames.textArea}}
-                                                />
-                                                <IconButton onClick={() => array.remove(index)} className={classNames.deleteButton}>
-                                                    <Delete />
-                                                </IconButton>
-                                            </div>
-                                        ))}
-                                        <IconButton onClick={() => array.push("")} color="primary">
-                                            <Add />
-                                        </IconButton>
+                    <div
+                        className={css`
+                            display: flex;
+                        `}
+                    >
+                        <FieldArray
+                            name={"data"}
+                            render={(array) => (
+                                <div>
+                                    <div className={classNames.wrapper}>
+                                        {values?.data &&
+                                            values.data.map((row, index) => (
+                                                <div className={classNames.row} key={index}>
+                                                    <TextField
+                                                        name={`data.${index}`}
+                                                        label={`Текст ${index + 1}`}
+                                                        textarea
+                                                        classes={{ root: classNames.textArea }}
+                                                    />
+                                                    <IconButton
+                                                        onClick={() => array.remove(index)}
+                                                        className={classNames.deleteButton}
+                                                    >
+                                                        <Delete />
+                                                    </IconButton>
+                                                </div>
+                                            ))}
                                     </div>
-                                ))}
-                            </div>
-                        )}
-                    />
+                                    <IconButton onClick={() => array.push("")} color="primary">
+                                        <Add />
+                                    </IconButton>
+                                </div>
+                            )}
+                        />
+                    </div>
                 </React.Fragment>
             )}
         />
