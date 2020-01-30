@@ -38,6 +38,7 @@ export const Sidebar = () => {
                         button
                         key={key}
                         onClick={() => AppContext.getHistory().push(item.link)}
+                        selected={window.location.pathname.split("/").join("/").includes(item.link)}
                     >
                         <ListItemText primary={item.title} />
                     </ListItem>
@@ -50,6 +51,7 @@ export const Sidebar = () => {
                         button
                         key={key}
                         onClick={() => AppContext.getHistory().push(item.link)}
+                        selected={window.location.pathname.split("/").join("/").includes(item.link)}
                     >
                         <ListItemText primary={item.title} />
                     </ListItem>
