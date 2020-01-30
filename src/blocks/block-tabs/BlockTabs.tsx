@@ -67,14 +67,14 @@ export const BlockTabs = (props: IBlockTabsProps) => {
             <div className={classNames.content}>
                 {value === 0 && (
                     <div>
-                        {published.map((item) => (
+                        {published.map((item) => getBlock(item.type.label) &&  (
                             <div
                                 key={item._id}
                                 className={css`
                             margin-bottom: 20px;
                         `}
                             >
-                                {createElement<IBlockProps>(getBlock(item.type.label), {
+                                {createElement<IBlockProps>(getBlock(item.type.label) || <React.Fragment />, {
                                     block: item,
                                     statuses,
                                     onDelete: handleDeleteBlock,
@@ -86,14 +86,14 @@ export const BlockTabs = (props: IBlockTabsProps) => {
                 )}
                 {value === 1 && (
                     <div>
-                        {draft.map((item) => (
+                        {draft.map((item) => getBlock(item.type.label) && (
                             <div
                                 key={item._id}
                                 className={css`
                             margin-bottom: 20px;
                         `}
                             >
-                                {createElement<IBlockProps>(getBlock(item.type.label), {
+                                {createElement<IBlockProps>(getBlock(item.type.label) || <React.Fragment />, {
                                     block: item,
                                     statuses,
                                     onDelete: handleDeleteBlock,
