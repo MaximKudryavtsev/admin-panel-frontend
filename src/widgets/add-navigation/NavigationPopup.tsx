@@ -107,9 +107,6 @@ export const NavigationPopup = (props: IAddNavigationProps) => {
                                     }))}
                                     classes={{ root: styles.field }}
                                 />
-                                {console.log(navigationsTypes.find(
-                                    (item) => item._id === form?.values.navigationType,
-                                ))}
                                 {navigationsTypes.find(
                                     (item) => item._id === form?.values.navigationType,
                                 )?.label === ENavigationType.INTERNAL ? (

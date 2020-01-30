@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { css } from "emotion";
-import { Chip, Divider, Grid, Typography } from "@material-ui/core";
+import { Button, Chip, Divider, Grid, Typography } from "@material-ui/core";
 import { useSnackbar, useUser } from "../../hooks";
 import { Card } from "../../components/card";
 import { Snackbar } from "../../components/snackbar";
 import { IChangePasswordData, IUser } from "../../entities";
 import { UpdateUserForm, ChangePassword, UploadAvatar } from "../../widgets";
 import { getServerError } from "../../utils";
+import { Add, Update } from "@material-ui/icons";
 
 interface IProfileProps {
     setPageTitle(title: string): void;
@@ -22,6 +23,9 @@ const classes = {
     left: css`
         padding-right: 24px;
     `,
+    card: css`
+        margin-bottom: 24px;
+    `
 };
 
 export const Profile = (props: IProfileProps) => {
@@ -116,7 +120,7 @@ export const Profile = (props: IProfileProps) => {
                             </Card>
                         </Grid>
                         <Grid item xs={6}>
-                            <Card title={"Роли"}>
+                            <Card title={"Роли"} classes={{root: classes.card}}>
                                 {user?.roles?.map((role) => (
                                     <Chip
                                         key={role._id}
@@ -128,6 +132,23 @@ export const Profile = (props: IProfileProps) => {
                                         `}
                                     />
                                 ))}
+                            </Card>
+                            <Card title={"Блог"} classes={{root: classes.card}}>
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    startIcon={<Update />}
+                                    className={css`margin-right: 24px`}
+                                >
+                                    Обновить русский блог
+                                </Button>
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    startIcon={<Update />}
+                                >
+                                    Обновить английский блог
+                                </Button>
                             </Card>
                         </Grid>
                     </Grid>

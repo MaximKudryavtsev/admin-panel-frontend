@@ -86,7 +86,7 @@ export const Login = (props: ILoginProps) => {
                             onSetUser(response.data);
                             if (onSignIn) {
                                 onSignIn();
-                                AppContext.getHistory().push("/panel/navigation");
+                                AppContext.getHistory().push("/profile");
                             }
                         }
                     })

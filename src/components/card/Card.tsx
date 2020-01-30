@@ -4,6 +4,7 @@ import { Paper, Typography } from "@material-ui/core";
 
 interface ICardProps {
     title: string;
+    classes?: object;
 }
 
 const styles = {
@@ -16,9 +17,9 @@ const styles = {
 };
 
 export const Card: FC<ICardProps> = (props) => {
-    const { title, children } = props;
+    const { title, children, classes } = props;
     return (
-        <Paper className={styles.card} elevation={3}>
+        <Paper className={styles.card} elevation={3} classes={classes}>
             <Typography variant={"h6"}>{title}</Typography>
             <div className={styles.content}>{children}</div>
         </Paper>

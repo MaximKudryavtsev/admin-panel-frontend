@@ -49,7 +49,7 @@ const classNames = {
         justify-content: flex-end;
         padding: 24px;
     `,
-    deleteButton: css`
+    icons: css`
         margin-left: auto;
     `,
     icon: css`
@@ -77,6 +77,7 @@ export const BlockWrapper = <T extends any>(props: IBlockWrapperProps<T>) => {
     const handleDelete = () => {
         if (onDelete && block && block.open) {
             onDelete(block._id);
+            onDeleteClose();
         }
     };
 
@@ -121,7 +122,7 @@ export const BlockWrapper = <T extends any>(props: IBlockWrapperProps<T>) => {
                                     classes={{ root: classNames.field }}
                                     disable={!block?.open}
                                 />
-                                <div className={classNames.deleteButton}>
+                                <div className={classNames.icons}>
                                     <Tooltip title={"Удалить блок"} placement={"top"}>
                                         <IconButton onClick={onDeleteOpen} disabled={!block?.open}>
                                             <Delete />
@@ -131,9 +132,7 @@ export const BlockWrapper = <T extends any>(props: IBlockWrapperProps<T>) => {
                             </div>
                             <Collapse in={block?.open} unmountOnExit>
                                 <Divider />
-                                <div className={classNames.content}>
-                                    {render(form?.values)}
-                                </div>
+                                <div className={classNames.content}>{render(form?.values)}</div>
                                 <Divider />
                                 <div className={classNames.buttonWrapper}>
                                     <Button
