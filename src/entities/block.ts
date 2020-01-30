@@ -21,5 +21,6 @@ export interface IBlock<T> {
     status: IDictionary;
     statusId: string;
     open: boolean;
+    position: number;
     data?: T;
 }

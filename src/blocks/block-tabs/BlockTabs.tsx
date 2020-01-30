@@ -27,7 +27,7 @@ const classNames = {
 };
 
 export const BlockTabs = (props: IBlockTabsProps) => {
-    const {blocks = [], statuses = [], onDeleteBlock, onUpdateBlock} = props;
+    const { blocks = [], statuses = [], onDeleteBlock, onUpdateBlock } = props;
 
     const [value, setValue] = useState(0);
 
@@ -35,8 +35,12 @@ export const BlockTabs = (props: IBlockTabsProps) => {
         setValue(newValue);
     };
 
-    const published = blocks.filter((item) => item.status.label === EPageStatusLabel.PUBLISHED);
-    const draft = blocks.filter((item) => item.status.label === EPageStatusLabel.DRAFT);
+    const published = blocks
+        .filter((item) => item.status.label === EPageStatusLabel.PUBLISHED)
+        .sort((left, right) => (left.position > right.position ? 1 : -1));
+    const draft = blocks
+        .filter((item) => item.status.label === EPageStatusLabel.DRAFT)
+        .sort((left, right) => (left.position > right.position ? 1 : -1));
 
     const handleUpdateBlock = (id: string, data: IBlock<any>) => {
         if (onUpdateBlock) {
@@ -46,7 +50,7 @@ export const BlockTabs = (props: IBlockTabsProps) => {
 
     const handleDeleteBlock = (id: string) => {
         if (onDeleteBlock) {
-            onDeleteBlock(id)
+            onDeleteBlock(id);
         }
     };
 
@@ -67,40 +71,46 @@ export const BlockTabs = (props: IBlockTabsProps) => {
             <div className={classNames.content}>
                 {value === 0 && (
                     <div>
-                        {published.map((item) => getBlock(item.type.label) &&  (
-                            <div
-                                key={item._id}
-                                className={css`
-                            margin-bottom: 20px;
-                        `}
-                            >
-                                {createElement<IBlockProps>(getBlock(item.type.label), {
-                                    block: item,
-                                    statuses,
-                                    onDelete: handleDeleteBlock,
-                                    onSubmit: handleUpdateBlock,
-                                })}
-                            </div>
-                        ))}
+                        {published.map(
+                            (item) =>
+                                getBlock(item.type.label) && (
+                                    <div
+                                        key={item._id}
+                                        className={css`
+                                            margin-bottom: 20px;
+                                        `}
+                                    >
+                                        {createElement<IBlockProps>(getBlock(item.type.label), {
+                                            block: item,
+                                            statuses,
+                                            onDelete: handleDeleteBlock,
+                                            onSubmit: handleUpdateBlock,
+                                        })}
+                                    </div>
+                                ),
+                        )}
                     </div>
                 )}
                 {value === 1 && (
                     <div>
-                        {draft.map((item) => getBlock(item.type.label) && (
-                            <div
-                                key={item._id}
-                                className={css`
-                            margin-bottom: 20px;
-                        `}
-                            >
-                                {createElement<IBlockProps>(getBlock(item.type.label), {
-                                    block: item,
-                                    statuses,
-                                    onDelete: handleDeleteBlock,
-                                    onSubmit: handleUpdateBlock,
-                                })}
-                            </div>
-                        ))}
+                        {draft.map(
+                            (item) =>
+                                getBlock(item.type.label) && (
+                                    <div
+                                        key={item._id}
+                                        className={css`
+                                            margin-bottom: 20px;
+                                        `}
+                                    >
+                                        {createElement<IBlockProps>(getBlock(item.type.label), {
+                                            block: item,
+                                            statuses,
+                                            onDelete: handleDeleteBlock,
+                                            onSubmit: handleUpdateBlock,
+                                        })}
+                                    </div>
+                                ),
+                        )}
                     </div>
                 )}
             </div>
