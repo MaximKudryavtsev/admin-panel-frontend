@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { css } from "emotion";
 import { Button, Chip, Divider, Grid, Typography } from "@material-ui/core";
-import { useSnackbar, useUser } from "../../hooks";
+import { useAdmin, useSnackbar, useUser } from "../../hooks";
 import { Card } from "../../components/card";
 import { Snackbar } from "../../components/snackbar";
-import { IChangePasswordData, IUser } from "../../entities";
+import { IChangePasswordData, IUser, TLang } from "../../entities";
 import { UpdateUserForm, ChangePassword, UploadAvatar } from "../../widgets";
 import { getServerError } from "../../utils";
 import { Add, Update } from "@material-ui/icons";
@@ -31,6 +31,7 @@ const classes = {
 export const Profile = (props: IProfileProps) => {
     const { setPageTitle, onSetUser } = props;
     const { user, updateUser, deleteUser, updateAvatar, updatePassword, deleteAvatar } = useUser();
+    const { updateBlog } = useAdmin();
     const { error, snackbar, setSnackbarError, setSnackbarState, onSnackbarClose } = useSnackbar();
     const [avatarLoaderVisible, setAvatarLoaderVisible] = useState(false);
     const [passwordError, setPasswordError] = useState<string | undefined>(undefined);
@@ -80,6 +81,13 @@ export const Profile = (props: IProfileProps) => {
                 }
                 setPasswordError(serverError.title);
             });
+    };
+
+    const onUpdateBlog = (lang: TLang) => {
+        updateBlog(lang).then(() => {
+            setSnackbarError(false);
+            setSnackbarState({ open: true, message: "Обновлено!" });
+        })
     };
 
     return (
@@ -139,6 +147,7 @@ export const Profile = (props: IProfileProps) => {
                                     color="primary"
                                     startIcon={<Update />}
                                     className={css`margin-right: 24px`}
+                                    onClick={() => onUpdateBlog("ru")}
                                 >
                                     Обновить русский блог
                                 </Button>
@@ -146,6 +155,7 @@ export const Profile = (props: IProfileProps) => {
                                     variant="contained"
                                     color="primary"
                                     startIcon={<Update />}
+                                    onClick={() => onUpdateBlog("en")}
                                 >
                                     Обновить английский блог
                                 </Button>

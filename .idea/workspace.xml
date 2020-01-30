@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/blocks/contacts/ContactsBlock.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blocks/contacts/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/admin.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/useAdmin.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/blockList.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/blockList.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/block.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/block.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/block-wrapper/BlockWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/block-wrapper/BlockWrapper.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/ApiPaths.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/ApiPaths.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/profile/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/profile/Profile.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +44,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/node_modules/prettier" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/api" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -60,15 +61,15 @@
     <property name="ts.external.directory.path" value="C:\omega-admin-panel\admin-panel-frontend\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\omega\admin-panel-frontend\src\app" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\omega-admin-panel\admin-panel-frontend\src\api" />
       <recent name="C:\omega-admin-panel\admin-panel-frontend\node_modules" />
       <recent name="C:\omega-admin-panel\admin-panel-frontend" />
       <recent name="C:\omega\admin-panel-frontend\src\hooks\page" />
       <recent name="C:\omega\admin-panel-frontend\src\components" />
-      <recent name="C:\omega\admin-panel-frontend\src\hooks" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\omega\admin-panel-frontend\src\app" />
     </key>
   </component>
   <component name="RunManager" selected="npm.build">
@@ -157,14 +158,7 @@
       <workItem from="1580198210125" duration="13284000" />
       <workItem from="1580288040105" duration="1138000" />
       <workItem from="1580302177185" duration="8931000" />
-      <workItem from="1580371744014" duration="6924000" />
-    </task>
-    <task id="LOCAL-00020" summary="add forgot password page">
-      <created>1578062168147</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1578062168147</updated>
+      <workItem from="1580371744014" duration="8981000" />
     </task>
     <task id="LOCAL-00021" summary="fix PrivateRoute">
       <created>1578084802703</created>
@@ -502,7 +496,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580377782350</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="add block for contacts item">
+      <created>1580379953161</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1580379953161</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -519,7 +520,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="move sidebar to separate component" />
     <MESSAGE value="add fetching navigation on mount work panel" />
     <MESSAGE value="add dragging navigations" />
     <MESSAGE value="finished dragging navigations" />
@@ -544,7 +544,8 @@
     <MESSAGE value="add disabling if editing not enabled" />
     <MESSAGE value="move blocks in page to separate component" />
     <MESSAGE value="refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactoring" />
+    <MESSAGE value="add block for contacts item" />
+    <option name="LAST_COMMIT_MESSAGE" value="add block for contacts item" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="182" key="#ESLint" timestamp="1578156507884">
@@ -567,10 +568,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="601" y="291" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1576315906681" />
-    <state x="585" y="117" key="CommitChangelistDialog2" timestamp="1580377781500">
+    <state x="585" y="117" key="CommitChangelistDialog2" timestamp="1580379952413">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580377781500" />
+    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580379952413" />
     <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172968703" />
     <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580329468022" />
     <state x="184" y="85" width="1536" height="840" key="DiffContextDialog" timestamp="1580377771359">
@@ -610,10 +611,10 @@
     </state>
     <state x="461" y="155" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580373599139" />
     <state x="461" y="156" key="SettingsEditor/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580326674783" />
-    <state x="552" y="255" key="Vcs.Push.Dialog.v2" timestamp="1580211261312">
+    <state x="552" y="255" key="Vcs.Push.Dialog.v2" timestamp="1580379959155">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="255" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580211261312" />
+    <state x="552" y="255" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580379959155" />
     <state x="552" y="257" key="Vcs.Push.Dialog.v2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172973521" />
     <state x="552" y="257" key="Vcs.Push.Dialog.v2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580061963356" />
     <state x="92" y="92" width="1736" height="866" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1578046510409">
@@ -639,10 +640,10 @@
     </state>
     <state x="616" y="237" key="run.anything.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578145423257" />
     <state x="616" y="237" width="672" height="677" key="run.anything.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579939819522" />
-    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup" timestamp="1580377402560">
+    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup" timestamp="1580384651453">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580377402560" />
+    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580384651453" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578170577061" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580327570538" />
   </component>

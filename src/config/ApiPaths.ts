@@ -26,5 +26,7 @@ export const ApiPaths = {
     //block
     GET_BLOCK_TYPES: "/block/types",
     CREATE_BLOCK: "/block/create",
-    BLOCK: "/block"
+    BLOCK: "/block",
+    // admin
+    UPDATE_BLOG: "/admin/updateBlog"
 };
