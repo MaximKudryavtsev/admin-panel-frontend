@@ -34,10 +34,10 @@ export const QuoteBlock = (props: IBlockProps<IQuoteBlock>) => {
             validationSchema={ValidationSchema}
             onDelete={onDelete}
             onSubmit={onSubmit}
-            render={(values, editable) => (
+            render={() => (
                 <React.Fragment>
-                    <TextField name={"data.title"} label={"Заголовок"} classes={{root: classNames.field}} disable={!editable} />
-                    <TextField name={"data.text"} label={"Текст"} textarea disable={!editable} />
+                    <TextField name={"data.title"} label={"Заголовок"} classes={{root: classNames.field}}/>
+                    <TextField name={"data.text"} label={"Текст"} textarea />
                 </React.Fragment>
             )}
         />

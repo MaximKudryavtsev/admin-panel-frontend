@@ -1,8 +1,8 @@
-import React, { createElement, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { usePage } from "../../hooks/page";
-import { EPageStatusLabel, IBlock, IPage } from "../../entities";
-import { Button, IconButton, Tooltip, Typography } from "@material-ui/core";
+import { IBlock, IPage } from "../../entities";
+import { Button, IconButton, Tooltip } from "@material-ui/core";
 import { Add, ArrowBack } from "@material-ui/icons";
 import { getServerError } from "../../utils";
 import { AppContext } from "../../context";
@@ -11,7 +11,7 @@ import { useBlock, useSnackbar } from "../../hooks";
 import { PageInfo } from "../../widgets/page-info";
 import { AddBlockPopup } from "../../widgets/add-block-popup";
 import { css } from "emotion";
-import { getBlock, IBlockProps } from "../../blocks";
+import { BlockTabs } from "../../blocks/block-tabs";
 
 interface IPageProps {
     setPageTitle(title: string): void;
@@ -100,8 +100,16 @@ export const Page = (props: IPageProps) => {
         });
     };
 
-    const published = blocks.filter((item) => item.status.label === EPageStatusLabel.PUBLISHED);
-    const draft = blocks.filter((item) => item.status.label === EPageStatusLabel.DRAFT);
+    const onDeleteBlock = (id: string) => {
+        deleteBlock(id).catch((error) => {
+            const err = getServerError(error);
+            setSnackbarError(true);
+            setSnackbarState({
+                open: true,
+                message: err?.title ?? "",
+            });
+        });
+    };
 
     return (
         <React.Fragment>
@@ -127,46 +135,12 @@ export const Page = (props: IPageProps) => {
             >
                 Добавить блок
             </Button>
-            <div>
-                <Typography variant={"h5"} className={classNames.titleGroup}>
-                    Опубликовано
-                </Typography>
-                {published.map((item) => (
-                    <div
-                        key={item._id}
-                        className={css`
-                            margin-bottom: 20px;
-                        `}
-                    >
-                        {createElement<IBlockProps>(getBlock(item.type.label), {
-                            block: item,
-                            statuses,
-                            onDelete: deleteBlock,
-                            onSubmit: onUpdateBlock,
-                        })}
-                    </div>
-                ))}
-            </div>
-            <div>
-                <Typography variant={"h5"} className={classNames.titleGroup}>
-                    Черновик
-                </Typography>
-                {draft.map((item) => (
-                    <div
-                        key={item._id}
-                        className={css`
-                            margin-bottom: 20px;
-                        `}
-                    >
-                        {createElement<IBlockProps>(getBlock(item.type.label), {
-                            block: item,
-                            statuses,
-                            onDelete: deleteBlock,
-                            onSubmit: onUpdateBlock,
-                        })}
-                    </div>
-                ))}
-            </div>
+            <BlockTabs
+                statuses={statuses}
+                blocks={blocks}
+                onDeleteBlock={onDeleteBlock}
+                onUpdateBlock={onUpdateBlock}
+            />
             <Snackbar
                 open={snackbar.open}
                 message={snackbar.message}

@@ -13,7 +13,7 @@ import { IBlock, IDictionary } from "../../entities";
 import { CustomForm } from "../../components/custom-form";
 import { Select } from "../../components/select";
 import * as Yup from "yup";
-import { Delete, Edit, Save } from "@material-ui/icons";
+import { Delete, Save } from "@material-ui/icons";
 import { ConfirmPopup } from "../../components/confirm-popup";
 import { SwitchField } from "../../components/switch-field";
 import { isEqual } from "lodash";
@@ -23,7 +23,7 @@ interface IBlockWrapperProps<T> {
     statuses?: IDictionary[];
     validationSchema: Yup.ObjectSchema<any>;
 
-    render(values?: Partial<IBlock<T>>, editable?: boolean): ReactNode;
+    render(values?: Partial<IBlock<T>>): ReactNode;
 
     onDelete?(id: string): void;
 
@@ -65,7 +65,6 @@ const ValidationSchema = Yup.object().shape({
 export const BlockWrapper = <T extends any>(props: IBlockWrapperProps<T>) => {
     const { block, statuses = [], validationSchema, render, onDelete, onSubmit } = props;
     const [deleteVisible, setDeleteVisible] = useState(false);
-    const [editable, setEditable] = useState(false);
 
     function onDeleteOpen(): void {
         setDeleteVisible(true);
@@ -123,22 +122,6 @@ export const BlockWrapper = <T extends any>(props: IBlockWrapperProps<T>) => {
                                     disable={!block?.open}
                                 />
                                 <div className={classNames.deleteButton}>
-                                    <Tooltip
-                                        title={
-                                            editable
-                                                ? "Запретить редактирование"
-                                                : "Разрешить редактирование"
-                                        }
-                                        placement={"top"}
-                                        className={classNames.icon}
-                                    >
-                                        <IconButton
-                                            onClick={() => setEditable(!editable)}
-                                            disabled={!block?.open}
-                                        >
-                                            <Edit />
-                                        </IconButton>
-                                    </Tooltip>
                                     <Tooltip title={"Удалить блок"} placement={"top"}>
                                         <IconButton onClick={onDeleteOpen} disabled={!block?.open}>
                                             <Delete />
@@ -149,7 +132,7 @@ export const BlockWrapper = <T extends any>(props: IBlockWrapperProps<T>) => {
                             <Collapse in={block?.open} unmountOnExit>
                                 <Divider />
                                 <div className={classNames.content}>
-                                    {render(form?.values, editable)}
+                                    {render(form?.values)}
                                 </div>
                                 <Divider />
                                 <div className={classNames.buttonWrapper}>
