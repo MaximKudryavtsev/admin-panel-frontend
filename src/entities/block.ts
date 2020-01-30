@@ -2,7 +2,8 @@ import { IDictionary } from "./common";
 
 export enum EBlockTypes {
     FACTS = "facts",
-    QUOTE = "quote"
+    QUOTE = "quote",
+    CONTACTS = "contacts"
 }
 
 export interface ICreateBlockRequest {

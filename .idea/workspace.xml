@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/blocks/contacts/ContactsBlock.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/contacts/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/card/Card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/card/Card.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/login/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/login/Login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/profile/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/profile/Profile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/add-navigation/NavigationPopup.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/add-navigation/NavigationPopup.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/blockList.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/blockList.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/block.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/block.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/widgets/block-wrapper/BlockWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/block-wrapper/BlockWrapper.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -157,14 +157,7 @@
       <workItem from="1580198210125" duration="13284000" />
       <workItem from="1580288040105" duration="1138000" />
       <workItem from="1580302177185" duration="8931000" />
-      <workItem from="1580371744014" duration="4894000" />
-    </task>
-    <task id="LOCAL-00019" summary="refactoring TextField.tsx">
-      <created>1578057409705</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1578057409705</updated>
+      <workItem from="1580371744014" duration="6924000" />
     </task>
     <task id="LOCAL-00020" summary="add forgot password page">
       <created>1578062168147</created>
@@ -502,7 +495,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580374233662</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="refactoring">
+      <created>1580377782350</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1580377782350</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -530,7 +530,6 @@
     <MESSAGE value="add list of pages" />
     <MESSAGE value="add popup for creating page" />
     <MESSAGE value="add getting list of pages, creating and getting page" />
-    <MESSAGE value="refactoring" />
     <MESSAGE value="add showing error if page already exists" />
     <MESSAGE value="add .htaccess" />
     <MESSAGE value="add showing success message after updating page" />
@@ -544,7 +543,8 @@
     <MESSAGE value="add component for quote block" />
     <MESSAGE value="add disabling if editing not enabled" />
     <MESSAGE value="move blocks in page to separate component" />
-    <option name="LAST_COMMIT_MESSAGE" value="move blocks in page to separate component" />
+    <MESSAGE value="refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactoring" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="182" key="#ESLint" timestamp="1578156507884">
@@ -567,16 +567,16 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="601" y="291" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1576315906681" />
-    <state x="585" y="117" key="CommitChangelistDialog2" timestamp="1580374232716">
+    <state x="585" y="117" key="CommitChangelistDialog2" timestamp="1580377781500">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580374232716" />
+    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580377781500" />
     <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172968703" />
     <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580329468022" />
-    <state x="184" y="85" width="1536" height="840" key="DiffContextDialog" timestamp="1580374038382">
+    <state x="184" y="85" width="1536" height="840" key="DiffContextDialog" timestamp="1580377771359">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="184" y="85" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580374038382" />
+    <state x="184" y="85" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580377771359" />
     <state x="184" y="86" width="1536" height="840" key="DiffContextDialog/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172950313" />
     <state x="184" y="86" key="DiffContextDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580329450744" />
     <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1580373597877">

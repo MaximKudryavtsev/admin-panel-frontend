@@ -124,9 +124,14 @@ export const BlockWrapper = <T extends any>(props: IBlockWrapperProps<T>) => {
                                 />
                                 <div className={classNames.icons}>
                                     <Tooltip title={"Удалить блок"} placement={"top"}>
-                                        <IconButton onClick={onDeleteOpen} disabled={!block?.open}>
-                                            <Delete />
-                                        </IconButton>
+                                        <span>
+                                            <IconButton
+                                                onClick={onDeleteOpen}
+                                                disabled={!block?.open}
+                                            >
+                                                <Delete />
+                                            </IconButton>
+                                        </span>
                                     </Tooltip>
                                 </div>
                             </div>
