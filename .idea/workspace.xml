@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/user.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/ApiPaths.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/ApiPaths.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useUser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useUser.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/main/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/main/Main.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/profile/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/profile/Profile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/work-panel/WorkPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/work-panel/WorkPanel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/page-info/PageInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/page-info/PageInfo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/upload-avatar/UploadAvatar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/upload-avatar/UploadAvatar.tsx" afterDir="false" />
-    </list>
+    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -161,14 +151,7 @@
       <workItem from="1580288040105" duration="1138000" />
       <workItem from="1580302177185" duration="8931000" />
       <workItem from="1580371744014" duration="15648000" />
-      <workItem from="1580467545317" duration="758000" />
-    </task>
-    <task id="LOCAL-00024" summary="add uploading avatar">
-      <created>1578153621654</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1578153621654</updated>
+      <workItem from="1580467545317" duration="777000" />
     </task>
     <task id="LOCAL-00025" summary="add roles and avatar to profile">
       <created>1578153692562</created>
@@ -506,7 +489,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580410823471</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="add uploading and deleting avatar">
+      <created>1580468323324</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1580468323324</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -523,7 +513,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add dragging children of navigation" />
     <MESSAGE value="showing only visible navigations in sidebar" />
     <MESSAGE value="add footer page" />
     <MESSAGE value="add зфпуы page" />
@@ -548,7 +537,8 @@
     <MESSAGE value="add writing blog data to database" />
     <MESSAGE value="add block for blog" />
     <MESSAGE value="add dragging icon for blocks" />
-    <option name="LAST_COMMIT_MESSAGE" value="add dragging icon for blocks" />
+    <MESSAGE value="add uploading and deleting avatar" />
+    <option name="LAST_COMMIT_MESSAGE" value="add uploading and deleting avatar" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="182" key="#ESLint" timestamp="1578156507884">
@@ -572,10 +562,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="601" y="291" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1576315906681" />
-    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1580410823121">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state x="585" y="117" key="CommitChangelistDialog2" timestamp="1580468322255">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580395758784" />
+    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580468322255" />
     <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172968703" />
     <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580410823121" />
     <state x="184" y="86" width="1536" height="840" key="DiffContextDialog" timestamp="1580410809298">

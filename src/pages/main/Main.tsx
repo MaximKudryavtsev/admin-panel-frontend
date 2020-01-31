@@ -9,7 +9,7 @@ export const Main = (props: IMainProps) => {
 
     useEffect(() => {
         setPageTitle("Главная")
-    }, []);
+    }, [setPageTitle]);
 
     return (
         <h1>23</h1>
