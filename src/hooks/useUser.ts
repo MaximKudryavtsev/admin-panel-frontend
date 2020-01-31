@@ -45,11 +45,9 @@ export function useUser(): {
 
     const onUpdateAvatar = useCallback(
         (data: IUpdateAvatar) => {
-            return updateAvatar(transport, transport.formatToFormData(data)).then((response) =>
-                setUser(response.data),
-            );
+            return updateAvatar(transport, transport.formatToFormData(data)).then(fetchOne);
         },
-        [transport],
+        [transport, fetchOne],
     );
 
     const onDeleteAvatar = useCallback(() => {

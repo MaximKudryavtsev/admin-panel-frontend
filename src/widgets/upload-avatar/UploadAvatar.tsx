@@ -63,6 +63,7 @@ export const UploadAvatar = (props: IUploadAvatarProps) => {
 
     useEffect(() => {
         setSrc(props.src);
+        setSrc(props.src);
     }, [props.src, setSrc]);
 
     function onModalOpen(): void {

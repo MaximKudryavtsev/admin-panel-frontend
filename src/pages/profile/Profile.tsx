@@ -7,7 +7,7 @@ import { Snackbar } from "../../components/snackbar";
 import { IChangePasswordData, IUser, TLang } from "../../entities";
 import { UpdateUserForm, ChangePassword, UploadAvatar } from "../../widgets";
 import { getServerError } from "../../utils";
-import { Add, Update } from "@material-ui/icons";
+import { Update } from "@material-ui/icons";
 
 interface IProfileProps {
     setPageTitle(title: string): void;

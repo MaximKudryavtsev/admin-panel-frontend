@@ -1,3 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-export const Main = () => <h1>Главная</h1>
+interface IMainProps {
+    setPageTitle(title: string): void;
+}
+
+export const Main = (props: IMainProps) => {
+    const { setPageTitle } = props;
+
+    useEffect(() => {
+        setPageTitle("Главная")
+    }, []);
+
+    return (
+        <h1>23</h1>
+    );
+};

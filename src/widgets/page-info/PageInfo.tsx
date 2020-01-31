@@ -101,7 +101,7 @@ export const PageInfo = (props: IPageInfoProps) => {
                                     Автор:{" "}
                                 </Typography>
                                 {pageAuthor?.avatar ? (
-                                    <Avatar src={pageAuthor?.avatar} />
+                                    <Avatar src={pageAuthor?.avatar} className={css`width: 30px; height: 30px; margin-right: 10px;`} />
                                 ) : (
                                     <AccountCircle />
                                 )}

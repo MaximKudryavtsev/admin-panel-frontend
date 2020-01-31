@@ -42,7 +42,7 @@ export const WorkPanel = (props: INavigationProps) => {
                     <Page setPageTitle={setTitle} />
                 </Route>
                 <Route path={"/main"} exact>
-                    <Main  />
+                    <Main setPageTitle={setTitle} />
                 </Route>
             </Switch>
         </Layout>
