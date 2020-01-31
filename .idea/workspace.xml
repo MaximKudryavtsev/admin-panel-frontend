@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="" />
+    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/blocks/feedback-block/FeedbackBlock.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/feedback-block/feedback/Feedback.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/feedback-block/feedback/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/feedback-block/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/upload-file-field/UploadFileBlock.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/upload-file-field/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/block.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/block.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/blockList.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/blockList.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/blue-lines-list/BlueLinesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/blue-lines-list/BlueLinesList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/contacts/ContactsBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/contacts/ContactsBlock.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/description/Description.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/description/Description.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/facts/FactsBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/facts/FactsBlock.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/block.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/block.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useBlock.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useBlock.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/block-wrapper/BlockWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/block-wrapper/BlockWrapper.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,7 +65,7 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="prettierjs.PrettierConfiguration.NodeInterpreter" value="project" />
-    <property name="prettierjs.PrettierConfiguration.Package" value="C:\omega\admin-panel-frontend\node_modules\prettier" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="C:\omega-admin-panel\admin-panel-frontend\node_modules\prettier" />
     <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
     <property name="ts.external.directory.path" value="C:\omega-admin-panel\admin-panel-frontend\node_modules\typescript\lib" />
   </component>
@@ -151,14 +168,7 @@
       <workItem from="1580288040105" duration="1138000" />
       <workItem from="1580302177185" duration="8931000" />
       <workItem from="1580371744014" duration="15648000" />
-      <workItem from="1580467545317" duration="777000" />
-    </task>
-    <task id="LOCAL-00025" summary="add roles and avatar to profile">
-      <created>1578153692562</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1578153692562</updated>
+      <workItem from="1580467545317" duration="11827000" />
     </task>
     <task id="LOCAL-00026" summary="move actions with file to hook">
       <created>1578157647578</created>
@@ -496,7 +506,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580468323324</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="add deps to hook">
+      <created>1580468348393</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1580468348393</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -513,7 +530,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="showing only visible navigations in sidebar" />
     <MESSAGE value="add footer page" />
     <MESSAGE value="add зфпуы page" />
     <MESSAGE value="add list of pages" />
@@ -538,7 +554,8 @@
     <MESSAGE value="add block for blog" />
     <MESSAGE value="add dragging icon for blocks" />
     <MESSAGE value="add uploading and deleting avatar" />
-    <option name="LAST_COMMIT_MESSAGE" value="add uploading and deleting avatar" />
+    <MESSAGE value="add deps to hook" />
+    <option name="LAST_COMMIT_MESSAGE" value="add deps to hook" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="182" key="#ESLint" timestamp="1578156507884">
@@ -562,10 +579,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="601" y="291" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1576315906681" />
-    <state x="585" y="117" key="CommitChangelistDialog2" timestamp="1580468322255">
+    <state x="585" y="117" key="CommitChangelistDialog2" timestamp="1580468347430">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580468322255" />
+    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580468347430" />
     <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172968703" />
     <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580410823121" />
     <state x="184" y="86" width="1536" height="840" key="DiffContextDialog" timestamp="1580410809298">
@@ -574,10 +591,10 @@
     <state x="184" y="85" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580377771359" />
     <state x="184" y="86" width="1536" height="840" key="DiffContextDialog/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172950313" />
     <state x="184" y="86" key="DiffContextDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580410809298" />
-    <state x="881" y="341" key="FileChooserDialogImpl" timestamp="1580412743920">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1580474036064">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580373597877" />
+    <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580474036064" />
     <state x="740" y="279" key="FileChooserDialogImpl/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578163730639" />
     <state x="881" y="341" key="FileChooserDialogImpl/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580412743920" />
     <state width="1898" height="274" key="GridCell.Tab.0.bottom" timestamp="1580326687702">
@@ -600,15 +617,15 @@
     </state>
     <state width="1899" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580195628050" />
     <state width="1898" height="274" key="GridCell.Tab.0.right/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580326687702" />
-    <state x="461" y="156" key="SettingsEditor" timestamp="1580412745507">
-      <screen x="0" y="0" width="1920" height="1050" />
-    </state>
-    <state x="461" y="155" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580373599139" />
-    <state x="461" y="156" key="SettingsEditor/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580412745507" />
-    <state x="552" y="255" key="Vcs.Push.Dialog.v2" timestamp="1580395747107">
+    <state x="461" y="155" key="SettingsEditor" timestamp="1580474037347">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="255" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580395747107" />
+    <state x="461" y="155" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580474037347" />
+    <state x="461" y="156" key="SettingsEditor/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580412745507" />
+    <state x="552" y="255" key="Vcs.Push.Dialog.v2" timestamp="1580468353470">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="255" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580468353470" />
     <state x="552" y="257" key="Vcs.Push.Dialog.v2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172973521" />
     <state x="552" y="257" key="Vcs.Push.Dialog.v2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580061963356" />
     <state x="92" y="92" width="1736" height="866" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1578046510409">
@@ -634,10 +651,10 @@
     </state>
     <state x="616" y="237" key="run.anything.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578145423257" />
     <state x="616" y="237" width="672" height="677" key="run.anything.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579939819522" />
-    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup" timestamp="1580466743904">
+    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup" timestamp="1580481380916">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580466743904" />
+    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580481380916" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578170577061" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580412320581" />
   </component>

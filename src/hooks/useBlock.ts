@@ -36,7 +36,7 @@ export function useBlock(
     }, [transport, fetchList]);
 
     const update = useCallback((id: string, data: IBlock<any>) => {
-        return updateBlock(transport, id, data).then(fetchList);
+        return updateBlock(transport, id, transport.formatToFormData(data)).then(fetchList);
     }, [transport, fetchList]);
 
     useEffect(() => {

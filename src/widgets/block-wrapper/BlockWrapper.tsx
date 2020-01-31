@@ -17,13 +17,14 @@ import { Delete, DragIndicator, Save } from "@material-ui/icons";
 import { ConfirmPopup } from "../../components/confirm-popup";
 import { SwitchField } from "../../components/switch-field";
 import { isEqual } from "lodash";
+import { FormikProps } from "formik";
 
 interface IBlockWrapperProps<T> {
     block?: IBlock<T>;
     statuses?: IDictionary[];
     validationSchema: Yup.ObjectSchema<any>;
 
-    render(values?: Partial<IBlock<T>>): ReactNode;
+    render(form?: FormikProps<Partial<IBlock<T>>>): ReactNode;
 
     onDelete?(id: string): void;
 
@@ -87,12 +88,6 @@ export const BlockWrapper = <T extends any>(props: IBlockWrapperProps<T>) => {
         }
     };
 
-    const changeVisibility = (data: Partial<IBlock<any>>) => {
-        if (onSubmit) {
-            handleSubmit(data);
-        }
-    };
-
     return (
         <React.Fragment>
             <Paper className={classNames.wrapper}>
@@ -110,7 +105,7 @@ export const BlockWrapper = <T extends any>(props: IBlockWrapperProps<T>) => {
                                 <SwitchField
                                     name={"open"}
                                     classes={{ root: classNames.icon }}
-                                    onChange={(value) => changeVisibility({ open: value })}
+                                    onChange={(value) => handleSubmit({ ...block, open: value })}
                                 />
                                 <Typography variant={"h6"} className={classNames.field}>
                                     {block?.type?.title}
@@ -140,7 +135,7 @@ export const BlockWrapper = <T extends any>(props: IBlockWrapperProps<T>) => {
                             </div>
                             <Collapse in={block?.open} unmountOnExit>
                                 <Divider />
-                                <div className={classNames.content}>{render(form?.values)}</div>
+                                <div className={classNames.content}>{render(form)}</div>
                                 <Divider />
                                 <div className={classNames.buttonWrapper}>
                                     <Button

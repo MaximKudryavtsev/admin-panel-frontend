@@ -7,6 +7,7 @@ import { ContactsBlock } from "./contacts";
 import { BlogBlock } from "./blog";
 import { Description } from "./description";
 import { BlueLinesList } from "./blue-lines-list";
+import { FeedbackBlock } from "./feedback-block";
 
 const blockList = {
     [EBlockTypes.FACTS]: FactsBlock,
@@ -15,6 +16,7 @@ const blockList = {
     [EBlockTypes.BLOG]: BlogBlock,
     [EBlockTypes.DESCRIPTION]: Description,
     [EBlockTypes.BLUE_LINES_LIST]: BlueLinesList,
+    [EBlockTypes.FEEDBACK]: FeedbackBlock,
     "default": undefined
 };
 

@@ -18,6 +18,6 @@ export function deleteBlock(transport: Transport, id: string) {
     return transport.delete(`${ApiPaths.BLOCK}/${id}`)
 }
 
-export function updateBlock(transport: Transport, id: string, data: IBlock<any>) {
-    return transport.put<IBlock<any>, void>(`${ApiPaths.BLOCK}/${id}`, data);
+export function updateBlock(transport: Transport, id: string, data: FormData) {
+    return transport.put<FormData, void>(`${ApiPaths.BLOCK}/${id}`, data);
 }

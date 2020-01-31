@@ -6,7 +6,8 @@ export enum EBlockTypes {
     CONTACTS = "contacts",
     BLOG = "blog",
     DESCRIPTION = "description",
-    BLUE_LINES_LIST = "blueLinesList"
+    BLUE_LINES_LIST = "blueLinesList",
+    FEEDBACK = "feeedbackBlock",
 }
 
 export interface ICreateBlockRequest {

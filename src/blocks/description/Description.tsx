@@ -45,7 +45,7 @@ export const Description = (props: IBlockProps<string[]>) => {
             statuses={statuses}
             onSubmit={onSubmit}
             onDelete={onDelete}
-            render={(values) => (
+            render={(form) => (
                 <React.Fragment>
                     <div
                         className={css`
@@ -57,8 +57,8 @@ export const Description = (props: IBlockProps<string[]>) => {
                             render={(array) => (
                                 <div>
                                     <div className={classNames.wrapper}>
-                                        {values?.data &&
-                                            values.data.map((row, index) => (
+                                        {form?.values?.data &&
+                                            form?.values.data.map((row, index) => (
                                                 <div className={classNames.row} key={index}>
                                                     <TextField
                                                         name={`data.${index}`}

@@ -39,13 +39,13 @@ export const BlueLinesList = (props: IBlockProps<string[]>) => {
             onSubmit={onSubmit}
             onDelete={onDelete}
             validationSchema={ValidationSchema}
-            render={(values) => (
+            render={(form) => (
                 <FieldArray
                     name={"data"}
                     render={(array) => (
                         <div>
                             <div className={classNames.content}>
-                                {values?.data?.map((item, index) => (
+                                {form?.values?.data?.map((item, index) => (
                                     <div className={classNames.row} key={index}>
                                         <TextField
                                             name={`data.${index}`}

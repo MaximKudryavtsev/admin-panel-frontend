@@ -64,12 +64,12 @@ export const ContactsBlock = (props: IBlockProps<IContactBlock[]>) => {
             validationSchema={ValidationSchema}
             onDelete={onDelete}
             onSubmit={onSubmit}
-            render={(values) => (
+            render={(form) => (
                 <FieldArray name={"data"}>
                     {(array) => (
                         <div>
                             <div className={classNames.wrapper}>
-                                {values?.data?.map((item, index) => (
+                                {form?.values?.data?.map((item, index) => (
                                     <Card key={index} classes={{ root: classNames.card }} variant={"outlined"}>
                                         <div className={classNames.cardHeader}>
                                             <SwitchField
