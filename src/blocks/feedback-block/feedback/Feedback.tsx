@@ -15,6 +15,7 @@ interface IFeedbackProps {
 
 export interface IFeedback {
     file?: File;
+    id?: string;
     imageLink: string;
     text: string;
     name: string;
@@ -43,7 +44,7 @@ const feedbackClassNames = {
 export const Feedback = (props: IFeedbackProps) => {
     const { feedback, name, setFieldValue, onDelete } = props;
 
-    const { src, file, error, setSrc, deleteFile, loadFile } = useFile({
+    const { src, error, setSrc, loadFile } = useFile({
         whiteList: ["png", "jpg", "pdf", "gif", "jpeg"],
         maxFileSize: 1048576,
     });

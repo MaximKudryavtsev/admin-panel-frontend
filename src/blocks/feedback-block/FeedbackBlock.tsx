@@ -9,7 +9,8 @@ import { Feedback, IFeedback } from "./feedback";
 import { Add } from "@material-ui/icons";
 import { IconButton } from "@material-ui/core";
 import { IBlock } from "../../entities";
-import { set, omit } from "lodash";
+import { set, omit, get } from "lodash";
+import * as uuid from "uuid";
 
 export interface IFeedbackBlock {
     title: string;
@@ -21,7 +22,7 @@ const validationSchema = Yup.object().shape({
         title: Yup.string().required("Поле обязательно для заполнения"),
         feedbacks: Yup.array().of(
             Yup.object().shape({
-                file: Yup.mixed().required("Поле обязательно для заполнения"),
+                file: Yup.mixed(),
                 text: Yup.string().required("Поле обязательно для заполнения"),
                 name: Yup.string().required("Поле обязательно для заполнения"),
                 position: Yup.string().required("Поле обязательно для заполнения"),
@@ -47,11 +48,22 @@ export const FeedbackBlock = (props: IBlockProps<IFeedbackBlock>) => {
     const { block, onDelete, onSubmit, statuses } = props;
 
     const handleSubmit = (id: string, data: Partial<IBlock<IFeedbackBlock>>) => {
-        const fileList = data.data?.feedbacks?.map((item) => item.file ? item.file : undefined);
-        fileList?.map((file, index) => set(data, `image${index}`, file));
-        set(data, "data.feedbacks", data.data?.feedbacks.map((item) => omit(item, ["file"])));
+        if (data.data?.feedbacks) {
+            set(
+                data,
+                "data.feedbacks",
+                data.data?.feedbacks
+                    .map((item) => {
+                        item.id = uuid.v4();
+                        if (item.file) {
+                            set(data, `${item.id}`, item.file);
+                        }
+                        return omit(item, ["file"])
+                    })
+            );
+        }
         if (onSubmit) {
-            onSubmit(id, {...data});
+            onSubmit(id, { ...data });
         }
     };
 

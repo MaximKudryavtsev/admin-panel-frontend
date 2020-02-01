@@ -10,7 +10,7 @@ import { deletePage, fetchPage, fetchPageAuthor, fetchPageStatusList, updatePage
 
 export function usePage(pageId: string): {
     page?: IPage;
-    getPage: () => Promise<void> | undefined;
+    getPage: () => Promise<void>;
     statuses: IPageStatus[];
     pageAuthor?: IPageAuthor;
     updatePage: (data: Partial<IPage>) => Promise<void>;
@@ -47,8 +47,7 @@ export function usePage(pageId: string): {
     useEffect(() => {
         if (pageId) {
             getStatuses();
-            getPage();
-            getAuthor();
+            getPage().then(getAuthor);
         }
     }, [getPage, pageId, getStatuses, getAuthor]);
 
