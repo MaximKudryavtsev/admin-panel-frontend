@@ -4,11 +4,14 @@ import "./index.css";
 import App from "./app/App";
 import * as serviceWorker from "./serviceWorker";
 import { JssProvider } from "./components/jss-provider";
+import { SnackbarProvider } from "notistack";
 
 ReactDOM.render(
-    <JssProvider>
-        <App />
-    </JssProvider>,
+    <SnackbarProvider maxSnack={5} autoHideDuration={5000}>
+        <JssProvider>
+            <App />
+        </JssProvider>
+    </SnackbarProvider>,
     document.getElementById("root"),
 );
 

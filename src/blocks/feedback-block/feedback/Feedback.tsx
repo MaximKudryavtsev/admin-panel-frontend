@@ -52,7 +52,7 @@ export const Feedback = (props: IFeedbackProps) => {
 
     useEffect(() => {
         setSrc(feedback.imageLink);
-    }, [feedback.imageLink]);
+    }, [feedback.imageLink, setSrc]);
 
     const onChange = (event: ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.item(0);

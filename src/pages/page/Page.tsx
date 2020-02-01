@@ -6,12 +6,12 @@ import { Button, IconButton, Tooltip } from "@material-ui/core";
 import { Add, ArrowBack } from "@material-ui/icons";
 import { getServerError } from "../../utils";
 import { AppContext } from "../../context";
-import { Snackbar } from "../../components/snackbar";
-import { useBlock, useSnackbar } from "../../hooks";
+import { useBlock } from "../../hooks";
 import { PageInfo } from "../../widgets/page-info";
 import { AddBlockPopup } from "../../widgets/add-block-popup";
 import { css } from "emotion";
 import { BlockTabs } from "../../blocks/block-tabs";
+import { useSnackbar } from "notistack";
 
 interface IPageProps {
     setPageTitle(title: string): void;
@@ -33,7 +33,7 @@ export const Page = (props: IPageProps) => {
 
     const { page, statuses, pageAuthor, updatePage, deletePage } = usePage(String(id));
     const { blockTypes, createBlock, blocks, deleteBlock, updateBlock } = useBlock(String(id));
-    const { error, snackbar, setSnackbarError, setSnackbarState, onSnackbarClose } = useSnackbar();
+    const { enqueueSnackbar } = useSnackbar();
 
     useEffect(() => {
         if (!page) {
@@ -56,20 +56,10 @@ export const Page = (props: IPageProps) => {
 
     const onUpdatePage = (data: Partial<IPage>) => {
         updatePage(data)
-            .then(() => {
-                setSnackbarError(false);
-                setSnackbarState({
-                    open: true,
-                    message: "Успешно сохранено",
-                });
-            })
+            .then(() => enqueueSnackbar("Успешно сохранено", {variant: "success"}))
             .catch((error) => {
                 const err = getServerError(error);
-                setSnackbarError(true);
-                setSnackbarState({
-                    open: true,
-                    message: err?.title ?? "",
-                });
+                enqueueSnackbar(err?.title, {variant: "error"})
             });
     };
 
@@ -78,11 +68,7 @@ export const Page = (props: IPageProps) => {
             .then(goToList)
             .catch((error) => {
                 const err = getServerError(error);
-                setSnackbarError(true);
-                setSnackbarState({
-                    open: true,
-                    message: err?.title ?? "",
-                });
+                enqueueSnackbar(err?.title, {variant: "error"})
             });
     };
 
@@ -91,23 +77,13 @@ export const Page = (props: IPageProps) => {
     };
 
     const onUpdateBlock = (id: string, data: IBlock<any>) => {
-        updateBlock(id, data).then(() => {
-            setSnackbarError(false);
-            setSnackbarState({
-                open: true,
-                message: "Успешно сохранено",
-            });
-        });
+        updateBlock(id, data).then(() => enqueueSnackbar("Успешно сохранено", {variant: "success"}));
     };
 
     const onDeleteBlock = (id: string) => {
         deleteBlock(id).catch((error) => {
             const err = getServerError(error);
-            setSnackbarError(true);
-            setSnackbarState({
-                open: true,
-                message: err?.title ?? "",
-            });
+            enqueueSnackbar(err?.title, {variant: "error"})
         });
     };
 
@@ -140,12 +116,6 @@ export const Page = (props: IPageProps) => {
                 blocks={blocks}
                 onDeleteBlock={onDeleteBlock}
                 onUpdateBlock={onUpdateBlock}
-            />
-            <Snackbar
-                open={snackbar.open}
-                message={snackbar.message}
-                error={error}
-                onClose={onSnackbarClose}
             />
             <AddBlockPopup
                 open={addBlockVisible}

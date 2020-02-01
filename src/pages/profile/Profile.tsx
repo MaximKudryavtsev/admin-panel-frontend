@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { css } from "emotion";
 import { Button, Chip, Divider, Grid, Typography } from "@material-ui/core";
-import { useAdmin, useSnackbar, useUser } from "../../hooks";
+import { useAdmin, useUser } from "../../hooks";
 import { Card } from "../../components/card";
-import { Snackbar } from "../../components/snackbar";
 import { IChangePasswordData, IUser, TLang } from "../../entities";
 import { UpdateUserForm, ChangePassword, UploadAvatar } from "../../widgets";
 import { getServerError } from "../../utils";
 import { Update } from "@material-ui/icons";
+import { useSnackbar } from "notistack";
+import { omit } from "lodash";
 
 interface IProfileProps {
     setPageTitle(title: string): void;
@@ -25,14 +26,14 @@ const classes = {
     `,
     card: css`
         margin-bottom: 24px;
-    `
+    `,
 };
 
 export const Profile = (props: IProfileProps) => {
     const { setPageTitle, onSetUser } = props;
     const { user, updateUser, deleteUser, updateAvatar, updatePassword, deleteAvatar } = useUser();
     const { updateBlog } = useAdmin();
-    const { error, snackbar, setSnackbarError, setSnackbarState, onSnackbarClose } = useSnackbar();
+    const { enqueueSnackbar } = useSnackbar();
     const [avatarLoaderVisible, setAvatarLoaderVisible] = useState(false);
     const [passwordError, setPasswordError] = useState<string | undefined>(undefined);
 
@@ -62,18 +63,15 @@ export const Profile = (props: IProfileProps) => {
     };
 
     const onUpdateUser = (user: Partial<IUser>) => {
-        updateUser(user)
-            .then(() => setSnackbarState({ open: true, message: "Логин изменен!" }))
-            .catch(() => {
-                setSnackbarError(true);
-                setSnackbarState({ open: true, message: "Ошибка сервера" });
-            });
+        updateUser(omit(user, ["avatar"]))
+            .then(() => enqueueSnackbar("Логин изменен!", { variant: "success" }))
+            .catch(() => enqueueSnackbar("Ошибка сервера", { variant: "error" }));
     };
 
     const onUpdatePassword = (data: IChangePasswordData) => {
         setPasswordError(undefined);
         updatePassword(data)
-            .then(() => setSnackbarState({ open: true, message: "Пароль изменен!" }))
+            .then(() => enqueueSnackbar("Пароль изменен!", { variant: "success" }))
             .catch((error) => {
                 const serverError = getServerError(error);
                 if (!serverError) {
@@ -84,10 +82,7 @@ export const Profile = (props: IProfileProps) => {
     };
 
     const onUpdateBlog = (lang: TLang) => {
-        updateBlog(lang).then(() => {
-            setSnackbarError(false);
-            setSnackbarState({ open: true, message: "Обновлено!" });
-        })
+        updateBlog(lang).then(() => enqueueSnackbar("Обновлено!", { variant: "success" }));
     };
 
     return (
@@ -128,7 +123,7 @@ export const Profile = (props: IProfileProps) => {
                             </Card>
                         </Grid>
                         <Grid item xs={6}>
-                            <Card title={"Роли"} classes={{root: classes.card}}>
+                            <Card title={"Роли"} classes={{ root: classes.card }}>
                                 {user?.roles?.map((role) => (
                                     <Chip
                                         key={role._id}
@@ -141,12 +136,14 @@ export const Profile = (props: IProfileProps) => {
                                     />
                                 ))}
                             </Card>
-                            <Card title={"Блог"} classes={{root: classes.card}}>
+                            <Card title={"Блог"} classes={{ root: classes.card }}>
                                 <Button
                                     variant="contained"
                                     color="primary"
                                     startIcon={<Update />}
-                                    className={css`margin-right: 24px`}
+                                    className={css`
+                                        margin-right: 24px;
+                                    `}
                                     onClick={() => onUpdateBlog("ru")}
                                 >
                                     Обновить русский блог
@@ -164,12 +161,6 @@ export const Profile = (props: IProfileProps) => {
                     </Grid>
                 </Grid>
             </Grid>
-            <Snackbar
-                open={snackbar.open}
-                message={snackbar.message}
-                error={error}
-                onClose={onSnackbarClose}
-            />
         </>
     );
 };
