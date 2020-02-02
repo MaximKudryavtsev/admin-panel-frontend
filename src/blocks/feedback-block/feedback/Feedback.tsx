@@ -1,11 +1,16 @@
 import { css } from "emotion";
 import { useFile } from "../../../hooks";
 import React, { ChangeEvent, useEffect, useRef } from "react";
-import { Card, CardContent, CardMedia, IconButton, Typography } from "@material-ui/core";
+import { Card, CardContent, CardMedia, IconButton, Paper, Typography } from "@material-ui/core";
 import { TextField } from "../../../components/text-field";
-import { Delete, Edit } from "@material-ui/icons";
+import { Delete, DragIndicator, Edit } from "@material-ui/icons";
+import { DraggableProvidedDraggableProps, DraggableProvidedDragHandleProps } from "react-beautiful-dnd";
 
 interface IFeedbackProps {
+    draggableProps: DraggableProvidedDraggableProps;
+    dragHandleProps: DraggableProvidedDragHandleProps | null;
+
+    innerRef(element?: HTMLElement | null): any;
     feedback: IFeedback;
     name: string;
     setFieldValue(field: string, value: any, shouldValidate?: boolean): void;
@@ -38,11 +43,16 @@ const feedbackClassNames = {
     `,
     error: css`
         margin-top: 20px !important;
+    `,
+    icons: css`
+        display: flex;
+        justify-content: flex-end;
+        margin-left: auto;
     `
 };
 
 export const Feedback = (props: IFeedbackProps) => {
-    const { feedback, name, setFieldValue, onDelete } = props;
+    const { feedback, name, setFieldValue, onDelete, innerRef, draggableProps, dragHandleProps } = props;
 
     const { src, error, setSrc, loadFile } = useFile({
         whiteList: ["png", "jpg", "pdf", "gif", "jpeg"],
@@ -72,13 +82,22 @@ export const Feedback = (props: IFeedbackProps) => {
     };
 
     return (
-        <Card variant={"outlined"}>
-            <IconButton onClick={onChooseFile}>
-                <Edit />
-            </IconButton>
-            <IconButton onClick={onDelete}>
-                <Delete />
-            </IconButton>
+        <Card variant={"outlined"} ref={innerRef} {...draggableProps}>
+            <div className={css`display: flex; width: 100%;`}>
+                <div {...dragHandleProps}>
+                    <IconButton>
+                        <DragIndicator />
+                    </IconButton>
+                </div>
+                <div className={feedbackClassNames.icons}>
+                    <IconButton onClick={onChooseFile}>
+                        <Edit />
+                    </IconButton>
+                    <IconButton onClick={onDelete}>
+                        <Delete />
+                    </IconButton>
+                </div>
+            </div>
             <CardMedia
                 image={src}
                 title={feedback.name}
