@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/blocks/feedback-block/FeedbackBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/feedback-block/FeedbackBlock.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/feedback-block/feedback/Feedback.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/feedback-block/feedback/Feedback.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/page/usePage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/page/usePage.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/block.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/block.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,6 +158,7 @@
       <workItem from="1580467545317" duration="11827000" />
       <workItem from="1580544607647" duration="5268000" />
       <workItem from="1580562518223" duration="7584000" />
+      <workItem from="1580627101002" duration="1984000" />
     </task>
     <task id="LOCAL-00027" summary="add snackbar">
       <created>1578168895498</created>
@@ -571,18 +569,18 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="601" y="291" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1576315906681" />
-    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1580553246654">
+    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1580637906983">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580468347430" />
     <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172968703" />
-    <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580553246654" />
-    <state x="184" y="86" width="1536" height="840" key="DiffContextDialog" timestamp="1580410809298">
+    <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580637906983" />
+    <state x="184" y="86" width="1536" height="840" key="DiffContextDialog" timestamp="1580637906979">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="184" y="85" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580377771359" />
     <state x="184" y="86" width="1536" height="840" key="DiffContextDialog/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172950313" />
-    <state x="184" y="86" key="DiffContextDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580410809298" />
+    <state x="184" y="86" key="DiffContextDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580637906979" />
     <state x="881" y="341" key="FileChooserDialogImpl" timestamp="1580551784997">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -614,12 +612,12 @@
     </state>
     <state x="461" y="155" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580474037347" />
     <state x="461" y="156" key="SettingsEditor/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580551786626" />
-    <state x="552" y="257" key="Vcs.Push.Dialog.v2" timestamp="1580553252027">
+    <state x="552" y="257" key="Vcs.Push.Dialog.v2" timestamp="1580588568666">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="552" y="255" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580468353470" />
     <state x="552" y="257" key="Vcs.Push.Dialog.v2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172973521" />
-    <state x="552" y="257" key="Vcs.Push.Dialog.v2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580553252027" />
+    <state x="552" y="257" key="Vcs.Push.Dialog.v2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580588568666" />
     <state x="92" y="92" width="1736" height="866" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1578046510409">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -643,11 +641,11 @@
     </state>
     <state x="616" y="237" key="run.anything.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578145423257" />
     <state x="616" y="237" width="672" height="677" key="run.anything.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579939819522" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1580588004047">
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1580629347159">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="623" y="225" width="672" height="672" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580481380916" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578170577061" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580588004047" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580629347159" />
   </component>
 </project>

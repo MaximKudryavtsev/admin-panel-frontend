@@ -9,7 +9,7 @@ import { Feedback, IFeedback } from "./feedback";
 import { Add } from "@material-ui/icons";
 import { IconButton } from "@material-ui/core";
 import { IBlock } from "../../entities";
-import { set, omit, get } from "lodash";
+import { set, omit } from "lodash";
 import * as uuid from "uuid";
 
 export interface IFeedbackBlock {
@@ -54,7 +54,7 @@ export const FeedbackBlock = (props: IBlockProps<IFeedbackBlock>) => {
                 "data.feedbacks",
                 data.data?.feedbacks
                     .map((item) => {
-                        item.id = uuid.v4();
+                        item.id = item.id ? item.id : uuid.v4();
                         if (item.file) {
                             set(data, `${item.id}`, item.file);
                         }
