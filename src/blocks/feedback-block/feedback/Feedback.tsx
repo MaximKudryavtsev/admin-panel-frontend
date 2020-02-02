@@ -4,7 +4,10 @@ import React, { ChangeEvent, useEffect, useRef } from "react";
 import { Card, CardContent, CardMedia, IconButton, Paper, Typography } from "@material-ui/core";
 import { TextField } from "../../../components/text-field";
 import { Delete, DragIndicator, Edit } from "@material-ui/icons";
-import { DraggableProvidedDraggableProps, DraggableProvidedDragHandleProps } from "react-beautiful-dnd";
+import {
+    DraggableProvidedDraggableProps,
+    DraggableProvidedDragHandleProps,
+} from "react-beautiful-dnd";
 
 interface IFeedbackProps {
     draggableProps: DraggableProvidedDraggableProps;
@@ -48,11 +51,25 @@ const feedbackClassNames = {
         display: flex;
         justify-content: flex-end;
         margin-left: auto;
-    `
+    `,
+    iconWrapper: css`
+        display: flex;
+        width: 100%;
+        padding: 5px;
+        box-sizing: border-box;
+    `,
 };
 
 export const Feedback = (props: IFeedbackProps) => {
-    const { feedback, name, setFieldValue, onDelete, innerRef, draggableProps, dragHandleProps } = props;
+    const {
+        feedback,
+        name,
+        setFieldValue,
+        onDelete,
+        innerRef,
+        draggableProps,
+        dragHandleProps,
+    } = props;
 
     const { src, error, setSrc, loadFile } = useFile({
         whiteList: ["png", "jpg", "pdf", "gif", "jpeg"],
@@ -83,7 +100,7 @@ export const Feedback = (props: IFeedbackProps) => {
 
     return (
         <Card variant={"outlined"} ref={innerRef} {...draggableProps}>
-            <div className={css`display: flex; width: 100%;`}>
+            <div className={feedbackClassNames.iconWrapper}>
                 <div {...dragHandleProps}>
                     <IconButton>
                         <DragIndicator />
@@ -98,21 +115,36 @@ export const Feedback = (props: IFeedbackProps) => {
                     </IconButton>
                 </div>
             </div>
-            <CardMedia
-                image={src}
-                title={feedback.name}
-                className={feedbackClassNames.image}
-            />
+            <CardMedia image={src} title={feedback.name} className={feedbackClassNames.image} />
             {error && (
                 <Typography color={"error"} align={"center"} className={feedbackClassNames.error}>
                     {error}
                 </Typography>
             )}
-            <input type="file" name={`${name}.file`} className={feedbackClassNames.input} ref={inputRef} onChange={onChange} />
+            <input
+                type="file"
+                name={`${name}.file`}
+                className={feedbackClassNames.input}
+                ref={inputRef}
+                onChange={onChange}
+            />
             <CardContent className={feedbackClassNames.card}>
-                <TextField name={`${name}.text`} label={"Текст отзыва"} textarea classes={{root: feedbackClassNames.field}} />
-                <TextField name={`${name}.name`} label={"Имя"} classes={{root: feedbackClassNames.field}} />
-                <TextField name={`${name}.position`} label={"Должность"} classes={{root: feedbackClassNames.field}} />
+                <TextField
+                    name={`${name}.text`}
+                    label={"Текст отзыва"}
+                    textarea
+                    classes={{ root: feedbackClassNames.field }}
+                />
+                <TextField
+                    name={`${name}.name`}
+                    label={"Имя"}
+                    classes={{ root: feedbackClassNames.field }}
+                />
+                <TextField
+                    name={`${name}.position`}
+                    label={"Должность"}
+                    classes={{ root: feedbackClassNames.field }}
+                />
             </CardContent>
         </Card>
     );
