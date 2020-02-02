@@ -1,7 +1,7 @@
 import { css } from "emotion";
 import { useFile } from "../../../hooks";
 import React, { ChangeEvent, useEffect, useRef } from "react";
-import { Card, CardContent, CardMedia, IconButton, Paper, Typography } from "@material-ui/core";
+import { Card, CardContent, CardMedia, IconButton, Typography } from "@material-ui/core";
 import { TextField } from "../../../components/text-field";
 import { Delete, DragIndicator, Edit } from "@material-ui/icons";
 import {
