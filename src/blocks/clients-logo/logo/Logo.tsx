@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useRef } from "react";
+import React, { ChangeEvent, useEffect, useRef } from "react";
 import { useFile } from "../../../hooks";
 import {
     DraggableProvidedDraggableProps,
@@ -10,8 +10,8 @@ import { Delete, DragIndicator, Edit } from "@material-ui/icons";
 
 export interface ILogo {
     id: string;
-    colorlessFile: File;
-    coloredFile: File;
+    colorlessFile?: File;
+    coloredFile?: File;
     colorlessLink?: string;
     coloredLink?: string;
 }
@@ -31,7 +31,7 @@ interface ILogoProps {
 
 const classNames = {
     header: css`
-        padding: 5px;
+        padding: 5px 10px;
         display: flex;
         align-items: center;
     `,
@@ -67,10 +67,10 @@ export const Logo = (props: ILogoProps) => {
     const colorlessRef = useRef<HTMLInputElement>(null);
     const coloredRef = useRef<HTMLInputElement>(null);
 
-    // useEffect(() => {
-    //     coloredSetSrc(logo.coloredLink);
-    //     colorlessSetSrc(logo.colorlessLink);
-    // }, [logo]);
+    useEffect(() => {
+        coloredSetSrc(logo.coloredLink);
+        colorlessSetSrc(logo.colorlessLink);
+    }, [logo.colorlessLink, logo.coloredLink]);
 
     const onChangeColorless = (event: ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.item(0);

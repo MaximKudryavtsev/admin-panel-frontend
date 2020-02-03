@@ -9,6 +9,9 @@ import { BlockLoadingScreen } from "../block-loading-screen";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { Add } from "@material-ui/icons";
 import { IconButton } from "@material-ui/core";
+import { IBlock } from "../../entities";
+import { set, omit } from "lodash";
+import * as uuid from "uuid";
 
 const classNames = {
     content: css`
@@ -23,8 +26,8 @@ const classNames = {
 const validationSchema = Yup.object().shape({
     data: Yup.array().of(
         Yup.object().shape({
-            colorlessFile: Yup.mixed<File>().required("Обязательно для заполнения"),
-            coloredFile: Yup.mixed<File>().required("Обязательно для заполнения"),
+            colorlessFile: Yup.mixed<File>(),
+            coloredFile: Yup.mixed<File>(),
             colorlessLink: Yup.string().notRequired(),
             coloredLink: Yup.string().notRequired(),
         }),
@@ -35,12 +38,31 @@ export const ClientsLogo = (props: IBlockProps<ILogo[]>) => {
     const { block, statuses, onSubmit, onDelete } = props;
     const [uploaded, setUploaded] = useState(false);
 
+    const handleSubmit = (id: string, data: Partial<IBlock<ILogo[]>>) => {
+        data.data?.map((item) => {
+            item.id = item.id ? item.id : uuid.v4();
+            if (item.coloredFile) {
+                set(data, `${item.id}coloredFile`, item.coloredFile);
+            }
+            if (item.colorlessFile) {
+                set(data, `${item.id}colorlessFile`, item.colorlessFile);
+            }
+            delete item.colorlessFile;
+            delete item.coloredFile;
+            return omit(item, ["coloredFile", "colorlessFile"]);
+        });
+        if (onSubmit) {
+            setUploaded(true);
+            onSubmit(id, { ...data }).then(() => setUploaded(false));
+        }
+    };
+
     return (
         <BlockWrapper<ILogo[]>
             block={block}
             statuses={statuses}
             onDelete={onDelete}
-            onSubmit={(id, data) => console.log(data)}
+            onSubmit={handleSubmit}
             validationSchema={validationSchema}
             render={(form) => (
                 <div

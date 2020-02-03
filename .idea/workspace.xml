@@ -2,22 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/blocks/block-loading-screen/BlockLoadingScreen.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blocks/block-loading-screen/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blocks/clients-logo/ClientsLogo.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blocks/clients-logo/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blocks/clients-logo/logo/Logo.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blocks/clients-logo/logo/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/file-field/FileField.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/file-field/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/blockList.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/blockList.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/feedback-block/FeedbackBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/feedback-block/FeedbackBlock.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/feedback-block/feedback/Feedback.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/feedback-block/feedback/Feedback.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/public-route/PublicRoute.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/public-route/PublicRoute.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/block.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/block.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useFile.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useFile.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/clients-logo/ClientsLogo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/clients-logo/ClientsLogo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/clients-logo/logo/Logo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/clients-logo/logo/Logo.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,13 +160,6 @@
       <workItem from="1580562518223" duration="7584000" />
       <workItem from="1580627101002" duration="2337000" />
       <workItem from="1580640966531" duration="6189000" />
-    </task>
-    <task id="LOCAL-00031" summary="move update user form to separate component">
-      <created>1578218427384</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1578218427384</updated>
     </task>
     <task id="LOCAL-00032" summary="add changing password">
       <created>1578231260760</created>
@@ -517,7 +497,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580712651836</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="add block for clients logo">
+      <created>1580721215582</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1580721215582</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -534,7 +521,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add popup for creating page" />
     <MESSAGE value="add getting list of pages, creating and getting page" />
     <MESSAGE value="add showing error if page already exists" />
     <MESSAGE value="add .htaccess" />
@@ -559,7 +545,8 @@
     <MESSAGE value="add reordering for feedback" />
     <MESSAGE value="refactoring" />
     <MESSAGE value="add loader screen for feedback block" />
-    <option name="LAST_COMMIT_MESSAGE" value="add loader screen for feedback block" />
+    <MESSAGE value="add block for clients logo" />
+    <option name="LAST_COMMIT_MESSAGE" value="add block for clients logo" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="182" key="#ESLint" timestamp="1578156507884">
@@ -583,16 +570,16 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="601" y="291" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1576315906681" />
-    <state x="585" y="117" key="CommitChangelistDialog2" timestamp="1580721071474">
+    <state x="585" y="117" key="CommitChangelistDialog2" timestamp="1580728139074">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580721071474" />
+    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580728139074" />
     <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172968703" />
     <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580669479042" />
-    <state x="184" y="86" width="1536" height="840" key="DiffContextDialog" timestamp="1580667025719">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state x="184" y="85" width="1536" height="840" key="DiffContextDialog" timestamp="1580728137824">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="184" y="85" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580377771359" />
+    <state x="184" y="85" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580728137824" />
     <state x="184" y="86" width="1536" height="840" key="DiffContextDialog/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172950313" />
     <state x="184" y="86" key="DiffContextDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580667025719" />
     <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1580712034432">
@@ -626,10 +613,10 @@
     </state>
     <state x="461" y="155" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580712036506" />
     <state x="461" y="156" key="SettingsEditor/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580551786626" />
-    <state x="552" y="257" key="Vcs.Push.Dialog.v2" timestamp="1580667043182">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state x="552" y="255" key="Vcs.Push.Dialog.v2" timestamp="1580721221682">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="255" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580468353470" />
+    <state x="552" y="255" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580721221682" />
     <state x="552" y="257" key="Vcs.Push.Dialog.v2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172973521" />
     <state x="552" y="257" key="Vcs.Push.Dialog.v2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580667043182" />
     <state x="92" y="92" width="1736" height="866" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1578046510409">
