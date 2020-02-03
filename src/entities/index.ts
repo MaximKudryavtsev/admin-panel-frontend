@@ -7,3 +7,4 @@ export * from "./lang";
 export * from "./pages";
 export * from "./common";
 export * from "./block";
+export * from "./header";

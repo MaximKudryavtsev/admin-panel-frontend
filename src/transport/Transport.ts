@@ -14,6 +14,14 @@ export class Transport {
         baseURL: host.LOCAL,
     });
 
+    static create(): Transport {
+        const transport = new Transport();
+        const tokenString = localStorage.getItem("token");
+        transport.setToken(JSON.parse(tokenString!));
+
+        return transport;
+    }
+
     async get<Response>(url: string, params?: object): Promise<TResponse<Response>> {
         const response = await this.instance.get(url, this.config(params));
         return response.data;

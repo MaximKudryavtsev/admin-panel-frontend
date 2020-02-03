@@ -27,5 +27,8 @@ export const ApiPaths = {
     CREATE_BLOCK: "/block/create",
     BLOCK: "/block",
     // admin
-    UPDATE_BLOG: "/admin/updateBlog"
+    UPDATE_BLOG: "/admin/updateBlog",
+    // header
+    HEADER: "/header",
+    HEADER_LOGO: "/header/logo"
 };

@@ -70,7 +70,7 @@ export const Logo = (props: ILogoProps) => {
     useEffect(() => {
         coloredSetSrc(logo.coloredLink);
         colorlessSetSrc(logo.colorlessLink);
-    }, [logo.colorlessLink, logo.coloredLink]);
+    }, [logo.colorlessLink, logo.coloredLink, coloredSetSrc, colorlessSetSrc]);
 
     const onChangeColorless = async (event: ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.item(0);

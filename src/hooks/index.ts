@@ -5,3 +5,5 @@ export * from "./useNavigation";
 export * from "./page";
 export * from "./useBlock";
 export * from "./useAdmin";
+export * from "./useHeader";
+export * from "./useFetchPages";

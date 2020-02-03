@@ -9,6 +9,7 @@ import { fetchUser } from "../api";
 import { PrivateRoute } from "../components/private-route";
 import { PublicRoute } from "../components/public-route";
 import { ForgotPassword } from "../pages/forgot-password";
+import { SnackbarProvider } from "notistack";
 
 const App: React.FC = () => {
     const [user, setUser] = useState<IUser | undefined>(undefined);
@@ -41,41 +42,43 @@ const App: React.FC = () => {
     };
 
     return (
-        <Router history={AppContext.getHistory()}>
-            <Switch>
-                <PublicRoute
-                    auth={logged}
-                    exact={true}
-                    restricted={true}
-                    path={"/sign-in"}
-                    render={() => (
-                        <Login
-                            transport={transport}
-                            onSetUser={setUser}
-                            onSignIn={() => setLogged(true)}
-                        />
-                    )}
-                />
-                <PublicRoute
-                    auth={logged}
-                    restricted={true}
-                    path={"/forgot-password"}
-                    exact={true}
-                    render={() => <ForgotPassword transport={transport} />}
-                />
-                <PrivateRoute
-                    auth={logged}
-                    path={"/:page"}
-                    render={() => (
-                        <WorkPanel
-                            user={user}
-                            baseUrl={""}
-                            onLogout={logout}
-                        />
-                    )}
-                />
-            </Switch>
-        </Router>
+        <SnackbarProvider>
+            <Router history={AppContext.getHistory()}>
+                <Switch>
+                    <PublicRoute
+                        auth={logged}
+                        exact={true}
+                        restricted={true}
+                        path={"/sign-in"}
+                        render={() => (
+                            <Login
+                                transport={transport}
+                                onSetUser={setUser}
+                                onSignIn={() => setLogged(true)}
+                            />
+                        )}
+                    />
+                    <PublicRoute
+                        auth={logged}
+                        restricted={true}
+                        path={"/forgot-password"}
+                        exact={true}
+                        render={() => <ForgotPassword transport={transport} />}
+                    />
+                    <PrivateRoute
+                        auth={logged}
+                        path={"/:page"}
+                        render={() => (
+                            <WorkPanel
+                                user={user}
+                                baseUrl={""}
+                                onLogout={logout}
+                            />
+                        )}
+                    />
+                </Switch>
+            </Router>
+        </SnackbarProvider>
     );
 };
 

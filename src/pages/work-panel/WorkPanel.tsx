@@ -8,6 +8,7 @@ import { Profile } from "../profile";
 import { Pages } from "../pages";
 import { Page } from "../page";
 import { Main } from "../main";
+import { Header } from "../header";
 
 interface INavigationProps {
     baseUrl?: string;
@@ -43,6 +44,9 @@ export const WorkPanel = (props: INavigationProps) => {
                 </Route>
                 <Route path={"/main"} exact>
                     <Main setPageTitle={setTitle} />
+                </Route>
+                <Route path={"/header"} exact>
+                    <Header setPageTitle={setTitle} />
                 </Route>
             </Switch>
         </Layout>
