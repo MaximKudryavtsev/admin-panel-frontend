@@ -9,7 +9,7 @@ interface IBlockTabsProps {
     blocks?: IBlock<any>[];
     statuses?: IDictionary[];
 
-    onUpdateBlock?(id: string, block: IBlock<any>): void;
+    onUpdateBlock?(id: string, block: IBlock<any>): Promise<void>;
 
     onDeleteBlock?(id: string): void;
 }
@@ -41,12 +41,6 @@ export const BlockTabs = (props: IBlockTabsProps) => {
     const draft = blocks
         .filter((item) => item.status.label === EPageStatusLabel.DRAFT)
         .sort((left, right) => (left.position > right.position ? 1 : -1));
-
-    const handleUpdateBlock = (id: string, data: IBlock<any>) => {
-        if (onUpdateBlock) {
-            onUpdateBlock(id, data);
-        }
-    };
 
     const handleDeleteBlock = (id: string) => {
         if (onDeleteBlock) {
@@ -84,7 +78,7 @@ export const BlockTabs = (props: IBlockTabsProps) => {
                                             block: item,
                                             statuses,
                                             onDelete: handleDeleteBlock,
-                                            onSubmit: handleUpdateBlock,
+                                            onSubmit: onUpdateBlock,
                                         })}
                                     </div>
                                 ),
@@ -106,7 +100,7 @@ export const BlockTabs = (props: IBlockTabsProps) => {
                                             block: item,
                                             statuses,
                                             onDelete: handleDeleteBlock,
-                                            onSubmit: handleUpdateBlock,
+                                            onSubmit: onUpdateBlock,
                                         })}
                                     </div>
                                 ),

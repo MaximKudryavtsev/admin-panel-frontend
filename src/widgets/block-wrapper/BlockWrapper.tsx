@@ -23,6 +23,7 @@ interface IBlockWrapperProps<T> {
     block?: IBlock<T>;
     statuses?: IDictionary[];
     validationSchema: Yup.ObjectSchema<any>;
+    disabled?: boolean;
 
     render(form?: FormikProps<Partial<IBlock<T>>>): ReactNode;
 
@@ -64,7 +65,15 @@ const ValidationSchema = Yup.object().shape({
 });
 
 export const BlockWrapper = <T extends any>(props: IBlockWrapperProps<T>) => {
-    const { block, statuses = [], validationSchema, render, onDelete, onSubmit } = props;
+    const {
+        block,
+        statuses = [],
+        validationSchema,
+        render,
+        onDelete,
+        onSubmit,
+        disabled = false,
+    } = props;
     const [deleteVisible, setDeleteVisible] = useState(false);
 
     function onDeleteOpen(): void {
@@ -99,7 +108,7 @@ export const BlockWrapper = <T extends any>(props: IBlockWrapperProps<T>) => {
                     render={(form) => (
                         <React.Fragment>
                             <div className={classNames.header}>
-                                <IconButton classes={{root: classNames.icon}}>
+                                <IconButton classes={{ root: classNames.icon }} disabled={disabled}>
                                     <DragIndicator />
                                 </IconButton>
                                 <SwitchField
@@ -118,14 +127,14 @@ export const BlockWrapper = <T extends any>(props: IBlockWrapperProps<T>) => {
                                         label: item.title,
                                     }))}
                                     classes={{ root: classNames.field }}
-                                    disable={!block?.open}
+                                    disable={!block?.open || disabled}
                                 />
                                 <div className={classNames.icons}>
                                     <Tooltip title={"Удалить блок"} placement={"top"}>
                                         <span>
                                             <IconButton
                                                 onClick={onDeleteOpen}
-                                                disabled={!block?.open}
+                                                disabled={!block?.open || disabled}
                                             >
                                                 <Delete />
                                             </IconButton>

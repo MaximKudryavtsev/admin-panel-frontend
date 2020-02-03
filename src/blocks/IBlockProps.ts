@@ -6,5 +6,5 @@ export interface IBlockProps<T = any> {
 
     onDelete?(id: string): void;
 
-    onSubmit?(id: string, data: Partial<IBlock<T>>): void;
+    onSubmit?(id: string, data: Partial<IBlock<T>>):Promise<void>;
 }

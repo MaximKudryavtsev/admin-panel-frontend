@@ -77,7 +77,9 @@ export const Page = (props: IPageProps) => {
     };
 
     const onUpdateBlock = (id: string, data: IBlock<any>) => {
-        updateBlock(id, data).then(() => enqueueSnackbar("Успешно сохранено", {variant: "success"}));
+        return updateBlock(id, data).then(() => {
+            enqueueSnackbar("Успешно сохранено", {variant: "success"})
+        });
     };
 
     const onDeleteBlock = (id: string) => {

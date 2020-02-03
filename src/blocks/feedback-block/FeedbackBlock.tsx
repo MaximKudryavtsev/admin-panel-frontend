@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { IBlockProps } from "../IBlockProps";
 import * as Yup from "yup";
 import { css } from "emotion";
@@ -7,7 +7,7 @@ import { BlockWrapper } from "../../widgets/block-wrapper";
 import { FieldArray } from "formik";
 import { Feedback, IFeedback } from "./feedback";
 import { Add } from "@material-ui/icons";
-import { IconButton } from "@material-ui/core";
+import { CircularProgress, IconButton, Typography } from "@material-ui/core";
 import { IBlock } from "../../entities";
 import { set, omit } from "lodash";
 import * as uuid from "uuid";
@@ -43,10 +43,22 @@ const classNames = {
         grid-row-gap: 24px;
         margin-bottom: 24px;
     `,
+    loadingScreen: css`
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.6);
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    `,
 };
 
 export const FeedbackBlock = (props: IBlockProps<IFeedbackBlock>) => {
     const { block, onDelete, onSubmit, statuses } = props;
+    const [uploaded, setUploaded] = useState(false);
 
     const handleSubmit = (id: string, data: Partial<IBlock<IFeedbackBlock>>) => {
         if (data.data?.feedbacks) {
@@ -63,7 +75,8 @@ export const FeedbackBlock = (props: IBlockProps<IFeedbackBlock>) => {
             );
         }
         if (onSubmit) {
-            onSubmit(id, { ...data });
+            setUploaded(true);
+            onSubmit(id, { ...data }).then(() => setUploaded(false));
         }
     };
 
@@ -74,8 +87,13 @@ export const FeedbackBlock = (props: IBlockProps<IFeedbackBlock>) => {
             onDelete={onDelete}
             onSubmit={handleSubmit}
             validationSchema={validationSchema}
+            disabled={uploaded}
             render={(form) => (
-                <div>
+                <div
+                    className={css`
+                        position: relative;
+                    `}
+                >
                     <TextField
                         name={"data.title"}
                         label={"Заголовок"}
@@ -144,6 +162,20 @@ export const FeedbackBlock = (props: IBlockProps<IFeedbackBlock>) => {
                             </DragDropContext>
                         )}
                     />
+                    {uploaded && (
+                        <div className={classNames.loadingScreen}>
+                            <CircularProgress color="primary" />
+                            <Typography
+                                className={css`
+                                    margin-left: 24px;
+                                `}
+                                variant={"h6"}
+                                color={"primary"}
+                            >
+                                Загрузка...
+                            </Typography>
+                        </div>
+                    )}
                 </div>
             )}
         />
