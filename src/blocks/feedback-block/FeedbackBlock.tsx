@@ -7,11 +7,12 @@ import { BlockWrapper } from "../../widgets/block-wrapper";
 import { FieldArray } from "formik";
 import { Feedback, IFeedback } from "./feedback";
 import { Add } from "@material-ui/icons";
-import { CircularProgress, IconButton, Typography } from "@material-ui/core";
+import { IconButton } from "@material-ui/core";
 import { IBlock } from "../../entities";
 import { set, omit } from "lodash";
 import * as uuid from "uuid";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { BlockLoadingScreen } from "../block-loading-screen";
 
 export interface IFeedbackBlock {
     title: string;
@@ -162,20 +163,7 @@ export const FeedbackBlock = (props: IBlockProps<IFeedbackBlock>) => {
                             </DragDropContext>
                         )}
                     />
-                    {uploaded && (
-                        <div className={classNames.loadingScreen}>
-                            <CircularProgress color="primary" />
-                            <Typography
-                                className={css`
-                                    margin-left: 24px;
-                                `}
-                                variant={"h6"}
-                                color={"primary"}
-                            >
-                                Загрузка...
-                            </Typography>
-                        </div>
-                    )}
+                    {uploaded && <BlockLoadingScreen />}
                 </div>
             )}
         />

@@ -16,6 +16,7 @@ interface IFeedbackProps {
     innerRef(element?: HTMLElement | null): any;
     feedback: IFeedback;
     name: string;
+
     setFieldValue(field: string, value: any, shouldValidate?: boolean): void;
 
     onDelete(): void;
@@ -72,7 +73,7 @@ export const Feedback = (props: IFeedbackProps) => {
     } = props;
 
     const { src, error, setSrc, loadFile } = useFile({
-        whiteList: ["png", "jpg", "pdf", "gif", "jpeg"],
+        whiteList: ["png", "jpg", "jpeg"],
         maxFileSize: 1048576,
     });
 

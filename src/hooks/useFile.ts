@@ -14,6 +14,7 @@ export function useFile(
     src?: string;
     setSrc: Dispatch<SetStateAction<string | undefined>>
     error?: string;
+    setError: Dispatch<SetStateAction<string | undefined>>
     loadFile: (file: File) => void;
     deleteFile: () => void;
 } {
@@ -61,5 +62,5 @@ export function useFile(
         setError(undefined);
     };
 
-    return { file, src, error, loadFile, deleteFile, setSrc };
+    return { file, src, error, loadFile, deleteFile, setSrc, setError };
 }

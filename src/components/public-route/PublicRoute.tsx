@@ -14,7 +14,7 @@ export const PublicRoute: FC<IPublicRouteProps> = (props) => {
             {...rest}
             render={(routeProps: RouteComponentProps) =>
                 auth && restricted ? (
-                    <Redirect exact={true} push={true} to={"/panel/navigation"} />
+                    <Redirect exact={true} push={true} to={"/main"} />
                 ) : (
                     render(routeProps)
                 )
