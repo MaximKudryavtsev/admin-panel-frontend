@@ -15,7 +15,7 @@ export function useFile(
     setSrc: Dispatch<SetStateAction<string | undefined>>
     error?: string;
     setError: Dispatch<SetStateAction<string | undefined>>
-    loadFile: (file: File) => void;
+    loadFile: (file: File) => Promise<void>;
     deleteFile: () => void;
 } {
     const [file, setFile] = useState<File | undefined>(undefined);

@@ -72,22 +72,24 @@ export const Logo = (props: ILogoProps) => {
         colorlessSetSrc(logo.colorlessLink);
     }, [logo.colorlessLink, logo.coloredLink]);
 
-    const onChangeColorless = (event: ChangeEvent<HTMLInputElement>) => {
+    const onChangeColorless = async (event: ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.item(0);
         if (!file) {
             return;
         }
         setFieldValue(`${name}.colorlessFile`, file);
-        colorlessLoadFile(file);
+        await colorlessLoadFile(file);
+        setFieldValue(`${name}.coloredLink`, coloredSrc);
     };
 
-    const onChangeColored = (event: ChangeEvent<HTMLInputElement>) => {
+    const onChangeColored = async (event: ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.item(0);
         if (!file) {
             return;
         }
         setFieldValue(`${name}.coloredFile`, file);
-        coloredLoadFile(file);
+        await coloredLoadFile(file);
+        setFieldValue(`${name}.coloredLink`, coloredSrc);
     };
 
     const onChooseColoredFile = () => {

@@ -26,10 +26,18 @@ const classNames = {
 const validationSchema = Yup.object().shape({
     data: Yup.array().of(
         Yup.object().shape({
-            colorlessFile: Yup.mixed<File>(),
-            coloredFile: Yup.mixed<File>(),
             colorlessLink: Yup.string().notRequired(),
             coloredLink: Yup.string().notRequired(),
+            coloredFile: Yup.mixed<File>().when("coloredLink", {
+                is: (o: string | undefined) => o ? o.length > 0 : false,
+                then: Yup.mixed<File>().notRequired(),
+                otherwise: Yup.mixed<File>().required("Обязательно для заполнения")
+            }),
+            colorlessFile: Yup.mixed<File>().when("colorlessLink", {
+                is: (o: string | undefined) => o ? o.length > 0 : false,
+                then: Yup.mixed<File>().notRequired(),
+                otherwise: Yup.mixed<File>().required("Обязательно для заполнения")
+            })
         }),
     ),
 });
@@ -94,12 +102,8 @@ export const ClientsLogo = (props: IBlockProps<ILogo[]>) => {
                                                                 logo={item}
                                                                 innerRef={provided.innerRef}
                                                                 onDelete={() => array.remove(index)}
-                                                                dragHandleProps={
-                                                                    provided.dragHandleProps
-                                                                }
-                                                                draggableProps={
-                                                                    provided.draggableProps
-                                                                }
+                                                                dragHandleProps={provided.dragHandleProps}
+                                                                draggableProps={provided.draggableProps}
                                                                 setFieldValue={form?.setFieldValue}
                                                             />
                                                         )}
