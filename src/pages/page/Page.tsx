@@ -19,7 +19,7 @@ interface IPageProps {
 
 const classNames = {
     button: css`
-        margin: 30px 0;
+        margin: 30px 30px 30px 0;
     `,
     titleGroup: css`
         margin-bottom: 10px;
@@ -89,6 +89,10 @@ export const Page = (props: IPageProps) => {
         });
     };
 
+    const goToPreview = () => {
+        AppContext.getHistory().push(`/pages/${page?._id}/preview`)
+    };
+
     return (
         <React.Fragment>
             <Tooltip title={"К списку страниц"} placement={"right"}>
@@ -112,6 +116,15 @@ export const Page = (props: IPageProps) => {
                 className={classNames.button}
             >
                 Добавить блок
+            </Button>
+            <Button
+                variant="contained"
+                color="primary"
+                size={"large"}
+                className={classNames.button}
+                onClick={goToPreview}
+            >
+                Предварительный просмотр
             </Button>
             <BlockTabs
                 statuses={statuses}
