@@ -7,3 +7,4 @@ export * from "./useBlock";
 export * from "./useAdmin";
 export * from "./useHeader";
 export * from "./useFetchPages";
+export * from "./useContacts";

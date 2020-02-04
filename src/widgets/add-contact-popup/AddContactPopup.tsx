@@ -1,5 +1,5 @@
 import React from "react";
-import { EContactTypes, IContact, IDictionary } from "../../entities";
+import { EContactTypes, IContact, IDictionary, TLang } from "../../entities";
 import { Popup } from "../../components/popup";
 import * as Yup from "yup";
 import { CustomForm } from "../../components/custom-form";
@@ -14,8 +14,11 @@ interface IAddContactPopupProps {
     open: boolean;
     contact?: IContact;
     contactTypes?: IDictionary[];
+    lang?: TLang;
 
     onClose?(): void;
+
+    onSubmit?(data: Partial<IContact>): void;
 }
 
 const ValidationSchema = Yup.object().shape({
@@ -38,7 +41,7 @@ const classNames = {
 };
 
 export const AddContactPopup = (props: IAddContactPopupProps) => {
-    const { contact, open, onClose, contactTypes = [] } = props;
+    const { contact, open, onClose, contactTypes = [], onSubmit } = props;
 
     return (
         <Popup
@@ -48,6 +51,7 @@ export const AddContactPopup = (props: IAddContactPopupProps) => {
         >
             <CustomForm<IContact>
                 data={contact}
+                onSubmit={onSubmit}
                 validationSchema={ValidationSchema}
                 render={(form) => (
                     <div className={classNames.content}>

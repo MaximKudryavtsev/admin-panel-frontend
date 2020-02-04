@@ -28,6 +28,7 @@ export const ApiPaths = {
     BLOCK: "/block",
     // admin
     UPDATE_BLOG: "/admin/updateBlog",
+    CONTACTS: "/admin/contacts",
     // header
     HEADER: "/header",
     HEADER_LOGO: "/header/logo"

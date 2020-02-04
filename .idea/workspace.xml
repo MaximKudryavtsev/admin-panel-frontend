@@ -1,32 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="add stub for preview page">
-      <change afterPath="$PROJECT_DIR$/src/entities/contact.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/control-panel/ControlPanel.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/control-panel/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widgets/add-contact-popup/AddContactPopup.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widgets/add-contact-popup/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widgets/contacts/Contacts.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widgets/contacts/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widgets/footer-panel/FooterPanel.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widgets/footer-panel/index.ts" afterDir="false" />
+    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/api/contacts.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/useContacts.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/clients-logo/logo/Logo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/clients-logo/logo/Logo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/switch-field/SwitchField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/switch-field/SwitchField.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/pages.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/pages.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/ApiPaths.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/ApiPaths.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/contact.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/contact.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hooks/useAdmin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useAdmin.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useFile.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useFile.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/footer/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/footer/Footer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/profile/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/profile/Profile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/work-panel/WorkPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/work-panel/WorkPanel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/file.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/file.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/add-navigation/NavigationPopup.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/add-navigation/NavigationPopup.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/layout/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/layout/Layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/page-info/PageInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/page-info/PageInfo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/control-panel/ControlPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/control-panel/ControlPanel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/add-contact-popup/AddContactPopup.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/add-contact-popup/AddContactPopup.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/contacts/Contacts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/contacts/Contacts.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,14 +169,7 @@
       <workItem from="1580562518223" duration="7584000" />
       <workItem from="1580627101002" duration="2337000" />
       <workItem from="1580640966531" duration="6189000" />
-      <workItem from="1580794218312" duration="22211000" />
-    </task>
-    <task id="LOCAL-00037" summary="add switch field">
-      <created>1578308930279</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1578308930279</updated>
+      <workItem from="1580794218312" duration="26662000" />
     </task>
     <task id="LOCAL-00038" summary="add getting navigation item">
       <created>1578310021810</created>
@@ -528,7 +507,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580800111142</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="add control panel, contacts">
+      <created>1580818910330</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1580818910330</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -545,7 +531,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="change structure of navigation" />
     <MESSAGE value="add getting pages for creating navigation" />
     <MESSAGE value="add choosing existing page for creating navigation" />
     <MESSAGE value="delete unused components" />
@@ -570,7 +555,8 @@
     <MESSAGE value="add uploading, deleting header" />
     <MESSAGE value="update toggle button in navigation" />
     <MESSAGE value="add stub for preview page" />
-    <option name="LAST_COMMIT_MESSAGE" value="add stub for preview page" />
+    <MESSAGE value="add control panel, contacts" />
+    <option name="LAST_COMMIT_MESSAGE" value="add control panel, contacts" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="182" key="#ESLint" timestamp="1578156507884">
@@ -594,16 +580,16 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="601" y="291" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1576315906681" />
-    <state x="585" y="117" key="CommitChangelistDialog2" timestamp="1580817972340">
+    <state x="585" y="117" key="CommitChangelistDialog2" timestamp="1580818909404">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580817972340" />
+    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580818909404" />
     <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172968703" />
     <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580669479042" />
-    <state x="184" y="85" width="1536" height="840" key="DiffContextDialog" timestamp="1580800093219">
+    <state x="184" y="85" width="1536" height="840" key="DiffContextDialog" timestamp="1580818888182">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="184" y="85" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580800093219" />
+    <state x="184" y="85" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580818888182" />
     <state x="184" y="86" width="1536" height="840" key="DiffContextDialog/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172950313" />
     <state x="184" y="86" key="DiffContextDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580667025719" />
     <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1580712034432">
@@ -667,10 +653,10 @@
     </state>
     <state x="616" y="237" key="run.anything.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578145423257" />
     <state x="616" y="237" width="672" height="677" key="run.anything.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579939819522" />
-    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup" timestamp="1580816131339">
+    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup" timestamp="1580821336937">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580816131339" />
+    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580821336937" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578170577061" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580655872348" />
   </component>

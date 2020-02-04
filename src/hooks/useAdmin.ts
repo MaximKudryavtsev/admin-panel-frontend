@@ -2,9 +2,11 @@ import { TLang, TResponse } from "../entities";
 import { useCallback, useMemo } from "react";
 import { Transport } from "../transport";
 import { AdminAPI } from "../api";
+import { IUseContacts, useContacts } from "./useContacts";
 
 export function useAdmin(): {
     updateBlog: (lang: TLang) => Promise<TResponse<void>>;
+    useContacts: () => IUseContacts;
 } {
     const transport = useMemo(() => new Transport(), []);
     const tokenString = localStorage.getItem("token");
@@ -14,5 +16,5 @@ export function useAdmin(): {
         transport,
     ]);
 
-    return { updateBlog };
+    return { updateBlog, useContacts };
 }

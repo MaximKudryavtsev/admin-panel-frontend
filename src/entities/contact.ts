@@ -5,7 +5,6 @@ export interface IContact {
     typeId: string;
     title: string;
     value?: string;
-    open?: boolean;
     lang: TLang;
 }
 

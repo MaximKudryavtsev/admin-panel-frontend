@@ -26,13 +26,21 @@ const classNames = {
     `,
     blog: css`
         height: fit-content;
-    `
+    `,
 };
 
 export const ControlPanel = (props: IControlPanelProps) => {
     const { setPageTitle } = props;
-    const { updateBlog } = useAdmin();
+    const { updateBlog, useContacts } = useAdmin();
     const { enqueueSnackbar } = useSnackbar();
+    const {
+        contact,
+        contacts,
+        createContact,
+        deleteContact,
+        getContact,
+        updateContact,
+    } = useContacts();
 
     useEffect(() => setPageTitle("Панель управления"), [setPageTitle]);
 
@@ -63,8 +71,16 @@ export const ControlPanel = (props: IControlPanelProps) => {
                     Обновить английский блог
                 </Button>
             </Card>
-            <Card title={"Контактные данные"} classes={{ root: css([classNames.card, classNames.contacts]) }}>
-                <Contacts />
+            <Card
+                title={"Контактные данные"}
+                classes={{ root: css([classNames.card, classNames.contacts]) }}
+            >
+                <Contacts
+                    contacts={contacts}
+                    contact={contact}
+                    createContact={createContact}
+                    onGetContact={getContact}
+                />
             </Card>
         </div>
     );
