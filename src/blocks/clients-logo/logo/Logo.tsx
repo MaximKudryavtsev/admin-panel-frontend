@@ -56,13 +56,13 @@ export const Logo = (props: ILogoProps) => {
         error: colorlessError,
         setSrc: colorlessSetSrc,
         loadFile: colorlessLoadFile,
-    } = useFile({ whiteList: ["png", "jpg", "jpeg"], maxFileSize: 1048576 });
+    } = useFile({ whiteList: ["png", "jpg", "jpeg", "svg"], maxFileSize: 1048576 });
     const {
         src: coloredSrc,
         error: coloredError,
         setSrc: coloredSetSrc,
         loadFile: coloredLoadFile,
-    } = useFile({ whiteList: ["png", "jpg", "jpeg"], maxFileSize: 1048576 });
+    } = useFile({ whiteList: ["png", "jpg", "jpeg", "svg"], maxFileSize: 1048576 });
 
     const colorlessRef = useRef<HTMLInputElement>(null);
     const coloredRef = useRef<HTMLInputElement>(null);

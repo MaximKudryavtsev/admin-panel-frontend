@@ -19,6 +19,7 @@ export interface IPagesTableRow {
 export interface IPage extends IPagesTableRow {
     link?: string;
     statusId: string;
+    footerVisible?: boolean;
     blocks?: Array<{
         type: string;
         data: any;

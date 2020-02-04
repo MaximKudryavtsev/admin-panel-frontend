@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { css } from "emotion";
-import { Button, Chip, Divider, Grid, Typography } from "@material-ui/core";
-import { useAdmin, useUser } from "../../hooks";
+import { Chip, Divider, Grid, Typography } from "@material-ui/core";
+import { useUser } from "../../hooks";
 import { Card } from "../../components/card";
-import { IChangePasswordData, IUser, TLang } from "../../entities";
+import { IChangePasswordData, IUser } from "../../entities";
 import { UpdateUserForm, ChangePassword, UploadAvatar } from "../../widgets";
 import { getServerError } from "../../utils";
-import { Update } from "@material-ui/icons";
 import { useSnackbar } from "notistack";
 import { omit } from "lodash";
 
@@ -25,14 +24,13 @@ const classes = {
         padding-right: 24px;
     `,
     card: css`
-        margin-bottom: 24px;
+        margin: 0 24px 24px 0;
     `,
 };
 
 export const Profile = (props: IProfileProps) => {
     const { setPageTitle, onSetUser } = props;
     const { user, updateUser, deleteUser, updateAvatar, updatePassword, deleteAvatar } = useUser();
-    const { updateBlog } = useAdmin();
     const { enqueueSnackbar } = useSnackbar();
     const [avatarLoaderVisible, setAvatarLoaderVisible] = useState(false);
     const [passwordError, setPasswordError] = useState<string | undefined>(undefined);
@@ -79,10 +77,6 @@ export const Profile = (props: IProfileProps) => {
                 }
                 setPasswordError(serverError.title);
             });
-    };
-
-    const onUpdateBlog = (lang: TLang) => {
-        updateBlog(lang).then(() => enqueueSnackbar("Обновлено!", { variant: "success" }));
     };
 
     return (
@@ -135,27 +129,6 @@ export const Profile = (props: IProfileProps) => {
                                         `}
                                     />
                                 ))}
-                            </Card>
-                            <Card title={"Блог"} classes={{ root: classes.card }}>
-                                <Button
-                                    variant="contained"
-                                    color="primary"
-                                    startIcon={<Update />}
-                                    className={css`
-                                        margin-right: 24px;
-                                    `}
-                                    onClick={() => onUpdateBlog("ru")}
-                                >
-                                    Обновить русский блог
-                                </Button>
-                                <Button
-                                    variant="contained"
-                                    color="primary"
-                                    startIcon={<Update />}
-                                    onClick={() => onUpdateBlog("en")}
-                                >
-                                    Обновить английский блог
-                                </Button>
                             </Card>
                         </Grid>
                     </Grid>

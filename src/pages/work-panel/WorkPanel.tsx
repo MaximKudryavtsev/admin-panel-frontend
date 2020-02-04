@@ -10,6 +10,7 @@ import { Page } from "../page";
 import { Main } from "../main";
 import { Header } from "../header";
 import { PreviewPage } from "../preview-page";
+import { ControlPanel } from "../control-panel";
 
 interface INavigationProps {
     baseUrl?: string;
@@ -36,6 +37,9 @@ export const WorkPanel = (props: INavigationProps) => {
                 </Route>
                 <Route path={`${baseUrl}/profile`} exact>
                     <Profile setPageTitle={setTitle} onSetUser={setUser} />
+                </Route>
+                <Route path={`${baseUrl}/control-panel`} exact>
+                    <ControlPanel setPageTitle={setTitle} />
                 </Route>
                 <Route path={`${baseUrl}/pages`} exact>
                     <Pages setPageTitle={setTitle} />

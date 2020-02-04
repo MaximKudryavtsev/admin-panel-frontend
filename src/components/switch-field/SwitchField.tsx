@@ -23,7 +23,7 @@ export const SwitchField = (props: ISwitchFieldProps) => {
     };
 
     return (
-        <Field name={name}>
+        <Field name={name} type={"checkbox"}>
             {({ field, meta }: FieldProps) => (
                 <FormControlLabel
                     classes={classes}
@@ -31,6 +31,7 @@ export const SwitchField = (props: ISwitchFieldProps) => {
                         <Switch
                             color={color}
                             checked={field.value}
+                            value={field.value}
                             disabled={disable}
                             {...field}
                             onClick={() => handleChange(!field.value)}

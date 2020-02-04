@@ -10,12 +10,9 @@ export function useAdmin(): {
     const tokenString = localStorage.getItem("token");
     transport.setToken(JSON.parse(tokenString!));
 
-    const updateBlog = useCallback(
-        (lang: TLang) => {
-            return AdminAPI.updateBlog(transport, lang);
-        },
-        [transport],
-    );
+    const updateBlog = useCallback((lang: TLang) => AdminAPI.updateBlog(transport, lang), [
+        transport,
+    ]);
 
     return { updateBlog };
 }

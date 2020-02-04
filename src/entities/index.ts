@@ -8,3 +8,4 @@ export * from "./pages";
 export * from "./common";
 export * from "./block";
 export * from "./header";
+export * from "./contact";

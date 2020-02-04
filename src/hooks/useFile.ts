@@ -48,10 +48,10 @@ export function useFile(
             getExtension(resolve, file),
         );
         if (params.whiteList.indexOf(ext) < 0) {
-            return "Тип файла не соответствует его расширению. Пожалуйста, повторите попытку.";
+            return `Файл этого типа не может быть загружен. Разрешенные расширения: ${params.whiteList.join(", ")}`;
         }
         if (getUnsafeExtension(file) !== ext) {
-            return "Файл этого типа не может быть загружен";
+            return "Тип файла не соответствует его расширению. Пожалуйста, повторите попытку.";
         }
         return undefined;
     };

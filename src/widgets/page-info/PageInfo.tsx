@@ -3,11 +3,13 @@ import { IPage, IPageAuthor, IPageStatus } from "../../entities";
 import { css } from "emotion";
 import cn from "classnames";
 import {
-    Avatar, Backdrop,
+    Avatar,
+    Backdrop,
     Button,
     CircularProgress,
     IconButton,
-    Paper, Tooltip,
+    Paper,
+    Tooltip,
     Typography,
 } from "@material-ui/core";
 import { AccountCircle, Delete, Save } from "@material-ui/icons";
@@ -18,6 +20,8 @@ import { Select } from "../../components/select";
 import { isEqual } from "lodash";
 import { ConfirmPopup } from "../../components/confirm-popup";
 import { Link } from "react-router-dom";
+import { SwitchField } from "../../components/switch-field";
+import * as Yup from "yup";
 
 const classNames = {
     line: css`
@@ -27,6 +31,7 @@ const classNames = {
     fieldLine: css`
         grid-template-columns: 400px 400px 400px;
         grid-column-gap: 40px;
+        grid-row-gap: 40px;
     `,
     content: css`
         padding: 24px;
@@ -38,7 +43,9 @@ const classNames = {
         color: #fff;
         z-index: 10000;
     `,
-    title: css`margin-bottom: 24px`
+    title: css`
+        margin-bottom: 24px;
+    `,
 };
 
 interface IPageInfoProps {
@@ -50,6 +57,10 @@ interface IPageInfoProps {
 
     onDelete?(): Promise<void>;
 }
+
+const ValidationSchema = Yup.object().shape({
+    footerVisible: Yup.boolean().notRequired(),
+});
 
 export const PageInfo = (props: IPageInfoProps) => {
     const { page, pageAuthor, onUpdate, statuses = [], onDelete } = props;
@@ -68,13 +79,17 @@ export const PageInfo = (props: IPageInfoProps) => {
         if (onDelete) {
             onDeleteModalClose();
             setBackdrop(true);
-            onDelete().then(() => setBackdrop(false)).catch(() => setBackdrop(false));
+            onDelete()
+                .then(() => setBackdrop(false))
+                .catch(() => setBackdrop(false));
         }
     };
 
     return (
         <React.Fragment>
-            <Typography className={classNames.title} variant={"h6"}>Основная информация</Typography>
+            <Typography className={classNames.title} variant={"h6"}>
+                Основная информация
+            </Typography>
             <Paper className={classNames.content}>
                 {!!page ? (
                     <React.Fragment>
@@ -101,7 +116,14 @@ export const PageInfo = (props: IPageInfoProps) => {
                                     Автор:{" "}
                                 </Typography>
                                 {pageAuthor?.avatar ? (
-                                    <Avatar src={pageAuthor?.avatar} className={css`width: 30px; height: 30px; margin-right: 10px;`} />
+                                    <Avatar
+                                        src={pageAuthor?.avatar}
+                                        className={css`
+                                            width: 30px;
+                                            height: 30px;
+                                            margin-right: 10px;
+                                        `}
+                                    />
                                 ) : (
                                     <AccountCircle />
                                 )}
@@ -159,17 +181,18 @@ export const PageInfo = (props: IPageInfoProps) => {
                             <Tooltip title={"Удалить страницу"} placement={"top"}>
                                 <IconButton
                                     className={css`
-                                    margin-left: auto !important;
-                                `}
+                                        margin-left: auto !important;
+                                    `}
                                     onClick={onDeleteModalOpen}
                                 >
                                     <Delete />
                                 </IconButton>
                             </Tooltip>
                         </div>
-                        <CustomForm<IPage>
+                        <CustomForm<Partial<IPage>>
                             onSubmit={onUpdate}
                             data={page}
+                            validationSchema={ValidationSchema}
                             render={(form) => (
                                 <React.Fragment>
                                     <div
@@ -188,6 +211,10 @@ export const PageInfo = (props: IPageInfoProps) => {
                                                 value: item._id,
                                                 label: item.title,
                                             }))}
+                                        />
+                                        <SwitchField
+                                            name={"footerVisible"}
+                                            label={"Показывать футер на странице"}
                                         />
                                     </div>
                                     <div
@@ -226,7 +253,15 @@ export const PageInfo = (props: IPageInfoProps) => {
             />
             <Backdrop open={backdrop} className={classNames.backdrop}>
                 <CircularProgress color="inherit" />
-                <Typography className={css`margin-left: 24px !important;`} variant={"h6"}  color={"inherit"}>Удаление</Typography>
+                <Typography
+                    className={css`
+                        margin-left: 24px !important;
+                    `}
+                    variant={"h6"}
+                    color={"inherit"}
+                >
+                    Удаление
+                </Typography>
             </Backdrop>
         </React.Fragment>
     );

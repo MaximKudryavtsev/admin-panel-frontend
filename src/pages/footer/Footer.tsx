@@ -29,34 +29,38 @@ export const Footer = (props: IFooterProps) => {
 
     return (
         <LanguageTab>
-            <NavigationPanel
-                lang={"ru"}
-                navigations={navigations}
-                currentNavigation={navigation}
-                navigationTypes={navigationTypes}
-                deleteNavigation={deleteNavigation}
-                createNavigation={createNavigation}
-                getNavigation={getNavigation}
-                updateNavigation={updateNavigation}
-                reorderNavigation={reorderNavigation}
-                type={"footer"}
-                setLanguage={setLanguage}
-                pages={navigationsPages}
-            />
-            <NavigationPanel
-                lang={"en"}
-                navigations={navigations}
-                currentNavigation={navigation}
-                navigationTypes={navigationTypes}
-                deleteNavigation={deleteNavigation}
-                createNavigation={createNavigation}
-                getNavigation={getNavigation}
-                updateNavigation={updateNavigation}
-                reorderNavigation={reorderNavigation}
-                type={"footer"}
-                setLanguage={setLanguage}
-                pages={navigationsPages}
-            />
+            <div>
+                <NavigationPanel
+                    lang={"ru"}
+                    navigations={navigations}
+                    currentNavigation={navigation}
+                    navigationTypes={navigationTypes}
+                    deleteNavigation={deleteNavigation}
+                    createNavigation={createNavigation}
+                    getNavigation={getNavigation}
+                    updateNavigation={updateNavigation}
+                    reorderNavigation={reorderNavigation}
+                    type={"footer"}
+                    setLanguage={setLanguage}
+                    pages={navigationsPages}
+                />
+            </div>
+            <div>
+                <NavigationPanel
+                    lang={"en"}
+                    navigations={navigations}
+                    currentNavigation={navigation}
+                    navigationTypes={navigationTypes}
+                    deleteNavigation={deleteNavigation}
+                    createNavigation={createNavigation}
+                    getNavigation={getNavigation}
+                    updateNavigation={updateNavigation}
+                    reorderNavigation={reorderNavigation}
+                    type={"footer"}
+                    setLanguage={setLanguage}
+                    pages={navigationsPages}
+                />
+            </div>
         </LanguageTab>
     );
 };

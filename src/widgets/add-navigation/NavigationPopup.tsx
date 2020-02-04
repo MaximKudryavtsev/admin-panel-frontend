@@ -73,7 +73,7 @@ export const NavigationPopup = (props: IAddNavigationProps) => {
         <Popup title={title} open={open} onClose={onClose}>
             <CustomForm<Partial<INavigation>>
                 onSubmit={handleSubmit}
-                data={{ ...navigation, hasChild: false }}
+                data={navigation ? navigation : { hasChild: false }}
                 validationSchema={ValidationSchema}
                 validateOnChange={false}
                 render={(form) => (

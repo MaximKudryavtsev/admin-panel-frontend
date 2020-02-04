@@ -87,8 +87,8 @@ export const Layout: FC<ILayoutProps> = (props) => {
         }
     };
 
-    const goToProfile = () => {
-        AppContext.getHistory().push("/profile");
+    const goTo = (path: string) => {
+        AppContext.getHistory().push(`/${path}`);
         handleMenuClose();
     };
 
@@ -118,7 +118,11 @@ export const Layout: FC<ILayoutProps> = (props) => {
                         options={[
                             {
                                 value: "Профиль",
-                                handler: goToProfile,
+                                handler: () => goTo("profile"),
+                            },
+                            {
+                                value: "Панель управления",
+                                handler: () => goTo("control-panel"),
                             },
                             {
                                 value: "Выход",
