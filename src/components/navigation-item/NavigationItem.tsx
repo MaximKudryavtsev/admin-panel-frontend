@@ -7,10 +7,9 @@ import {
     Delete,
     DragIndicator,
     Edit,
-    Visibility,
-    VisibilityOff,
 } from "@material-ui/icons";
 import { DraggableProvidedDraggableProps, DraggableProvidedDragHandleProps } from "react-beautiful-dnd";
+import { ToggleIconButton } from "../toggle-icon-button";
 
 interface INavigationItemProps {
     navigation: INavigation;
@@ -112,9 +111,7 @@ export const NavigationItem = (props: INavigationItemProps) => {
                 </div>
                 <Typography className={styles.title}>{navigation.title}</Typography>
                 <div className={styles.icons}>
-                    <IconButton className={styles.icon} onClick={handleChangeVisibility}>
-                        {navigation.isVisible ? <Visibility /> : <VisibilityOff />}
-                    </IconButton>
+                    <ToggleIconButton on={navigation.isVisible} onClick={handleChangeVisibility} />
                     <IconButton className={styles.icon} onClick={handleGetNavigation}>
                         <Edit />
                     </IconButton>
