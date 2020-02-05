@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="add editing contacts in footer">
+    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/choose-contacts-popup/ChooseContactsPopup.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/choose-contacts-popup/ChooseContactsPopup.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useFooter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useFooter.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/contacts/Contacts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/contacts/Contacts.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/footer/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/footer/Footer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/widgets/footer-panel/FooterPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/footer-panel/FooterPanel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/navigation-panel/NavigationPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/navigation-panel/NavigationPanel.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,14 +166,7 @@
       <workItem from="1580627101002" duration="2337000" />
       <workItem from="1580640966531" duration="6189000" />
       <workItem from="1580794218312" duration="26662000" />
-      <workItem from="1580886678365" duration="24981000" />
-    </task>
-    <task id="LOCAL-00043" summary="refactoring">
-      <created>1578396289129</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1578396289129</updated>
+      <workItem from="1580886678365" duration="26914000" />
     </task>
     <task id="LOCAL-00044" summary="add dragging navigations">
       <created>1579372792151</created>
@@ -510,7 +504,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580912543692</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="delete unneeded code">
+      <created>1580914445728</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1580914445728</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -527,7 +528,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix incorrect link to profile" />
     <MESSAGE value="add component for quote block" />
     <MESSAGE value="add disabling if editing not enabled" />
     <MESSAGE value="move blocks in page to separate component" />
@@ -552,7 +552,8 @@
     <MESSAGE value="move contacts to separate page" />
     <MESSAGE value="connect footer api with frontend" />
     <MESSAGE value="add editing contacts in footer" />
-    <option name="LAST_COMMIT_MESSAGE" value="add editing contacts in footer" />
+    <MESSAGE value="delete unneeded code" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete unneeded code" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="182" key="#ESLint" timestamp="1578156507884">
@@ -576,10 +577,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="601" y="291" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1576315906681" />
-    <state x="585" y="117" key="CommitChangelistDialog2" timestamp="1580914398623">
+    <state x="585" y="117" key="CommitChangelistDialog2" timestamp="1580914444730">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580914398623" />
+    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580914444730" />
     <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172968703" />
     <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580669479042" />
     <state x="184" y="85" width="1536" height="840" key="DiffContextDialog" timestamp="1580914395593">
@@ -649,10 +650,10 @@
     </state>
     <state x="616" y="237" key="run.anything.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578145423257" />
     <state x="616" y="237" width="672" height="677" key="run.anything.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579939819522" />
-    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup" timestamp="1580908751930">
+    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup" timestamp="1580915922721">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580908751930" />
+    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580915922721" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578170577061" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580655872348" />
   </component>

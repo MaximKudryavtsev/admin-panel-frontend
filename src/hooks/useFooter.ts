@@ -21,7 +21,7 @@ export function useFooter(lang: TLang): IUseFooter {
 
     const update = useCallback((data: Partial<IFooter>) => {
         return FooterAPI.updateFooter(transport, data).then(fetch);
-    }, [transport, lang]);
+    }, [transport, fetch]);
 
     useEffect(() => {
         fetch();

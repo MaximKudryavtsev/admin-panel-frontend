@@ -34,7 +34,7 @@ interface IFooterPanel {
 
 const classNames = {
     wrapper: css`
-        width: 600px;
+        width: 500px;
         padding: 24px;
     `,
     field: css`

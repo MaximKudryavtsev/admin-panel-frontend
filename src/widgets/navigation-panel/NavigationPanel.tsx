@@ -40,6 +40,7 @@ interface INavigationPanelProps {
 const styles = {
     container: css`
         display: flex;
+        width: fit-content;
     `,
     wrapper: css`
         width: fit-content;

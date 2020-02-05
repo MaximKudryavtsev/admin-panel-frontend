@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { TLang } from "../../entities";
-import { useContacts, useFooter, useNavigation, useNavigationTypes } from "../../hooks";
+import { useContacts, useFooter, useNavigation } from "../../hooks";
 import { LanguageTab } from "../../widgets/language-tab";
 import { NavigationPanel } from "../../widgets/navigation-panel";
 import { FooterPanel } from "../../widgets/footer-panel";
@@ -12,7 +12,7 @@ interface IFooterProps {
 
 const classNames = {
     navigation: css`
-        margin-bottom: 24px;
+        margin: 0 24px 24px 0;
     `
 };
 
@@ -43,7 +43,7 @@ export const Footer = (props: IFooterProps) => {
 
     return (
         <LanguageTab onSwitch={onSwitchLanguage}>
-            <div>
+            <div className={css`display: flex; flex-wrap: wrap;`}>
                 <div className={classNames.navigation}>
                     <NavigationPanel
                         lang={"ru"}
@@ -70,7 +70,7 @@ export const Footer = (props: IFooterProps) => {
                     contacts={contacts}
                 />
             </div>
-            <div>
+            <div className={css`display: flex; flex-wrap: wrap;`}>
                 <div className={classNames.navigation}>
                     <NavigationPanel
                         lang={"en"}

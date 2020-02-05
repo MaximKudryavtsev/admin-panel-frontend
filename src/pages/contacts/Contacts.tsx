@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useContacts } from "../../hooks";
 import { TLang } from "../../entities";
 import { LanguageTab } from "../../widgets/language-tab";
-import { ContactPanel } from "../../widgets/contact-panel/ContactPanel";
+import { ContactPanel } from "../../widgets/contact-panel";
 
 interface IContactsProps {
     setPageTitle(title: string): void;
@@ -21,7 +21,7 @@ export const Contacts = (props: IContactsProps) => {
         contacts,
     } = useContacts(language);
 
-    useEffect(() => setPageTitle("Контакты"), []);
+    useEffect(() => setPageTitle("Контакты"), [setPageTitle]);
 
     return (
         <LanguageTab>
