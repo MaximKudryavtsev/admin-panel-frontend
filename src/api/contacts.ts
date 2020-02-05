@@ -1,13 +1,13 @@
 import { Transport } from "../transport";
-import { IContact, IDictionary, IIdResponse } from "../entities";
+import { IContact, IDictionary, IIdResponse, TLang } from "../entities";
 import { ApiPaths } from "../config";
 
 export function fetchContactTypes(transport: Transport) {
-    return transport.get<IDictionary[]>(`${ApiPaths.CONTACTS}/types`)
+    return transport.get<IDictionary[]>(`${ApiPaths.CONTACTS}/types`);
 }
 
-export function fetchContacts(transport: Transport) {
-    return transport.get<IContact[]>(ApiPaths.CONTACTS);
+export function fetchContacts(transport: Transport, lang: TLang) {
+    return transport.get<IContact[]>(ApiPaths.CONTACTS, { lang });
 }
 
 export function fetchContact(transport: Transport, id: string) {

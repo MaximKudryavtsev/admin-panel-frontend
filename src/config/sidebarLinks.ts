@@ -13,6 +13,10 @@ export const sidebarLinks: ISidebarLink[] = [
         link: "/header"
     },
     {
+        title: "Контакты",
+        link: "/contacts"
+    },
+    {
         title: "Навигация",
         link: "/navigation"
     },

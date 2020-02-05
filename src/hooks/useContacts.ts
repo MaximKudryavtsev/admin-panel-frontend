@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Transport } from "../transport";
-import { IContact, IDictionary } from "../entities";
+import { IContact, IDictionary, TLang } from "../entities";
 import { ContactAPI } from "../api";
 
 export interface IUseContacts {
@@ -13,7 +13,7 @@ export interface IUseContacts {
     deleteContact: (id: string) => Promise<void>;
 }
 
-export function useContacts(): IUseContacts {
+export function useContacts(lang: TLang): IUseContacts {
     const transport = useMemo(() => Transport.create(), []);
     const [contacts, setContacts] = useState<IContact[]>([]);
     const [contact, setContact] = useState<IContact | undefined>(undefined);
@@ -24,12 +24,12 @@ export function useContacts(): IUseContacts {
     }, [transport]);
 
     const list = useCallback(() => {
-        ContactAPI.fetchContacts(transport).then((response) => setContacts(response.data));
-    }, [transport]);
+        ContactAPI.fetchContacts(transport, lang).then((response) => setContacts(response.data));
+    }, [transport, lang]);
 
     const createContact = useCallback((data:  Partial<IContact>) => {
         return ContactAPI.createContact(transport, data).then(list);
-    }, [transport]);
+    }, [transport, list]);
 
     const getOne = useCallback(
         (id: string) => {
@@ -42,16 +42,16 @@ export function useContacts(): IUseContacts {
 
     const update = useCallback((id: string, data: Partial<IContact>) => {
         return ContactAPI.updateContact(transport, id, data).then(list);
-    }, [transport]);
+    }, [transport, list]);
 
     const deleteContact = useCallback((id: string) => {
         return ContactAPI.deleteContact(transport, id).then(list);
-    }, [transport]);
+    }, [transport, list]);
 
     useEffect(() => {
         list();
         types();
-    }, [list]);
+    }, [list, types]);
 
     return { contact, contacts, getContact: getOne, updateContact: update, deleteContact, createContact, contactTypes };
 }
