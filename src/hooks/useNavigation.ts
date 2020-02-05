@@ -1,8 +1,8 @@
 import { Transport } from "../transport";
 import {
+    IDictionary,
     INavigation,
     INavigationOrder,
-    INavigationType,
     TCreateNavigationRequest,
     TLang, TNavigationPage, TUpdateNavigationRequest, TypeNavigation,
 } from "../entities";
@@ -21,7 +21,7 @@ export function useNavigation(
     lang: TLang,
     type: TypeNavigation = "navigation"
 ): {
-    navigationTypes: INavigationType[];
+    navigationTypes: IDictionary[];
     navigations: INavigation[];
     navigation?: INavigation;
     getNavigation: (id: string) => Promise<void>;
@@ -31,7 +31,7 @@ export function useNavigation(
     reorderNavigation: (order: INavigationOrder) => Promise<void>;
     navigationsPages: TNavigationPage[];
 } {
-    const [navigationTypes, setNavigationTypes] = useState<INavigationType[]>([]);
+    const [navigationTypes, setNavigationTypes] = useState<IDictionary[]>([]);
     const [navigations, setNavigations] = useState<INavigation[]>([]);
     const [navigation, setNavigation] = useState<INavigation | undefined>(undefined);
     const [pages, setPages] = useState<TNavigationPage[]>([]);
@@ -41,8 +41,8 @@ export function useNavigation(
     transport.setToken(JSON.parse(tokenString!));
 
     const getTypes = useCallback(() => {
-        return getNavigationTypes(transport, type).then((response) => setNavigationTypes(response.data));
-    }, [transport, type]);
+        return getNavigationTypes(transport).then((response) => setNavigationTypes(response.data));
+    }, [transport]);
 
     const getList = useCallback(() => {
         return getNavigationList(transport, lang, type).then((response) => setNavigations(response.data));

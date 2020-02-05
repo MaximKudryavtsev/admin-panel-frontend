@@ -1,16 +1,16 @@
 import { Transport } from "../transport";
 import {
+    IDictionary,
     INavigation,
     INavigationOrder,
-    INavigationType,
     TCreateNavigationRequest,
     TLang, TNavigationPage,
     TypeNavigation,
 } from "../entities";
 import { ApiPaths } from "../config";
 
-export function getNavigationTypes(transport: Transport, type: TypeNavigation) {
-    return transport.get<INavigationType[]>(ApiPaths.GET_NAVIGATION_TYPES, {type});
+export function getNavigationTypes(transport: Transport) {
+    return transport.get<IDictionary[]>(ApiPaths.GET_NAVIGATION_TYPES);
 }
 
 export function getNavigationList(transport: Transport, lang: TLang, type: TypeNavigation) {

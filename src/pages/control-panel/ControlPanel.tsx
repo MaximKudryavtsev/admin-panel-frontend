@@ -6,7 +6,6 @@ import { Update } from "@material-ui/icons";
 import { Card } from "../../components/card";
 import { TLang } from "../../entities";
 import { useSnackbar } from "notistack";
-import { Contacts } from "../../widgets/contacts";
 
 interface IControlPanelProps {
     setPageTitle(title: string): void;
@@ -31,17 +30,8 @@ const classNames = {
 
 export const ControlPanel = (props: IControlPanelProps) => {
     const { setPageTitle } = props;
-    const { updateBlog, useContacts } = useAdmin();
+    const { updateBlog } = useAdmin();
     const { enqueueSnackbar } = useSnackbar();
-    const {
-        contact,
-        contacts,
-        contactTypes,
-        createContact,
-        deleteContact,
-        getContact,
-        updateContact,
-    } = useContacts();
 
     useEffect(() => setPageTitle("Панель управления"), [setPageTitle]);
 
@@ -71,20 +61,6 @@ export const ControlPanel = (props: IControlPanelProps) => {
                 >
                     Обновить английский блог
                 </Button>
-            </Card>
-            <Card
-                title={"Контактные данные"}
-                classes={{ root: css([classNames.card, classNames.contacts]) }}
-            >
-                <Contacts
-                    contacts={contacts}
-                    contact={contact}
-                    createContact={createContact}
-                    onGetContact={getContact}
-                    contactTypes={contactTypes}
-                    updateContact={updateContact}
-                    deleteContact={deleteContact}
-                />
             </Card>
         </div>
     );

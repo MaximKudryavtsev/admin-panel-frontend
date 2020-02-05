@@ -1,12 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { TLang } from "../../entities";
-import { useNavigation } from "../../hooks";
+import { useFooter, useNavigation, useNavigationTypes } from "../../hooks";
 import { LanguageTab } from "../../widgets/language-tab";
 import { NavigationPanel } from "../../widgets/navigation-panel";
+import { FooterPanel } from "../../widgets/footer-panel";
+import { css } from "emotion";
 
 interface IFooterProps {
     setPageTitle(title: string): void;
 }
+
+const classNames = {
+    navigation: css`
+        margin-bottom: 24px;
+    `
+};
 
 export const Footer = (props: IFooterProps) => {
     const { setPageTitle } = props;
@@ -24,40 +32,65 @@ export const Footer = (props: IFooterProps) => {
         updateNavigation,
         createNavigation,
         getNavigation,
-        navigationsPages
+        navigationsPages,
     } = useNavigation(language, "footer");
+    const { footer, updateFooter, setFooter } = useFooter(language);
+
+    const onSwitchLanguage = () => {
+      setFooter(undefined);
+    };
 
     return (
-        <LanguageTab>
+        <LanguageTab onSwitch={onSwitchLanguage}>
             <div>
-                <NavigationPanel
+                <div className={classNames.navigation}>
+                    <NavigationPanel
+                        lang={"ru"}
+                        navigations={navigations}
+                        currentNavigation={navigation}
+                        navigationTypes={navigationTypes}
+                        deleteNavigation={deleteNavigation}
+                        createNavigation={createNavigation}
+                        getNavigation={getNavigation}
+                        updateNavigation={updateNavigation}
+                        reorderNavigation={reorderNavigation}
+                        type={"footer"}
+                        setLanguage={setLanguage}
+                        pages={navigationsPages}
+                    />
+                </div>
+                <FooterPanel
                     lang={"ru"}
-                    navigations={navigations}
-                    currentNavigation={navigation}
-                    navigationTypes={navigationTypes}
-                    deleteNavigation={deleteNavigation}
-                    createNavigation={createNavigation}
-                    getNavigation={getNavigation}
-                    updateNavigation={updateNavigation}
-                    reorderNavigation={reorderNavigation}
-                    type={"footer"}
                     setLanguage={setLanguage}
+                    footer={footer}
+                    updateFooter={updateFooter}
+                    navigationTypes={navigationTypes}
                     pages={navigationsPages}
                 />
             </div>
             <div>
-                <NavigationPanel
+                <div className={classNames.navigation}>
+                    <NavigationPanel
+                        lang={"en"}
+                        navigations={navigations}
+                        currentNavigation={navigation}
+                        navigationTypes={navigationTypes}
+                        deleteNavigation={deleteNavigation}
+                        createNavigation={createNavigation}
+                        getNavigation={getNavigation}
+                        updateNavigation={updateNavigation}
+                        reorderNavigation={reorderNavigation}
+                        type={"footer"}
+                        setLanguage={setLanguage}
+                        pages={navigationsPages}
+                    />
+                </div>
+                <FooterPanel
                     lang={"en"}
-                    navigations={navigations}
-                    currentNavigation={navigation}
-                    navigationTypes={navigationTypes}
-                    deleteNavigation={deleteNavigation}
-                    createNavigation={createNavigation}
-                    getNavigation={getNavigation}
-                    updateNavigation={updateNavigation}
-                    reorderNavigation={reorderNavigation}
-                    type={"footer"}
                     setLanguage={setLanguage}
+                    footer={footer}
+                    updateFooter={updateFooter}
+                    navigationTypes={navigationTypes}
                     pages={navigationsPages}
                 />
             </div>

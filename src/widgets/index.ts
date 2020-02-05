@@ -7,3 +7,4 @@ export * from "./navigation-panel";
 export * from "./add-navigation";
 export * from "./page-info";
 export * from "./add-contact-popup";
+export * from "./contact-panel";

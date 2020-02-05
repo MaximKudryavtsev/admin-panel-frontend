@@ -8,3 +8,6 @@ export * from "./useAdmin";
 export * from "./useHeader";
 export * from "./useFetchPages";
 export * from "./useContacts";
+export * from "./useFooter";
+export * from "./useNavigationTypes";
+export * from "./useCustomSnackbar";

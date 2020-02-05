@@ -8,13 +8,20 @@ const classNames = {
     `
 };
 
-export const LanguageTab: FC = (props) => {
-    const { children } = props;
+interface ILanguageTabProps {
+    onSwitch?(): void;
+}
+
+export const LanguageTab: FC<ILanguageTabProps> = (props) => {
+    const { children, onSwitch } = props;
 
     const [value, setValue] = useState(0);
 
     const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
         setValue(newValue);
+        if (onSwitch) {
+            onSwitch();
+        }
     };
 
     const childArray = Children.map(children, (child) => child);
