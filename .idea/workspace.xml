@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="connect footer api with frontend">
-      <change afterPath="$PROJECT_DIR$/src/widgets/choose-contacts-popup/ChooseContactsPopup.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widgets/choose-contacts-popup/index.ts" afterDir="false" />
+    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="add editing contacts in footer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/footer/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/footer/Footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/choose-contacts-popup/ChooseContactsPopup.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/choose-contacts-popup/ChooseContactsPopup.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/widgets/footer-panel/FooterPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/footer-panel/FooterPanel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,14 +165,7 @@
       <workItem from="1580627101002" duration="2337000" />
       <workItem from="1580640966531" duration="6189000" />
       <workItem from="1580794218312" duration="26662000" />
-      <workItem from="1580886678365" duration="23449000" />
-    </task>
-    <task id="LOCAL-00042" summary="add fetching navigation on mount work panel">
-      <created>1578396190121</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1578396190121</updated>
+      <workItem from="1580886678365" duration="24981000" />
     </task>
     <task id="LOCAL-00043" summary="refactoring">
       <created>1578396289129</created>
@@ -511,7 +503,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580907360994</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="add editing contacts in footer">
+      <created>1580912543692</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1580912543692</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -528,7 +527,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add deleting page" />
     <MESSAGE value="fix incorrect link to profile" />
     <MESSAGE value="add component for quote block" />
     <MESSAGE value="add disabling if editing not enabled" />
@@ -553,7 +551,8 @@
     <MESSAGE value="add component for showing loading until data got loaded from server" />
     <MESSAGE value="move contacts to separate page" />
     <MESSAGE value="connect footer api with frontend" />
-    <option name="LAST_COMMIT_MESSAGE" value="connect footer api with frontend" />
+    <MESSAGE value="add editing contacts in footer" />
+    <option name="LAST_COMMIT_MESSAGE" value="add editing contacts in footer" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="182" key="#ESLint" timestamp="1578156507884">
@@ -577,16 +576,16 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="601" y="291" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1576315906681" />
-    <state x="585" y="117" key="CommitChangelistDialog2" timestamp="1580908104545">
+    <state x="585" y="117" key="CommitChangelistDialog2" timestamp="1580914398623">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580908104545" />
+    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580914398623" />
     <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172968703" />
     <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580669479042" />
-    <state x="184" y="85" width="1536" height="840" key="DiffContextDialog" timestamp="1580897547208">
+    <state x="184" y="85" width="1536" height="840" key="DiffContextDialog" timestamp="1580914395593">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="184" y="85" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580897547208" />
+    <state x="184" y="85" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580914395593" />
     <state x="184" y="86" width="1536" height="840" key="DiffContextDialog/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172950313" />
     <state x="184" y="86" key="DiffContextDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580667025719" />
     <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1580712034432">

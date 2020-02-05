@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { IContact } from "../../entities";
 import { Popup } from "../../components/popup";
 import { css } from "emotion";
-import { Button, Checkbox, Divider, FormControlLabel, Typography } from "@material-ui/core";
+import { Button, Checkbox, Divider, FormControlLabel } from "@material-ui/core";
 import { Save } from "@material-ui/icons";
 import { findIndex } from "lodash";
 
