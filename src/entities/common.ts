@@ -8,3 +8,7 @@ export enum EPageStatusLabel {
     DRAFT = "draft",
     PUBLISHED = "published"
 }
+
+export interface IIdResponse {
+    _id: string;
+}

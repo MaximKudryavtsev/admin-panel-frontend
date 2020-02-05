@@ -13,6 +13,7 @@ import { Button } from "@material-ui/core";
 interface IAddContactPopupProps {
     open: boolean;
     contact?: IContact;
+    title?: string;
     contactTypes?: IDictionary[];
     lang?: TLang;
 
@@ -41,14 +42,9 @@ const classNames = {
 };
 
 export const AddContactPopup = (props: IAddContactPopupProps) => {
-    const { contact, open, onClose, contactTypes = [], onSubmit } = props;
-
+    const { contact, open, onClose, contactTypes = [], onSubmit, title = "" } = props;
     return (
-        <Popup
-            title={!!contact ? "Редактировать контакт" : "Добавить контакт"}
-            open={open}
-            onClose={onClose}
-        >
+        <Popup title={title} open={open} onClose={onClose}>
             <CustomForm<IContact>
                 data={contact}
                 onSubmit={onSubmit}
@@ -66,18 +62,11 @@ export const AddContactPopup = (props: IAddContactPopupProps) => {
                         />
                         {contactTypes.find((item) => item._id === form?.values.typeId)?.label ===
                         EContactTypes.PHONE ? (
-                            <React.Fragment>
-                                <TextField
-                                    name={"title"}
-                                    label={"Телефон"}
-                                    classes={{ root: classNames.field }}
-                                />
-                                <TextField
-                                    name={"value"}
-                                    label={"Телфон без форматирования"}
-                                    classes={{ root: classNames.field }}
-                                />
-                            </React.Fragment>
+                            <TextField
+                                name={"title"}
+                                label={"Телефон"}
+                                classes={{ root: classNames.field }}
+                            />
                         ) : (
                             <TextField
                                 name={"title"}

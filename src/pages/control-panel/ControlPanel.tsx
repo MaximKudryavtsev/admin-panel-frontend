@@ -36,6 +36,7 @@ export const ControlPanel = (props: IControlPanelProps) => {
     const {
         contact,
         contacts,
+        contactTypes,
         createContact,
         deleteContact,
         getContact,
@@ -80,6 +81,9 @@ export const ControlPanel = (props: IControlPanelProps) => {
                     contact={contact}
                     createContact={createContact}
                     onGetContact={getContact}
+                    contactTypes={contactTypes}
+                    updateContact={updateContact}
+                    deleteContact={deleteContact}
                 />
             </Card>
         </div>

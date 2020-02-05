@@ -1,5 +1,5 @@
 import { Transport } from "../transport";
-import { IContact, IDictionary } from "../entities";
+import { IContact, IDictionary, IIdResponse } from "../entities";
 import { ApiPaths } from "../config";
 
 export function fetchContactTypes(transport: Transport) {
@@ -15,11 +15,11 @@ export function fetchContact(transport: Transport, id: string) {
 }
 
 export function createContact(transport: Transport, data: Partial<IContact>) {
-    return transport.post<Partial<IContact>, void>(ApiPaths.CONTACTS, data);
+    return transport.post<Partial<IContact>, IIdResponse>(ApiPaths.CONTACTS, data);
 }
 
 export function updateContact(transport: Transport, id: string, data: Partial<IContact>) {
-    return transport.put<Partial<IContact>, void>(`${ApiPaths}/${id}`, data);
+    return transport.put<Partial<IContact>, IIdResponse>(`${ApiPaths.CONTACTS}/${id}`, data);
 }
 
 export function deleteContact(transport: Transport, id: string) {
