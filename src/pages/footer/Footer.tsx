@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { TLang } from "../../entities";
-import { useFooter, useNavigation, useNavigationTypes } from "../../hooks";
+import { useContacts, useFooter, useNavigation, useNavigationTypes } from "../../hooks";
 import { LanguageTab } from "../../widgets/language-tab";
 import { NavigationPanel } from "../../widgets/navigation-panel";
 import { FooterPanel } from "../../widgets/footer-panel";
@@ -35,6 +35,7 @@ export const Footer = (props: IFooterProps) => {
         navigationsPages,
     } = useNavigation(language, "footer");
     const { footer, updateFooter, setFooter } = useFooter(language);
+    const { contacts } = useContacts(language);
 
     const onSwitchLanguage = () => {
       setFooter(undefined);
@@ -66,6 +67,7 @@ export const Footer = (props: IFooterProps) => {
                     updateFooter={updateFooter}
                     navigationTypes={navigationTypes}
                     pages={navigationsPages}
+                    contacts={contacts}
                 />
             </div>
             <div>
@@ -92,6 +94,7 @@ export const Footer = (props: IFooterProps) => {
                     updateFooter={updateFooter}
                     navigationTypes={navigationTypes}
                     pages={navigationsPages}
+                    contacts={contacts}
                 />
             </div>
         </LanguageTab>

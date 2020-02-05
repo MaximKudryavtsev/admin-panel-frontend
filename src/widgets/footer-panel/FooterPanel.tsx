@@ -1,21 +1,31 @@
-import React, { useEffect } from "react";
-import { ENavigationType, IDictionary, IFooter, TLang, TNavigationPage } from "../../entities";
+import React, { useEffect, useState } from "react";
+import {
+    ENavigationType,
+    IContact,
+    IDictionary,
+    IFooter,
+    TLang,
+    TNavigationPage,
+} from "../../entities";
 import { css } from "emotion";
 import { CustomForm } from "../../components/custom-form";
 import { TextField } from "../../components/text-field";
-import { Save } from "@material-ui/icons";
+import { Edit, Save } from "@material-ui/icons";
 import { isEqual } from "lodash";
-import { Button, Card, Divider, Typography } from "@material-ui/core";
+import { Button, Card, Divider, IconButton, Typography } from "@material-ui/core";
 import { useSnackbar } from "notistack";
 import { getServerError } from "../../utils";
 import { Loading } from "../../components/loading";
 import { Select } from "../../components/select";
+import { ChooseContactsPopup } from "../choose-contacts-popup";
+import { FieldArray } from "formik";
 
 interface IFooterPanel {
     footer?: IFooter;
     lang: TLang;
     navigationTypes?: IDictionary[];
     pages?: TNavigationPage[];
+    contacts?: IContact[];
 
     updateFooter?(data: Partial<IFooter>): Promise<void>;
 
@@ -28,15 +38,43 @@ const classNames = {
         padding: 24px;
     `,
     field: css`
-        margin-bottom: 24px;
+        margin: 0 0 24px 0;
     `,
     button: css`
         width: 100%;
     `,
+    contacts: css`
+        padding: 24px 0;
+    `,
+    contactsHeader: css`
+        display: flex;
+        align-items: center;
+    `,
+    contactItem: css`
+        padding: 18.5px 14px;
+        margin-bottom: 24px;
+    `,
 };
 
 export const FooterPanel = (props: IFooterPanel) => {
-    const { footer, lang, updateFooter, setLanguage, navigationTypes = [], pages = [] } = props;
+    const {
+        footer,
+        lang,
+        updateFooter,
+        setLanguage,
+        navigationTypes = [],
+        pages = [],
+        contacts,
+    } = props;
+    const [editContacts, setEditContacts] = useState(false);
+
+    function onEditContactsOpen(): void {
+        setEditContacts(true);
+    }
+
+    function onEditContactsClose(): void {
+        setEditContacts(false);
+    }
 
     useEffect(() => setLanguage(lang), [lang, setLanguage]);
 
@@ -55,6 +93,11 @@ export const FooterPanel = (props: IFooterPanel) => {
         }
     };
 
+    const updateContacts = (contacts: IContact[]) => {
+        handleUpdate({ ...footer, contacts });
+        onEditContactsClose();
+    };
+
     return (
         <Card className={classNames.wrapper}>
             <Loading loaded={footer}>
@@ -70,8 +113,33 @@ export const FooterPanel = (props: IFooterPanel) => {
                                 classes={{ root: classNames.field }}
                             />
                             <Divider />
-                            <Typography>Контакты</Typography>
-                            <Divider />
+                            <div className={classNames.contacts}>
+                                <div className={classNames.contactsHeader}>
+                                    <Typography>Контакты</Typography>
+                                    <IconButton
+                                        className={css`
+                                            margin-left: auto;
+                                        `}
+                                        onClick={onEditContactsOpen}
+                                    >
+                                        <Edit />
+                                    </IconButton>
+                                </div>
+                                <FieldArray name={"contacts"}>
+                                    {() =>
+                                        form?.values?.contacts?.map((item, index) => (
+                                            <TextField
+                                                name={`contacts.${index}.title`}
+                                                label={item.type.title}
+                                                classes={{ root: classNames.field }}
+                                                disable
+                                                key={item._id}
+                                            />
+                                        ))
+                                    }
+                                </FieldArray>
+                            </div>
+                            <Divider className={classNames.field} />
                             <TextField
                                 name={"buttonTitle"}
                                 label={"Заголовок кнопки"}
@@ -121,6 +189,13 @@ export const FooterPanel = (props: IFooterPanel) => {
                     )}
                 />
             </Loading>
+            <ChooseContactsPopup
+                open={editContacts}
+                onClose={onEditContactsClose}
+                contacts={contacts}
+                selectedContacts={footer?.contacts}
+                onSave={updateContacts}
+            />
         </Card>
     );
 };
