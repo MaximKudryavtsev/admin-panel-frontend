@@ -1,9 +1,10 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { Transport } from "../transport";
-import { IBlock, IDictionary } from "../entities";
-import { createBlock, deleteBlock, fetchBlocks, fetchBlockTypes, updateBlock } from "../api";
+import { useCallback, useEffect, useState } from "react";
+import { Transport } from "../../transport";
+import { IBlock, IDictionary } from "../../entities";
+import { BlockAPI } from "../../api";
 
 export function useBlock(
+    transport: Transport,
     pageId: string,
 ): {
     blockTypes: IDictionary[];
@@ -12,7 +13,6 @@ export function useBlock(
     deleteBlock: (id: string) => Promise<void>;
     updateBlock: (id: string, data: IBlock<any>) => Promise<void>;
 } {
-    const transport = useMemo(() => new Transport(), []);
     const tokenString = localStorage.getItem("token");
     transport.setToken(JSON.parse(tokenString!));
 
@@ -20,23 +20,23 @@ export function useBlock(
     const [blocks, setBlocks] = useState<IBlock<any>[]>([]);
 
     const fetchTypes = useCallback(() => {
-        fetchBlockTypes(transport).then((response) => setBlockTypes(response.data));
+        BlockAPI.fetchBlockTypes(transport).then((response) => setBlockTypes(response.data));
     }, [transport]);
 
     const fetchList = useCallback(() => {
-        fetchBlocks(transport, pageId).then((response) => setBlocks(response.data));
+        BlockAPI.fetchBlocks(transport, pageId).then((response) => setBlocks(response.data));
     }, [transport, pageId]);
 
     const create = useCallback((type: string) => {
-        return createBlock(transport, {pageId, type}).then((response) => setBlocks(response.data));
+        return BlockAPI.createBlock(transport, {pageId, type}).then((response) => setBlocks(response.data));
     }, [transport, pageId]);
 
     const handleDeleteBlock = useCallback((id: string) => {
-        return deleteBlock(transport, id).then(fetchList);
+        return BlockAPI.deleteBlock(transport, id).then(fetchList);
     }, [transport, fetchList]);
 
     const update = useCallback((id: string, data: IBlock<any>) => {
-        return updateBlock(transport, id, transport.formatToFormData(data)).then(fetchList);
+        return BlockAPI.updateBlock(transport, id, transport.formatToFormData(data)).then(fetchList);
     }, [transport, fetchList]);
 
     useEffect(() => {
