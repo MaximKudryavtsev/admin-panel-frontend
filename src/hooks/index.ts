@@ -1,9 +1,7 @@
-export * from "./useUser";
 export * from "./useFile";
-export * from "./useSnackbar";
 export * from "./useNavigation";
 export * from "./page";
-export * from "./useBlock";
+export * from "./block";
 export * from "./useAdmin";
 export * from "./useHeader";
 export * from "./useFetchPages";
@@ -11,3 +9,4 @@ export * from "./useContacts";
 export * from "./useFooter";
 export * from "./useNavigationTypes";
 export * from "./useCustomSnackbar";
+export * from "./user";
