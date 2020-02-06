@@ -8,10 +8,13 @@ import { getBlock } from "../blockList";
 interface IBlockTabsProps {
     blocks?: IBlock<any>[];
     statuses?: IDictionary[];
+    baseUrl?: string;
 
     onUpdateBlock?(id: string, block: IBlock<any>): Promise<void>;
 
     onDeleteBlock?(id: string): void;
+
+    onOpenFullscreen?(): void;
 }
 
 const classNames = {
@@ -27,7 +30,7 @@ const classNames = {
 };
 
 export const BlockTabs = (props: IBlockTabsProps) => {
-    const { blocks = [], statuses = [], onDeleteBlock, onUpdateBlock } = props;
+    const { blocks = [], statuses = [], onDeleteBlock, onUpdateBlock, baseUrl, onOpenFullscreen } = props;
 
     const [value, setValue] = useState(0);
 
@@ -79,6 +82,8 @@ export const BlockTabs = (props: IBlockTabsProps) => {
                                             statuses,
                                             onDelete: handleDeleteBlock,
                                             onSubmit: onUpdateBlock,
+                                            baseUrl,
+                                            onOpenFullscreen
                                         })}
                                     </div>
                                 ),
@@ -101,6 +106,8 @@ export const BlockTabs = (props: IBlockTabsProps) => {
                                             statuses,
                                             onDelete: handleDeleteBlock,
                                             onSubmit: onUpdateBlock,
+                                            baseUrl,
+                                            onOpenFullscreen
                                         })}
                                     </div>
                                 ),

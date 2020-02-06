@@ -58,7 +58,7 @@ const classNames = {
 };
 
 export const FeedbackBlock = (props: IBlockProps<IFeedbackBlock>) => {
-    const { block, onDelete, onSubmit, statuses } = props;
+    const { onSubmit } = props;
     const [uploaded, setUploaded] = useState(false);
 
     const handleSubmit = (id: string, data: Partial<IBlock<IFeedbackBlock>>) => {
@@ -83,9 +83,7 @@ export const FeedbackBlock = (props: IBlockProps<IFeedbackBlock>) => {
 
     return (
         <BlockWrapper<IFeedbackBlock>
-            block={block}
-            statuses={statuses}
-            onDelete={onDelete}
+            {...props}
             onSubmit={handleSubmit}
             validationSchema={validationSchema}
             disabled={uploaded}

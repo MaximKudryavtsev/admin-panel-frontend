@@ -43,7 +43,7 @@ const validationSchema = Yup.object().shape({
 });
 
 export const ClientsLogo = (props: IBlockProps<ILogo[]>) => {
-    const { block, statuses, onSubmit, onDelete } = props;
+    const { onSubmit } = props;
     const [uploaded, setUploaded] = useState(false);
 
     const handleSubmit = (id: string, data: Partial<IBlock<ILogo[]>>) => {
@@ -67,9 +67,7 @@ export const ClientsLogo = (props: IBlockProps<ILogo[]>) => {
 
     return (
         <BlockWrapper<ILogo[]>
-            block={block}
-            statuses={statuses}
-            onDelete={onDelete}
+            {...props}
             onSubmit={handleSubmit}
             validationSchema={validationSchema}
             render={(form) => (

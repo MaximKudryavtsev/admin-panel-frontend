@@ -55,15 +55,10 @@ const classNames = {
 };
 
 export const ContactsBlock = (props: IBlockProps<IContactBlock[]>) => {
-    const { statuses, block, onDelete, onSubmit } = props;
-
     return (
         <BlockWrapper<IContactBlock[]>
-            block={block}
-            statuses={statuses}
+            {...props}
             validationSchema={ValidationSchema}
-            onDelete={onDelete}
-            onSubmit={onSubmit}
             render={(form) => (
                 <FieldArray name={"data"}>
                     {(array) => (

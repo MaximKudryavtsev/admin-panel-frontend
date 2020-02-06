@@ -30,14 +30,9 @@ const classNames = {
 };
 
 export const BlueLinesList = (props: IBlockProps<string[]>) => {
-    const { block, statuses, onSubmit, onDelete } = props;
-
     return (
         <BlockWrapper<string[]>
-            block={block}
-            statuses={statuses}
-            onSubmit={onSubmit}
-            onDelete={onDelete}
+            {...props}
             validationSchema={ValidationSchema}
             render={(form) => (
                 <FieldArray

@@ -25,15 +25,10 @@ const ValidationSchema = Yup.object().shape({
 
 
 export const QuoteBlock = (props: IBlockProps<IQuoteBlock>) => {
-    const { statuses, block, onDelete, onSubmit } = props;
-
     return (
         <BlockWrapper<IQuoteBlock>
-            block={block}
-            statuses={statuses}
+            {...props}
             validationSchema={ValidationSchema}
-            onDelete={onDelete}
-            onSubmit={onSubmit}
             render={() => (
                 <React.Fragment>
                     <TextField name={"data.title"} label={"Заголовок"} classes={{root: classNames.field}}/>

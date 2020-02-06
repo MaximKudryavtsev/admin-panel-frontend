@@ -51,15 +51,10 @@ const classNames = {
 };
 
 export const FactsBlock = (props: IBlockProps<IFactBlock[]>) => {
-    const { block, statuses, onDelete, onSubmit } = props;
-
     return (
         <BlockWrapper<IFactBlock[]>
-            block={block}
-            statuses={statuses}
+            {...props}
             validationSchema={ValidationSchema}
-            onDelete={onDelete}
-            onSubmit={onSubmit}
             render={(form) => (
                 <FieldArray name={"data"}>
                     {(array) => (

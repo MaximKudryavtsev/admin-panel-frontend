@@ -36,15 +36,10 @@ const ValidationSchema = Yup.object().shape({
 });
 
 export const Description = (props: IBlockProps<string[]>) => {
-    const { statuses, block, onSubmit, onDelete } = props;
-
     return (
         <BlockWrapper<string[]>
-            block={block}
+            {...props}
             validationSchema={ValidationSchema}
-            statuses={statuses}
-            onSubmit={onSubmit}
-            onDelete={onDelete}
             render={(form) => (
                 <React.Fragment>
                     <div

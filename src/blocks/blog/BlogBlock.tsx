@@ -54,14 +54,10 @@ const classNames = {
 };
 
 export const BlogBlock = (props: IBlockProps<IBlog>) => {
-    const { block, onSubmit, onDelete, statuses } = props;
-
+    const { block } = props;
     return (
         <BlockWrapper
-            block={block}
-            statuses={statuses}
-            onSubmit={onSubmit}
-            onDelete={onDelete}
+            {...props}
             validationSchema={ValidationSchema}
             render={() => (
                 <div>
