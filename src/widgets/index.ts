@@ -9,3 +9,4 @@ export * from "./page-info";
 export * from "./add-contact-popup";
 export * from "./contact-panel";
 export * from "./choose-contacts-popup";
+export * from "./add-user-popup";

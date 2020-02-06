@@ -1,15 +1,17 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { createContext, useEffect, useMemo, useState } from "react";
 import { Router, Switch } from "react-router";
 import { AppContext } from "../context";
 import { Login } from "../pages/login";
 import { WorkPanel } from "../pages/work-panel";
 import { Transport } from "../transport";
-import { IToken, IUser } from "../entities";
+import { IDictionary, IToken, IUser } from "../entities";
 import { ProfileAPI } from "../api";
 import { PrivateRoute } from "../components/private-route";
 import { PublicRoute } from "../components/public-route";
 import { ForgotPassword } from "../pages/forgot-password";
 import { SnackbarProvider } from "notistack";
+
+export const RoleContext = createContext<IDictionary[]>([]);
 
 const App: React.FC = () => {
     const [user, setUser] = useState<IUser | undefined>(undefined);
@@ -42,43 +44,45 @@ const App: React.FC = () => {
     };
 
     return (
-        <SnackbarProvider>
-            <Router history={AppContext.getHistory()}>
-                <Switch>
-                    <PublicRoute
-                        auth={logged}
-                        exact={true}
-                        restricted={true}
-                        path={"/sign-in"}
-                        render={() => (
-                            <Login
-                                transport={transport}
-                                onSetUser={setUser}
-                                onSignIn={() => setLogged(true)}
-                            />
-                        )}
-                    />
-                    <PublicRoute
-                        auth={logged}
-                        restricted={true}
-                        path={"/forgot-password"}
-                        exact={true}
-                        render={() => <ForgotPassword transport={transport} />}
-                    />
-                    <PrivateRoute
-                        auth={logged}
-                        path={"/:page"}
-                        render={() => (
-                            <WorkPanel
-                                user={user}
-                                baseUrl={""}
-                                onLogout={logout}
-                            />
-                        )}
-                    />
-                </Switch>
-            </Router>
-        </SnackbarProvider>
+        <RoleContext.Provider value={user?.roles!}>
+            <SnackbarProvider>
+                <Router history={AppContext.getHistory()}>
+                    <Switch>
+                        <PublicRoute
+                            auth={logged}
+                            exact={true}
+                            restricted={true}
+                            path={"/sign-in"}
+                            render={() => (
+                                <Login
+                                    transport={transport}
+                                    onSetUser={setUser}
+                                    onSignIn={() => setLogged(true)}
+                                />
+                            )}
+                        />
+                        <PublicRoute
+                            auth={logged}
+                            restricted={true}
+                            path={"/forgot-password"}
+                            exact={true}
+                            render={() => <ForgotPassword transport={transport} />}
+                        />
+                        <PrivateRoute
+                            auth={logged}
+                            path={"/:page"}
+                            render={() => (
+                                <WorkPanel
+                                    user={user}
+                                    baseUrl={""}
+                                    onLogout={logout}
+                                />
+                            )}
+                        />
+                    </Switch>
+                </Router>
+            </SnackbarProvider>
+        </RoleContext.Provider>
     );
 };
 

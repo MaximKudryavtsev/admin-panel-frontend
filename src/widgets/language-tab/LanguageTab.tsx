@@ -1,6 +1,8 @@
-import React, { Children, FC, useState } from "react";
+import React, { Children, FC, useContext, useEffect, useState } from "react";
 import { Paper, Tab, Tabs } from "@material-ui/core";
 import { css } from "emotion";
+import { RoleContext } from "../../app/App";
+import { EUserRoles } from "../../entities";
 
 const classNames = {
     content: css`
@@ -14,8 +16,16 @@ interface ILanguageTabProps {
 
 export const LanguageTab: FC<ILanguageTabProps> = (props) => {
     const { children, onSwitch } = props;
+    const roles = useContext(RoleContext);
 
-    const [value, setValue] = useState(0);
+    const isTabAvailable = (roleLabel: string) => {
+        return roles && !!roles.find((item) => item.label === roleLabel);
+    };
+
+    const defaultValue = isTabAvailable(EUserRoles.RU) ? 0 : isTabAvailable(EUserRoles.EN) ? 1 : 0;
+    const [value, setValue] = useState(defaultValue);
+
+    useEffect(() => setValue(defaultValue), [defaultValue]);
 
     const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
         setValue(newValue);
@@ -36,13 +46,13 @@ export const LanguageTab: FC<ILanguageTabProps> = (props) => {
                     indicatorColor="secondary"
                     textColor="secondary"
                 >
-                    <Tab label="Русский сайт" />
-                    <Tab label="Английский сайт" />
+                    <Tab label="Русский сайт" disabled={!isTabAvailable(EUserRoles.RU)} />
+                    <Tab label="Английский сайт" disabled={!isTabAvailable(EUserRoles.EN)} />
                 </Tabs>
             </Paper>
             <div className={classNames.content}>
-                {value === 0 && childArray && childArray[0] && childArray[0]}
-                {value === 1 && childArray && childArray[1] && childArray[1]}
+                {isTabAvailable(EUserRoles.RU) && value === 0 && childArray && childArray[0] && childArray[0]}
+                {isTabAvailable(EUserRoles.EN) && value === 1 && childArray && childArray[1] && childArray[1]}
             </div>
         </div>
     );

@@ -2,12 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/widgets/add-user-popup/AddUserPopup.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/add-user-popup/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useFooter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useFooter.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/contacts/Contacts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/contacts/Contacts.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/footer/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/footer/Footer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/footer-panel/FooterPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/footer-panel/FooterPanel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/navigation-panel/NavigationPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/navigation-panel/NavigationPanel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/users.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/user/useUsers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/user/useUsers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/user-list/UserList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/user-list/UserList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/language-tab/LanguageTab.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/language-tab/LanguageTab.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/sidebar/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/sidebar/Sidebar.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +49,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/pages/preview-page" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/hooks/user" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -61,16 +66,19 @@
     <property name="ts.external.directory.path" value="C:\omega-admin-panel\admin-panel-frontend\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\omega-admin-panel\admin-panel-frontend\src\hooks" />
+      <recent name="C:\omega-admin-panel\admin-panel-frontend\src\hooks\user" />
+      <recent name="C:\omega-admin-panel\admin-panel-frontend\src\hooks\page" />
+      <recent name="C:\omega-admin-panel\admin-panel-frontend\src\hooks\block" />
+      <recent name="C:\omega-admin-panel\admin-panel-frontend\src\components" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\omega-admin-panel\admin-panel-frontend\src\hooks\user" />
       <recent name="C:\omega-admin-panel\admin-panel-frontend\src\pages\preview-page" />
       <recent name="C:\omega-admin-panel\admin-panel-frontend\src\api" />
       <recent name="C:\omega-admin-panel\admin-panel-frontend\node_modules" />
       <recent name="C:\omega-admin-panel\admin-panel-frontend" />
-      <recent name="C:\omega\admin-panel-frontend\src\hooks\page" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\omega-admin-panel\admin-panel-frontend\src\components" />
-      <recent name="C:\omega\admin-panel-frontend\src\app" />
     </key>
   </component>
   <component name="RunManager" selected="npm.build">
@@ -166,70 +174,8 @@
       <workItem from="1580627101002" duration="2337000" />
       <workItem from="1580640966531" duration="6189000" />
       <workItem from="1580794218312" duration="26662000" />
-      <workItem from="1580886678365" duration="26914000" />
-    </task>
-    <task id="LOCAL-00044" summary="add dragging navigations">
-      <created>1579372792151</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1579372792151</updated>
-    </task>
-    <task id="LOCAL-00045" summary="finished dragging navigations">
-      <created>1579439387732</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1579439387732</updated>
-    </task>
-    <task id="LOCAL-00046" summary="add dragging children of navigation">
-      <created>1579445280182</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1579445280182</updated>
-    </task>
-    <task id="LOCAL-00047" summary="showing only visible navigations in sidebar">
-      <created>1579461422466</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1579461422466</updated>
-    </task>
-    <task id="LOCAL-00048" summary="add footer page">
-      <created>1579631054856</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1579631054856</updated>
-    </task>
-    <task id="LOCAL-00049" summary="add зфпуы page">
-      <created>1579634357212</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1579634357212</updated>
-    </task>
-    <task id="LOCAL-00050" summary="refactoring">
-      <created>1579884941472</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1579884941473</updated>
-    </task>
-    <task id="LOCAL-00051" summary="add list of pages">
-      <created>1579893957377</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1579893957377</updated>
-    </task>
-    <task id="LOCAL-00052" summary="add popup for creating page">
-      <created>1579941695518</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1579941695519</updated>
+      <workItem from="1580886678365" duration="27293000" />
+      <workItem from="1580970525277" duration="26827000" />
     </task>
     <task id="LOCAL-00053" summary="add getting list of pages, creating and getting page">
       <created>1580048116980</created>
@@ -511,7 +457,70 @@
       <option name="project" value="LOCAL" />
       <updated>1580914445728</updated>
     </task>
-    <option name="localTasksCounter" value="93" />
+    <task id="LOCAL-00093" summary="refactoring">
+      <created>1580916320722</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1580916320722</updated>
+    </task>
+    <task id="LOCAL-00094" summary="refactoring blocks props">
+      <created>1580984709642</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1580984709642</updated>
+    </task>
+    <task id="LOCAL-00095" summary="add component for editing block in full screen">
+      <created>1580984747819</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1580984747819</updated>
+    </task>
+    <task id="LOCAL-00096" summary="mover page hooks to separate folder">
+      <created>1580984777423</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1580984777423</updated>
+    </task>
+    <task id="LOCAL-00097" summary="refactoring">
+      <created>1580984818141</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1580984818141</updated>
+    </task>
+    <task id="LOCAL-00098" summary="moved blocks hooks to separate folder">
+      <created>1580984850404</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1580984850404</updated>
+    </task>
+    <task id="LOCAL-00099" summary="add api for user list">
+      <created>1580985129462</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1580985129462</updated>
+    </task>
+    <task id="LOCAL-00100" summary="add hook for profile">
+      <created>1580989026076</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1580989026076</updated>
+    </task>
+    <task id="LOCAL-00101" summary="add user list">
+      <created>1580989044128</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1580989044128</updated>
+    </task>
+    <option name="localTasksCounter" value="102" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -528,13 +537,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add component for quote block" />
-    <MESSAGE value="add disabling if editing not enabled" />
-    <MESSAGE value="move blocks in page to separate component" />
-    <MESSAGE value="add block for contacts item" />
-    <MESSAGE value="add writing blog data to database" />
-    <MESSAGE value="add block for blog" />
-    <MESSAGE value="add dragging icon for blocks" />
     <MESSAGE value="add uploading and deleting avatar" />
     <MESSAGE value="add deps to hook" />
     <MESSAGE value="refactoring snackbars" />
@@ -542,7 +544,6 @@
     <MESSAGE value="add loader screen for feedback block" />
     <MESSAGE value="add block for clients logo" />
     <MESSAGE value="change clients logo" />
-    <MESSAGE value="refactoring" />
     <MESSAGE value="add uploading, deleting header" />
     <MESSAGE value="update toggle button in navigation" />
     <MESSAGE value="add stub for preview page" />
@@ -553,7 +554,15 @@
     <MESSAGE value="connect footer api with frontend" />
     <MESSAGE value="add editing contacts in footer" />
     <MESSAGE value="delete unneeded code" />
-    <option name="LAST_COMMIT_MESSAGE" value="delete unneeded code" />
+    <MESSAGE value="refactoring blocks props" />
+    <MESSAGE value="add component for editing block in full screen" />
+    <MESSAGE value="mover page hooks to separate folder" />
+    <MESSAGE value="refactoring" />
+    <MESSAGE value="moved blocks hooks to separate folder" />
+    <MESSAGE value="add api for user list" />
+    <MESSAGE value="add hook for profile" />
+    <MESSAGE value="add user list" />
+    <option name="LAST_COMMIT_MESSAGE" value="add user list" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="182" key="#ESLint" timestamp="1578156507884">
@@ -577,16 +586,20 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="601" y="291" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1576315906681" />
-    <state x="585" y="117" key="CommitChangelistDialog2" timestamp="1580914444730">
+    <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1580987630233">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580914444730" />
+    <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580987630233" />
+    <state x="585" y="117" key="CommitChangelistDialog2" timestamp="1580989042810">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580989042810" />
     <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172968703" />
     <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580669479042" />
-    <state x="184" y="85" width="1536" height="840" key="DiffContextDialog" timestamp="1580914395593">
+    <state x="184" y="85" width="1536" height="840" key="DiffContextDialog" timestamp="1580989033796">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="184" y="85" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580914395593" />
+    <state x="184" y="85" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580989033796" />
     <state x="184" y="86" width="1536" height="840" key="DiffContextDialog/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172950313" />
     <state x="184" y="86" key="DiffContextDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580667025719" />
     <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1580712034432">
@@ -620,10 +633,10 @@
     </state>
     <state x="461" y="155" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580712036506" />
     <state x="461" y="156" key="SettingsEditor/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580551786626" />
-    <state x="552" y="255" key="Vcs.Push.Dialog.v2" timestamp="1580908109072">
+    <state x="552" y="255" key="Vcs.Push.Dialog.v2" timestamp="1580916715069">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="255" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580908109072" />
+    <state x="552" y="255" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580916715069" />
     <state x="552" y="257" key="Vcs.Push.Dialog.v2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172973521" />
     <state x="552" y="257" key="Vcs.Push.Dialog.v2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580667043182" />
     <state x="92" y="92" width="1736" height="866" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1578046510409">
@@ -634,10 +647,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="603" y="139" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578060723974" />
-    <state x="657" y="255" width="606" height="536" key="find.popup" timestamp="1580903759721">
+    <state x="657" y="255" width="606" height="536" key="find.popup" timestamp="1581000377481">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="657" y="255" width="606" height="536" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580903759721" />
+    <state x="657" y="255" width="606" height="536" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581000377481" />
     <state x="657" y="257" width="606" height="536" key="find.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578166842732" />
     <state x="657" y="257" width="606" height="536" key="find.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580331113592" />
     <state x="632" y="312" key="git4idea.merge.GitPullDialog" timestamp="1580886790425">
@@ -650,10 +663,10 @@
     </state>
     <state x="616" y="237" key="run.anything.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578145423257" />
     <state x="616" y="237" width="672" height="677" key="run.anything.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579939819522" />
-    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup" timestamp="1580915922721">
+    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup" timestamp="1581002591150">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580915922721" />
+    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581002591150" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578170577061" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580655872348" />
   </component>

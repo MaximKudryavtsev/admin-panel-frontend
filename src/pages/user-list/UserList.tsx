@@ -4,6 +4,10 @@ import { Chip, Paper, Table, TableBody, TableCell, TableHead, TableRow } from "@
 import { css } from "emotion";
 import { useUsers } from "../../hooks/user";
 import { Transport } from "../../transport";
+import { AddUserPopup } from "../../widgets/add-user-popup";
+import { TCreateUserRequest } from "../../entities";
+import { useCustomSnackbar } from "../../hooks";
+import { getServerError } from "../../utils";
 
 interface IUserListProps {
     setPageTitle(title: string): void;
@@ -28,9 +32,10 @@ export const UserList = (props: IUserListProps) => {
     const { setPageTitle } = props;
     const transport = useMemo(() => Transport.create(), []);
     const [modalOpen, setModalOpen] = useState(false);
-    const { users, user, getUser, createUser } = useUsers(transport);
+    const { users, user, getUser, createUser, roles } = useUsers(transport);
+    const { showSuccessSnackbar, showErrorSnackbar } = useCustomSnackbar();
 
-    useEffect(() => setPageTitle("Пользователи"), []);
+    useEffect(() => setPageTitle("Пользователи"), [setPageTitle]);
 
     function onModalOpen(): void {
         setModalOpen(true);
@@ -40,39 +45,68 @@ export const UserList = (props: IUserListProps) => {
         setModalOpen(false);
     }
 
+    const handleCreate = (data: TCreateUserRequest) => {
+        createUser(data)
+            .then(() => {
+                showSuccessSnackbar("Создано");
+                onModalClose();
+            })
+            .catch((err) => {
+                const error = getServerError(err);
+                if (error) {
+                    showErrorSnackbar(error.title);
+                }
+            });
+    };
+
     return (
-        <TableWrapper handler={onModalOpen}>
-            <Paper>
-                <Table classes={{ root: classNames.table }}>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell classes={{ root: classNames.headCell }}>Имя</TableCell>
-                            <TableCell classes={{ root: classNames.headCell }}>Роли</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {users.map((item) => (
-                            <TableRow
-                                key={item._id}
-                                classes={{ root: classNames.bodyRow }}
-                            >
-                                <TableCell classes={{ root: classNames.headCell }}>{item?.login || item.email}</TableCell>
-                                <TableCell classes={{ root: classNames.headCell }}>
-                                    {item.roles.map((role) => (
-                                        <Chip
-                                            key={role._id}
-                                            variant="outlined"
-                                            size="small"
-                                            label={role.title}
-                                            className={css`margin-right: 10px;`}
-                                        />
-                                    ))}
-                                </TableCell>
+        <>
+            <TableWrapper handler={onModalOpen}>
+                <Paper>
+                    <Table classes={{ root: classNames.table }}>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell classes={{ root: classNames.headCell }}>Логин</TableCell>
+                                <TableCell classes={{ root: classNames.headCell }}>E-mail</TableCell>
+                                <TableCell classes={{ root: classNames.headCell }}>Роли</TableCell>
                             </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </Paper>
-        </TableWrapper>
+                        </TableHead>
+                        <TableBody>
+                            {users.map((item) => (
+                                <TableRow key={item._id} classes={{ root: classNames.bodyRow }}>
+                                    <TableCell classes={{ root: classNames.headCell }}>
+                                        {item?.login || ""}
+                                    </TableCell>
+                                    <TableCell classes={{ root: classNames.headCell }}>
+                                        {item.email}
+                                    </TableCell>
+                                    <TableCell classes={{ root: classNames.headCell }}>
+                                        {item.roles.map((role) => (
+                                            <Chip
+                                                key={role._id}
+                                                variant="outlined"
+                                                size="small"
+                                                label={role.title}
+                                                className={css`
+                                                    margin-right: 10px;
+                                                `}
+                                            />
+                                        ))}
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </Paper>
+            </TableWrapper>
+            {modalOpen && (
+                <AddUserPopup
+                    open={modalOpen}
+                    onClose={onModalClose}
+                    roles={roles}
+                    onSubmit={handleCreate}
+                />
+            )}
+        </>
     );
 };

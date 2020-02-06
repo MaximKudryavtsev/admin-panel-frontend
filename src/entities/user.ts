@@ -25,3 +25,11 @@ export interface IChangePasswordData {
     newPassword: string;
     repeatPassword: string;
 }
+
+export type TCreateUserRequest = Pick<IUser, "email"> & { roles: string[] };
+
+export enum EUserRoles {
+    SUPER_ADMIN = "superAdmin",
+    RU = "ruAdmin",
+    EN = "enAdmin"
+}
