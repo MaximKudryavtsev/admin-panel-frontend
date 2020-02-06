@@ -1,47 +1,46 @@
 import { Transport } from "../../transport";
 import {
+    IDictionary,
     IPage,
     IPageAuthor,
-    IPageStatus,
     TResponse,
 } from "../../entities";
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { deletePage, fetchPage, fetchPageAuthor, fetchPageStatusList, updatePage } from "../../api/page";
+import { useCallback, useEffect, useState } from "react";
+import { PageAPI } from "../../api";
 
-export function usePage(pageId: string): {
+export function usePage(transport: Transport, pageId: string): {
     page?: IPage;
     getPage: () => Promise<void>;
-    statuses: IPageStatus[];
+    statuses: IDictionary[];
     pageAuthor?: IPageAuthor;
     updatePage: (data: Partial<IPage>) => Promise<void>;
     deletePage: () => Promise<TResponse<void>>;
 } {
     const [page, setPage] = useState<IPage | undefined>(undefined);
     const [pageAuthor, setPageAuthor] = useState<IPageAuthor | undefined>(undefined);
-    const [statuses, setStatuses] = useState<IPageStatus[]>([]);
+    const [statuses, setStatuses] = useState<IDictionary[]>([]);
 
-    const transport = useMemo(() => new Transport(), []);
     const tokenString = localStorage.getItem("token");
     transport.setToken(JSON.parse(tokenString!));
 
     const getPage = useCallback(() => {
-        return fetchPage(transport, pageId).then((response) => setPage(response.data));
+        return PageAPI.fetchPage(transport, pageId).then((response) => setPage(response.data));
     }, [pageId, transport]);
 
     const getStatuses = useCallback(() => {
-        return fetchPageStatusList(transport).then((response) => setStatuses(response.data));
+        return PageAPI.fetchPageStatusList(transport).then((response) => setStatuses(response.data));
     }, [transport]);
 
     const getAuthor = useCallback(() => {
-        fetchPageAuthor(transport, pageId).then((response) => setPageAuthor(response.data));
+        PageAPI.fetchPageAuthor(transport, pageId).then((response) => setPageAuthor(response.data));
     }, [transport, pageId]);
 
     const update = useCallback((data: Partial<IPage>) => {
-        return updatePage(transport, pageId, data).then((response) => setPage(response.data));
+        return PageAPI.updatePage(transport, pageId, data).then((response) => setPage(response.data));
     }, [transport, pageId]);
 
     const del = useCallback(() => {
-        return deletePage(transport, pageId);
+        return PageAPI.deletePage(transport, pageId);
     }, [transport, pageId]);
 
     useEffect(() => {

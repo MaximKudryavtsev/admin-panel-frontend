@@ -1,20 +1,16 @@
 import { Transport } from "../../transport";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { IPagesTableRow, TLang } from "../../entities";
-import { fetchPageList } from "../../api/page";
+import { PageAPI } from "../../api";
 
-export function usePageList(lang: TLang): {
+export function usePageList(transport: Transport, lang: TLang): {
     pages: IPagesTableRow[];
     getPages: () => void;
 } {
     const [list, setList] = useState<IPagesTableRow[]>([]);
 
-    const transport = useMemo(() => new Transport(), []);
-    const tokenString = localStorage.getItem("token");
-    transport.setToken(JSON.parse(tokenString!));
-
     const getList = useCallback(() => {
-        return fetchPageList(transport, lang).then((response) => setList(response.data));
+        return PageAPI.fetchPageList(transport, lang).then((response) => setList(response.data));
     }, [transport, lang]);
 
     useEffect(() => {
