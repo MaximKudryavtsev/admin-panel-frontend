@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { css } from "emotion";
 import { Chip, Divider, Grid, Typography } from "@material-ui/core";
 import { useUser } from "../../hooks";
@@ -8,6 +8,7 @@ import { UpdateUserForm, ChangePassword, UploadAvatar } from "../../widgets";
 import { getServerError } from "../../utils";
 import { useSnackbar } from "notistack";
 import { omit } from "lodash";
+import { Transport } from "../../transport";
 
 interface IProfileProps {
     setPageTitle(title: string): void;
@@ -30,7 +31,8 @@ const classes = {
 
 export const Profile = (props: IProfileProps) => {
     const { setPageTitle, onSetUser } = props;
-    const { user, updateUser, deleteUser, updateAvatar, updatePassword, deleteAvatar } = useUser();
+    const transport = useMemo(() => Transport.create(), []);
+    const { user, updateUser, deleteUser, updateAvatar, updatePassword, deleteAvatar } = useUser(transport);
     const { enqueueSnackbar } = useSnackbar();
     const [avatarLoaderVisible, setAvatarLoaderVisible] = useState(false);
     const [passwordError, setPasswordError] = useState<string | undefined>(undefined);

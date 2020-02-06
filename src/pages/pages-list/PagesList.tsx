@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { TableWrapper } from "../../widgets/table-wrapper";
 import { Link, Paper, Table, TableBody, TableCell, TableHead, TableRow } from "@material-ui/core";
 import { css } from "emotion";
@@ -7,6 +7,7 @@ import { CreatePagePopup } from "../../widgets/create-page-popup";
 import { useCreatePage } from "../../hooks/page";
 import { AppContext } from "../../context";
 import { formatData, getServerError } from "../../utils";
+import { Transport } from "../../transport";
 
 interface IPageListProps {
     body?: IPagesTableRow[];
@@ -32,10 +33,10 @@ export const PagesList = (props: IPageListProps) => {
 
     const [modalVisible, setModalVisible] = useState(false);
     const [error, setError] = useState<undefined | string>(undefined);
+    const transport = useMemo(() => Transport.create(), []);
+    const { createPage } = useCreatePage(transport, lang);
 
     useEffect(() => setLanguage(lang), [lang, setLanguage]);
-
-    const { createPage } = useCreatePage(lang);
 
     function onModalOpen(): void {
         setModalVisible(true);
