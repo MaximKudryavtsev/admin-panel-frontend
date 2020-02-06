@@ -2,11 +2,11 @@ export const ApiPaths = {
     SIGN_IN: "login/sign-in",
     UPDATE_TOKEN: "login/update-token",
     FORGOT_PASSWORD: "login/forgot-password",
-    GET_USER: "user/get",
-    UPDATE_USER: "user/update",
-    UPDATE_PASSWORD: "user/update-password",
-    DELETE_USER: "user/delete",
-    USER_AVATAR: "user/avatar",
+    USERS: "users",
+    // profile
+    PROFILE: "profile",
+    PROFILE_AVATAR: "profile/avatar",
+    PROFILE_PASSWORD: "profile/update-password",
     // navigation
     GET_NAVIGATION: "/navigation/:id",
     GET_NAVIGATION_TYPES: "/navigation/types",

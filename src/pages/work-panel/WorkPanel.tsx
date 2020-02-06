@@ -12,6 +12,7 @@ import { Header } from "../header";
 import { PreviewPage } from "../preview-page";
 import { ControlPanel } from "../control-panel";
 import { Contacts } from "../contacts";
+import { UserList } from "../user-list";
 
 interface INavigationProps {
     baseUrl?: string;
@@ -48,8 +49,8 @@ export const WorkPanel = (props: INavigationProps) => {
                 <Route path={`${baseUrl}/pages`} exact>
                     <Pages setPageTitle={setTitle} />
                 </Route>
-                <Route path={`${baseUrl}/pages/:id`} exact>
-                    <Page setPageTitle={setTitle} />
+                <Route path={`${baseUrl}/pages/:id`}>
+                    <Page setPageTitle={setTitle} baseUrl={`${baseUrl}/pages`} />
                 </Route>
                 <Route path={`${baseUrl}/pages/:id/preview`} exact>
                     <PreviewPage />
@@ -59,6 +60,9 @@ export const WorkPanel = (props: INavigationProps) => {
                 </Route>
                 <Route path={"/header"} exact>
                     <Header setPageTitle={setTitle} />
+                </Route>
+                <Route path={"/users"} exact>
+                    <UserList setPageTitle={setTitle} />
                 </Route>
             </Switch>
         </Layout>

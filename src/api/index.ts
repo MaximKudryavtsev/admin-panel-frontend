@@ -2,11 +2,12 @@ import * as AdminAPI from "./admin";
 import * as HeaderAPI from "./header";
 import * as ContactAPI from "./contacts";
 import * as FooterAPI from "./footer";
+import * as BlockAPI from "./block";
+import * as PageAPI from "./page";
+import * as UsersAPI from "./users";
+import * as ProfileAPI from "./profile";
 
 export * from "./login";
-export * from "./user";
 export * from "./navigation";
-export * from "./block";
-export * from "./page";
 
-export { AdminAPI, HeaderAPI, ContactAPI, FooterAPI };
+export { AdminAPI, HeaderAPI, ContactAPI, FooterAPI, BlockAPI, PageAPI, UsersAPI, ProfileAPI };

@@ -21,3 +21,7 @@ export function deleteBlock(transport: Transport, id: string) {
 export function updateBlock(transport: Transport, id: string, data: FormData) {
     return transport.put<FormData, void>(`${ApiPaths.BLOCK}/${id}`, data);
 }
+
+export function fetchBlock(transport: Transport, id: string) {
+    return transport.get<IBlock<any>>(`${ApiPaths.BLOCK}/${id}`);
+}

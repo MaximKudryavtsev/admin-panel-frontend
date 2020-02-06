@@ -13,17 +13,21 @@ import { IBlock, IDictionary } from "../../entities";
 import { CustomForm } from "../../components/custom-form";
 import { Select } from "../../components/select";
 import * as Yup from "yup";
-import { Delete, DragIndicator, Save } from "@material-ui/icons";
+import { Delete, DragIndicator, Fullscreen, Save } from "@material-ui/icons";
 import { ConfirmPopup } from "../../components/confirm-popup";
 import { SwitchField } from "../../components/switch-field";
 import { isEqual } from "lodash";
 import { FormikProps } from "formik";
+import { AppContext } from "../../context";
 
 interface IBlockWrapperProps<T> {
     block?: IBlock<T>;
     statuses?: IDictionary[];
     validationSchema: Yup.ObjectSchema<any>;
     disabled?: boolean;
+    baseUrl?: string;
+
+    onOpenFullscreen?(): void;
 
     render(form?: FormikProps<Partial<IBlock<T>>>): ReactNode;
 
@@ -73,6 +77,8 @@ export const BlockWrapper = <T extends any>(props: IBlockWrapperProps<T>) => {
         onDelete,
         onSubmit,
         disabled = false,
+        baseUrl,
+        onOpenFullscreen
     } = props;
     const [deleteVisible, setDeleteVisible] = useState(false);
 
@@ -95,6 +101,13 @@ export const BlockWrapper = <T extends any>(props: IBlockWrapperProps<T>) => {
         if (block && onSubmit && block._id) {
             onSubmit(block._id, data);
         }
+    };
+
+    const openFullScreen = () => {
+        if (onOpenFullscreen) {
+            onOpenFullscreen();
+        }
+        AppContext.getHistory().push(`${baseUrl}/${block?._id}`);
     };
 
     return (
@@ -130,6 +143,16 @@ export const BlockWrapper = <T extends any>(props: IBlockWrapperProps<T>) => {
                                     disable={!block?.open || disabled}
                                 />
                                 <div className={classNames.icons}>
+                                    <Tooltip title={"Открыть блок на весь экран"} placement={"top"}>
+                                        <span>
+                                            <IconButton
+                                                disabled={!block?.open || disabled}
+                                                onClick={openFullScreen}
+                                            >
+                                                <Fullscreen />
+                                            </IconButton>
+                                        </span>
+                                    </Tooltip>
                                     <Tooltip title={"Удалить блок"} placement={"top"}>
                                         <span>
                                             <IconButton
