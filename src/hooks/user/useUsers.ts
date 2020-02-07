@@ -11,6 +11,7 @@ export function useUsers(
     roles: IDictionary[];
     getUser: (id: string) => Promise<void>;
     createUser: (data: TCreateUserRequest) => Promise<void>;
+    updateRoles: (id: string, roles: string[]) => Promise<void>;
 } {
     const [users, setUsers] = useState<IUser[]>([]);
     const [user, setUser] = useState<IUser | undefined>(undefined);
@@ -38,10 +39,14 @@ export function useUsers(
         UsersAPI.fetchRoles(transport).then((response) => setRoles(response.data));
     }, [transport]);
 
+    const updateRoles = useCallback((id: string, roles: string[]) => {
+        return UsersAPI.updateRoles(transport, id, roles).then(getList);
+    }, [transport]);
+
     useEffect(() => {
         getList();
         getRoles();
     }, [getList, getRoles]);
 
-    return { user, users, createUser, getUser, roles };
+    return { user, users, createUser, getUser, roles, updateRoles };
 }

@@ -26,7 +26,7 @@ export interface IChangePasswordData {
     repeatPassword: string;
 }
 
-export type TCreateUserRequest = Pick<IUser, "email"> & { roles: string[] };
+export type TCreateUserRequest = Pick<IUser, "email" | "_id"> & { roles: string[] };
 
 export enum EUserRoles {
     SUPER_ADMIN = "superAdmin",

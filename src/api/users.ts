@@ -17,3 +17,7 @@ export function fetchUser(transport: Transport, id: string) {
 export function fetchRoles(transport: Transport) {
     return transport.get<IDictionary[]>(`${ApiPaths.USERS}/roles`)
 }
+
+export function updateRoles(transport: Transport, id: string, roles: string[]) {
+    return transport.put<string[], IIdResponse>(`${ApiPaths.USERS}/roles/${id}`, roles);
+}

@@ -32,7 +32,8 @@ export const UserList = (props: IUserListProps) => {
     const { setPageTitle } = props;
     const transport = useMemo(() => Transport.create(), []);
     const [modalOpen, setModalOpen] = useState(false);
-    const { users, user, getUser, createUser, roles } = useUsers(transport);
+    const [editOpen, setEditOpen] = useState(false);
+    const { users, user, getUser, createUser, roles, updateRoles } = useUsers(transport);
     const { showSuccessSnackbar, showErrorSnackbar } = useCustomSnackbar();
 
     useEffect(() => setPageTitle("Пользователи"), [setPageTitle]);
@@ -44,6 +45,18 @@ export const UserList = (props: IUserListProps) => {
     function onModalClose(): void {
         setModalOpen(false);
     }
+
+    function onEditOpen(): void {
+        setEditOpen(true);
+    }
+
+    function onEditClose(): void {
+        setEditOpen(false);
+    }
+
+    const onClickRow = (id: string) => {
+        getUser(id).then(onEditOpen);
+    };
 
     const handleCreate = (data: TCreateUserRequest) => {
         createUser(data)
@@ -59,6 +72,10 @@ export const UserList = (props: IUserListProps) => {
             });
     };
 
+    const handleUpdateRole = (data: TCreateUserRequest) => {
+        updateRoles(data._id, data.roles).then(onEditClose);
+    };
+
     return (
         <>
             <TableWrapper handler={onModalOpen}>
@@ -67,13 +84,19 @@ export const UserList = (props: IUserListProps) => {
                         <TableHead>
                             <TableRow>
                                 <TableCell classes={{ root: classNames.headCell }}>Логин</TableCell>
-                                <TableCell classes={{ root: classNames.headCell }}>E-mail</TableCell>
+                                <TableCell classes={{ root: classNames.headCell }}>
+                                    E-mail
+                                </TableCell>
                                 <TableCell classes={{ root: classNames.headCell }}>Роли</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {users.map((item) => (
-                                <TableRow key={item._id} classes={{ root: classNames.bodyRow }}>
+                                <TableRow
+                                    key={item._id}
+                                    classes={{ root: classNames.bodyRow }}
+                                    onClick={() => onClickRow(item._id)}
+                                >
                                     <TableCell classes={{ root: classNames.headCell }}>
                                         {item?.login || ""}
                                     </TableCell>
@@ -101,10 +124,21 @@ export const UserList = (props: IUserListProps) => {
             </TableWrapper>
             {modalOpen && (
                 <AddUserPopup
+                    title={"Добавить пользователя"}
                     open={modalOpen}
                     onClose={onModalClose}
                     roles={roles}
                     onSubmit={handleCreate}
+                />
+            )}
+            {editOpen && (
+                <AddUserPopup
+                    user={user}
+                    open={editOpen}
+                    onClose={onEditClose}
+                    roles={roles}
+                    title={"Редактировать пользователя"}
+                    onSubmit={handleUpdateRole}
                 />
             )}
         </>

@@ -155,7 +155,7 @@ export const ContactPanel = (props: IContactsProps) => {
             <div className={classNames.content}>
                 <div className={classNames.contacts}>
                     {contacts.map((item) => (
-                        <Paper className={classNames.item}>
+                        <Paper className={classNames.item} key={item._id}>
                             <Typography>{item.title}</Typography>
                             &nbsp; <span className={classNames.type}>({item.type.title})</span>
                             <div className={classNames.icons}>

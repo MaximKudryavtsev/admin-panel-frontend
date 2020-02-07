@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { EUserRoles, IDictionary, TCreateUserRequest } from "../../entities";
+import { EUserRoles, IDictionary, IUser, TCreateUserRequest } from "../../entities";
 import { CustomForm } from "../../components/custom-form";
 import { css } from "emotion";
 import { Popup } from "../../components/popup";
@@ -12,6 +12,8 @@ import * as Yup from "yup";
 interface IAddUserPopupProps {
     open: boolean;
     roles?: IDictionary[];
+    user?: IUser;
+    title?: string;
 
     onSubmit?(data: TCreateUserRequest): void;
 
@@ -37,14 +39,16 @@ const classNames = {
 };
 
 const ValidationSchema = Yup.object().shape({
-    email: Yup.string().required("Поле обязательно для заполнения").email("Невалидный e-mail"),
+    email: Yup.string()
+        .required("Поле обязательно для заполнения")
+        .email("Невалидный e-mail"),
     roles: Yup.array()
         .min(1)
         .of(Yup.string().required("Поле обязательно для заполнения")),
 });
 
 export const AddUserPopup = (props: IAddUserPopupProps) => {
-    const { roles = [], onSubmit, open, onClose } = props;
+    const { roles = [], onSubmit, open, onClose, user, title = "" } = props;
     const [submitted, setSubmitted] = useState(false);
 
     const isSuperAdminChecked = (values?: string[]) => {
@@ -55,73 +59,87 @@ export const AddUserPopup = (props: IAddUserPopupProps) => {
         return values?.includes(superAdminRole._id);
     };
 
+    const getFormData = () => {
+        return user
+            ? { roles: user.roles.map((item) => item._id), email: user.email, _id: user._id }
+            : { roles: [], email: "", _id: "" };
+    };
+
     return (
-        <Popup open={open} title={"Добавить пользователя"} onClose={onClose}>
+        <Popup open={open} title={title} onClose={onClose}>
             <CustomForm<TCreateUserRequest>
                 onSubmit={onSubmit}
                 validationSchema={ValidationSchema}
-                data={{ roles: [], email: "" }}
-                render={(form) => (
-                    <div className={classNames.content}>
-                        <TextField
-                            name={"email"}
-                            label={"Email"}
-                            classes={{ root: classNames.field }}
-                        />
-                        <div className={classNames.field}>
-                            <FieldArray
-                                name={"roles"}
-                                render={(array) =>
-                                    roles.map((item) => (
-                                        <div className={classNames.checkbox} key={item._id}>
-                                            <FormControlLabel
-                                                control={
-                                                    <Checkbox
-                                                        checked={
-                                                            form?.values.roles.includes(item._id) ||
-                                                            isSuperAdminChecked(form?.values.roles)
-                                                        }
-                                                        onChange={(event, checked) => {
-                                                            setSubmitted(false);
-                                                            if (checked) {
-                                                                array.push(item._id);
-                                                            } else {
-                                                                const index = form?.values.roles.indexOf(
-                                                                    item._id,
-                                                                );
-                                                                array.remove(index!);
-                                                            }
-                                                        }}
-                                                        value={item._id}
-                                                        color="primary"
-                                                    />
-                                                }
-                                                label={item.title}
-                                            />
-                                        </div>
-                                    ))
-                                }
+                data={getFormData()}
+                render={(form) => {
+                    return (
+                        <div className={classNames.content}>
+                            <TextField
+                                name={"email"}
+                                label={"Email"}
+                                classes={{ root: classNames.field }}
+                                disable={!!user}
                             />
-                            {submitted && form?.values.roles.length === 0 && (
-                                <Typography color={"error"}>
-                                    Вы не выбрали ни одной роли
-                                </Typography>
-                            )}
+                            <div className={classNames.field}>
+                                <Typography>Роли:</Typography>
+                                <FieldArray
+                                    name={"roles"}
+                                    render={(array) =>
+                                        roles.map((item) => (
+                                            <div className={classNames.checkbox} key={item._id}>
+                                                <FormControlLabel
+                                                    control={
+                                                        <Checkbox
+                                                            checked={
+                                                                form?.values.roles.includes(
+                                                                    item._id,
+                                                                ) ||
+                                                                isSuperAdminChecked(
+                                                                    form?.values.roles,
+                                                                )
+                                                            }
+                                                            onChange={(event, checked) => {
+                                                                setSubmitted(false);
+                                                                if (checked) {
+                                                                    array.push(item._id);
+                                                                } else {
+                                                                    const index = form?.values.roles.indexOf(
+                                                                        item._id,
+                                                                    );
+                                                                    array.remove(index!);
+                                                                }
+                                                            }}
+                                                            value={item._id}
+                                                            color="primary"
+                                                        />
+                                                    }
+                                                    label={item.title}
+                                                />
+                                            </div>
+                                        ))
+                                    }
+                                />
+                                {submitted && form?.values.roles.length === 0 && (
+                                    <Typography color={"error"}>
+                                        Вы не выбрали ни одной роли
+                                    </Typography>
+                                )}
+                            </div>
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                startIcon={<Save />}
+                                className={classNames.button}
+                                onClick={() => {
+                                    form?.submitForm();
+                                    setSubmitted(true);
+                                }}
+                            >
+                                Сохранить
+                            </Button>
                         </div>
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            startIcon={<Save />}
-                            className={classNames.button}
-                            onClick={() => {
-                                form?.submitForm();
-                                setSubmitted(true);
-                            }}
-                        >
-                            Сохранить
-                        </Button>
-                    </div>
-                )}
+                    );
+                }}
             />
         </Popup>
     );
