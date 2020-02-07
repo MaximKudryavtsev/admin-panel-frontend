@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import { useAdmin } from "../../hooks";
+import { useAdmin, useCustomSnackbar, useRole } from "../../hooks";
 import { css } from "emotion";
 import { Button } from "@material-ui/core";
 import { Update } from "@material-ui/icons";
 import { Card } from "../../components/card";
-import { TLang } from "../../entities";
-import { useSnackbar } from "notistack";
+import { EUserRoles, TLang } from "../../entities";
+import { getServerError } from "../../utils";
 
 interface IControlPanelProps {
     setPageTitle(title: string): void;
@@ -31,36 +31,48 @@ const classNames = {
 export const ControlPanel = (props: IControlPanelProps) => {
     const { setPageTitle } = props;
     const { updateBlog } = useAdmin();
-    const { enqueueSnackbar } = useSnackbar();
+    const { showSuccessSnackbar, showErrorSnackbar } = useCustomSnackbar();
+    const { hasRole } = useRole();
 
     useEffect(() => setPageTitle("Панель управления"), [setPageTitle]);
 
     const onUpdateBlog = (lang: TLang) => {
-        updateBlog(lang).then(() => enqueueSnackbar("Обновлено!", { variant: "success" }));
+        updateBlog(lang)
+            .then(() => showSuccessSnackbar("Обновлено!"))
+            .catch((err) => {
+                const error = getServerError(err);
+                if (error) {
+                    showErrorSnackbar(error.title);
+                }
+            });
     };
 
     return (
         <div className={classNames.wrapper}>
             <Card title={"Блог"} classes={{ root: css([classNames.card, classNames.blog]) }}>
-                <Button
-                    variant="contained"
-                    color="primary"
-                    startIcon={<Update />}
-                    className={css`
-                        margin-right: 24px;
-                    `}
-                    onClick={() => onUpdateBlog("ru")}
-                >
-                    Обновить русский блог
-                </Button>
-                <Button
-                    variant="contained"
-                    color="primary"
-                    startIcon={<Update />}
-                    onClick={() => onUpdateBlog("en")}
-                >
-                    Обновить английский блог
-                </Button>
+                {hasRole(EUserRoles.RU) && (
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        startIcon={<Update />}
+                        className={css`
+                            margin-right: 24px;
+                        `}
+                        onClick={() => onUpdateBlog("ru")}
+                    >
+                        Обновить русский блог
+                    </Button>
+                )}
+                {hasRole(EUserRoles.EN) && (
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        startIcon={<Update />}
+                        onClick={() => onUpdateBlog("en")}
+                    >
+                        Обновить английский блог
+                    </Button>
+                )}
             </Card>
         </div>
     );
