@@ -8,7 +8,8 @@ export enum EBlockTypes {
     DESCRIPTION = "description",
     BLUE_LINES_LIST = "blueLinesList",
     FEEDBACK = "feedbackBlock",
-    CLIENTS_LOGO = "clientsLogo"
+    CLIENTS_LOGO = "clientsLogo",
+    MAIN_ACHIEVEMENTS = "mainAchievements",
 }
 
 export interface ICreateBlockRequest {

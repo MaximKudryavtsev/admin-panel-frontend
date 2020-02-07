@@ -8,3 +8,4 @@ export * from "./facts";
 export * from "./feedback-block";
 export * from "./blockList";
 export * from "./IBlockProps";
+export * from "./main-achievements-block";
