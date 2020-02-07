@@ -10,3 +10,4 @@ export * from "./useFooter";
 export * from "./useNavigationTypes";
 export * from "./useCustomSnackbar";
 export * from "./user";
+export * from "./useRole";

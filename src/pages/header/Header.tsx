@@ -7,18 +7,21 @@ import { useSnackbar } from "notistack";
 import { omit } from "lodash";
 
 interface IHeaderProps {
+    defaultLang: TLang;
+
     setPageTitle(title: string): void;
 }
 
 export const Header = (props: IHeaderProps) => {
-    const { setPageTitle } = props;
-    const [language, setLanguage] = useState<TLang>("ru");
+    const { setPageTitle, defaultLang } = props;
+    const [language, setLanguage] = useState<TLang>(defaultLang);
 
     const { header, deleteLogo, uploadLogo, updateHeader } = useHeader(language);
     const { pages } = useFetchPages(language);
     const { enqueueSnackbar } = useSnackbar();
 
     useEffect(() => setPageTitle("Хедер"), [setPageTitle]);
+    useEffect(() => setLanguage(defaultLang), [defaultLang]);
 
     const handleSubmit = (data: Partial<IHeader>) => {
         return updateHeader(omit(data, ["logoLink"])).then(() => {

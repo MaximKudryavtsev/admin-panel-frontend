@@ -50,9 +50,9 @@ export function useNavigation(
 
     const get = useCallback(
         (id: string) => {
-            return getNavigation(transport, id).then((response) => setNavigation(response.data));
+            return getNavigation(transport, id, lang).then((response) => setNavigation(response.data));
         },
-        [transport],
+        [transport, lang],
     );
 
     const create = useCallback(
@@ -66,11 +66,11 @@ export function useNavigation(
 
     const update = useCallback(
         (navigation: TUpdateNavigationRequest) => {
-            return updateNavigation(transport, navigation._id, navigation).then((response) =>
+            return updateNavigation(transport, navigation._id, navigation, lang).then((response) =>
                 setNavigations(response.data),
             );
         },
-        [transport],
+        [transport, lang],
     );
 
     const onDeleteNavigation = useCallback(

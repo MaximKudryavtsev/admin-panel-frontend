@@ -5,12 +5,14 @@ import { LanguageTab } from "../../widgets/language-tab";
 import { ContactPanel } from "../../widgets/contact-panel";
 
 interface IContactsProps {
+    defaultLang: TLang;
+
     setPageTitle(title: string): void;
 }
 
 export const Contacts = (props: IContactsProps) => {
-    const { setPageTitle } = props;
-    const [language, setLanguage] = useState<TLang>("ru");
+    const { setPageTitle, defaultLang } = props;
+    const [language, setLanguage] = useState<TLang>(defaultLang);
     const {
         contactTypes,
         deleteContact,
@@ -22,6 +24,7 @@ export const Contacts = (props: IContactsProps) => {
     } = useContacts(language);
 
     useEffect(() => setPageTitle("Контакты"), [setPageTitle]);
+    useEffect(() => setLanguage(defaultLang), [defaultLang]);
 
     return (
         <LanguageTab>

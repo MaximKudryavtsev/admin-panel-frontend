@@ -7,6 +7,8 @@ import { FooterPanel } from "../../widgets/footer-panel";
 import { css } from "emotion";
 
 interface IFooterProps {
+    defaultLang: TLang;
+
     setPageTitle(title: string): void;
 }
 
@@ -17,11 +19,13 @@ const classNames = {
 };
 
 export const Footer = (props: IFooterProps) => {
-    const { setPageTitle } = props;
+    const { setPageTitle, defaultLang } = props;
 
     useEffect(() => setPageTitle("Футер"), [setPageTitle]);
 
-    const [language, setLanguage] = useState<TLang>("ru");
+    const [language, setLanguage] = useState<TLang>(defaultLang);
+
+    useEffect(() => setLanguage(defaultLang), [defaultLang]);
 
     const {
         navigations,

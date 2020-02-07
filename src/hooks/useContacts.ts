@@ -28,25 +28,25 @@ export function useContacts(lang: TLang): IUseContacts {
     }, [transport, lang]);
 
     const createContact = useCallback((data:  Partial<IContact>) => {
-        return ContactAPI.createContact(transport, data).then(list);
-    }, [transport, list]);
+        return ContactAPI.createContact(transport, data, lang).then(list);
+    }, [transport, list, lang]);
 
     const getOne = useCallback(
         (id: string) => {
-            return ContactAPI.fetchContact(transport, id).then((response) =>
+            return ContactAPI.fetchContact(transport, id, lang).then((response) =>
                 setContact(response.data),
             );
         },
-        [transport],
+        [transport, lang],
     );
 
     const update = useCallback((id: string, data: Partial<IContact>) => {
-        return ContactAPI.updateContact(transport, id, data).then(list);
-    }, [transport, list]);
+        return ContactAPI.updateContact(transport, id, data, lang).then(list);
+    }, [transport, list, lang]);
 
     const deleteContact = useCallback((id: string) => {
-        return ContactAPI.deleteContact(transport, id).then(list);
-    }, [transport, list]);
+        return ContactAPI.deleteContact(transport, id, lang).then(list);
+    }, [transport, list, lang]);
 
     useEffect(() => {
         list();

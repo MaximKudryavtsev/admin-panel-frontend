@@ -6,15 +6,18 @@ import { LanguageTab } from "../../widgets/language-tab";
 import { Transport } from "../../transport";
 
 interface IPagesProps {
+    defaultLang: TLang;
+
     setPageTitle(title: string): void;
 }
 
 export const Pages = (props: IPagesProps) => {
-    const { setPageTitle } = props;
+    const { setPageTitle, defaultLang } = props;
+    const [language, setLanguage] = useState<TLang>(defaultLang);
 
     useEffect(() => setPageTitle("Страницы"), [setPageTitle]);
+    useEffect(() => setLanguage(defaultLang), [defaultLang]);
 
-    const [language, setLanguage] = useState<TLang>("ru");
     const transport = useMemo(() => Transport.create(), []);
 
     const { pages } = usePageList(transport, language);

@@ -2,6 +2,8 @@ import { Transport } from "../../transport";
 import { IDictionary, IUser, TCreateUserRequest } from "../../entities";
 import { useCallback, useEffect, useState } from "react";
 import { UsersAPI } from "../../api";
+import { getServerError } from "../../utils";
+import { AppContext } from "../../context";
 
 export function useUsers(
     transport: Transport,
@@ -18,7 +20,12 @@ export function useUsers(
     const [roles, setRoles] = useState<IDictionary[]>([]);
 
     const getList = useCallback(() => {
-        UsersAPI.fetchUsers(transport).then((response) => setUsers(response.data));
+        UsersAPI.fetchUsers(transport).then((response) => setUsers(response.data)).catch((err) => {
+            const error = getServerError(err);
+            if (error?.status === 403) {
+                AppContext.getHistory().goBack()
+            }
+        });
     }, [transport]);
 
     const getUser = useCallback(
@@ -41,7 +48,7 @@ export function useUsers(
 
     const updateRoles = useCallback((id: string, roles: string[]) => {
         return UsersAPI.updateRoles(transport, id, roles).then(getList);
-    }, [transport]);
+    }, [transport, getList]);
 
     useEffect(() => {
         getList();

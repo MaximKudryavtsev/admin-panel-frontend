@@ -5,14 +5,20 @@ import { LanguageTab } from "../../widgets/language-tab";
 import { NavigationPanel } from "../../widgets/navigation-panel";
 
 interface INavigationProps {
+    defaultLang: TLang;
+
     setPageTitle(title: string): void;
 }
 
 export const Navigation = (props: INavigationProps) => {
-    const { setPageTitle } = props;
+    const { setPageTitle, defaultLang } = props;
 
     useEffect(() => setPageTitle("Навигация"), [setPageTitle]);
-    const [language, setLanguage] = useState<TLang>("ru");
+    const [language, setLanguage] = useState<TLang>(defaultLang);
+
+    useEffect(() => {
+        setLanguage(defaultLang);
+    }, [defaultLang]);
 
     const {
         navigations,

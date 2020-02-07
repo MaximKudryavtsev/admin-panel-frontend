@@ -53,23 +53,25 @@ export const Sidebar = () => {
                     </ListItem>
                 ))}
             </List>
-            <Divider />
             {isSuperAdminLinksAvailable && (
-                <List>
-                    {adminSidebarLinks.map((item, key) => (
-                        <ListItem
-                            button
-                            key={key}
-                            onClick={() => AppContext.getHistory().push(item.link)}
-                            selected={window.location.pathname
-                                .split("/")
-                                .join("/")
-                                .includes(item.link)}
-                        >
-                            <ListItemText primary={item.title} />
-                        </ListItem>
-                    ))}
-                </List>
+                <>
+                    <Divider />
+                    <List>
+                        {adminSidebarLinks.map((item, key) => (
+                            <ListItem
+                                button
+                                key={key}
+                                onClick={() => AppContext.getHistory().push(item.link)}
+                                selected={window.location.pathname
+                                    .split("/")
+                                    .join("/")
+                                    .includes(item.link)}
+                            >
+                                <ListItemText primary={item.title} />
+                            </ListItem>
+                        ))}
+                    </List>
+                </>
             )}
         </Drawer>
     );

@@ -15,7 +15,7 @@ export function useSingleBlock(transport: Transport, id: string,): {
 
     const update = useCallback((data: Partial<IBlock<any>>) => {
         return BlockAPI.updateBlock(transport, id, transport.formatToFormData(data)).then(fetchOne);
-    }, [transport, id]);
+    }, [transport, id, fetchOne]);
 
     useEffect(() => {
         fetchOne();

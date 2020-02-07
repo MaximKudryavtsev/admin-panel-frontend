@@ -16,7 +16,7 @@ export function useStatuses(transport: Transport): {
 
     useEffect(() => {
         getStatuses();
-    }, []);
+    }, [getStatuses]);
 
     return { statuses };
 }
