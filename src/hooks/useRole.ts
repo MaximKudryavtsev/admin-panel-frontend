@@ -1,16 +1,16 @@
 import { useContext } from "react";
-import { RoleContext } from "../app/App";
+import { UserContext } from "../app/App";
 import { EUserRoles, IDictionary } from "../entities";
 
 export function useRole(): {
     roles: IDictionary[];
-    hasRole: (label: EUserRoles) => boolean;
+    hasRole: (label: EUserRoles) => boolean | undefined;
 } {
-    const roles = useContext(RoleContext);
+    const user = useContext(UserContext);
 
     const hasRole = (roleLabel: string) => {
-        return roles && !!roles.find((item) => item.label === roleLabel);
+        return user && !!user.roles.find((item) => item.label === roleLabel);
     };
 
-    return { roles, hasRole };
+    return { roles: user?.roles ?? [], hasRole };
 }

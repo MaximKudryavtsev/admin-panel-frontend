@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import { FieldArray } from "formik";
 import { css } from "emotion";
 import { IconButton } from "@material-ui/core";
-import { IBlock } from "../../entities";
+import { IBlock, IImageBlock } from "../../entities";
 import { omit, set } from "lodash";
 import * as uuid from "uuid";
 import { BlockLoadingScreen } from "../block-loading-screen";
@@ -13,20 +13,24 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { MainAchievement } from "./main-achievement";
 import { Add } from "@material-ui/icons";
 
-export interface IMainAchievement {
+export interface IMainAchievement extends IImageBlock {
     file?: File;
-    id: string;
-    imageLink?: string;
     title: string;
 }
 
+export interface IMainAchievementsBlock {
+    blocks: IMainAchievement[];
+}
+
 const ValidationSchema = Yup.object().shape({
-    data: Yup.array().of(
-        Yup.object().shape({
-            title: Yup.string().required("Поле обязательно для заполнения"),
-            file: Yup.mixed(),
-        }),
-    ),
+    data: Yup.object().shape({
+        blocks: Yup.array().of(
+            Yup.object().shape({
+                title: Yup.string().required("Поле обязательно для заполнения"),
+                file: Yup.mixed(),
+            }),
+        )
+    }),
 });
 
 const classNames = {
@@ -46,17 +50,17 @@ const classNames = {
     `,
 };
 
-export const MainAchievementsBlock = (props: IBlockProps<IMainAchievement[]>) => {
+export const MainAchievementsBlock = (props: IBlockProps<IMainAchievementsBlock>) => {
     const { onSubmit } = props;
 
     const [uploaded, setUploaded] = useState(false);
 
-    const handleSubmit = (id: string, data: Partial<IBlock<IMainAchievement[]>>) => {
+    const handleSubmit = (id: string, data: Partial<IBlock<IMainAchievementsBlock>>) => {
         if (data.data) {
             set(
                 data,
-                "data",
-                data.data?.map((item) => {
+                "data.blocks",
+                data.data.blocks?.map((item) => {
                     item.id = item.id ? item.id : uuid.v4();
                     if (item.file) {
                         set(data, `${item.id}`, item.file);
@@ -72,7 +76,7 @@ export const MainAchievementsBlock = (props: IBlockProps<IMainAchievement[]>) =>
     };
 
     return (
-        <BlockWrapper<IMainAchievement[]>
+        <BlockWrapper<IMainAchievementsBlock>
             {...props}
             onSubmit={handleSubmit}
             validationSchema={ValidationSchema}
@@ -83,7 +87,7 @@ export const MainAchievementsBlock = (props: IBlockProps<IMainAchievement[]>) =>
                     `}
                 >
                     <FieldArray
-                        name={"data"}
+                        name={"data.blocks"}
                         render={(array) => (
                             <DragDropContext
                                 onDragEnd={(result) =>
@@ -95,7 +99,7 @@ export const MainAchievementsBlock = (props: IBlockProps<IMainAchievement[]>) =>
                                         <div ref={provided.innerRef} {...provided.droppableProps}>
                                             <>
                                                 <div className={classNames.content}>
-                                                    {form?.values.data?.map((item, index) => (
+                                                    {form?.values.data?.blocks?.map((item, index) => (
                                                         <Draggable
                                                             index={index}
                                                             draggableId={index.toString()}
@@ -103,7 +107,7 @@ export const MainAchievementsBlock = (props: IBlockProps<IMainAchievement[]>) =>
                                                         >
                                                             {(provided) => (
                                                                 <MainAchievement
-                                                                    name={`data.${index}`}
+                                                                    name={`data.blocks.${index}`}
                                                                     achievement={item}
                                                                     innerRef={provided.innerRef}
                                                                     draggableProps={

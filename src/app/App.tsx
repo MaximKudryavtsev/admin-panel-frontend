@@ -4,19 +4,25 @@ import { AppContext } from "../context";
 import { Login } from "../pages/login";
 import { WorkPanel } from "../pages/work-panel";
 import { Transport } from "../transport";
-import { IDictionary, IToken, IUser } from "../entities";
+import { IUser } from "../entities";
 import { ProfileAPI } from "../api";
 import { PrivateRoute } from "../components/private-route";
 import { PublicRoute } from "../components/public-route";
 import { ForgotPassword } from "../pages/forgot-password";
 import { SnackbarProvider } from "notistack";
 
-export const RoleContext = createContext<IDictionary[]>([]);
+export const UserContext = createContext<IUser | undefined>(undefined);
 
 const App: React.FC = () => {
     const [user, setUser] = useState<IUser | undefined>(undefined);
-    const transport = useMemo(() => new Transport(), []);
+    const transport = useMemo(() => Transport.create(), []);
     const [logged, setLogged] = useState(!!localStorage.getItem("token"));
+
+    useEffect(() => {
+        if (window.location.pathname === "/") {
+            AppContext.getHistory().push("/main");
+        }
+    }, []);
 
     useEffect(() => {
         const tokenString = localStorage.getItem("token");
@@ -25,8 +31,6 @@ const App: React.FC = () => {
             AppContext.getHistory().push("/sign-in");
             return;
         }
-        const token: IToken = JSON.parse(tokenString);
-        transport.setToken(token);
         ProfileAPI.fetchProfile(transport)
             .then((response) => {
                 setUser(response.data);
@@ -44,7 +48,7 @@ const App: React.FC = () => {
     };
 
     return (
-        <RoleContext.Provider value={user?.roles!}>
+        <UserContext.Provider value={user}>
             <SnackbarProvider>
                 <Router history={AppContext.getHistory()}>
                     <Switch>
@@ -82,7 +86,7 @@ const App: React.FC = () => {
                     </Switch>
                 </Router>
             </SnackbarProvider>
-        </RoleContext.Provider>
+        </UserContext.Provider>
     );
 };
 

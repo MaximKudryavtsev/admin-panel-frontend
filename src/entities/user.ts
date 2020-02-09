@@ -1,19 +1,15 @@
-export interface IUserRole {
-    _id: string;
-    title: string;
-    label: string;
-}
+import { IDictionary } from "./common";
 
 export interface IUser {
     _id: string;
     email: string;
-    roles: IUserRole[];
+    roles: IDictionary[];
     login?: string;
     avatar?: string;
     isBlocked?: boolean;
     isDeleted?: boolean;
-    isBlockAvailable: boolean;
-    isDeleteAvailable: boolean;
+    isBlockAvailable?: boolean;
+    isDeleteAvailable?: boolean;
 }
 
 export interface IUpdateAvatar {

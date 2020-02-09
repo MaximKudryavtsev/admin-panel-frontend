@@ -27,3 +27,8 @@ export interface IBlock<T> {
     position: number;
     data?: T;
 }
+
+export interface IImageBlock {
+    id: string;
+    imageLink?: string;
+}

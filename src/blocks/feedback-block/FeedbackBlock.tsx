@@ -16,13 +16,13 @@ import { BlockLoadingScreen } from "../block-loading-screen";
 
 export interface IFeedbackBlock {
     title: string;
-    feedbacks: IFeedback[];
+    blocks: IFeedback[];
 }
 
 const validationSchema = Yup.object().shape({
     data: Yup.object().shape({
         title: Yup.string().required("Поле обязательно для заполнения"),
-        feedbacks: Yup.array().of(
+        blocks: Yup.array().of(
             Yup.object().shape({
                 file: Yup.mixed(),
                 text: Yup.string().required("Поле обязательно для заполнения"),
@@ -62,11 +62,11 @@ export const FeedbackBlock = (props: IBlockProps<IFeedbackBlock>) => {
     const [uploaded, setUploaded] = useState(false);
 
     const handleSubmit = (id: string, data: Partial<IBlock<IFeedbackBlock>>) => {
-        if (data.data?.feedbacks) {
+        if (data.data?.blocks) {
             set(
                 data,
-                "data.feedbacks",
-                data.data?.feedbacks.map((item) => {
+                "data.blocks",
+                data.data?.blocks.map((item) => {
                     item.id = item.id ? item.id : uuid.v4();
                     if (item.file) {
                         set(data, `${item.id}`, item.file);
@@ -99,19 +99,19 @@ export const FeedbackBlock = (props: IBlockProps<IFeedbackBlock>) => {
                         classes={{ root: classNames.title }}
                     />
                     <FieldArray
-                        name={"data.feedbacks"}
+                        name={"data.blocks"}
                         render={(array) => (
                             <DragDropContext
                                 onDragEnd={(result) =>
                                     array.move(result.source.index, result.destination?.index ?? 0)
                                 }
                             >
-                                <Droppable droppableId={"feedbacks"} direction={"horizontal"}>
+                                <Droppable droppableId={"blocks"} direction={"horizontal"}>
                                     {(provided) => (
                                         <div ref={provided.innerRef} {...provided.droppableProps}>
                                             <React.Fragment>
                                                 <div className={classNames.content}>
-                                                    {form?.values?.data?.feedbacks?.map(
+                                                    {form?.values?.data?.blocks?.map(
                                                         (item, index) => (
                                                             <Draggable
                                                                 index={index}
@@ -127,7 +127,7 @@ export const FeedbackBlock = (props: IBlockProps<IFeedbackBlock>) => {
                                                                         draggableProps={
                                                                             provided.draggableProps
                                                                         }
-                                                                        name={`data.feedbacks.${index}`}
+                                                                        name={`data.blocks.${index}`}
                                                                         feedback={item}
                                                                         onDelete={() =>
                                                                             array.remove(index)

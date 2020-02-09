@@ -26,7 +26,6 @@ export function getExtension(resolve: (ext: string) => void, file: File): void {
     reader.readAsArrayBuffer(file);
     (reader.onloadend = () => {
         const result = reader.result as ArrayBuffer;
-        console.log(fileType(result));
         const ext = get(fileType(result), "ext", "");
         resolve(ext);
     });

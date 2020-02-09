@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Divider, Drawer, List, ListItem, ListItemText } from "@material-ui/core";
 import { adminSidebarLinks, sidebarLinks } from "../../config";
 import { AppContext } from "../../context";
 import * as emotion from "emotion";
-import { RoleContext } from "../../app/App";
 import { EUserRoles } from "../../entities";
+import { useRole } from "../../hooks";
 
 const styles = {
     drawer: emotion.css`
@@ -23,10 +23,8 @@ const styles = {
 };
 
 export const Sidebar = () => {
-    const roleContext = useContext(RoleContext);
-    const isSuperAdminLinksAvailable = roleContext && !!roleContext.find(
-        (item) => item.label === EUserRoles.SUPER_ADMIN,
-    );
+    const { hasRole } = useRole();
+
     return (
         <Drawer
             variant={"permanent"}
@@ -53,7 +51,7 @@ export const Sidebar = () => {
                     </ListItem>
                 ))}
             </List>
-            {isSuperAdminLinksAvailable && (
+            {!!hasRole(EUserRoles.SUPER_ADMIN) && (
                 <>
                     <Divider />
                     <List>
