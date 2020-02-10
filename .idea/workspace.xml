@@ -2,12 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/blocks/best-achievement-block/BestAchievementBlock.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blocks/best-achievement-block/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/achievement-block/AchievementBlock.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/achievement-block/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/date-field/DateField.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/date-field/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/best-achievement-block/BestAchievementBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/best-achievement-block/BestAchievementBlock.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/blocks/blockList.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/blockList.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/draggable-image-block/DraggableImageBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/draggable-image-block/DraggableImageBlock.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/draggable-panel/DraggablePanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/draggable-panel/DraggablePanel.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/blocks/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/block.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/block.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,13 +181,6 @@
       <workItem from="1580970525277" duration="26827000" />
       <workItem from="1581061461913" duration="6191000" />
       <workItem from="1581239148553" duration="7010000" />
-    </task>
-    <task id="LOCAL-00059" summary="add getting pages for creating navigation">
-      <created>1580203867531</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1580203867531</updated>
     </task>
     <task id="LOCAL-00060" summary="add choosing existing page for creating navigation">
       <created>1580203957252</created>
@@ -517,7 +518,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581323728272</updated>
     </task>
-    <option name="localTasksCounter" value="108" />
+    <task id="LOCAL-00108" summary="add block for best achievements">
+      <created>1581325977023</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1581325977023</updated>
+    </task>
+    <option name="localTasksCounter" value="109" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -534,7 +542,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="change clients logo" />
     <MESSAGE value="add uploading, deleting header" />
     <MESSAGE value="update toggle button in navigation" />
     <MESSAGE value="add stub for preview page" />
@@ -559,7 +566,8 @@
     <MESSAGE value="create general component for draggable panel in block" />
     <MESSAGE value="replace duplicate code" />
     <MESSAGE value="add function for getting block data with files" />
-    <option name="LAST_COMMIT_MESSAGE" value="add function for getting block data with files" />
+    <MESSAGE value="add block for best achievements" />
+    <option name="LAST_COMMIT_MESSAGE" value="add block for best achievements" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="182" key="#ESLint" timestamp="1578156507884">
@@ -587,16 +595,16 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580987630233" />
-    <state x="585" y="117" key="CommitChangelistDialog2" timestamp="1581323727450">
+    <state x="585" y="117" key="CommitChangelistDialog2" timestamp="1581325976203">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581323727450" />
+    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581325976203" />
     <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172968703" />
     <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1581275064446" />
-    <state x="184" y="85" width="1536" height="840" key="DiffContextDialog" timestamp="1581323724571">
+    <state x="184" y="85" width="1536" height="840" key="DiffContextDialog" timestamp="1581325963790">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="184" y="85" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581323724571" />
+    <state x="184" y="85" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581325963790" />
     <state x="184" y="86" width="1536" height="840" key="DiffContextDialog/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172950313" />
     <state x="184" y="86" key="DiffContextDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1581275061562" />
     <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1580712034432">
@@ -660,10 +668,10 @@
     </state>
     <state x="616" y="237" key="run.anything.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578145423257" />
     <state x="616" y="237" width="672" height="677" key="run.anything.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579939819522" />
-    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup" timestamp="1581321871887">
+    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup" timestamp="1581336185402">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581321871887" />
+    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581336185402" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578170577061" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1581255384553" />
   </component>

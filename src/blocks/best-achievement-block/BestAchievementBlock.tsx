@@ -110,7 +110,7 @@ export const BestAchievementBlock = (props: IBlockProps<IBestAchievementBlock>) 
                                                         form?.values.data?.blocks[index].links &&
                                                         form?.values.data?.blocks[index].links.map(
                                                             (link, linkIndex) => (
-                                                                <Card variant={"outlined"} classes={{root: classNames.linkCard}}>
+                                                                <Card variant={"outlined"} classes={{root: classNames.linkCard}} key={linkIndex}>
                                                                     <div className={css`display: flex; justify-content: flex-end;`}>
                                                                         <IconButton onClick={() => arrayLinks.remove(linkIndex)}>
                                                                             <Delete />

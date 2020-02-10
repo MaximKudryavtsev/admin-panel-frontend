@@ -14,6 +14,7 @@ interface IDraggableImageBlockProps<T> {
     name: string;
     draggableProps: DraggableProvidedDraggableProps;
     dragHandleProps: DraggableProvidedDragHandleProps | null;
+    variant?: "default" | "achievement";
 
     innerRef(element?: HTMLElement | null): any;
 
@@ -31,6 +32,10 @@ const classNames = {
     `,
     image: css`
         height: 180px;
+    `,
+    achievementImage: css`
+        height: 200px;
+        width: 200px;
     `,
     field: css`
         margin-bottom: 24px;
@@ -52,10 +57,39 @@ const classNames = {
     error: css`
         margin-top: 20px !important;
     `,
+    achievementFields: css`
+        display: flex;
+    `,
+    achievementCard: css`
+        margin-bottom: 24px;
+    `,
+    achievementImageWrapper: css`
+        padding-top: 40px;
+        margin: 0 20px;
+        display: flex;
+    `,
+    achievementContent: css`
+        width: 100%;
+        padding: 24px;
+        box-sizing: border-box;
+        align-items: flex-start;
+    `,
 };
 
-export const DraggableImageBlock = <T extends IImageBlockIItem>(props: IDraggableImageBlockProps<T>) => {
-    const { data, name, draggableProps, dragHandleProps, innerRef, onDelete, setFieldValue, render } = props;
+export const DraggableImageBlock = <T extends IImageBlockIItem>(
+    props: IDraggableImageBlockProps<T>,
+) => {
+    const {
+        data,
+        name,
+        draggableProps,
+        dragHandleProps,
+        innerRef,
+        onDelete,
+        setFieldValue,
+        render,
+        variant = "default",
+    } = props;
 
     const { src, error, setSrc, loadFile } = useFile({
         whiteList: ["png", "jpg", "jpeg"],
@@ -87,38 +121,100 @@ export const DraggableImageBlock = <T extends IImageBlockIItem>(props: IDraggabl
     };
 
     return (
-        <Card variant={"outlined"} ref={innerRef} {...draggableProps}>
-            <div className={classNames.iconWrapper}>
-                <div {...dragHandleProps}>
-                    <IconButton>
-                        <DragIndicator />
-                    </IconButton>
-                </div>
-                <div className={classNames.icons}>
-                    <IconButton onClick={onChooseFile}>
-                        <Edit />
-                    </IconButton>
-                    <IconButton onClick={onDelete}>
-                        <Delete />
-                    </IconButton>
-                </div>
-            </div>
-            <input
-                type="file"
-                name={`${name}.file`}
-                className={classNames.input}
-                ref={inputRef}
-                onChange={onChange}
-            />
-            <CardMedia image={src} className={classNames.image} />
-            {error && (
-                <Typography color={"error"} align={"center"} className={classNames.error}>
-                    {error}
-                </Typography>
+        <>
+            {variant === "default" && (
+                <Card variant={"outlined"} ref={innerRef} {...draggableProps}>
+                    <div className={classNames.iconWrapper}>
+                        <div {...dragHandleProps}>
+                            <IconButton>
+                                <DragIndicator />
+                            </IconButton>
+                        </div>
+                        <div className={classNames.icons}>
+                            <IconButton onClick={onChooseFile}>
+                                <Edit />
+                            </IconButton>
+                            <IconButton onClick={onDelete}>
+                                <Delete />
+                            </IconButton>
+                        </div>
+                    </div>
+                    <input
+                        type="file"
+                        name={`${name}.file`}
+                        className={classNames.input}
+                        ref={inputRef}
+                        onChange={onChange}
+                    />
+                    <CardMedia image={src} className={classNames.image} />
+                    {error && (
+                        <Typography color={"error"} align={"center"} className={classNames.error}>
+                            {error}
+                        </Typography>
+                    )}
+                    <CardContent classes={{ root: classNames.content }}>{render()}</CardContent>
+                </Card>
             )}
-            <CardContent classes={{ root: classNames.content }}>
-                {render()}
-            </CardContent>
-        </Card>
+            {variant === "achievement" && (
+                <Card
+                    variant={"outlined"}
+                    ref={innerRef}
+                    {...draggableProps}
+                    className={classNames.achievementCard}
+                >
+                    <div className={classNames.iconWrapper}>
+                        <div {...dragHandleProps}>
+                            <IconButton>
+                                <DragIndicator />
+                            </IconButton>
+                        </div>
+                        <div className={classNames.icons}>
+                            <IconButton onClick={onDelete}>
+                                <Delete />
+                            </IconButton>
+                        </div>
+                    </div>
+                    <input
+                        type="file"
+                        name={`${name}.file`}
+                        className={classNames.input}
+                        ref={inputRef}
+                        onChange={onChange}
+                    />
+                    <div className={classNames.achievementFields}>
+                        <div className={classNames.achievementImageWrapper}>
+                            <div>
+                                <Card variant={"outlined"}>
+                                    <CardMedia
+                                        image={src}
+                                        className={classNames.achievementImage}
+                                    />
+                                </Card>
+                                {error && (
+                                    <Typography
+                                        color={"error"}
+                                        align={"center"}
+                                        className={classNames.error}
+                                    >
+                                        {error}
+                                    </Typography>
+                                )}
+                            </div>
+                            <IconButton
+                                onClick={onChooseFile}
+                                className={css`
+                                    align-self: flex-start;
+                                `}
+                            >
+                                <Edit />
+                            </IconButton>
+                        </div>
+                        <CardContent classes={{ root: classNames.achievementContent }}>
+                            {render()}
+                        </CardContent>
+                    </div>
+                </Card>
+            )}
+        </>
     );
 };

@@ -11,6 +11,7 @@ import { FeedbackBlock } from "./feedback-block";
 import { ClientsLogo } from "./clients-logo";
 import { MainAchievementsBlock } from "./main-achievements-block";
 import { BestAchievementBlock } from "./best-achievement-block";
+import { AchievementBlock } from "./achievement-block";
 
 const blockList = {
     [EBlockTypes.FACTS]: FactsBlock,
@@ -23,6 +24,7 @@ const blockList = {
     [EBlockTypes.CLIENTS_LOGO]: ClientsLogo,
     [EBlockTypes.MAIN_ACHIEVEMENTS]: MainAchievementsBlock,
     [EBlockTypes.BEST_ACHIEVEMENTS]: BestAchievementBlock,
+    [EBlockTypes.ACHIEVEMENTS]: AchievementBlock,
     "default": undefined
 };
 

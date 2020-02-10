@@ -8,3 +8,4 @@ export * from "./avatar";
 export * from "./jss-provider";
 export * from "./toggle-icon-button";
 export * from "./loading";
+export * from "./date-field";
