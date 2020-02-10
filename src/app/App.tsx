@@ -19,12 +19,6 @@ const App: React.FC = () => {
     const [logged, setLogged] = useState(!!localStorage.getItem("token"));
 
     useEffect(() => {
-        if (window.location.pathname === "/") {
-            AppContext.getHistory().push("/main");
-        }
-    }, []);
-
-    useEffect(() => {
         const tokenString = localStorage.getItem("token");
         if (!tokenString) {
             localStorage.removeItem("token");
@@ -33,6 +27,9 @@ const App: React.FC = () => {
         }
         ProfileAPI.fetchProfile(transport)
             .then((response) => {
+                if (window.location.pathname === "/") {
+                    AppContext.getHistory().push("/main");
+                }
                 setUser(response.data);
             })
             .catch(() => {

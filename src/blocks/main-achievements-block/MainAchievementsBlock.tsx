@@ -4,14 +4,12 @@ import { BlockWrapper } from "../../widgets/block-wrapper";
 import * as Yup from "yup";
 import { FieldArray } from "formik";
 import { css } from "emotion";
-import { IconButton } from "@material-ui/core";
 import { IBlock, IImageBlock } from "../../entities";
 import { omit, set } from "lodash";
 import * as uuid from "uuid";
 import { BlockLoadingScreen } from "../block-loading-screen";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { MainAchievement } from "./main-achievement";
-import { Add } from "@material-ui/icons";
+import { TextField } from "../../components/text-field";
+import { DraggablePanel } from "../draggable-panel";
 
 export interface IMainAchievement extends IImageBlock {
     file?: File;
@@ -29,26 +27,9 @@ const ValidationSchema = Yup.object().shape({
                 title: Yup.string().required("Поле обязательно для заполнения"),
                 file: Yup.mixed(),
             }),
-        )
+        ),
     }),
 });
-
-const classNames = {
-    content: css`
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-column-gap: 24px;
-        grid-row-gap: 24px;
-        margin-bottom: 24px;
-    `,
-    card: css`
-        padding: 24px;
-        box-sizing: border-box;
-    `,
-    image: css`
-        height: 180px;
-    `,
-};
 
 export const MainAchievementsBlock = (props: IBlockProps<IMainAchievementsBlock>) => {
     const { onSubmit } = props;
@@ -89,56 +70,21 @@ export const MainAchievementsBlock = (props: IBlockProps<IMainAchievementsBlock>
                     <FieldArray
                         name={"data.blocks"}
                         render={(array) => (
-                            <DragDropContext
+                            <DraggablePanel
+                                data={form?.values.data?.blocks}
                                 onDragEnd={(result) =>
                                     array.move(result.source.index, result.destination?.index ?? 0)
                                 }
-                            >
-                                <Droppable droppableId={"achievements"} direction={"horizontal"}>
-                                    {(provided) => (
-                                        <div ref={provided.innerRef} {...provided.droppableProps}>
-                                            <>
-                                                <div className={classNames.content}>
-                                                    {form?.values.data?.blocks?.map((item, index) => (
-                                                        <Draggable
-                                                            index={index}
-                                                            draggableId={index.toString()}
-                                                            key={index}
-                                                        >
-                                                            {(provided) => (
-                                                                <MainAchievement
-                                                                    name={`data.blocks.${index}`}
-                                                                    achievement={item}
-                                                                    innerRef={provided.innerRef}
-                                                                    draggableProps={
-                                                                        provided.draggableProps
-                                                                    }
-                                                                    dragHandleProps={
-                                                                        provided.dragHandleProps
-                                                                    }
-                                                                    setFieldValue={form?.setFieldValue}
-                                                                    onDelete={() => array.remove(index)}
-                                                                />
-                                                            )}
-                                                        </Draggable>
-                                                    ))}
-                                                    {provided.placeholder}
-                                                </div>
-                                                <IconButton
-                                                    onClick={() =>
-                                                        array.push({
-                                                            title: "",
-                                                        })
-                                                    }
-                                                    color="primary"
-                                                >
-                                                    <Add />
-                                                </IconButton>
-                                            </>
-                                        </div>
-                                    )}
-                                </Droppable>
-                            </DragDropContext>
+                                setFieldValue={form?.setFieldValue}
+                                onDelete={array.remove}
+                                onAddBlock={() => array.push({title: ""})}
+                                render={(index) => (
+                                    <TextField
+                                        name={`data.blocks.${index}.title`}
+                                        label={"Загловок"}
+                                    />
+                                )}
+                            />
                         )}
                     />
                     {uploaded && <BlockLoadingScreen />}

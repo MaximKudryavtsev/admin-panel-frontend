@@ -5,18 +5,22 @@ import { css } from "emotion";
 import { TextField } from "../../components/text-field";
 import { BlockWrapper } from "../../widgets/block-wrapper";
 import { FieldArray } from "formik";
-import { Feedback, IFeedback } from "./feedback";
-import { Add } from "@material-ui/icons";
-import { IconButton } from "@material-ui/core";
-import { IBlock } from "../../entities";
+import { IBlock, IImageBlock } from "../../entities";
 import { set, omit } from "lodash";
 import * as uuid from "uuid";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { BlockLoadingScreen } from "../block-loading-screen";
+import { DraggablePanel } from "../draggable-panel";
 
 export interface IFeedbackBlock {
     title: string;
     blocks: IFeedback[];
+}
+
+export interface IFeedback extends IImageBlock {
+    file?: File;
+    text: string;
+    name: string;
+    position: string;
 }
 
 const validationSchema = Yup.object().shape({
@@ -37,13 +41,6 @@ const classNames = {
     title: css`
         margin-bottom: 24px;
     `,
-    content: css`
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-column-gap: 24px;
-        grid-row-gap: 24px;
-        margin-bottom: 24px;
-    `,
     loadingScreen: css`
         position: absolute;
         width: 100%;
@@ -54,6 +51,9 @@ const classNames = {
         display: flex;
         align-items: center;
         justify-content: center;
+    `,
+    field: css`
+        margin-bottom: 24px;
     `,
 };
 
@@ -101,64 +101,41 @@ export const FeedbackBlock = (props: IBlockProps<IFeedbackBlock>) => {
                     <FieldArray
                         name={"data.blocks"}
                         render={(array) => (
-                            <DragDropContext
+                            <DraggablePanel
+                                data={form?.values.data?.blocks}
                                 onDragEnd={(result) =>
                                     array.move(result.source.index, result.destination?.index ?? 0)
                                 }
-                            >
-                                <Droppable droppableId={"blocks"} direction={"horizontal"}>
-                                    {(provided) => (
-                                        <div ref={provided.innerRef} {...provided.droppableProps}>
-                                            <React.Fragment>
-                                                <div className={classNames.content}>
-                                                    {form?.values?.data?.blocks?.map(
-                                                        (item, index) => (
-                                                            <Draggable
-                                                                index={index}
-                                                                draggableId={index.toString()}
-                                                                key={index}
-                                                            >
-                                                                {(provided) => (
-                                                                    <Feedback
-                                                                        innerRef={provided.innerRef}
-                                                                        dragHandleProps={
-                                                                            provided.dragHandleProps
-                                                                        }
-                                                                        draggableProps={
-                                                                            provided.draggableProps
-                                                                        }
-                                                                        name={`data.blocks.${index}`}
-                                                                        feedback={item}
-                                                                        onDelete={() =>
-                                                                            array.remove(index)
-                                                                        }
-                                                                        setFieldValue={
-                                                                            form?.setFieldValue
-                                                                        }
-                                                                    />
-                                                                )}
-                                                            </Draggable>
-                                                        ),
-                                                    )}
-                                                    {provided.placeholder}
-                                                </div>
-                                                <IconButton
-                                                    onClick={() =>
-                                                        array.push({
-                                                            text: "",
-                                                            name: "",
-                                                            position: "",
-                                                        })
-                                                    }
-                                                    color="primary"
-                                                >
-                                                    <Add />
-                                                </IconButton>
-                                            </React.Fragment>
-                                        </div>
-                                    )}
-                                </Droppable>
-                            </DragDropContext>
+                                setFieldValue={form?.setFieldValue}
+                                onDelete={array.remove}
+                                onAddBlock={() =>
+                                    array.push({
+                                        text: "",
+                                        name: "",
+                                        position: "",
+                                    })
+                                }
+                                render={(index) => (
+                                    <>
+                                        <TextField
+                                            name={`data.blocks.${index}.text`}
+                                            label={"Текст отзыва"}
+                                            textarea
+                                            classes={{ root: classNames.field }}
+                                        />
+                                        <TextField
+                                            name={`data.blocks.${index}.name`}
+                                            label={"Имя"}
+                                            classes={{ root: classNames.field }}
+                                        />
+                                        <TextField
+                                            name={`data.blocks.${index}.position`}
+                                            label={"Должность"}
+                                            classes={{ root: classNames.field }}
+                                        />
+                                    </>
+                                )}
+                            />
                         )}
                     />
                     {uploaded && <BlockLoadingScreen />}
