@@ -10,6 +10,7 @@ export enum EBlockTypes {
     FEEDBACK = "feedbackBlock",
     CLIENTS_LOGO = "clientsLogo",
     MAIN_ACHIEVEMENTS = "mainAchievements",
+    BEST_ACHIEVEMENTS = "bestAchievements",
 }
 
 export interface ICreateBlockRequest {

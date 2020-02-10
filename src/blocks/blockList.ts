@@ -10,6 +10,7 @@ import { BlueLinesList } from "./blue-lines-list";
 import { FeedbackBlock } from "./feedback-block";
 import { ClientsLogo } from "./clients-logo";
 import { MainAchievementsBlock } from "./main-achievements-block";
+import { BestAchievementBlock } from "./best-achievement-block";
 
 const blockList = {
     [EBlockTypes.FACTS]: FactsBlock,
@@ -21,6 +22,7 @@ const blockList = {
     [EBlockTypes.FEEDBACK]: FeedbackBlock,
     [EBlockTypes.CLIENTS_LOGO]: ClientsLogo,
     [EBlockTypes.MAIN_ACHIEVEMENTS]: MainAchievementsBlock,
+    [EBlockTypes.BEST_ACHIEVEMENTS]: BestAchievementBlock,
     "default": undefined
 };
 

@@ -9,3 +9,4 @@ export * from "./feedback-block";
 export * from "./blockList";
 export * from "./IBlockProps";
 export * from "./main-achievements-block";
+export * from "./best-achievement-block";
