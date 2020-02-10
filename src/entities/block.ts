@@ -28,7 +28,16 @@ export interface IBlock<T> {
     data?: T;
 }
 
-export interface IImageBlock {
-    id: string;
+export interface IImageBlockIItem {
     imageLink?: string;
+    id: string;
+    file?: File;
 }
+
+export type TImageBlockItem<T> = T extends IImageBlockIItem ? T : IImageBlockIItem;
+
+export interface IImageBlock<T> {
+    blocks: TImageBlockItem<T>[];
+}
+
+export type TImageBlock<T, P> = T extends IImageBlock<P> ? T : IImageBlock<P>;

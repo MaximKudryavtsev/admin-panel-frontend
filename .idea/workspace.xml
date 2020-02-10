@@ -2,16 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/blocks/draggable-panel/DraggablePanel.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blocks/draggable-panel/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/block.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/draggable-image-block/DraggableImageBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/draggable-image-block/DraggableImageBlock.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/draggable-panel/DraggablePanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/draggable-panel/DraggablePanel.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/blocks/feedback-block/FeedbackBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/feedback-block/FeedbackBlock.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/feedback-block/feedback/Feedback.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/feedback-block/feedback/index.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/blocks/main-achievements-block/MainAchievementsBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/main-achievements-block/MainAchievementsBlock.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/main-achievements-block/main-achievement/MainAchievement.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/main-achievements-block/main-achievement/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/block.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/block.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,20 +175,6 @@
       <workItem from="1580970525277" duration="26827000" />
       <workItem from="1581061461913" duration="6191000" />
       <workItem from="1581239148553" duration="7010000" />
-    </task>
-    <task id="LOCAL-00056" summary="add .htaccess">
-      <created>1580188475848</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1580188475849</updated>
-    </task>
-    <task id="LOCAL-00057" summary="add showing success message after updating page">
-      <created>1580189887880</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1580189887880</updated>
     </task>
     <task id="LOCAL-00058" summary="change structure of navigation">
       <created>1580199296743</created>
@@ -521,7 +505,21 @@
       <option name="project" value="LOCAL" />
       <updated>1581322384677</updated>
     </task>
-    <option name="localTasksCounter" value="105" />
+    <task id="LOCAL-00105" summary="create general component for draggable panel in block">
+      <created>1581322400453</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1581322400453</updated>
+    </task>
+    <task id="LOCAL-00106" summary="replace duplicate code">
+      <created>1581322494369</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1581322494369</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -538,8 +536,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add reordering for feedback" />
-    <MESSAGE value="add loader screen for feedback block" />
     <MESSAGE value="add block for clients logo" />
     <MESSAGE value="change clients logo" />
     <MESSAGE value="add uploading, deleting header" />
@@ -563,7 +559,9 @@
     <MESSAGE value="change access on roles" />
     <MESSAGE value="change access on roles in ControlPanel" />
     <MESSAGE value="create general component for draggable card with image" />
-    <option name="LAST_COMMIT_MESSAGE" value="create general component for draggable card with image" />
+    <MESSAGE value="create general component for draggable panel in block" />
+    <MESSAGE value="replace duplicate code" />
+    <option name="LAST_COMMIT_MESSAGE" value="replace duplicate code" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="182" key="#ESLint" timestamp="1578156507884">
@@ -591,16 +589,16 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580987630233" />
-    <state x="585" y="117" key="CommitChangelistDialog2" timestamp="1581322399316">
+    <state x="585" y="117" key="CommitChangelistDialog2" timestamp="1581322493467">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581322399316" />
+    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581322493467" />
     <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172968703" />
     <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1581275064446" />
-    <state x="184" y="85" width="1536" height="840" key="DiffContextDialog" timestamp="1581322328476">
+    <state x="184" y="85" width="1536" height="840" key="DiffContextDialog" timestamp="1581322463126">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="184" y="85" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581322328476" />
+    <state x="184" y="85" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581322463126" />
     <state x="184" y="86" width="1536" height="840" key="DiffContextDialog/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172950313" />
     <state x="184" y="86" key="DiffContextDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1581275061562" />
     <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1580712034432">
@@ -634,10 +632,10 @@
     </state>
     <state x="461" y="155" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580712036506" />
     <state x="461" y="156" key="SettingsEditor/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580551786626" />
-    <state x="552" y="255" key="Vcs.Push.Dialog.v2" timestamp="1581086697024">
+    <state x="552" y="255" key="Vcs.Push.Dialog.v2" timestamp="1581322499717">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="255" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581086697024" />
+    <state x="552" y="255" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581322499717" />
     <state x="552" y="257" key="Vcs.Push.Dialog.v2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172973521" />
     <state x="552" y="257" key="Vcs.Push.Dialog.v2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580667043182" />
     <state x="92" y="92" width="1736" height="866" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1578046510409">

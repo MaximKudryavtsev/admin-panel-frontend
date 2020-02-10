@@ -4,7 +4,7 @@ import {
     DraggableProvidedDragHandleProps,
 } from "react-beautiful-dnd";
 import { css } from "emotion";
-import { IImageBlock } from "../../entities";
+import { IImageBlockIItem } from "../../entities";
 import { Card, CardContent, CardMedia, IconButton, Typography } from "@material-ui/core";
 import { useFile } from "../../hooks";
 import { Delete, DragIndicator, Edit } from "@material-ui/icons";
@@ -54,7 +54,7 @@ const classNames = {
     `,
 };
 
-export const DraggableImageBlock = <T extends IImageBlock>(props: IDraggableImageBlockProps<T>) => {
+export const DraggableImageBlock = <T extends IImageBlockIItem>(props: IDraggableImageBlockProps<T>) => {
     const { data, name, draggableProps, dragHandleProps, innerRef, onDelete, setFieldValue, render } = props;
 
     const { src, error, setSrc, loadFile } = useFile({

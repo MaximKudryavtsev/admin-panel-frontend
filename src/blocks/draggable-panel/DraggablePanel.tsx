@@ -3,7 +3,7 @@ import { DragDropContext, Draggable, Droppable, DropResult } from "react-beautif
 import { DraggableImageBlock } from "../draggable-image-block";
 import { IconButton } from "@material-ui/core";
 import { Add } from "@material-ui/icons";
-import { IImageBlock } from "../../entities";
+import { IImageBlockIItem } from "../../entities";
 import { css } from "emotion";
 
 interface IDraggablePanelProps<T> {
@@ -30,7 +30,7 @@ const classNames = {
     `,
 };
 
-export const DraggablePanel = <T extends IImageBlock>(props: IDraggablePanelProps<T>) => {
+export const DraggablePanel = <T extends IImageBlockIItem>(props: IDraggablePanelProps<T>) => {
     const { onAddBlock, onDragEnd, render, data = [], onDelete, setFieldValue } = props;
 
     return (

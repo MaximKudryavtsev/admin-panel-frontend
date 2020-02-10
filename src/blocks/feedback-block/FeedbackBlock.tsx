@@ -5,19 +5,17 @@ import { css } from "emotion";
 import { TextField } from "../../components/text-field";
 import { BlockWrapper } from "../../widgets/block-wrapper";
 import { FieldArray } from "formik";
-import { IBlock, IImageBlock } from "../../entities";
-import { set, omit } from "lodash";
-import * as uuid from "uuid";
+import { IBlock, IImageBlockIItem } from "../../entities";
 import { BlockLoadingScreen } from "../block-loading-screen";
 import { DraggablePanel } from "../draggable-panel";
+import { getBlockDataWithFiles } from "../../utils";
 
 export interface IFeedbackBlock {
     title: string;
     blocks: IFeedback[];
 }
 
-export interface IFeedback extends IImageBlock {
-    file?: File;
+export interface IFeedback extends IImageBlockIItem {
     text: string;
     name: string;
     position: string;
@@ -62,19 +60,7 @@ export const FeedbackBlock = (props: IBlockProps<IFeedbackBlock>) => {
     const [uploaded, setUploaded] = useState(false);
 
     const handleSubmit = (id: string, data: Partial<IBlock<IFeedbackBlock>>) => {
-        if (data.data?.blocks) {
-            set(
-                data,
-                "data.blocks",
-                data.data?.blocks.map((item) => {
-                    item.id = item.id ? item.id : uuid.v4();
-                    if (item.file) {
-                        set(data, `${item.id}`, item.file);
-                    }
-                    return omit(item, ["file"]);
-                }),
-            );
-        }
+        data = getBlockDataWithFiles<IFeedbackBlock, IFeedback>(data);
         if (onSubmit) {
             setUploaded(true);
             onSubmit(id, { ...data }).then(() => setUploaded(false));
