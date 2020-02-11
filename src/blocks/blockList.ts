@@ -12,6 +12,7 @@ import { ClientsLogo } from "./clients-logo";
 import { MainAchievementsBlock } from "./main-achievements-block";
 import { BestAchievementBlock } from "./best-achievement-block";
 import { AchievementBlock } from "./achievement-block";
+import { TeamBlock } from "./team";
 
 const blockList = {
     [EBlockTypes.FACTS]: FactsBlock,
@@ -25,6 +26,7 @@ const blockList = {
     [EBlockTypes.MAIN_ACHIEVEMENTS]: MainAchievementsBlock,
     [EBlockTypes.BEST_ACHIEVEMENTS]: BestAchievementBlock,
     [EBlockTypes.ACHIEVEMENTS]: AchievementBlock,
+    [EBlockTypes.TEAM]: TeamBlock,
     "default": undefined
 };
 

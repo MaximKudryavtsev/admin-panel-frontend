@@ -10,6 +10,7 @@ interface IDateFieldProps {
     name: string;
     label?: string;
     className?: string;
+    disableFuture?: boolean;
 }
 
 const styles = {
@@ -24,7 +25,7 @@ const styles = {
 };
 
 export const DateField = (props: IDateFieldProps) => {
-    const { name, className, label } = props;
+    const { name, className, label, disableFuture = false } = props;
 
     return (
         <Field name={name}>
@@ -36,6 +37,7 @@ export const DateField = (props: IDateFieldProps) => {
                         label={label}
                         clearable
                         autoOk
+                        disableFuture={disableFuture}
                         error={!!meta.error}
                         format="dd.MM.yyyy"
                         className={className}

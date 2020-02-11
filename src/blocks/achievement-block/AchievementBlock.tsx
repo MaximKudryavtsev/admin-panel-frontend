@@ -124,6 +124,7 @@ export const AchievementBlock = (props: IBlockProps<IAchievementBlock>) => {
                                                 name={`data.blocks.${index}.date`}
                                                 label={"Дата получения награды"}
                                                 className={classNames.field}
+                                                disableFuture
                                             />
                                             <TextField
                                                 name={`data.blocks.${index}.title`}

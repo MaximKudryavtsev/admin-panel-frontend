@@ -9,7 +9,7 @@ import {
     FormHelperText,
 } from "@material-ui/core";
 import ErrorIcon from "@material-ui/icons/Error";
-import * as emotion from "emotion";
+import { css } from "emotion";
 
 export interface IOption {
     value: string | number;
@@ -27,12 +27,12 @@ interface ISelectProps {
 }
 
 const styles = {
-    errorMessage: emotion.css`
+    errorMessage: css`
         margin: 10px 0 0 0 !important;
         display: flex;
         align-items: center;
     `,
-    errorText: emotion.css`
+    errorText: css`
         padding-left: 10px;
     `,
 };
@@ -57,7 +57,10 @@ export const Select = (props: ISelectProps) => {
                     disabled={disable}
                 >
                     <InputLabel ref={inputLabel}>{label}</InputLabel>
-                    <MaterialSelect labelWidth={labelWidth} {...field}>
+                    <MaterialSelect
+                        labelWidth={labelWidth}
+                        {...field}
+                    >
                         {options.map((option) => (
                             <MenuItem value={option.value} key={option.value}>
                                 {option.label}
