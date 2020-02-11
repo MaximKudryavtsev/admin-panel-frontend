@@ -12,6 +12,7 @@ import * as Yup from "yup";
 import { IconButton } from "@material-ui/core";
 import { Add, Delete } from "@material-ui/icons";
 import { Select } from "../../components/select";
+import { useFetchPages } from "../../hooks";
 
 enum EImageAndListBlockType {
     DECISION = "decision",
@@ -40,9 +41,10 @@ export interface IImageAndList extends IImageBlockIItem {
 }
 
 export const ImageAndListBlock = (props: IBlockProps<IImageBlock<IImageAndList>>) => {
-    const { onSubmit } = props;
+    const { onSubmit, lang = "ru" } = props;
 
     const [uploaded, setUploaded] = useState(false);
+    const { pages } = useFetchPages(lang);
 
     const handleSubmit = (id: string, data: Partial<IBlock<IImageBlock<IImageAndList>>>) => {
         data = getBlockDataWithFiles<IImageBlock<IImageAndList>, IImageAndList>(data);
@@ -151,20 +153,24 @@ export const ImageAndListBlock = (props: IBlockProps<IImageBlock<IImageAndList>>
                                                                 </div>
                                                             ),
                                                         )}
-                                                    <IconButton onClick={() => arrayTexts.push("")}>
+                                                    <IconButton
+                                                        onClick={() => arrayTexts.push("")}
+                                                        className={css`
+                                                            margin-bottom: 24px;
+                                                        `}
+                                                    >
                                                         <Add />
                                                     </IconButton>
                                                 </>
                                             )}
                                         />
-                                        <TextField
+                                        <Select
                                             name={`data.blocks.${index}.link`}
                                             label={"Ссылка"}
-                                            classes={{
-                                                root: css`
-                                                    margin-bottom: 24px;
-                                                `,
-                                            }}
+                                            options={pages.map((item) => ({
+                                                value: item._id,
+                                                label: item.title,
+                                            }))}
                                         />
                                     </>
                                 )}

@@ -6,6 +6,7 @@ import { css } from "emotion";
 import { BlockWrapper } from "../../widgets/block-wrapper";
 import { TextField } from "../../components/text-field";
 import { Card, CardContent, CardMedia, Typography } from "@material-ui/core";
+import { SwitchField } from "../../components/switch-field";
 
 export interface IBlog {
     lang: TLang;
@@ -25,6 +26,11 @@ export interface IBlogItem {
 const ValidationSchema = Yup.object().shape({
     data: Yup.object().shape({
         title: Yup.string().required("Поле обязательно для заполнения"),
+        blog: Yup.array().of(
+            Yup.object().shape({
+                visible: Yup.boolean().notRequired(),
+            }),
+        ),
     }),
 });
 
@@ -50,6 +56,13 @@ const classNames = {
     `,
     link: css`
         text-decoration: none;
+        color: #000;
+    `,
+    cardHeader: css`
+        display: flex;
+        width: 100%;
+        justify-content: flex-end;
+        margin-bottom: 5px;
     `,
 };
 
@@ -66,14 +79,17 @@ export const BlogBlock = (props: IBlockProps<IBlog>) => {
                         <TextField name={"data.link"} label={"Ссылка на блог"} disable={true} />
                     </div>
                     <div className={classNames.content}>
-                        {block?.data?.blog?.map((item) => (
-                            <a
-                                key={item._id}
-                                href={item.link}
-                                target={"_blank"}
-                                className={classNames.link}
-                            >
-                                <Card variant={"outlined"}>
+                        {block?.data?.blog?.map((item, index) => (
+                            <Card variant={"outlined"} key={item._id}>
+                                <div className={classNames.cardHeader}>
+                                    <SwitchField name={`data.blog.${index}.visible`} />
+                                </div>
+                                <a
+                                    key={item._id}
+                                    href={item.link}
+                                    target={"_blank"}
+                                    className={classNames.link}
+                                >
                                     <CardMedia
                                         image={item.imageLink}
                                         title={item.title}
@@ -91,8 +107,8 @@ export const BlogBlock = (props: IBlockProps<IBlog>) => {
                                             {item.title}
                                         </Typography>
                                     </CardContent>
-                                </Card>
-                            </a>
+                                </a>
+                            </Card>
                         ))}
                     </div>
                 </div>

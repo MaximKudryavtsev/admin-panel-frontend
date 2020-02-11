@@ -1,10 +1,10 @@
 import { Transport } from "../transport";
 import {
     ICreatePageRequest,
-    ICreatePageResponse, IDictionary,
+    ICreatePageResponse, IDictionary, IIdResponse,
     IPage,
     IPageAuthor,
-    IPagesTableRow,
+    IPagesTableRow, TBuildPageRequest,
     TLang,
 } from "../entities";
 import { ApiPaths } from "../config";
@@ -35,4 +35,8 @@ export function updatePage(transport: Transport, id: string, data: Partial<IPage
 
 export function deletePage(transport: Transport, id: string) {
     return transport.delete(ApiPaths.PAGE.replace(":id", id))
+}
+
+export function buildPage(transport: Transport, id: string) {
+    return transport.put<TBuildPageRequest, IIdResponse>(ApiPaths.BUILD_PAGE, {pageId: id});
 }

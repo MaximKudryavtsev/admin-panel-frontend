@@ -35,3 +35,5 @@ export interface IPageAuthor {
     title: string;
     avatar?: string;
 }
+
+export type TBuildPageRequest = { pageId: string };

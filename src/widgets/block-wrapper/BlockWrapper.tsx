@@ -107,7 +107,7 @@ export const BlockWrapper = <T extends any>(props: IBlockWrapperProps<T>) => {
         if (onOpenFullscreen) {
             onOpenFullscreen();
         }
-        AppContext.getHistory().push(`${baseUrl}/${block?._id}`);
+        AppContext.getHistory().push(`${baseUrl}/block/${block?._id}`);
     };
 
     return (

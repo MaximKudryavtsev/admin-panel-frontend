@@ -1,6 +1,6 @@
 import { Transport } from "../../transport";
 import {
-    IDictionary,
+    IDictionary, IIdResponse,
     IPage,
     IPageAuthor,
     TResponse,
@@ -15,6 +15,7 @@ export function usePage(transport: Transport, pageId: string): {
     pageAuthor?: IPageAuthor;
     updatePage: (data: Partial<IPage>) => Promise<void>;
     deletePage: () => Promise<TResponse<void>>;
+    buildPage: () => Promise<TResponse<IIdResponse>>;
 } {
     const [page, setPage] = useState<IPage | undefined>(undefined);
     const [pageAuthor, setPageAuthor] = useState<IPageAuthor | undefined>(undefined);
@@ -43,6 +44,10 @@ export function usePage(transport: Transport, pageId: string): {
         return PageAPI.deletePage(transport, pageId);
     }, [transport, pageId]);
 
+    const buildPage = useCallback(() => {
+        return PageAPI.buildPage(transport, pageId);
+    }, [transport, pageId]);
+
     useEffect(() => {
         if (pageId) {
             getStatuses();
@@ -50,5 +55,5 @@ export function usePage(transport: Transport, pageId: string): {
         }
     }, [getPage, pageId, getStatuses, getAuthor]);
 
-    return {page, getPage, statuses, pageAuthor, updatePage: update, deletePage: del}
+    return {page, getPage, statuses, pageAuthor, updatePage: update, deletePage: del, buildPage}
 }

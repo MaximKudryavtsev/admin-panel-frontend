@@ -1,5 +1,5 @@
 import React, { createElement, useState } from "react";
-import { EPageStatusLabel, IBlock, IDictionary } from "../../entities";
+import { EPageStatusLabel, IBlock, IDictionary, TLang } from "../../entities";
 import { Paper, Tab, Tabs } from "@material-ui/core";
 import { css } from "emotion";
 import { IBlockProps } from "../IBlockProps";
@@ -9,6 +9,7 @@ interface IBlockTabsProps {
     blocks?: IBlock<any>[];
     statuses?: IDictionary[];
     baseUrl?: string;
+    lang: TLang;
 
     onUpdateBlock?(id: string, block: IBlock<any>): Promise<void>;
 
@@ -30,7 +31,15 @@ const classNames = {
 };
 
 export const BlockTabs = (props: IBlockTabsProps) => {
-    const { blocks = [], statuses = [], onDeleteBlock, onUpdateBlock, baseUrl, onOpenFullscreen } = props;
+    const {
+        blocks = [],
+        statuses = [],
+        onDeleteBlock,
+        onUpdateBlock,
+        baseUrl,
+        onOpenFullscreen,
+        lang,
+    } = props;
 
     const [value, setValue] = useState(0);
 
@@ -83,7 +92,8 @@ export const BlockTabs = (props: IBlockTabsProps) => {
                                             onDelete: handleDeleteBlock,
                                             onSubmit: onUpdateBlock,
                                             baseUrl,
-                                            onOpenFullscreen
+                                            onOpenFullscreen,
+                                            lang
                                         })}
                                     </div>
                                 ),
@@ -107,7 +117,8 @@ export const BlockTabs = (props: IBlockTabsProps) => {
                                             onDelete: handleDeleteBlock,
                                             onSubmit: onUpdateBlock,
                                             baseUrl,
-                                            onOpenFullscreen
+                                            onOpenFullscreen,
+                                            lang
                                         })}
                                     </div>
                                 ),

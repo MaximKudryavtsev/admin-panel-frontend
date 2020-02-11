@@ -9,7 +9,6 @@ import { Pages } from "../pages";
 import { Page } from "../page";
 import { Main } from "../main";
 import { Header } from "../header";
-import { PreviewPage } from "../preview-page";
 import { ControlPanel } from "../control-panel";
 import { Contacts } from "../contacts";
 import { UserList } from "../user-list";
@@ -36,7 +35,7 @@ export const WorkPanel = (props: INavigationProps) => {
         <Layout title={title} user={user} onLogout={onLogout}>
             <Switch>
                 <Route path={`${baseUrl}/navigation`} exact>
-                    <Navigation defaultLang={defaultLang} setPageTitle={setTitle}  />
+                    <Navigation defaultLang={defaultLang} setPageTitle={setTitle} />
                 </Route>
                 <Route path={`${baseUrl}/footer`} exact>
                     <Footer defaultLang={defaultLang} setPageTitle={setTitle} />
@@ -54,10 +53,7 @@ export const WorkPanel = (props: INavigationProps) => {
                     <Pages defaultLang={defaultLang} setPageTitle={setTitle} />
                 </Route>
                 <Route path={`${baseUrl}/pages/:id`}>
-                    <Page setPageTitle={setTitle} baseUrl={`${baseUrl}/pages`} />
-                </Route>
-                <Route path={`${baseUrl}/pages/:id/preview`} exact>
-                    <PreviewPage />
+                    <Page setPageTitle={setTitle} baseUrl={`${baseUrl}/pages`} lang={defaultLang} />
                 </Route>
                 <Route path={"/main"} exact>
                     <Main setPageTitle={setTitle} />

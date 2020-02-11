@@ -32,6 +32,7 @@ const classNames = {
     `,
     image: css`
         height: 180px;
+        background-size: contain;
     `,
     achievementImage: css`
         height: 200px;

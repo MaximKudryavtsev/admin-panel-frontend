@@ -1,9 +1,9 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { Route, useParams } from "react-router";
+import { Route, Switch, useParams } from "react-router";
 import { usePage } from "../../hooks/page";
-import { IBlock, IPage } from "../../entities";
+import { IBlock, IPage, TLang } from "../../entities";
 import { Button, IconButton, Tooltip } from "@material-ui/core";
-import { Add, ArrowBack } from "@material-ui/icons";
+import { Add, ArrowBack, Build, Pageview } from "@material-ui/icons";
 import { getServerError } from "../../utils";
 import { AppContext } from "../../context";
 import { useBlock, useCustomSnackbar } from "../../hooks";
@@ -13,9 +13,11 @@ import { css } from "emotion";
 import { BlockTabs } from "../../blocks/block-tabs";
 import { FullScreenBlock } from "../full-screen-block";
 import { Transport } from "../../transport";
+import { PreviewPage } from "../preview-page";
 
 interface IPageProps {
     baseUrl: string;
+    lang: TLang;
 
     setPageTitle(title: string): void;
 }
@@ -30,13 +32,16 @@ const classNames = {
 };
 
 export const Page = (props: IPageProps) => {
-    const { setPageTitle, baseUrl } = props;
+    const { setPageTitle, baseUrl, lang } = props;
     const { id } = useParams();
     const [addBlockVisible, setAddBlockVisible] = useState(false);
     const [fullscreen, setFullscreen] = useState(false);
     const transport = useMemo(() => Transport.create(), []);
 
-    const { page, statuses, pageAuthor, updatePage, deletePage } = usePage(transport, String(id));
+    const { page, statuses, pageAuthor, updatePage, deletePage, buildPage } = usePage(
+        transport,
+        String(id),
+    );
     const { blockTypes, createBlock, blocks, deleteBlock, updateBlock } = useBlock(
         transport,
         String(id),
@@ -85,12 +90,14 @@ export const Page = (props: IPageProps) => {
     };
 
     const onCreateBlock = (data: { type: string }) => {
-        createBlock(data.type).then(onAddBlockClose).catch((error) => {
-            const err = getServerError(error);
-            if (err) {
-                showErrorSnackbar(err?.title);
-            }
-        });
+        createBlock(data.type)
+            .then(onAddBlockClose)
+            .catch((error) => {
+                const err = getServerError(error);
+                if (err) {
+                    showErrorSnackbar(err?.title);
+                }
+            });
     };
 
     const onUpdateBlock = (id: string, data: IBlock<any>) => {
@@ -108,6 +115,17 @@ export const Page = (props: IPageProps) => {
         });
     };
 
+    const onBuildPage = () => {
+        buildPage()
+            .then(() => showSuccessSnackbar("Успешно"))
+            .catch((error) => {
+                const err = getServerError(error);
+                if (err) {
+                    showErrorSnackbar(err?.title);
+                }
+            });
+    };
+
     const goToPreview = () => {
         AppContext.getHistory().push(`/pages/${page?._id}/preview`);
     };
@@ -120,13 +138,18 @@ export const Page = (props: IPageProps) => {
 
     return (
         <React.Fragment>
-            <Route path={`${baseUrl}/${page?._id}/:blockId`} exact>
-                <FullScreenBlock
-                    onClose={onCloseFullScreenBlock}
-                    open={fullscreen}
-                    statuses={statuses}
-                />
-            </Route>
+            <Switch>
+                <Route path={`${baseUrl}/${page?._id}/block/:blockId`} exact>
+                    <FullScreenBlock
+                        onClose={onCloseFullScreenBlock}
+                        open={fullscreen}
+                        statuses={statuses}
+                    />
+                </Route>
+                <Route path={`${baseUrl}/${page?._id}/preview`} exact>
+                    <PreviewPage />
+                </Route>
+            </Switch>
             <Tooltip title={"К списку страниц"} placement={"right"}>
                 <IconButton onClick={goToList}>
                     <ArrowBack />
@@ -155,8 +178,19 @@ export const Page = (props: IPageProps) => {
                 size={"large"}
                 className={classNames.button}
                 onClick={goToPreview}
+                startIcon={<Pageview />}
             >
                 Предварительный просмотр
+            </Button>
+            <Button
+                variant="contained"
+                color="primary"
+                size={"large"}
+                className={classNames.button}
+                startIcon={<Build />}
+                onClick={onBuildPage}
+            >
+                Собрать страницу
             </Button>
             <BlockTabs
                 statuses={statuses}
@@ -165,6 +199,7 @@ export const Page = (props: IPageProps) => {
                 onUpdateBlock={onUpdateBlock}
                 baseUrl={`${baseUrl}/${page?._id}`}
                 onOpenFullscreen={onOpenFullscreen}
+                lang={lang}
             />
             <AddBlockPopup
                 open={addBlockVisible}
