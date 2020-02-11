@@ -1,8 +1,4 @@
-export interface IPageStatus {
-    _id: string;
-    title: string;
-    label: string;
-}
+import { IDictionary } from "./common";
 
 export interface IPagesTableRow {
     _id: string;
@@ -11,7 +7,7 @@ export interface IPagesTableRow {
         title: string;
     };
     title: string;
-    status: IPageStatus;
+    status: IDictionary;
     createdAt: string;
     updatedAt: string;
 }

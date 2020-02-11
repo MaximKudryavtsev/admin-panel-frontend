@@ -1,7 +1,7 @@
 import "date-fns";
 import React from "react";
 import { Field, FieldProps } from "formik";
-import { KeyboardDatePicker, MuiPickersUtilsProvider, DatePicker } from "@material-ui/pickers";
+import { MuiPickersUtilsProvider, DatePicker } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 import ErrorIcon from "@material-ui/icons/Error";
 import * as emotion from "emotion";
@@ -11,6 +11,7 @@ interface IDateFieldProps {
     label?: string;
     className?: string;
     disableFuture?: boolean;
+    clearable?: boolean;
 }
 
 const styles = {
@@ -25,7 +26,7 @@ const styles = {
 };
 
 export const DateField = (props: IDateFieldProps) => {
-    const { name, className, label, disableFuture = false } = props;
+    const { name, className, label, disableFuture = false, clearable = false } = props;
 
     return (
         <Field name={name}>
@@ -35,7 +36,7 @@ export const DateField = (props: IDateFieldProps) => {
                         name={name}
                         margin="normal"
                         label={label}
-                        clearable
+                        clearable={clearable}
                         autoOk
                         disableFuture={disableFuture}
                         error={!!meta.error}
@@ -54,7 +55,7 @@ export const DateField = (props: IDateFieldProps) => {
                             classes: { root: styles.errorMessage },
                         }}
                         {...field}
-                        onChange={(date) => form.setFieldValue(name, new DateFnsUtils().date(date).toISOString())}
+                        onChange={(date) => form.setFieldValue(name, date ? new DateFnsUtils().date(date).toISOString() : "")}
                     />
                 </MuiPickersUtilsProvider>
             )}

@@ -13,6 +13,7 @@ import { MainAchievementsBlock } from "./main-achievements-block";
 import { BestAchievementBlock } from "./best-achievement-block";
 import { AchievementBlock } from "./achievement-block";
 import { TeamBlock } from "./team";
+import { ImageAndListBlock } from "./image-and-list";
 
 const blockList = {
     [EBlockTypes.FACTS]: FactsBlock,
@@ -27,6 +28,7 @@ const blockList = {
     [EBlockTypes.BEST_ACHIEVEMENTS]: BestAchievementBlock,
     [EBlockTypes.ACHIEVEMENTS]: AchievementBlock,
     [EBlockTypes.TEAM]: TeamBlock,
+    [EBlockTypes.IMAGE_AND_LIST]: ImageAndListBlock,
     "default": undefined
 };
 

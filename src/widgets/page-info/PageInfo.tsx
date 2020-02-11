@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { IPage, IPageAuthor, IPageStatus } from "../../entities";
+import { IDictionary, IPage, IPageAuthor } from "../../entities";
 import { css } from "emotion";
 import cn from "classnames";
 import {
@@ -51,7 +51,7 @@ const classNames = {
 interface IPageInfoProps {
     page?: IPage;
     pageAuthor?: IPageAuthor;
-    statuses?: IPageStatus[];
+    statuses?: IDictionary[];
 
     onUpdate?(data: Partial<IPage>): void;
 

@@ -1,17 +1,16 @@
 import { Transport } from "../transport";
 import {
     ICreatePageRequest,
-    ICreatePageResponse,
+    ICreatePageResponse, IDictionary,
     IPage,
     IPageAuthor,
     IPagesTableRow,
-    IPageStatus,
     TLang,
 } from "../entities";
 import { ApiPaths } from "../config";
 
 export function fetchPageStatusList(transport: Transport) {
-    return transport.get<IPageStatus[]>(ApiPaths.GET_PAGE_STATUSES);
+    return transport.get<IDictionary[]>(ApiPaths.GET_PAGE_STATUSES);
 }
 
 export function fetchPageList(transport: Transport, lang: TLang) {

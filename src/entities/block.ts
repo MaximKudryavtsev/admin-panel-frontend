@@ -13,6 +13,7 @@ export enum EBlockTypes {
     BEST_ACHIEVEMENTS = "bestAchievements",
     ACHIEVEMENTS = "achievements",
     TEAM = "team",
+    IMAGE_AND_LIST = "imageAndList",
 }
 
 export interface ICreateBlockRequest {
