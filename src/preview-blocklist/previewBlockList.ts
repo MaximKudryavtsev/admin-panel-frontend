@@ -8,6 +8,7 @@ import { PreviewBlueLineList } from "./preview-blue-line-list";
 import { PreviewBlog } from "./preview-blog";
 import { ClientsLogoPreview } from "./clients-logo-preview";
 import { PreviewFeedbackBlock } from "./preview-feedback-block";
+import { PreviewTeam } from "./preview-team";
 
 const blockList = {
     [EBlockTypes.DESCRIPTION]: Description,
@@ -17,6 +18,7 @@ const blockList = {
     [EBlockTypes.BLOG]: PreviewBlog,
     [EBlockTypes.CLIENTS_LOGO]: ClientsLogoPreview,
     [EBlockTypes.FEEDBACK]: PreviewFeedbackBlock,
+    [EBlockTypes.TEAM]: PreviewTeam,
     "default": undefined
 };
 

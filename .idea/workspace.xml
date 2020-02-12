@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/preview-blocklist/clients-logo-preview/ClientsLogoPreview.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/preview-blocklist/clients-logo-preview/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/preview-blocklist/preview-feedback-block/PreviewFeedbackBlock.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/preview-blocklist/preview-feedback-block/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/preview-blocklist/preview-team/PreviewTeam.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/preview-blocklist/preview-team/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/preview-blocklist/description/Description.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/preview-blocklist/description/Description.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/preview-blocklist/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preview-blocklist/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/preview-blocklist/preview-footer/PreviewFooter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/preview-blocklist/preview-footer/PreviewFooter.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/preview-blocklist/previewBlockList.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preview-blocklist/previewBlockList.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -177,14 +173,7 @@
       <workItem from="1581061461913" duration="6191000" />
       <workItem from="1581239148553" duration="7010000" />
       <workItem from="1581399177871" duration="15804000" />
-      <workItem from="1581493839587" duration="23600000" />
-    </task>
-    <task id="LOCAL-00066" summary="add disabling if editing not enabled">
-      <created>1580329468291</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1580329468291</updated>
+      <workItem from="1581493839587" duration="25085000" />
     </task>
     <task id="LOCAL-00067" summary="move blocks in page to separate component">
       <created>1580374233662</created>
@@ -522,7 +511,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581516893488</updated>
     </task>
-    <option name="localTasksCounter" value="115" />
+    <task id="LOCAL-00115" summary="add preview for client logos, feedback">
+      <created>1581521028551</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1581521028551</updated>
+    </task>
+    <option name="localTasksCounter" value="116" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -539,7 +535,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="move contacts to separate page" />
     <MESSAGE value="connect footer api with frontend" />
     <MESSAGE value="add editing contacts in footer" />
     <MESSAGE value="delete unneeded code" />
@@ -564,7 +559,8 @@
     <MESSAGE value="refactoring, add visible field for blocks" />
     <MESSAGE value="add description, fact list, quote, blue line list, blog blocks for preview" />
     <MESSAGE value="add preview footer" />
-    <option name="LAST_COMMIT_MESSAGE" value="add preview footer" />
+    <MESSAGE value="add preview for client logos, feedback" />
+    <option name="LAST_COMMIT_MESSAGE" value="add preview for client logos, feedback" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="182" key="#ESLint" timestamp="1578156507884">
@@ -592,16 +588,16 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580987630233" />
-    <state x="585" y="117" key="CommitChangelistDialog2" timestamp="1581516892601">
+    <state x="585" y="117" key="CommitChangelistDialog2" timestamp="1581521027754">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581516892601" />
+    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581521027754" />
     <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172968703" />
     <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1581275064446" />
-    <state x="184" y="85" width="1536" height="840" key="DiffContextDialog" timestamp="1581516881416">
+    <state x="184" y="85" width="1536" height="840" key="DiffContextDialog" timestamp="1581521004070">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="184" y="85" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581516881416" />
+    <state x="184" y="85" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581521004070" />
     <state x="184" y="86" width="1536" height="840" key="DiffContextDialog/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172950313" />
     <state x="184" y="86" key="DiffContextDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1581275061562" />
     <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1580712034432">
@@ -635,10 +631,10 @@
     </state>
     <state x="461" y="155" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580712036506" />
     <state x="461" y="156" key="SettingsEditor/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580551786626" />
-    <state x="552" y="255" key="Vcs.Push.Dialog.v2" timestamp="1581516900378">
+    <state x="552" y="255" key="Vcs.Push.Dialog.v2" timestamp="1581521033419">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="255" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581516900378" />
+    <state x="552" y="255" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581521033419" />
     <state x="552" y="257" key="Vcs.Push.Dialog.v2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172973521" />
     <state x="552" y="257" key="Vcs.Push.Dialog.v2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580667043182" />
     <state x="92" y="92" width="1736" height="866" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1578046510409">
