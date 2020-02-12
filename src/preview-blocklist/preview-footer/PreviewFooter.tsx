@@ -29,6 +29,9 @@ const classNames = {
         margin-bottom: 20px;
         letter-spacing: 0.1em;
         text-decoration: none;
+        :last-child {
+            margin-bottom: 0;
+        }
     `,
     copyright: css`
         left: 0;

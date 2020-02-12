@@ -10,7 +10,7 @@ const classNames = {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-column-gap: 140px;
-        grid-row-gap: 64px;
+        grid-row-gap: 20px;
     `,
     text: css`
         font-family: Ubuntu;
