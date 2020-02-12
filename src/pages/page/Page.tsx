@@ -147,7 +147,7 @@ export const Page = (props: IPageProps) => {
                     />
                 </Route>
                 <Route path={`${baseUrl}/${page?._id}/preview`} exact>
-                    <PreviewPage />
+                    <PreviewPage pageId={String(page?._id)} />
                 </Route>
             </Switch>
             <Tooltip title={"К списку страниц"} placement={"right"}>

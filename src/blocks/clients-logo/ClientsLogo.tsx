@@ -23,31 +23,38 @@ const classNames = {
     `,
 };
 
+interface ILogoBlock {
+    blocks: ILogo[];
+}
+
 const validationSchema = Yup.object().shape({
-    data: Yup.array().of(
-        Yup.object().shape({
-            colorlessLink: Yup.string().notRequired(),
-            coloredLink: Yup.string().notRequired(),
-            coloredFile: Yup.mixed<File>().when("coloredLink", {
-                is: (o: string | undefined) => o ? o.length > 0 : false,
-                then: Yup.mixed<File>().notRequired(),
-                otherwise: Yup.mixed<File>().required("Обязательно для заполнения")
+    data: Yup.object().shape({
+        blocks: Yup.array().of(
+            Yup.object().shape({
+                colorlessLink: Yup.string().notRequired(),
+                coloredLink: Yup.string().notRequired(),
+                coloredFile: Yup.mixed<File>().when("coloredLink", {
+                    is: (o: string | undefined) => o ? o.length > 0 : false,
+                    then: Yup.mixed<File>().notRequired(),
+                    otherwise: Yup.mixed<File>().required("Обязательно для заполнения")
+                }),
+                colorlessFile: Yup.mixed<File>().when("colorlessLink", {
+                    is: (o: string | undefined) => o ? o.length > 0 : false,
+                    then: Yup.mixed<File>().notRequired(),
+                    otherwise: Yup.mixed<File>().required("Обязательно для заполнения")
+                }),
+                visible: Yup.boolean()
             }),
-            colorlessFile: Yup.mixed<File>().when("colorlessLink", {
-                is: (o: string | undefined) => o ? o.length > 0 : false,
-                then: Yup.mixed<File>().notRequired(),
-                otherwise: Yup.mixed<File>().required("Обязательно для заполнения")
-            })
-        }),
-    ),
+        )
+    }),
 });
 
-export const ClientsLogo = (props: IBlockProps<ILogo[]>) => {
+export const ClientsLogo = (props: IBlockProps<ILogoBlock>) => {
     const { onSubmit } = props;
     const [uploaded, setUploaded] = useState(false);
 
-    const handleSubmit = (id: string, data: Partial<IBlock<ILogo[]>>) => {
-        data.data?.map((item) => {
+    const handleSubmit = (id: string, data: Partial<IBlock<ILogoBlock>>) => {
+        data.data?.blocks?.map((item) => {
             item.id = item.id ? item.id : uuid.v4();
             if (item.coloredFile) {
                 set(data, `${item.id}coloredFile`, item.coloredFile);
@@ -66,7 +73,7 @@ export const ClientsLogo = (props: IBlockProps<ILogo[]>) => {
     };
 
     return (
-        <BlockWrapper<ILogo[]>
+        <BlockWrapper<ILogoBlock>
             {...props}
             onSubmit={handleSubmit}
             validationSchema={validationSchema}
@@ -77,7 +84,7 @@ export const ClientsLogo = (props: IBlockProps<ILogo[]>) => {
                     `}
                 >
                     <FieldArray
-                        name={"data"}
+                        name={"data.blocks"}
                         render={(array) => (
                             <DragDropContext
                                 onDragEnd={(result) =>
@@ -88,7 +95,7 @@ export const ClientsLogo = (props: IBlockProps<ILogo[]>) => {
                                     {(provided) => (
                                         <div ref={provided.innerRef} {...provided.droppableProps}>
                                             <div className={classNames.content}>
-                                                {form?.values?.data?.map((item, index) => (
+                                                {form?.values?.data?.blocks?.map((item, index) => (
                                                     <Draggable
                                                         index={index}
                                                         key={index}
@@ -96,7 +103,7 @@ export const ClientsLogo = (props: IBlockProps<ILogo[]>) => {
                                                     >
                                                         {(provided) => (
                                                             <Logo
-                                                                name={`data.${index}`}
+                                                                name={`data.blocks.${index}`}
                                                                 logo={item}
                                                                 innerRef={provided.innerRef}
                                                                 onDelete={() => array.remove(index)}
@@ -114,6 +121,7 @@ export const ClientsLogo = (props: IBlockProps<ILogo[]>) => {
                                                     array.push({
                                                         colorlessLink: "",
                                                         coloredLink: "",
+                                                        visible: true
                                                     })
                                                 }
                                                 color="primary"

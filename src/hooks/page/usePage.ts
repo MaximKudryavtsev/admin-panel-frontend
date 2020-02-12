@@ -21,9 +21,6 @@ export function usePage(transport: Transport, pageId: string): {
     const [pageAuthor, setPageAuthor] = useState<IPageAuthor | undefined>(undefined);
     const [statuses, setStatuses] = useState<IDictionary[]>([]);
 
-    const tokenString = localStorage.getItem("token");
-    transport.setToken(JSON.parse(tokenString!));
-
     const getPage = useCallback(() => {
         return PageAPI.fetchPage(transport, pageId).then((response) => setPage(response.data));
     }, [pageId, transport]);

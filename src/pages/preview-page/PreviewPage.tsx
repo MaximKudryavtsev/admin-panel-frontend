@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { css } from "emotion";
+import { useClientPage } from "../../hooks/page";
+import { Transport } from "../../transport";
 
 const classNames = {
     wrapper: css`
@@ -22,7 +24,15 @@ const classNames = {
 
 const NOT_READY_PAGE = require("./not-working-yet.jpg");
 
-export const PreviewPage = () => {
+interface IPreviewPageProps {
+    pageId: string;
+}
+
+export const PreviewPage = (props: IPreviewPageProps) => {
+    const { pageId } = props;
+    const transport = useMemo(() => Transport.create(), []);
+    const { page } = useClientPage(transport, pageId);
+
     return (
         <div className={classNames.wrapper}>
             <img src={NOT_READY_PAGE} alt="" className={classNames.image} />

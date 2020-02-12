@@ -24,6 +24,7 @@ const ValidationSchema = Yup.object().shape({
             Yup.object().shape({
                 title: Yup.string().required("Поле обязательно для заполнения"),
                 file: Yup.mixed(),
+                visible: Yup.boolean(),
             }),
         ),
     }),
@@ -63,7 +64,7 @@ export const MainAchievementsBlock = (props: IBlockProps<IMainAchievementsBlock>
                                 }
                                 setFieldValue={form?.setFieldValue}
                                 onDelete={array.remove}
-                                onAddBlock={() => array.push({title: ""})}
+                                onAddBlock={() => array.push({title: "", visible: true })}
                                 render={(index) => (
                                     <TextField
                                         name={`data.blocks.${index}.title`}

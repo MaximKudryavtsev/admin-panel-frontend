@@ -9,8 +9,14 @@ import { IconButton } from "@material-ui/core";
 import { Add, Delete } from "@material-ui/icons";
 
 const ValidationSchema = Yup.object().shape({
-    data: Yup.array().of(Yup.string().required("Поле обязательно для заполнения")),
+    data: Yup.object().shape({
+        blocks: Yup.array().of(Yup.string().required("Поле обязательно для заполнения"))
+    }),
 });
+
+interface IBlueLinesListBlock {
+    blocks: string[];
+}
 
 const classNames = {
     content: css`
@@ -29,21 +35,21 @@ const classNames = {
     `,
 };
 
-export const BlueLinesList = (props: IBlockProps<string[]>) => {
+export const BlueLinesList = (props: IBlockProps<IBlueLinesListBlock>) => {
     return (
-        <BlockWrapper<string[]>
+        <BlockWrapper<IBlueLinesListBlock>
             {...props}
             validationSchema={ValidationSchema}
             render={(form) => (
                 <FieldArray
-                    name={"data"}
+                    name={"data.blocks"}
                     render={(array) => (
                         <div>
                             <div className={classNames.content}>
-                                {form?.values?.data?.map((item, index) => (
+                                {form?.values?.data?.blocks?.map((item, index) => (
                                     <div className={classNames.row} key={index}>
                                         <TextField
-                                            name={`data.${index}`}
+                                            name={`data.blocks.${index}`}
                                             label={`Текст ${index + 1}`}
                                             textarea
                                         />

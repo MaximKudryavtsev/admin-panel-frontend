@@ -28,6 +28,7 @@ const ValidationSchema = Yup.object().shape({
                 link: Yup.string().notRequired(),
                 list: Yup.array().of(Yup.string().required("Поле обязательно для заполнения")),
                 file: Yup.mixed(),
+                visible: Yup.boolean(),
             }),
         ),
     }),
@@ -82,6 +83,7 @@ export const ImageAndListBlock = (props: IBlockProps<IImageBlock<IImageAndList>>
                                         type: "",
                                         list: [],
                                         link: "",
+                                        visible: true
                                     })
                                 }
                                 render={(index) => (

@@ -30,6 +30,7 @@ const validationSchema = Yup.object().shape({
                 text: Yup.string().required("Поле обязательно для заполнения"),
                 name: Yup.string().required("Поле обязательно для заполнения"),
                 position: Yup.string().required("Поле обязательно для заполнения"),
+                visible: Yup.boolean(),
             }),
         ),
     }),
@@ -99,6 +100,7 @@ export const FeedbackBlock = (props: IBlockProps<IFeedbackBlock>) => {
                                         text: "",
                                         name: "",
                                         position: "",
+                                        visible: true
                                     })
                                 }
                                 render={(index) => (

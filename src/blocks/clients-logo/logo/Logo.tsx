@@ -7,6 +7,7 @@ import {
 import { Card, CardMedia, Divider, IconButton, Typography } from "@material-ui/core";
 import { css } from "emotion";
 import { Delete, DragIndicator, Edit } from "@material-ui/icons";
+import { SwitchField } from "../../../components/switch-field";
 
 export interface ILogo {
     id: string;
@@ -14,6 +15,7 @@ export interface ILogo {
     coloredFile?: File;
     colorlessLink?: string;
     coloredLink?: string;
+    visible?: boolean;
 }
 
 interface ILogoProps {
@@ -114,14 +116,18 @@ export const Logo = (props: ILogoProps) => {
                         <DragIndicator />
                     </IconButton>
                 </div>
-                <IconButton
-                    onClick={onDelete}
-                    className={css`
+                <div className={css`
                         margin-left: auto;
-                    `}
-                >
-                    <Delete />
-                </IconButton>
+                        display: flex;
+                    `}>
+                    <SwitchField name={`${name}.visible`} />
+                    <IconButton
+                        onClick={onDelete}
+
+                    >
+                        <Delete />
+                    </IconButton>
+                </div>
             </div>
             <div className={css`padding: 0 24px;`}>
                 <Card variant={"outlined"} className={classNames.logoBlock}>

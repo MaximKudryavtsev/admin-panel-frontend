@@ -9,19 +9,25 @@ import { Add, Delete } from "@material-ui/icons";
 import { SwitchField } from "../../components/switch-field";
 import { IBlockProps } from "../IBlockProps";
 
-export interface IFactBlock {
+export interface IFact {
     title: string;
     description: string;
 }
 
+interface IFactBlock {
+    blocks: IFact[];
+}
+
 const ValidationSchema = Yup.object().shape({
-    data: Yup.array().of(
-        Yup.object().shape({
-            title: Yup.string().required("Поле обязательно для заполнения"),
-            description: Yup.string().required("Поле обязательно для заполнения"),
-            visible: Yup.boolean()
-        }),
-    ),
+    data: Yup.object().shape({
+        blocks: Yup.array().of(
+            Yup.object().shape({
+                title: Yup.string().required("Поле обязательно для заполнения"),
+                description: Yup.string().required("Поле обязательно для заполнения"),
+                visible: Yup.boolean()
+            }),
+        )
+    }),
 });
 
 const classNames = {
@@ -50,21 +56,21 @@ const classNames = {
     `
 };
 
-export const FactsBlock = (props: IBlockProps<IFactBlock[]>) => {
+export const FactsBlock = (props: IBlockProps<IFactBlock>) => {
     return (
-        <BlockWrapper<IFactBlock[]>
+        <BlockWrapper<IFactBlock>
             {...props}
             validationSchema={ValidationSchema}
             render={(form) => (
-                <FieldArray name={"data"}>
+                <FieldArray name={"data.blocks"}>
                     {(array) => (
                         <div>
                             <div className={classNames.wrapper}>
-                                {form?.values?.data?.map((item, index) => (
+                                {form?.values?.data?.blocks?.map((item, index) => (
                                     <Card key={index} classes={{ root: classNames.card }} variant={"outlined"}>
                                         <div className={classNames.cardHeader}>
                                             <SwitchField
-                                                name={`data.${index}.visible`}
+                                                name={`data.blocks.${index}.visible`}
                                                 classes={{ root: classNames.switch }}
                                             />
                                             <IconButton onClick={() => array.remove(index)}>
@@ -72,12 +78,12 @@ export const FactsBlock = (props: IBlockProps<IFactBlock[]>) => {
                                             </IconButton>
                                         </div>
                                         <TextField
-                                            name={`data.${index}.title`}
+                                            name={`data.blocks.${index}.title`}
                                             label={"Заголовок"}
                                             classes={{ root: classNames.field }}
                                         />
                                         <TextField
-                                            name={`data.${index}.description`}
+                                            name={`data.blocks.${index}.description`}
                                             label={"Подпись"}
                                             classes={{ root: classNames.field }}
                                         />

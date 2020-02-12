@@ -1,4 +1,5 @@
-import { IDictionary } from "./common";
+import { IDictionary, IIdResponse } from "./common";
+import { IBlock } from "./block";
 
 export interface IPagesTableRow {
     _id: string;
@@ -37,3 +38,10 @@ export interface IPageAuthor {
 }
 
 export type TBuildPageRequest = { pageId: string };
+
+export interface IClientPageBody extends IIdResponse {
+    title: string;
+    link: string;
+    pageId: string;
+    body: Pick<IBlock<any>, "type" | "data">[];
+}

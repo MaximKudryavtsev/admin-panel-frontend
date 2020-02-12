@@ -1,5 +1,6 @@
 import { Transport } from "../transport";
 import {
+    IClientPageBody,
     ICreatePageRequest,
     ICreatePageResponse, IDictionary, IIdResponse,
     IPage,
@@ -39,4 +40,8 @@ export function deletePage(transport: Transport, id: string) {
 
 export function buildPage(transport: Transport, id: string) {
     return transport.put<TBuildPageRequest, IIdResponse>(ApiPaths.BUILD_PAGE, {pageId: id});
+}
+
+export function getClientPage(transport: Transport, pageId: string) {
+    return transport.get<IClientPageBody>(`${ApiPaths.BUILD_PAGE}/${pageId}`);
 }

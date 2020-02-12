@@ -11,7 +11,7 @@ import { SwitchField } from "../../components/switch-field";
 export interface IBlog {
     lang: TLang;
     link: string;
-    blog: IBlogItem[];
+    blocks: IBlogItem[];
     title: string;
 }
 
@@ -79,10 +79,10 @@ export const BlogBlock = (props: IBlockProps<IBlog>) => {
                         <TextField name={"data.link"} label={"Ссылка на блог"} disable={true} />
                     </div>
                     <div className={classNames.content}>
-                        {block?.data?.blog?.map((item, index) => (
+                        {block?.data?.blocks?.map((item, index) => (
                             <Card variant={"outlined"} key={item._id}>
                                 <div className={classNames.cardHeader}>
-                                    <SwitchField name={`data.blog.${index}.visible`} />
+                                    <SwitchField name={`data.blocks.${index}.visible`} />
                                 </div>
                                 <a
                                     key={item._id}

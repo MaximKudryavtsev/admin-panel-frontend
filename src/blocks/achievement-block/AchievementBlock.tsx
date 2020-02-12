@@ -37,6 +37,7 @@ const ValidationSchema = Yup.object().shape({
                 date: Yup.string().required("Поле обязательно для заполнения"),
                 link: Yup.string().notRequired(),
                 file: Yup.mixed(),
+                visible: Yup.boolean()
             }),
         ),
     }),
@@ -114,6 +115,7 @@ export const AchievementBlock = (props: IBlockProps<IAchievementBlock>) => {
                                         position: "",
                                         date: "",
                                         link: "",
+                                        visible: true
                                     })
                                 }
                                 variant={"achievement"}

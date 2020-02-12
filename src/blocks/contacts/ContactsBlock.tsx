@@ -9,23 +9,29 @@ import { SwitchField } from "../../components/switch-field";
 import { Add, Delete } from "@material-ui/icons";
 import { TextField } from "../../components/text-field";
 
-interface IContactBlock {
+interface IContact {
     city: string;
     address: string;
     phone: string;
     workingHours: string;
 }
 
+interface IContactBlock {
+    blocks: IContact[];
+}
+
 const ValidationSchema = Yup.object().shape({
-    data: Yup.array().of(
-        Yup.object().shape({
-            city: Yup.string().required("Поле обязательно для заполнения"),
-            address: Yup.string().required("Поле обязательно для заполнения"),
-            phone: Yup.string().required("Поле обязательно для заполнения"),
-            workingHours: Yup.string().required("Поле обязательно для заполнения"),
-            visible: Yup.boolean()
-        }),
-    ),
+    data: Yup.object().shape({
+        blocks: Yup.array().of(
+            Yup.object().shape({
+                city: Yup.string().required("Поле обязательно для заполнения"),
+                address: Yup.string().required("Поле обязательно для заполнения"),
+                phone: Yup.string().required("Поле обязательно для заполнения"),
+                workingHours: Yup.string().required("Поле обязательно для заполнения"),
+                visible: Yup.boolean()
+            }),
+        )
+    }),
 });
 
 const classNames = {
@@ -54,21 +60,21 @@ const classNames = {
     `
 };
 
-export const ContactsBlock = (props: IBlockProps<IContactBlock[]>) => {
+export const ContactsBlock = (props: IBlockProps<IContactBlock>) => {
     return (
-        <BlockWrapper<IContactBlock[]>
+        <BlockWrapper<IContactBlock>
             {...props}
             validationSchema={ValidationSchema}
             render={(form) => (
-                <FieldArray name={"data"}>
+                <FieldArray name={"data.blocks"}>
                     {(array) => (
                         <div>
                             <div className={classNames.wrapper}>
-                                {form?.values?.data?.map((item, index) => (
+                                {form?.values?.data?.blocks?.map((item, index) => (
                                     <Card key={index} classes={{ root: classNames.card }} variant={"outlined"}>
                                         <div className={classNames.cardHeader}>
                                             <SwitchField
-                                                name={`data.${index}.visible`}
+                                                name={`data.blocks.${index}.visible`}
                                                 classes={{ root: classNames.switch }}
                                             />
                                             <IconButton onClick={() => array.remove(index)}>
@@ -76,23 +82,23 @@ export const ContactsBlock = (props: IBlockProps<IContactBlock[]>) => {
                                             </IconButton>
                                         </div>
                                         <TextField
-                                            name={`data.${index}.city`}
+                                            name={`data.blocks.${index}.city`}
                                             label={"Город"}
                                             classes={{ root: classNames.field }}
                                         />
                                         <TextField
-                                            name={`data.${index}.address`}
+                                            name={`data.blocks.${index}.address`}
                                             label={"Адрес"}
                                             classes={{ root: classNames.field }}
                                             textarea
                                         />
                                         <TextField
-                                            name={`data.${index}.phone`}
+                                            name={`data.blocks.${index}.phone`}
                                             label={"Телефон"}
                                             classes={{ root: classNames.field }}
                                         />
                                         <TextField
-                                            name={`data.${index}.workingHours`}
+                                            name={`data.blocks.${index}.workingHours`}
                                             label={"Рабочие часы"}
                                             classes={{ root: classNames.field }}
                                         />

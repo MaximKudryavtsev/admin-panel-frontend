@@ -36,6 +36,7 @@ export interface IImageBlockIItem {
     imageLink?: string;
     id: string;
     file?: File;
+    visible: boolean;
 }
 
 export type TImageBlockItem<T> = T extends IImageBlockIItem ? T : IImageBlockIItem;

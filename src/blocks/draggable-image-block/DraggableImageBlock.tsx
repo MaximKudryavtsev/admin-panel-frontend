@@ -8,6 +8,7 @@ import { IImageBlockIItem } from "../../entities";
 import { Card, CardContent, CardMedia, IconButton, Typography } from "@material-ui/core";
 import { useFile } from "../../hooks";
 import { Delete, DragIndicator, Edit } from "@material-ui/icons";
+import { SwitchField } from "../../components/switch-field";
 
 interface IDraggableImageBlockProps<T> {
     data: T;
@@ -132,6 +133,7 @@ export const DraggableImageBlock = <T extends IImageBlockIItem>(
                             </IconButton>
                         </div>
                         <div className={classNames.icons}>
+                            <SwitchField name={`${name}.visible`} />
                             <IconButton onClick={onChooseFile}>
                                 <Edit />
                             </IconButton>
