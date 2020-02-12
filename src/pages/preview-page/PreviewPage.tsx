@@ -1,10 +1,11 @@
 import React, { createElement, useEffect, useMemo, useState } from "react";
 import { css } from "emotion";
-import { useClientPage } from "../../hooks/page";
+import { usePreviewPage } from "../../hooks/page";
 import { Transport } from "../../transport";
 import { AppBar, Dialog, IconButton, Toolbar, Typography } from "@material-ui/core";
 import { Close } from "@material-ui/icons";
 import { getPreviewBlock } from "../../preview-blocklist/previewBlockList";
+import { PreviewFooter } from "../../preview-blocklist/preview-footer";
 
 const classNames = {
     wrapper: css`
@@ -22,6 +23,7 @@ const classNames = {
     grid: css`
         display: grid;
         grid-row-gap: 64px;  
+        margin-bottom: 165px;
     `,
     image: css`
         height: 500px;
@@ -38,24 +40,29 @@ const classNames = {
     `,
     content: css`
         padding: 0 250px;
-        margin-bottom: 64px;
     `,
 };
 
 interface IPreviewPageProps {
     pageId: string;
+    footerVisible?: boolean;
 
     onClose?(): void;
 }
 
 export const PreviewPage = (props: IPreviewPageProps) => {
-    const { pageId, onClose } = props;
+    const { pageId, onClose, footerVisible } = props;
     const transport = useMemo(() => Transport.create(), []);
-    const { page } = useClientPage(transport, pageId);
+    const { page, getPreviewFooter, footer } = usePreviewPage(transport, pageId);
 
     const [open, setOpen] = useState(false);
 
     useEffect(() => setOpen(true), []);
+    useEffect(() => {
+        if (footerVisible) {
+            getPreviewFooter();
+        }
+    }, [footerVisible]);
 
     const handleClose = () => {
         if (onClose) {
@@ -94,6 +101,7 @@ export const PreviewPage = (props: IPreviewPageProps) => {
                         getPreviewBlock(item.type.label) && createElement(getPreviewBlock(item.type.label), { data: item.data }),
                     )}
                 </div>
+                {footerVisible && <PreviewFooter footer={footer} />}
             </div>
         </Dialog>
     );

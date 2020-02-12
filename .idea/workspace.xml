@@ -1,28 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/preview-blocklist/description/Description.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/preview-blocklist/description/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/preview-blocklist/facts-block/FactBlock.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/preview-blocklist/facts-block/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/preview-blocklist/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/preview-blocklist/preview-blog/PreviewBlog.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/preview-blocklist/preview-blog/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/preview-blocklist/preview-blue-line-list/PreviewBlueLineList.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/preview-blocklist/preview-blue-line-list/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/preview-blocklist/previewBlockList.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/preview-blocklist/quote/PreviewQuoteBlock.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/preview-blocklist/quote/index.ts" afterDir="false" />
+    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="add description, fact list, quote, blue line list, blog blocks for preview">
+      <change afterPath="$PROJECT_DIR$/src/preview-blocklist/preview-footer/PreviewFooter.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/preview-blocklist/preview-footer/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/blog/BlogBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/blog/BlogBlock.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/blue-lines-list/BlueLinesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/blue-lines-list/BlueLinesList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/contacts/ContactsBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/contacts/ContactsBlock.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/quote/QuoteBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/quote/QuoteBlock.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/full-screen-block/FullScreenBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/full-screen-block/FullScreenBlock.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/page.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/ApiPaths.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/ApiPaths.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/pages.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/pages.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/page/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/page/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/page/useClientPage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/page/usePreviewPage.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/page/Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/page/Page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/preview-page/PreviewPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/preview-page/PreviewPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/preview-blocklist/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preview-blocklist/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,14 +179,7 @@
       <workItem from="1581061461913" duration="6191000" />
       <workItem from="1581239148553" duration="7010000" />
       <workItem from="1581399177871" duration="15804000" />
-      <workItem from="1581493839587" duration="14213000" />
-    </task>
-    <task id="LOCAL-00064" summary="fix incorrect link to profile">
-      <created>1580288774309</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1580288774309</updated>
+      <workItem from="1581493839587" duration="19905000" />
     </task>
     <task id="LOCAL-00065" summary="add component for quote block">
       <created>1580329156200</created>
@@ -534,7 +517,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581500518710</updated>
     </task>
-    <option name="localTasksCounter" value="113" />
+    <task id="LOCAL-00113" summary="add description, fact list, quote, blue line list, blog blocks for preview">
+      <created>1581511116609</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1581511116609</updated>
+    </task>
+    <option name="localTasksCounter" value="114" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -551,7 +541,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="connect frontend and backend of contacts" />
     <MESSAGE value="add component for showing loading until data got loaded from server" />
     <MESSAGE value="move contacts to separate page" />
     <MESSAGE value="connect footer api with frontend" />
@@ -576,7 +565,8 @@
     <MESSAGE value="add block for team" />
     <MESSAGE value="add block for services and decisions" />
     <MESSAGE value="refactoring, add visible field for blocks" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactoring, add visible field for blocks" />
+    <MESSAGE value="add description, fact list, quote, blue line list, blog blocks for preview" />
+    <option name="LAST_COMMIT_MESSAGE" value="add description, fact list, quote, blue line list, blog blocks for preview" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="182" key="#ESLint" timestamp="1578156507884">
@@ -604,16 +594,16 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580987630233" />
-    <state x="585" y="117" key="CommitChangelistDialog2" timestamp="1581500517635">
+    <state x="585" y="117" key="CommitChangelistDialog2" timestamp="1581516611477">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581500517635" />
+    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581516611477" />
     <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172968703" />
     <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1581275064446" />
-    <state x="184" y="85" width="1536" height="840" key="DiffContextDialog" timestamp="1581500497988">
+    <state x="184" y="85" width="1536" height="840" key="DiffContextDialog" timestamp="1581511077918">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="184" y="85" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581500497988" />
+    <state x="184" y="85" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581511077918" />
     <state x="184" y="86" width="1536" height="840" key="DiffContextDialog/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172950313" />
     <state x="184" y="86" key="DiffContextDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1581275061562" />
     <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1580712034432">
@@ -678,10 +668,10 @@
     </state>
     <state x="616" y="237" key="run.anything.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578145423257" />
     <state x="616" y="237" width="672" height="677" key="run.anything.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579939819522" />
-    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup" timestamp="1581510853287">
+    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup" timestamp="1581513343110">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581510853287" />
+    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581513343110" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578170577061" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1581255384553" />
   </component>

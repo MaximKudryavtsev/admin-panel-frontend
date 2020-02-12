@@ -21,6 +21,7 @@ export const ApiPaths = {
     GET_PAGE_LIST: "/page/list",
     PAGE: "/page/:id",
     BUILD_PAGE: "/page/build",
+    FOOTER_PAGE: "/page/:id/footer",
     GET_PAGE_STATUSES: "/page/statuses",
     GET_PAGE_AUTHOR: "/page/:id/author",
     //block

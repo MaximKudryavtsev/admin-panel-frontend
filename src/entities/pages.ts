@@ -1,5 +1,7 @@
 import { IDictionary, IIdResponse } from "./common";
 import { IBlock } from "./block";
+import { INavigation } from "./navigation";
+import { IContact } from "./contact";
 
 export interface IPagesTableRow {
     _id: string;
@@ -44,4 +46,12 @@ export interface IClientPageBody extends IIdResponse {
     link: string;
     pageId: string;
     body: Pick<IBlock<any>, "type" | "data">[];
+}
+
+export interface IClientFooter {
+    navigations: INavigation[];
+    contacts?: IContact[];
+    copyright: string;
+    buttonTitle?: string;
+    buttonLink?: string;
 }

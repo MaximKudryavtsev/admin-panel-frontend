@@ -140,13 +140,14 @@ export const Page = (props: IPageProps) => {
         <React.Fragment>
             <Switch>
                 <Route path={`${baseUrl}/${page?._id}/block/:blockId`} exact>
-                    <FullScreenBlock
-                        onClose={onCloseFullScreenBlock}
-                        statuses={statuses}
-                    />
+                    <FullScreenBlock onClose={onCloseFullScreenBlock} statuses={statuses} />
                 </Route>
                 <Route path={`${baseUrl}/${page?._id}/preview`} exact>
-                    <PreviewPage pageId={String(page?._id)} onClose={onCloseFullScreenBlock} />
+                    <PreviewPage
+                        pageId={String(page?._id)}
+                        onClose={onCloseFullScreenBlock}
+                        footerVisible={page?.footerVisible}
+                    />
                 </Route>
             </Switch>
             <Tooltip title={"К списку страниц"} placement={"right"}>
