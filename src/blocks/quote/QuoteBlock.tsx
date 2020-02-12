@@ -5,7 +5,7 @@ import { BlockWrapper } from "../../widgets/block-wrapper";
 import * as Yup from "yup";
 import { TextField } from "../../components/text-field";
 
-interface IQuoteBlock {
+export interface IQuoteBlock {
     title: string;
     text: string;
 }

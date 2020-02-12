@@ -1,27 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="add block for services and decisions">
-      <change afterPath="$PROJECT_DIR$/src/hooks/page/useClientPage.ts" afterDir="false" />
+    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/preview-blocklist/description/Description.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/preview-blocklist/description/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/preview-blocklist/facts-block/FactBlock.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/preview-blocklist/facts-block/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/preview-blocklist/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/preview-blocklist/preview-blog/PreviewBlog.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/preview-blocklist/preview-blog/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/preview-blocklist/preview-blue-line-list/PreviewBlueLineList.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/preview-blocklist/preview-blue-line-list/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/preview-blocklist/previewBlockList.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/preview-blocklist/quote/PreviewQuoteBlock.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/preview-blocklist/quote/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/page.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/achievement-block/AchievementBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/achievement-block/AchievementBlock.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/best-achievement-block/BestAchievementBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/best-achievement-block/BestAchievementBlock.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/blocks/blog/BlogBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/blog/BlogBlock.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/blocks/blue-lines-list/BlueLinesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/blue-lines-list/BlueLinesList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/clients-logo/ClientsLogo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/clients-logo/ClientsLogo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/clients-logo/logo/Logo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/clients-logo/logo/Logo.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/blocks/contacts/ContactsBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/contacts/ContactsBlock.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/draggable-image-block/DraggableImageBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/draggable-image-block/DraggableImageBlock.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/facts/FactsBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/facts/FactsBlock.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/feedback-block/FeedbackBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/feedback-block/FeedbackBlock.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/image-and-list/ImageAndListBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/image-and-list/ImageAndListBlock.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/main-achievements-block/MainAchievementsBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/main-achievements-block/MainAchievementsBlock.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/team/TeamBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/team/TeamBlock.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/block.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/block.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/pages.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/pages.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/page/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/page/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/page/usePage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/page/usePage.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/quote/QuoteBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/quote/QuoteBlock.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/full-screen-block/FullScreenBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/full-screen-block/FullScreenBlock.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/page/Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/page/Page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/preview-page/PreviewPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/preview-page/PreviewPage.tsx" afterDir="false" />
     </list>
@@ -190,14 +189,7 @@
       <workItem from="1581061461913" duration="6191000" />
       <workItem from="1581239148553" duration="7010000" />
       <workItem from="1581399177871" duration="15804000" />
-      <workItem from="1581493839587" duration="5670000" />
-    </task>
-    <task id="LOCAL-00063" summary="add deleting page">
-      <created>1580211256542</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1580211256542</updated>
+      <workItem from="1581493839587" duration="14213000" />
     </task>
     <task id="LOCAL-00064" summary="fix incorrect link to profile">
       <created>1580288774309</created>
@@ -535,7 +527,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581419508934</updated>
     </task>
-    <option name="localTasksCounter" value="112" />
+    <task id="LOCAL-00112" summary="refactoring, add visible field for blocks">
+      <created>1581500518710</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1581500518710</updated>
+    </task>
+    <option name="localTasksCounter" value="113" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -552,7 +551,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add control panel, contacts" />
     <MESSAGE value="connect frontend and backend of contacts" />
     <MESSAGE value="add component for showing loading until data got loaded from server" />
     <MESSAGE value="move contacts to separate page" />
@@ -577,7 +575,8 @@
     <MESSAGE value="add block for achievement" />
     <MESSAGE value="add block for team" />
     <MESSAGE value="add block for services and decisions" />
-    <option name="LAST_COMMIT_MESSAGE" value="add block for services and decisions" />
+    <MESSAGE value="refactoring, add visible field for blocks" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactoring, add visible field for blocks" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="182" key="#ESLint" timestamp="1578156507884">
@@ -605,16 +604,16 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580987630233" />
-    <state x="585" y="117" key="CommitChangelistDialog2" timestamp="1581431211721">
+    <state x="585" y="117" key="CommitChangelistDialog2" timestamp="1581500517635">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581431211721" />
+    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581500517635" />
     <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172968703" />
     <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1581275064446" />
-    <state x="184" y="85" width="1536" height="840" key="DiffContextDialog" timestamp="1581431183270">
+    <state x="184" y="85" width="1536" height="840" key="DiffContextDialog" timestamp="1581500497988">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="184" y="85" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581431183270" />
+    <state x="184" y="85" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581500497988" />
     <state x="184" y="86" width="1536" height="840" key="DiffContextDialog/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172950313" />
     <state x="184" y="86" key="DiffContextDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1581275061562" />
     <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1580712034432">
@@ -648,10 +647,10 @@
     </state>
     <state x="461" y="155" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580712036506" />
     <state x="461" y="156" key="SettingsEditor/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580551786626" />
-    <state x="552" y="255" key="Vcs.Push.Dialog.v2" timestamp="1581431215002">
+    <state x="552" y="255" key="Vcs.Push.Dialog.v2" timestamp="1581500566934">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="255" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581431215002" />
+    <state x="552" y="255" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581500566934" />
     <state x="552" y="257" key="Vcs.Push.Dialog.v2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172973521" />
     <state x="552" y="257" key="Vcs.Push.Dialog.v2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580667043182" />
     <state x="92" y="92" width="1736" height="866" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1578046510409">
@@ -663,10 +662,10 @@
     </state>
     <state x="603" y="138" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581403951134" />
     <state x="603" y="139" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1578060723974" />
-    <state x="657" y="255" width="606" height="536" key="find.popup" timestamp="1581403974340">
+    <state x="657" y="255" width="606" height="536" key="find.popup" timestamp="1581506792463">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="657" y="255" width="606" height="536" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581403974340" />
+    <state x="657" y="255" width="606" height="536" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581506792463" />
     <state x="657" y="257" width="606" height="536" key="find.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578166842732" />
     <state x="657" y="257" width="606" height="536" key="find.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580331113592" />
     <state x="632" y="315" key="git4idea.merge.GitPullDialog" timestamp="1581241179633">
@@ -679,10 +678,10 @@
     </state>
     <state x="616" y="237" key="run.anything.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578145423257" />
     <state x="616" y="237" width="672" height="677" key="run.anything.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579939819522" />
-    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup" timestamp="1581500419181">
+    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup" timestamp="1581510853287">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581500419181" />
+    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581510853287" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578170577061" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1581255384553" />
   </component>

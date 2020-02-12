@@ -28,9 +28,9 @@ const ValidationSchema = Yup.object().shape({
                 address: Yup.string().required("Поле обязательно для заполнения"),
                 phone: Yup.string().required("Поле обязательно для заполнения"),
                 workingHours: Yup.string().required("Поле обязательно для заполнения"),
-                visible: Yup.boolean()
+                visible: Yup.boolean(),
             }),
-        )
+        ),
     }),
 });
 
@@ -57,7 +57,7 @@ const classNames = {
     `,
     switch: css`
         margin-right: 10px;
-    `
+    `,
 };
 
 export const ContactsBlock = (props: IBlockProps<IContactBlock>) => {
@@ -71,7 +71,11 @@ export const ContactsBlock = (props: IBlockProps<IContactBlock>) => {
                         <div>
                             <div className={classNames.wrapper}>
                                 {form?.values?.data?.blocks?.map((item, index) => (
-                                    <Card key={index} classes={{ root: classNames.card }} variant={"outlined"}>
+                                    <Card
+                                        key={index}
+                                        classes={{ root: classNames.card }}
+                                        variant={"outlined"}
+                                    >
                                         <div className={classNames.cardHeader}>
                                             <SwitchField
                                                 name={`data.blocks.${index}.visible`}
@@ -106,7 +110,15 @@ export const ContactsBlock = (props: IBlockProps<IContactBlock>) => {
                                 ))}
                             </div>
                             <IconButton
-                                onClick={() => array.push({ city: "", address: "", phone: "", workingHours: "", visible: true })}
+                                onClick={() =>
+                                    array.push({
+                                        city: "",
+                                        address: "",
+                                        phone: "",
+                                        workingHours: "",
+                                        visible: true,
+                                    })
+                                }
                                 color="primary"
                             >
                                 <Add />
@@ -115,5 +127,6 @@ export const ContactsBlock = (props: IBlockProps<IContactBlock>) => {
                     )}
                 </FieldArray>
             )}
-        />)
+        />
+    );
 };

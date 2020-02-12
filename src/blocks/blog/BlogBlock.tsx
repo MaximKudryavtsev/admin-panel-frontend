@@ -26,7 +26,7 @@ export interface IBlogItem {
 const ValidationSchema = Yup.object().shape({
     data: Yup.object().shape({
         title: Yup.string().required("Поле обязательно для заполнения"),
-        blog: Yup.array().of(
+        blocks: Yup.array().of(
             Yup.object().shape({
                 visible: Yup.boolean().notRequired(),
             }),

@@ -21,7 +21,6 @@ import * as Yup from "yup";
 import { Select } from "../../components/select";
 
 interface IFullScreenBlockProps {
-    open: boolean;
     statuses?: IDictionary[];
 
     onClose?(): void;

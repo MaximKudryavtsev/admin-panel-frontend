@@ -10,11 +10,13 @@ import { Add, Delete } from "@material-ui/icons";
 
 const ValidationSchema = Yup.object().shape({
     data: Yup.object().shape({
-        blocks: Yup.array().of(Yup.string().required("Поле обязательно для заполнения"))
+        title: Yup.string().required("Поле обязательно для заполнения"),
+        blocks: Yup.array().of(Yup.string().required("Поле обязательно для заполнения")),
     }),
 });
 
-interface IBlueLinesListBlock {
+export interface IBlueLinesListBlock {
+    title: string;
     blocks: string[];
 }
 
@@ -33,6 +35,9 @@ const classNames = {
     icon: css`
         margin-left: 10px;
     `,
+    field: css`
+        margin-bottom: 24px;
+    `,
 };
 
 export const BlueLinesList = (props: IBlockProps<IBlueLinesListBlock>) => {
@@ -41,33 +46,40 @@ export const BlueLinesList = (props: IBlockProps<IBlueLinesListBlock>) => {
             {...props}
             validationSchema={ValidationSchema}
             render={(form) => (
-                <FieldArray
-                    name={"data.blocks"}
-                    render={(array) => (
-                        <div>
-                            <div className={classNames.content}>
-                                {form?.values?.data?.blocks?.map((item, index) => (
-                                    <div className={classNames.row} key={index}>
-                                        <TextField
-                                            name={`data.blocks.${index}`}
-                                            label={`Текст ${index + 1}`}
-                                            textarea
-                                        />
-                                        <IconButton
-                                            onClick={() => array.remove(index)}
-                                            classes={{ root: classNames.icon }}
-                                        >
-                                            <Delete />
-                                        </IconButton>
-                                    </div>
-                                ))}
+                <>
+                    <TextField
+                        name={`data.title`}
+                        label={`Заголовок`}
+                        classes={{ root: classNames.field }}
+                    />
+                    <FieldArray
+                        name={"data.blocks"}
+                        render={(array) => (
+                            <div>
+                                <div className={classNames.content}>
+                                    {form?.values?.data?.blocks?.map((item, index) => (
+                                        <div className={classNames.row} key={index}>
+                                            <TextField
+                                                name={`data.blocks.${index}`}
+                                                label={`Текст ${index + 1}`}
+                                                textarea
+                                            />
+                                            <IconButton
+                                                onClick={() => array.remove(index)}
+                                                classes={{ root: classNames.icon }}
+                                            >
+                                                <Delete />
+                                            </IconButton>
+                                        </div>
+                                    ))}
+                                </div>
+                                <IconButton onClick={() => array.push("")} color={"primary"}>
+                                    <Add />
+                                </IconButton>
                             </div>
-                            <IconButton onClick={() => array.push("")} color={"primary"}>
-                                <Add />
-                            </IconButton>
-                        </div>
-                    )}
-                />
+                        )}
+                    />
+                </>
             )}
         />
     );

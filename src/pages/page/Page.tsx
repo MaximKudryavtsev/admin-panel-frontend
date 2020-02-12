@@ -142,12 +142,11 @@ export const Page = (props: IPageProps) => {
                 <Route path={`${baseUrl}/${page?._id}/block/:blockId`} exact>
                     <FullScreenBlock
                         onClose={onCloseFullScreenBlock}
-                        open={fullscreen}
                         statuses={statuses}
                     />
                 </Route>
                 <Route path={`${baseUrl}/${page?._id}/preview`} exact>
-                    <PreviewPage pageId={String(page?._id)} />
+                    <PreviewPage pageId={String(page?._id)} onClose={onCloseFullScreenBlock} />
                 </Route>
             </Switch>
             <Tooltip title={"К списку страниц"} placement={"right"}>
