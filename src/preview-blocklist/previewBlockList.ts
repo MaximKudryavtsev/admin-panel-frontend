@@ -12,6 +12,7 @@ import { PreviewTeam } from "./preview-team";
 import { PreviewMainAchievements } from "./preview-main-achievements";
 import { PreviewBestAchievements } from "./preview-best-achievements";
 import { PreviewAchievementBlock } from "./preview-achievement-block";
+import { PreviewImageAndList } from "./preview-image-and-list";
 
 const blockList = {
     [EBlockTypes.DESCRIPTION]: Description,
@@ -25,6 +26,7 @@ const blockList = {
     [EBlockTypes.MAIN_ACHIEVEMENTS]: PreviewMainAchievements,
     [EBlockTypes.BEST_ACHIEVEMENTS]: PreviewBestAchievements,
     [EBlockTypes.ACHIEVEMENTS]: PreviewAchievementBlock,
+    [EBlockTypes.IMAGE_AND_LIST]: PreviewImageAndList,
     "default": undefined
 };
 

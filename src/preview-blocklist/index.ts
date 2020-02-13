@@ -10,3 +10,4 @@ export * from "./preview-team";
 export * from "./preview-main-achievements";
 export * from "./preview-best-achievements";
 export * from "./preview-achievement-block";
+export * from "./preview-image-and-list";

@@ -14,17 +14,18 @@ import { Add, Delete } from "@material-ui/icons";
 import { Select } from "../../components/select";
 import { useFetchPages } from "../../hooks";
 
-enum EImageAndListBlockType {
+export enum EImageAndListBlockType {
     DECISION = "decision",
     SERVICE = "service",
 }
 
 const ValidationSchema = Yup.object().shape({
     data: Yup.object().shape({
+        type: Yup.string().required("Поле обязательно для заполнения"),
+        columns: Yup.number().required("Поле обязательно для заполнения"),
         blocks: Yup.array().of(
             Yup.object().shape({
                 title: Yup.string().required("Поле обязательно для заполнения"),
-                type: Yup.string().required("Поле обязательно для заполнения"),
                 link: Yup.string().notRequired(),
                 list: Yup.array().of(Yup.string().required("Поле обязательно для заполнения")),
                 file: Yup.mixed(),
@@ -36,19 +37,23 @@ const ValidationSchema = Yup.object().shape({
 
 export interface IImageAndList extends IImageBlockIItem {
     title: string;
-    type: string;
     list: string[];
     link?: string;
 }
 
-export const ImageAndListBlock = (props: IBlockProps<IImageBlock<IImageAndList>>) => {
+export interface IImageAndListBlock extends IImageBlock<IImageAndList>{
+    type: string;
+    columns: number;
+}
+
+export const ImageAndListBlock = (props: IBlockProps<IImageAndListBlock>) => {
     const { onSubmit, lang = "ru" } = props;
 
     const [uploaded, setUploaded] = useState(false);
     const { pages } = useFetchPages(lang);
 
-    const handleSubmit = (id: string, data: Partial<IBlock<IImageBlock<IImageAndList>>>) => {
-        data = getBlockDataWithFiles<IImageBlock<IImageAndList>, IImageAndList>(data);
+    const handleSubmit = (id: string, data: Partial<IBlock<IImageAndListBlock>>) => {
+        data = getBlockDataWithFiles<IImageAndListBlock, IImageAndList>(data);
 
         if (onSubmit) {
             setUploaded(true);
@@ -57,7 +62,7 @@ export const ImageAndListBlock = (props: IBlockProps<IImageBlock<IImageAndList>>
     };
 
     return (
-        <BlockWrapper<IImageBlock<IImageAndList>>
+        <BlockWrapper<IImageAndListBlock>
             {...props}
             onSubmit={handleSubmit}
             validationSchema={ValidationSchema}
@@ -67,6 +72,44 @@ export const ImageAndListBlock = (props: IBlockProps<IImageBlock<IImageAndList>>
                         position: relative;
                     `}
                 >
+                    <Select
+                        name={`data.type`}
+                        label={"Тип"}
+                        classes={{
+                            root: css`
+                                margin-bottom: 24px;
+                            `,
+                        }}
+                        options={[
+                            {
+                                value: String(EImageAndListBlockType.DECISION),
+                                label: "Страница решений",
+                            },
+                            {
+                                value: String(EImageAndListBlockType.SERVICE),
+                                label: "Страница услуг",
+                            },
+                        ]}
+                    />
+                    <Select
+                        name={`data.columns`}
+                        label={"Количество колонок"}
+                        classes={{
+                            root: css`
+                                margin-bottom: 24px;
+                            `,
+                        }}
+                        options={[
+                            {
+                                value: 2,
+                                label: "2 колонки",
+                            },
+                            {
+                                value: 4,
+                                label: "4 колонки",
+                            },
+                        ]}
+                    />
                     <FieldArray
                         name={"data.blocks"}
                         render={(array) => (
@@ -83,7 +126,7 @@ export const ImageAndListBlock = (props: IBlockProps<IImageBlock<IImageAndList>>
                                         type: "",
                                         list: [],
                                         link: "",
-                                        visible: true
+                                        visible: true,
                                     })
                                 }
                                 render={(index) => (
@@ -96,25 +139,6 @@ export const ImageAndListBlock = (props: IBlockProps<IImageBlock<IImageAndList>>
                                                     margin-bottom: 24px;
                                                 `,
                                             }}
-                                        />
-                                        <Select
-                                            name={`data.blocks.${index}.type`}
-                                            label={"Тип"}
-                                            classes={{
-                                                root: css`
-                                                    margin-bottom: 24px;
-                                                `,
-                                            }}
-                                            options={[
-                                                {
-                                                    value: String(EImageAndListBlockType.DECISION),
-                                                    label: "Страница решений",
-                                                },
-                                                {
-                                                    value: String(EImageAndListBlockType.SERVICE),
-                                                    label: "Страница услуг",
-                                                },
-                                            ]}
                                         />
                                         <FieldArray
                                             name={`data.blocks.${index}.list`}

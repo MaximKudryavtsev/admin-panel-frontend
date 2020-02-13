@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/preview-blocklist/preview-image-and-list/PreviewImageAndList.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/preview-blocklist/preview-image-and-list/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/pages.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/pages.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/page-info/PageInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/page-info/PageInfo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/image-and-list/ImageAndListBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/image-and-list/ImageAndListBlock.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/preview-blocklist/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preview-blocklist/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/preview-blocklist/previewBlockList.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preview-blocklist/previewBlockList.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,14 +176,7 @@
       <workItem from="1581239148553" duration="7010000" />
       <workItem from="1581399177871" duration="15804000" />
       <workItem from="1581493839587" duration="25085000" />
-      <workItem from="1581573951370" duration="9987000" />
-    </task>
-    <task id="LOCAL-00070" summary="add writing blog data to database">
-      <created>1580385168462</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
-      <option name="project" value="LOCAL" />
-      <updated>1580385168462</updated>
+      <workItem from="1581573951370" duration="13535000" />
     </task>
     <task id="LOCAL-00071" summary="add block for blog">
       <created>1580395741559</created>
@@ -517,7 +514,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581587463482</updated>
     </task>
-    <option name="localTasksCounter" value="119" />
+    <task id="LOCAL-00119" summary="add keywords field in page">
+      <created>1581587886264</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
+      <option name="project" value="LOCAL" />
+      <updated>1581587886264</updated>
+    </task>
+    <option name="localTasksCounter" value="120" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -534,7 +538,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactoring blocks props" />
     <MESSAGE value="add component for editing block in full screen" />
     <MESSAGE value="mover page hooks to separate folder" />
     <MESSAGE value="refactoring" />
@@ -559,7 +562,8 @@
     <MESSAGE value="add showing navigations in footer in preview page according position" />
     <MESSAGE value="add preview blocks for main achievements and best achievements" />
     <MESSAGE value="add preview for achievement list" />
-    <option name="LAST_COMMIT_MESSAGE" value="add preview for achievement list" />
+    <MESSAGE value="add keywords field in page" />
+    <option name="LAST_COMMIT_MESSAGE" value="add keywords field in page" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="182" key="#ESLint" timestamp="1578156507884">
@@ -587,10 +591,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580987630233" />
-    <state x="585" y="117" key="CommitChangelistDialog2" timestamp="1581587462601">
+    <state x="585" y="117" key="CommitChangelistDialog2" timestamp="1581587885332">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581587462601" />
+    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581587885332" />
     <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172968703" />
     <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1581275064446" />
     <state x="184" y="85" width="1536" height="840" key="DiffContextDialog" timestamp="1581587432043">
@@ -630,10 +634,10 @@
     </state>
     <state x="461" y="155" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580712036506" />
     <state x="461" y="156" key="SettingsEditor/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580551786626" />
-    <state x="552" y="255" key="Vcs.Push.Dialog.v2" timestamp="1581587469083">
+    <state x="552" y="255" key="Vcs.Push.Dialog.v2" timestamp="1581587891093">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="255" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581587469083" />
+    <state x="552" y="255" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581587891093" />
     <state x="552" y="257" key="Vcs.Push.Dialog.v2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172973521" />
     <state x="552" y="257" key="Vcs.Push.Dialog.v2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580667043182" />
     <state x="92" y="92" width="1736" height="866" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1578046510409">
@@ -661,10 +665,10 @@
     </state>
     <state x="616" y="237" key="run.anything.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578145423257" />
     <state x="616" y="237" width="672" height="677" key="run.anything.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579939819522" />
-    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup" timestamp="1581587566297">
+    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup" timestamp="1581588728408">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581587566297" />
+    <state x="623" y="225" width="672" height="672" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581588728408" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578170577061" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1581255384553" />
   </component>
