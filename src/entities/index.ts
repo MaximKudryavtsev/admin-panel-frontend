@@ -10,3 +10,4 @@ export * from "./block";
 export * from "./header";
 export * from "./contact";
 export * from "./footer";
+export * from "./filter";

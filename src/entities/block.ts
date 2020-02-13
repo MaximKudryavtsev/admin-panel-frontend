@@ -3,7 +3,7 @@ import { IDictionary } from "./common";
 export enum EBlockTypes {
     FACTS = "facts",
     QUOTE = "quote",
-    CONTACTS = "contacts",
+    ADDRESS_LIST = "addressList",
     BLOG = "blog",
     DESCRIPTION = "description",
     BLUE_LINES_LIST = "blueLinesList",
