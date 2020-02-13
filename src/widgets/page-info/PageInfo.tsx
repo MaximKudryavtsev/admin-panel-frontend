@@ -217,6 +217,12 @@ export const PageInfo = (props: IPageInfoProps) => {
                                             label={"Показывать футер на странице"}
                                         />
                                     </div>
+                                    <TextField
+                                        name={"keyWords"}
+                                        label={"Ключевые слова"}
+                                        textarea
+                                        classes={{ root: classNames.mb24 }}
+                                    />
                                     <div
                                         className={css`
                                             display: flex;
