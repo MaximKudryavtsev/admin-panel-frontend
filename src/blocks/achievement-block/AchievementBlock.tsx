@@ -21,13 +21,11 @@ export interface IAchievement extends IImageBlockIItem {
 }
 
 export interface IAchievementBlock {
-    title: string;
     blocks: IAchievement[];
 }
 
 const ValidationSchema = Yup.object().shape({
     data: Yup.object().shape({
-        title: Yup.string().required("Поле обязательно для заполнения"),
         blocks: Yup.array().of(
             Yup.object().shape({
                 title: Yup.string().required("Поле обязательно для заполнения"),
@@ -88,15 +86,6 @@ export const AchievementBlock = (props: IBlockProps<IAchievementBlock>) => {
                         position: relative;
                     `}
                 >
-                    <TextField
-                        name={"data.title"}
-                        label={"Заголовок"}
-                        classes={{
-                            root: css`
-                                margin-bottom: 24px;
-                            `,
-                        }}
-                    />
                     <FieldArray
                         name={"data.blocks"}
                         render={(array) => (

@@ -2,7 +2,7 @@ import React from "react";
 import { IMainAchievementsBlock } from "../../blocks/main-achievements-block";
 import { css } from "emotion";
 
-export const classNames = {
+const classNames = {
     wrapper: css`
         display: grid;
         grid-column-gap: 140px;
