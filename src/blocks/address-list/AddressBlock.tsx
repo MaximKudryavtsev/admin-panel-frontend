@@ -9,15 +9,15 @@ import { SwitchField } from "../../components/switch-field";
 import { Add, Delete } from "@material-ui/icons";
 import { TextField } from "../../components/text-field";
 
-interface IContact {
+interface IAddress {
     city: string;
     address: string;
     phone: string;
     workingHours: string;
 }
 
-interface IContactBlock {
-    blocks: IContact[];
+interface IAddressBlock {
+    blocks: IAddress[];
 }
 
 const ValidationSchema = Yup.object().shape({
@@ -60,9 +60,9 @@ const classNames = {
     `,
 };
 
-export const ContactsBlock = (props: IBlockProps<IContactBlock>) => {
+export const AddressBlock = (props: IBlockProps<IAddressBlock>) => {
     return (
-        <BlockWrapper<IContactBlock>
+        <BlockWrapper<IAddressBlock>
             {...props}
             validationSchema={ValidationSchema}
             render={(form) => (
