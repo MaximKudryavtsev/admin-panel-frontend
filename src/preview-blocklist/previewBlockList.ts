@@ -9,6 +9,8 @@ import { PreviewBlog } from "./preview-blog";
 import { ClientsLogoPreview } from "./clients-logo-preview";
 import { PreviewFeedbackBlock } from "./preview-feedback-block";
 import { PreviewTeam } from "./preview-team";
+import { PreviewMainAchievements } from "./preview-main-achievements";
+import { PreviewBestAchievements } from "./preview-best-achievements";
 
 const blockList = {
     [EBlockTypes.DESCRIPTION]: Description,
@@ -19,6 +21,8 @@ const blockList = {
     [EBlockTypes.CLIENTS_LOGO]: ClientsLogoPreview,
     [EBlockTypes.FEEDBACK]: PreviewFeedbackBlock,
     [EBlockTypes.TEAM]: PreviewTeam,
+    [EBlockTypes.MAIN_ACHIEVEMENTS]: PreviewMainAchievements,
+    [EBlockTypes.BEST_ACHIEVEMENTS]: PreviewBestAchievements,
     "default": undefined
 };
 

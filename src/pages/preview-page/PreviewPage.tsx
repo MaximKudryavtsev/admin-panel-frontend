@@ -62,7 +62,7 @@ export const PreviewPage = (props: IPreviewPageProps) => {
         if (footerVisible) {
             getPreviewFooter();
         }
-    }, [footerVisible]);
+    }, [footerVisible, getPreviewFooter]);
 
     const handleClose = () => {
         if (onClose) {

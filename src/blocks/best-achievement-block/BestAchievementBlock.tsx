@@ -20,7 +20,7 @@ export interface IBestAchievement extends IImageBlockIItem {
     }>;
 }
 
-interface IBestAchievementBlock {
+export interface IBestAchievementBlock {
     title: string;
     blocks: IBestAchievement[];
 }
