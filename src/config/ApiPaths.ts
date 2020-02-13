@@ -36,5 +36,7 @@ export const ApiPaths = {
     HEADER: "/header",
     HEADER_LOGO: "/header/logo",
     // footer
-    FOOTER: "/footer"
+    FOOTER: "/footer",
+    FILTER_LIST: "/filter/list",
+    FILTER: "/filter"
 };

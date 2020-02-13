@@ -28,6 +28,10 @@ export const sidebarLinks: ISidebarLink[] = [
         title: "Страницы",
         link: "/pages"
     },
+    {
+        title: "Кейсы",
+        link: "/cases"
+    },
 ];
 
 export const adminSidebarLinks: ISidebarLink[] = [
