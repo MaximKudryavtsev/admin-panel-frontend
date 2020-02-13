@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import {
-    INavigation, INavigationOrder,
-    INavigationType,
+    ENavigationType,
+    IDictionary,
+    INavigation,
+    INavigationOrder,
     TCreateNavigationRequest,
-    TLang, TNavigationPage,
-    TUpdateNavigationRequest, TypeNavigation,
+    TLang,
+    TNavigationPage,
+    TUpdateNavigationRequest,
+    TypeNavigation,
 } from "../../entities";
 import { css } from "emotion";
 import { NavigationItem } from "../../components/navigation-item";
@@ -16,7 +20,7 @@ import { DragDropContext, Droppable, Draggable, DropResult } from "react-beautif
 
 interface INavigationPanelProps {
     navigations: INavigation[];
-    navigationTypes: INavigationType[];
+    navigationTypes: IDictionary[];
     currentNavigation?: INavigation;
     parentId?: string;
     lang: TLang;
@@ -72,7 +76,7 @@ export const NavigationPanel = (props: INavigationPanelProps) => {
         navigations = [],
         type = "navigation",
         setLanguage,
-        pages = []
+        pages = [],
     } = props;
     const [createOpen, setCreateOpen] = useState(false);
     const [editOpen, setEditOpen] = useState(false);
@@ -84,7 +88,7 @@ export const NavigationPanel = (props: INavigationPanelProps) => {
 
     useEffect(() => {
         if (setLanguage) {
-            setLanguage(lang)
+            setLanguage(lang);
         }
     }, [lang, setLanguage]);
 
@@ -134,11 +138,14 @@ export const NavigationPanel = (props: INavigationPanelProps) => {
         }
         const nav: TCreateNavigationRequest = {
             ...navigation,
+            navigationType: navigation.hasChild
+                ? navigationTypes.find((item) => item.label === ENavigationType.EXTERNAL)?._id
+                : navigation.navigationType,
             parentId: props.parentId,
             isVisible: false,
             lang,
             position: data.length,
-            type
+            type,
         };
         createNavigation(nav).then(onCreateClose);
     };
@@ -202,7 +209,11 @@ export const NavigationPanel = (props: INavigationPanelProps) => {
             return;
         }
         const id = data[result.source.index]._id;
-        reorderNavigation({_id: id, position: result.destination.index, parentId: props.parentId});
+        reorderNavigation({
+            _id: id,
+            position: result.destination.index,
+            parentId: props.parentId,
+        });
     };
     return (
         <div className={styles.container}>

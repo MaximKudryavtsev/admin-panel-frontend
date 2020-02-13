@@ -97,8 +97,10 @@ export const PreviewPage = (props: IPreviewPageProps) => {
                     <Typography variant={"h2"} className={classNames.title}>
                         {page?.title}
                     </Typography>
-                    {page?.body.map((item) =>
-                        getPreviewBlock(item.type.label) && createElement(getPreviewBlock(item.type.label), { data: item.data }),
+                    {page?.body.map((item, index) =>
+                        <React.Fragment key={index}>
+                            {getPreviewBlock(item.type.label) && createElement(getPreviewBlock(item.type.label), { data: item.data })}
+                        </React.Fragment>
                     )}
                 </div>
                 {footerVisible && <PreviewFooter footer={footer} />}

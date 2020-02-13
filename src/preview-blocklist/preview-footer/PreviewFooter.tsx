@@ -103,15 +103,23 @@ export const PreviewFooter = (props: { footer?: IClientFooter }) => {
                     footer.navigations &&
                     footer?.navigations
                         ?.filter((item) => item.hasChild)
+                        .sort((left, right) => (left.position > right.position ? 1 : -1))
                         .map((item) => (
                             <div key={item._id}>
                                 <div className={classNames.menuTitle}>{item.title}</div>
                                 <div>
-                                    {getChildren(item._id).map((child) => (
-                                        <div key={child._id} className={classNames.childrenTitle}>
-                                            {child.title}
-                                        </div>
-                                    ))}
+                                    {getChildren(item._id)
+                                        .sort((left, right) =>
+                                            left.position > right.position ? 1 : -1,
+                                        )
+                                        .map((child) => (
+                                            <div
+                                                key={child._id}
+                                                className={classNames.childrenTitle}
+                                            >
+                                                {child.title}
+                                            </div>
+                                        ))}
                                 </div>
                             </div>
                         ))}
@@ -134,7 +142,9 @@ export const PreviewFooter = (props: { footer?: IClientFooter }) => {
                             </React.Fragment>
                         ))}
                 </div>
-                <a href={"#"} className={classNames.button}>{footer?.buttonTitle}</a>
+                <a href={"#"} className={classNames.button}>
+                    {footer?.buttonTitle}
+                </a>
             </div>
         </div>
     );
