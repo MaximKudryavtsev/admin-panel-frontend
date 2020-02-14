@@ -10,3 +10,5 @@ export * from "./add-contact-popup";
 export * from "./contact-panel";
 export * from "./choose-contacts-popup";
 export * from "./add-user-popup";
+export * from "./filter-popup";
+export * from "./filter-panel";

@@ -4,3 +4,4 @@ export * from "./control-panel";
 export * from "./contacts";
 export * from "./full-screen-block";
 export * from "./user-list";
+export * from "./filters";

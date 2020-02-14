@@ -9,6 +9,10 @@ export const sidebarLinks: ISidebarLink[] = [
         link: "/main"
     },
     {
+        title: "Фильтры",
+        link: "/filters"
+    },
+    {
         title: "Хедер",
         link: "/header"
     },

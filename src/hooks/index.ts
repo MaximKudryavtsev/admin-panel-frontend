@@ -11,3 +11,4 @@ export * from "./useNavigationTypes";
 export * from "./useCustomSnackbar";
 export * from "./user";
 export * from "./useRole";
+export * from "./useFilter";

@@ -13,6 +13,7 @@ import { ControlPanel } from "../control-panel";
 import { Contacts } from "../contacts";
 import { UserList } from "../user-list";
 import { useRole } from "../../hooks";
+import { Filters } from "../filters";
 
 interface INavigationProps {
     baseUrl?: string;
@@ -63,6 +64,9 @@ export const WorkPanel = (props: INavigationProps) => {
                 </Route>
                 <Route path={"/users"} exact>
                     <UserList setPageTitle={setTitle} />
+                </Route>
+                <Route path={"/filters"} exact>
+                    <Filters setPageTitle={setTitle} defaultLang={defaultLang} />
                 </Route>
             </Switch>
         </Layout>

@@ -38,6 +38,5 @@ export const ApiPaths = {
     HEADER_LOGO: "/header/logo",
     // footer
     FOOTER: "/footer",
-    FILTER_LIST: "/filter/list",
     FILTER: "/filter"
 };
