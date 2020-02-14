@@ -6,6 +6,7 @@ import { AppBar, Dialog, IconButton, Toolbar, Typography } from "@material-ui/co
 import { Close } from "@material-ui/icons";
 import { getPreviewBlock } from "../../preview-blocklist/previewBlockList";
 import { PreviewFooter } from "../../preview-blocklist/preview-footer";
+import { PreviewHeader } from "../../preview-blocklist/preview-header";
 
 const classNames = {
     wrapper: css`
@@ -53,7 +54,7 @@ interface IPreviewPageProps {
 export const PreviewPage = (props: IPreviewPageProps) => {
     const { pageId, onClose, footerVisible } = props;
     const transport = useMemo(() => Transport.create(), []);
-    const { page, getPreviewFooter, footer } = usePreviewPage(transport, pageId);
+    const { page, getPreviewFooter, footer, header } = usePreviewPage(transport, pageId);
 
     const [open, setOpen] = useState(false);
 
@@ -93,6 +94,7 @@ export const PreviewPage = (props: IPreviewPageProps) => {
                 </Toolbar>
             </AppBar>
             <div className={classNames.content}>
+                <PreviewHeader header={header} />
                 <div className={classNames.grid}>
                     <Typography variant={"h2"} className={classNames.title}>
                         {page?.title}

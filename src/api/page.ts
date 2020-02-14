@@ -1,6 +1,6 @@
 import { Transport } from "../transport";
 import {
-    IClientFooter,
+    IClientFooter, IClientHeader,
     IClientPageBody,
     ICreatePageRequest,
     ICreatePageResponse, IDictionary, IIdResponse,
@@ -49,4 +49,8 @@ export function getClientPage(transport: Transport, pageId: string) {
 
 export function getPreviewFooter(transport: Transport, pageId: string) {
     return transport.get<IClientFooter>(`${ApiPaths.FOOTER_PAGE}`.replace(":id", pageId));
+}
+
+export function getPreviewHeader(transport: Transport, pageId: string) {
+    return transport.get<IClientHeader>(`${ApiPaths.HEADER_PAGE}`.replace(":id", pageId));
 }

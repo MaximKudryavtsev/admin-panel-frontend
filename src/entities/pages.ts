@@ -56,3 +56,10 @@ export interface IClientFooter {
     buttonTitle?: string;
     buttonLink?: string;
 }
+
+export interface IClientHeader {
+    navigations: INavigation[];
+    logoLink?: string;
+    buttonTitle: string;
+    buttonLink: string;
+}
