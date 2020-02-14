@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/preview-blocklist/preview-header/ArrowDownIcon.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/preview-blocklist/preview-header/PreviewHeader.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/preview-blocklist/preview-header/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/page.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/ApiPaths.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/ApiPaths.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/pages.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/pages.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/page/usePreviewPage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/page/usePreviewPage.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/preview-page/PreviewPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/preview-page/PreviewPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/preview-blocklist/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preview-blocklist/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/preview-blocklist/preview-header/PreviewHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/preview-blocklist/preview-header/PreviewHeader.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,14 +172,7 @@
       <workItem from="1581399177871" duration="15804000" />
       <workItem from="1581493839587" duration="25085000" />
       <workItem from="1581573951370" duration="22432000" />
-      <workItem from="1581659624449" duration="16016000" />
-    </task>
-    <task id="LOCAL-00078" summary="refactoring">
-      <created>1580667034531</created>
-      <option name="number" value="00078" />
-      <option name="presentableId" value="LOCAL-00078" />
-      <option name="project" value="LOCAL" />
-      <updated>1580667034531</updated>
+      <workItem from="1581659624449" duration="16780000" />
     </task>
     <task id="LOCAL-00079" summary="add loader screen for feedback block">
       <created>1580712651836</created>
@@ -525,7 +510,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581677739827</updated>
     </task>
-    <option name="localTasksCounter" value="127" />
+    <task id="LOCAL-00127" summary="add block for preview header">
+      <created>1581682181153</created>
+      <option name="number" value="00127" />
+      <option name="presentableId" value="LOCAL-00127" />
+      <option name="project" value="LOCAL" />
+      <updated>1581682181153</updated>
+    </task>
+    <option name="localTasksCounter" value="128" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -542,7 +534,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add user list" />
     <MESSAGE value="change access on roles" />
     <MESSAGE value="change access on roles in ControlPanel" />
     <MESSAGE value="create general component for draggable card with image" />
@@ -567,7 +558,8 @@
     <MESSAGE value="add preview block for contacts" />
     <MESSAGE value="make navigation items visible on creating" />
     <MESSAGE value="fix showing image in profile component" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix showing image in profile component" />
+    <MESSAGE value="add block for preview header" />
+    <option name="LAST_COMMIT_MESSAGE" value="add block for preview header" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="182" key="#ESLint" timestamp="1578156507884">
@@ -595,16 +587,16 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580987630233" />
-    <state x="585" y="117" key="CommitChangelistDialog2" timestamp="1581677739096">
+    <state x="585" y="117" key="CommitChangelistDialog2" timestamp="1581682180416">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581677739096" />
+    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581682180416" />
     <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172968703" />
     <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1581275064446" />
-    <state x="184" y="85" width="1536" height="840" key="DiffContextDialog" timestamp="1581677678182">
+    <state x="184" y="85" width="1536" height="840" key="DiffContextDialog" timestamp="1581682132673">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="184" y="85" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581677678182" />
+    <state x="184" y="85" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581682132673" />
     <state x="184" y="86" width="1536" height="840" key="DiffContextDialog/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172950313" />
     <state x="184" y="86" key="DiffContextDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1581275061562" />
     <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1580712034432">

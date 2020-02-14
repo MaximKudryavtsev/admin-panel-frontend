@@ -38,20 +38,34 @@ const classNames = {
         z-index: 5;
         position: relative;
     `,
+
     menuitem: css`
-        color: #0c0c0c;
-        padding: 27px 0 22px 0;
-        margin-right: 40px;
-        font-size: 12px !important;
-        font-family: Ubuntu;
+        cursor: pointer;
+        height: 68px;
+        display: flex;
+        position: relative;
+        box-sizing: border-box;
+        align-items: center;
         line-height: 12px;
+        margin-right: 40px;
+        border-bottom: 4px solid transparent;
         letter-spacing: 0.1em !important;
         text-transform: uppercase;
+        color: #000;
+        font-size: 12px;
+        font-family: Ubuntu;
+    `,
+    menuLink: css`
+        padding: 27px 0 22px 0;
+        font-size: 12px;
+        font-family: Ubuntu;
+        line-height: 12px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-family: Ubuntu;
+        text-transform: uppercase;
         text-decoration: none;
-        cursor: pointer;
-        :hover {
-            color: #0061f3;
-        }
+        color: #000;
     `,
     button: css`
         right: 0;
@@ -99,14 +113,16 @@ export const PreviewHeader = (props: { header?: IClientHeader }) => (
                         .map((item, index) => (
                             <>
                                 {item.link ? (
-                                    <Link
-                                        to={`/pages/${item.link}/preview`}
-                                        key={item._id}
-                                        className={classNames.menuitem}
-                                    >
-                                        {item.title}
-                                        {item.hasChild && <ArrowDownIcon />}
-                                    </Link>
+                                    <div className={classNames.menuitem}>
+                                        <Link
+                                            to={`/pages/${item.link}/preview`}
+                                            key={item._id}
+                                            className={classNames.menuLink}
+                                        >
+                                            {item.title}
+                                            {item.hasChild && <ArrowDownIcon />}
+                                        </Link>
+                                    </div>
                                 ) : (
                                     <div className={classNames.menuitem}>
                                         {item.title}
@@ -117,9 +133,9 @@ export const PreviewHeader = (props: { header?: IClientHeader }) => (
                         ))}
                 </div>
             </div>
-            <a href={props.header?.buttonLink} className={classNames.button}>
+            <Link to={`/pages/${props.header?.buttonLink}/preview`} className={classNames.button}>
                 {props.header?.buttonTitle}
-            </a>
+            </Link>
         </div>
     </div>
 );
