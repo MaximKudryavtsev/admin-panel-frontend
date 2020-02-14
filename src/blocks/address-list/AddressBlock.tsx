@@ -16,7 +16,7 @@ interface IAddress {
     workingHours: string;
 }
 
-interface IAddressBlock {
+export interface IAddressBlock {
     blocks: IAddress[];
 }
 
@@ -105,6 +105,7 @@ export const AddressBlock = (props: IBlockProps<IAddressBlock>) => {
                                             name={`data.blocks.${index}.workingHours`}
                                             label={"Рабочие часы"}
                                             classes={{ root: classNames.field }}
+                                            textarea
                                         />
                                     </Card>
                                 ))}

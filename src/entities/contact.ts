@@ -7,6 +7,7 @@ export interface IContact {
     type: IDictionary;
     title: string;
     value?: string;
+    description?: string;
     lang: TLang;
 }
 

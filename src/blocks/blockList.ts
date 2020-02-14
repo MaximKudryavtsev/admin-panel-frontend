@@ -14,6 +14,7 @@ import { AchievementBlock } from "./achievement-block";
 import { TeamBlock } from "./team";
 import { ImageAndListBlock } from "./image-and-list";
 import { AddressBlock } from "./address-list";
+import { ContactList } from "./contact-list";
 
 const blockList = {
     [EBlockTypes.FACTS]: FactsBlock,
@@ -29,6 +30,7 @@ const blockList = {
     [EBlockTypes.ACHIEVEMENTS]: AchievementBlock,
     [EBlockTypes.TEAM]: TeamBlock,
     [EBlockTypes.IMAGE_AND_LIST]: ImageAndListBlock,
+    [EBlockTypes.CONTACT_LIST]: ContactList,
     "default": undefined
 };
 

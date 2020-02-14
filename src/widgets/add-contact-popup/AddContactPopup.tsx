@@ -26,6 +26,7 @@ const ValidationSchema = Yup.object().shape({
     typeId: Yup.string().required("Поле обязательно для заполнения"),
     title: Yup.string().required("Поле обязательно для заполнения"),
     value: Yup.string().notRequired(),
+    description: Yup.string().notRequired(),
 });
 
 const classNames = {
@@ -74,6 +75,11 @@ export const AddContactPopup = (props: IAddContactPopupProps) => {
                                 classes={{ root: classNames.field }}
                             />
                         )}
+                        <TextField
+                            name={"description"}
+                            label={"Описание"}
+                            classes={{ root: classNames.field }}
+                        />
                         <div className={classNames.buttonWrapper}>
                             <Button
                                 variant="contained"
