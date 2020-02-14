@@ -16,10 +16,13 @@ const styles = {
         height: 200px;
         overflow: hidden;
         border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     `,
     image: css`
-        width: 100%;
-        height: 100%;
+        width: auto;
+        height: auto;
     `
 };
 
