@@ -12,3 +12,4 @@ export * from "./preview-best-achievements";
 export * from "./preview-achievement-block";
 export * from "./preview-image-and-list";
 export * from "./preview-address-list";
+export * from "./preview-contact-list";
