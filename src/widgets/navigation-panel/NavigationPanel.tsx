@@ -142,7 +142,7 @@ export const NavigationPanel = (props: INavigationPanelProps) => {
                 ? navigationTypes.find((item) => item.label === ENavigationType.EXTERNAL)?._id
                 : navigation.navigationType,
             parentId: props.parentId,
-            isVisible: false,
+            isVisible: true,
             lang,
             position: data.length,
             type,
