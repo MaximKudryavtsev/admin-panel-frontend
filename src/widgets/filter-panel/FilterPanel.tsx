@@ -96,7 +96,13 @@ export const FilterPanel = (props: IFilterPanelProps) => {
 
     const handleCreate = (data: IFilter) => {
         if (createFilter) {
-            createFilter({...data, lang})
+            createFilter({...data, lang}).then(() => setCreate(false));
+        }
+    };
+
+    const handleUpdate = (data: Partial<IFilter>) => {
+        if (updateFilter && data._id) {
+            updateFilter(data._id, {...data}).then(() => setUpdate(false));
         }
     };
 
@@ -134,6 +140,13 @@ export const FilterPanel = (props: IFilterPanelProps) => {
                 open={create}
                 onClose={() => setCreate(false)}
                 onSubmit={handleCreate}
+            />
+            <FilterPopup
+                title={"Редактировать фильтр"}
+                open={update}
+                filter={filter}
+                onClose={() => setUpdate(false)}
+                onSubmit={handleUpdate}
             />
         </div>
     );
