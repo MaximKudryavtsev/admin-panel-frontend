@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="refactoring">
+    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/blocks/filter-page/FilterPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/filter-page/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/filter-panel/FilterPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/filter-panel/FilterPanel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/blockList.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/blockList.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/draggable-image-block/DraggableImageBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/draggable-image-block/DraggableImageBlock.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/draggable-panel/DraggablePanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/draggable-panel/DraggablePanel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/select/Select.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/select/Select.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/block.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/block.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/filter-popup/FilterPopup.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/filter-popup/FilterPopup.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +48,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/hooks/user" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -52,7 +60,7 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="prettierjs.PrettierConfiguration.NodeInterpreter" value="project" />
-    <property name="prettierjs.PrettierConfiguration.Package" value="C:\omega-admin-panel\admin-panel-frontend\node_modules\prettier" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="C:\omega\admin-panel-frontend\node_modules\prettier" />
     <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
     <property name="ts.external.directory.path" value="C:\omega\admin-panel-frontend\node_modules\typescript\lib" />
   </component>
@@ -175,14 +183,8 @@
       <workItem from="1581659624449" duration="26733000" />
       <workItem from="1581766524456" duration="599000" />
       <workItem from="1581927719725" duration="1343000" />
-      <workItem from="1582105433324" duration="1679000" />
-    </task>
-    <task id="LOCAL-00080" summary="add block for clients logo">
-      <created>1580721215582</created>
-      <option name="number" value="00080" />
-      <option name="presentableId" value="LOCAL-00080" />
-      <option name="project" value="LOCAL" />
-      <updated>1580721215582</updated>
+      <workItem from="1582105433324" duration="8474000" />
+      <workItem from="1582183662853" duration="20408000" />
     </task>
     <task id="LOCAL-00081" summary="change clients logo">
       <created>1580728175646</created>
@@ -520,7 +522,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581683069682</updated>
     </task>
-    <option name="localTasksCounter" value="129" />
+    <task id="LOCAL-00129" summary="add showing filter data">
+      <created>1582113651822</created>
+      <option name="number" value="00129" />
+      <option name="presentableId" value="LOCAL-00129" />
+      <option name="project" value="LOCAL" />
+      <updated>1582113651822</updated>
+    </task>
+    <option name="localTasksCounter" value="130" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -537,7 +546,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="change access on roles in ControlPanel" />
     <MESSAGE value="create general component for draggable card with image" />
     <MESSAGE value="create general component for draggable panel in block" />
     <MESSAGE value="replace duplicate code" />
@@ -562,7 +570,8 @@
     <MESSAGE value="fix showing image in profile component" />
     <MESSAGE value="add block for preview header" />
     <MESSAGE value="change styles for preview header" />
-    <option name="LAST_COMMIT_MESSAGE" value="change styles for preview header" />
+    <MESSAGE value="add showing filter data" />
+    <option name="LAST_COMMIT_MESSAGE" value="add showing filter data" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="182" key="#ESLint" timestamp="1578156507884">
@@ -590,24 +599,24 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580987630233" />
-    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1582113424117">
+    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1582113651312">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581683129061" />
     <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172968703" />
-    <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1582113424117" />
-    <state x="184" y="85" width="1536" height="840" key="DiffContextDialog" timestamp="1581683051896">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1582113651312" />
+    <state x="184" y="86" width="1536" height="840" key="DiffContextDialog" timestamp="1582113607565">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="184" y="85" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581683051895" />
     <state x="184" y="86" width="1536" height="840" key="DiffContextDialog/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172950313" />
-    <state x="184" y="86" key="DiffContextDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1581275061562" />
-    <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1580712034432">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="184" y="86" key="DiffContextDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1582113607565" />
+    <state x="881" y="341" key="FileChooserDialogImpl" timestamp="1582114390644">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580712034432" />
     <state x="740" y="279" key="FileChooserDialogImpl/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578163730639" />
-    <state x="881" y="341" key="FileChooserDialogImpl/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580551784997" />
+    <state x="881" y="341" key="FileChooserDialogImpl/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1582114390644" />
     <state width="1898" height="274" key="GridCell.Tab.0.bottom" timestamp="1581753737982">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -628,17 +637,17 @@
     </state>
     <state width="1899" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580195628050" />
     <state width="1898" height="274" key="GridCell.Tab.0.right/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1581753737982" />
-    <state x="461" y="155" key="SettingsEditor" timestamp="1580712036506">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="461" y="156" key="SettingsEditor" timestamp="1582114393039">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="461" y="155" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580712036506" />
-    <state x="461" y="156" key="SettingsEditor/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580551786626" />
-    <state x="552" y="255" key="Vcs.Push.Dialog.v2" timestamp="1581683136399">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="461" y="156" key="SettingsEditor/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1582114393039" />
+    <state x="552" y="257" key="Vcs.Push.Dialog.v2" timestamp="1582113657877">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="552" y="255" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581683136399" />
     <state x="552" y="257" key="Vcs.Push.Dialog.v2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172973521" />
-    <state x="552" y="257" key="Vcs.Push.Dialog.v2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580667043182" />
+    <state x="552" y="257" key="Vcs.Push.Dialog.v2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1582113657877" />
     <state x="92" y="92" width="1736" height="866" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1578046510409">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -664,11 +673,11 @@
     </state>
     <state x="616" y="237" key="run.anything.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578145423257" />
     <state x="616" y="237" width="672" height="677" key="run.anything.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579939819522" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1582112978941">
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1582193712766">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="623" y="225" width="672" height="672" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581690699878" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578170577061" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1582112978941" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1582193712766" />
   </component>
 </project>

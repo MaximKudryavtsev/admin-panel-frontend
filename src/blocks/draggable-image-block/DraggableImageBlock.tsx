@@ -15,7 +15,7 @@ interface IDraggableImageBlockProps<T> {
     name: string;
     draggableProps: DraggableProvidedDraggableProps;
     dragHandleProps: DraggableProvidedDragHandleProps | null;
-    variant?: "default" | "achievement";
+    variant?: "default" | "achievement" | "portfolio";
 
     innerRef(element?: HTMLElement | null): any;
 
@@ -215,6 +215,64 @@ export const DraggableImageBlock = <T extends IImageBlockIItem>(
                         <CardContent classes={{ root: classNames.achievementContent }}>
                             {render()}
                         </CardContent>
+                    </div>
+                </Card>
+            )}
+            {variant === "portfolio" && (
+                <Card
+                    variant={"outlined"}
+                    ref={innerRef}
+                    {...draggableProps}
+                    className={css`
+                        margin-bottom: 24px;
+                    `}
+                >
+                    <div className={classNames.iconWrapper}>
+                        <div {...dragHandleProps}>
+                            <IconButton>
+                                <DragIndicator />
+                            </IconButton>
+                        </div>
+                        <div className={classNames.icons}>
+                            <SwitchField name={`${name}.visible`} />
+                            <IconButton onClick={onChooseFile}>
+                                <Edit />
+                            </IconButton>
+                            <IconButton onClick={onDelete}>
+                                <Delete />
+                            </IconButton>
+                        </div>
+                    </div>
+                    <input
+                        type="file"
+                        name={`${name}.file`}
+                        className={classNames.input}
+                        ref={inputRef}
+                        onChange={onChange}
+                    />
+                    <div
+                        className={css`
+                            display: flex;
+                            padding: 0 24px;
+                        `}
+                    >
+                        <div
+                            className={css`
+                                width: 40%;
+                            `}
+                        >
+                            <CardMedia image={src} className={classNames.image} />
+                            {error && (
+                                <Typography
+                                    color={"error"}
+                                    align={"center"}
+                                    className={classNames.error}
+                                >
+                                    {error}
+                                </Typography>
+                            )}
+                        </div>
+                        <CardContent classes={{ root: classNames.content }}>{render()}</CardContent>
                     </div>
                 </Card>
             )}

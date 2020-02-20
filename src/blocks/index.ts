@@ -13,3 +13,4 @@ export * from "./best-achievement-block";
 export * from "./achievement-block";
 export * from "./team";
 export * from "./image-and-list";
+export * from "./filter-page";

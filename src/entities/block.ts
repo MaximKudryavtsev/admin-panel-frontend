@@ -15,6 +15,7 @@ export enum EBlockTypes {
     TEAM = "team",
     IMAGE_AND_LIST = "imageAndList",
     CONTACT_LIST = "contactList",
+    FILTER_PAGE = "filterPage"
 }
 
 export interface ICreateBlockRequest {

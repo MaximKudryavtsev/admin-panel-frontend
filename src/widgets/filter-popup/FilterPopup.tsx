@@ -79,7 +79,7 @@ export const FilterPopup = (props: IFilterPopupProps) => {
                                                 </IconButton>
                                             </div>
                                         ))}
-                                    <IconButton onClick={() => array.push({title: ""})}>
+                                    <IconButton onClick={() => array.push({ title: "" })}>
                                         <Add />
                                     </IconButton>
                                 </>

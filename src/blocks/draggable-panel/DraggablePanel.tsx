@@ -8,7 +8,8 @@ import { css } from "emotion";
 
 interface IDraggablePanelProps<T> {
     data?: T[];
-    variant?: "default" | "achievement";
+    variant?: "default" | "achievement" | "portfolio";
+    wrapperClassname?: string;
 
     onAddBlock?(): void;
 
@@ -40,6 +41,7 @@ export const DraggablePanel = <T extends IImageBlockIItem>(props: IDraggablePane
         onDelete,
         setFieldValue,
         variant = "default",
+        wrapperClassname
     } = props;
 
     return (
@@ -48,7 +50,7 @@ export const DraggablePanel = <T extends IImageBlockIItem>(props: IDraggablePane
                 {(provided) => (
                     <div ref={provided.innerRef} {...provided.droppableProps}>
                         <React.Fragment>
-                            <div className={css([variant === "default" && classNames.content])}>
+                            <div className={css([variant === "default" && classNames.content, wrapperClassname])}>
                                 {data.map((item, index) => (
                                     <Draggable
                                         index={index}
