@@ -1,10 +1,10 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { IBlock, IImageBlock, IImageBlockIItem } from "../../entities";
+import { EPageType, IBlock, IImageBlock, IImageBlockIItem } from "../../entities";
 import { IBlockProps } from "../IBlockProps";
 import { BlockWrapper } from "../../widgets/block-wrapper";
 import { getBlockDataWithFiles } from "../../utils";
 import * as Yup from "yup";
-import { useFilter } from "../../hooks";
+import { useFilter, usePageList } from "../../hooks";
 import { Transport } from "../../transport";
 import { css } from "emotion";
 import { Select } from "../../components/select";
@@ -17,6 +17,7 @@ export interface IFilterBlockItem extends IImageBlockIItem {
     title: string;
     description: string;
     filters: string[];
+    link: string;
 }
 
 export interface IFilterBlockPage extends IImageBlock<IFilterBlockItem> {
@@ -33,6 +34,7 @@ const validationSchema = Yup.object().shape({
                 title: Yup.string().required("Поле обязательно для заполнения"),
                 description: Yup.string().required("Поле обязательно для заполнения"),
                 filters: Yup.string().required("Поле обязательно для заполнения"),
+                link: Yup.string().required("Поле обязательно для заполнения"),
             }),
         ),
     }),
@@ -49,6 +51,7 @@ export const FilterPage = (props: IBlockProps<IFilterBlockPage>) => {
     const [uploaded, setUploaded] = useState(false);
     const transport = useMemo(() => Transport.create(), []);
     const { filters, filter, getFilter } = useFilter(transport, lang);
+    const { pages } = usePageList(transport, lang, EPageType.CASE);
 
     const handleSubmit = (id: string, data: Partial<IBlock<IFilterBlockPage>>) => {
         data = getBlockDataWithFiles<IFilterBlockPage, IFilterBlockItem>(data);
@@ -126,8 +129,17 @@ export const FilterPage = (props: IBlockProps<IFilterBlockPage>) => {
                                                     value: item._id,
                                                     label: item.title,
                                                 }))}
+                                                classes={{ root: classNames.field }}
                                             />
                                         )}
+                                        <Select
+                                            name={`data.blocks.${index}.link`}
+                                            label={"Ссылка"}
+                                            options={pages.map((item) => ({
+                                                value: item._id,
+                                                label: item.title,
+                                            }))}
+                                        />
                                     </>
                                 )}
                             />

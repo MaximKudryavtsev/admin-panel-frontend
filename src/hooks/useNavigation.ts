@@ -1,15 +1,20 @@
 import { Transport } from "../transport";
 import {
+    EPageType,
     IDictionary,
     INavigation,
     INavigationOrder,
     TCreateNavigationRequest,
-    TLang, TNavigationPage, TUpdateNavigationRequest, TypeNavigation,
+    TLang,
+    TNavigationPage,
+    TUpdateNavigationRequest,
+    TypeNavigation,
 } from "../entities";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import {
     createNavigation,
-    deleteNavigation, fetchNavigationPages,
+    deleteNavigation,
+    fetchNavigationPages,
     getNavigation,
     getNavigationList,
     getNavigationTypes,
@@ -92,7 +97,7 @@ export function useNavigation(
     );
 
     const fetchPages = useCallback(() => {
-        return fetchNavigationPages(transport, lang).then((response) => setPages(response.data));
+        return fetchNavigationPages(transport, lang, EPageType.ORDINARY).then((response) => setPages(response.data));
     }, [lang, transport]);
 
     useEffect(() => {

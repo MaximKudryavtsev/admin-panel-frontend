@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { IBlock, IImageBlock, IImageBlockIItem } from "../../entities";
+import { EPageType, IBlock, IImageBlock, IImageBlockIItem } from "../../entities";
 import { IBlockProps } from "../IBlockProps";
 import { getBlockDataWithFiles } from "../../utils";
 import { BlockWrapper } from "../../widgets/block-wrapper";
@@ -50,7 +50,7 @@ export const ImageAndListBlock = (props: IBlockProps<IImageAndListBlock>) => {
     const { onSubmit, lang = "ru" } = props;
 
     const [uploaded, setUploaded] = useState(false);
-    const { pages } = useFetchPages(lang);
+    const { pages } = useFetchPages(lang, EPageType.ORDINARY);
 
     const handleSubmit = (id: string, data: Partial<IBlock<IImageAndListBlock>>) => {
         data = getBlockDataWithFiles<IImageAndListBlock, IImageAndList>(data);

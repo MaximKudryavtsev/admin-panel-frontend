@@ -63,3 +63,8 @@ export interface IClientHeader {
     buttonTitle: string;
     buttonLink: string;
 }
+
+export enum EPageType {
+    ORDINARY = "ordinary",
+    CASE = "case"
+}

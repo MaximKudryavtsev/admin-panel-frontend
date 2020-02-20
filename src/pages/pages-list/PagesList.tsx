@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { TableWrapper } from "../../widgets/table-wrapper";
 import { Link, Paper, Table, TableBody, TableCell, TableHead, TableRow } from "@material-ui/core";
 import { css } from "emotion";
-import { ICreatePageRequest, IPagesTableRow, TLang } from "../../entities";
+import { EPageType, ICreatePageRequest, IPagesTableRow, TLang } from "../../entities";
 import { CreatePagePopup } from "../../widgets/create-page-popup";
 import { useCreatePage } from "../../hooks/page";
 import { AppContext } from "../../context";
@@ -12,6 +12,7 @@ import { Transport } from "../../transport";
 interface IPageListProps {
     body?: IPagesTableRow[];
     lang?: TLang;
+    type?: EPageType;
 
     setLanguage(lang: TLang): void;
 }
@@ -29,12 +30,12 @@ const classNames = {
 };
 
 export const PagesList = (props: IPageListProps) => {
-    const { body = [], setLanguage, lang = "ru" } = props;
+    const { body = [], setLanguage, lang = "ru", type = EPageType.ORDINARY } = props;
 
     const [modalVisible, setModalVisible] = useState(false);
     const [error, setError] = useState<undefined | string>(undefined);
     const transport = useMemo(() => Transport.create(), []);
-    const { createPage } = useCreatePage(transport, lang);
+    const { createPage } = useCreatePage(transport, lang, type);
 
     useEffect(() => setLanguage(lang), [lang, setLanguage]);
 

@@ -111,7 +111,7 @@ export const PreviewHeader = (props: { header?: IClientHeader }) => (
                     {props.header?.navigations
                         .filter((item) => !item.parentId)
                         .map((item, index) => (
-                            <>
+                            <React.Fragment key={index}>
                                 {item.link ? (
                                     <div className={classNames.menuitem}>
                                         <Link
@@ -129,7 +129,7 @@ export const PreviewHeader = (props: { header?: IClientHeader }) => (
                                         {item.hasChild && <ArrowDownIcon />}
                                     </div>
                                 )}
-                            </>
+                            </React.Fragment>
                         ))}
                 </div>
             </div>

@@ -1,5 +1,6 @@
 import { Transport } from "../transport";
 import {
+    EPageType,
     IDictionary,
     INavigation,
     INavigationOrder,
@@ -75,6 +76,6 @@ export function reorderNavigations(
     });
 }
 
-export function fetchNavigationPages(transport: Transport, lang: TLang) {
-    return transport.get<TNavigationPage[]>(ApiPaths.GET_INTERNAL_PAGES_LIST, { lang });
+export function fetchNavigationPages(transport: Transport, lang: TLang, type: EPageType) {
+    return transport.get<TNavigationPage[]>(ApiPaths.GET_INTERNAL_PAGES_LIST, { lang, type });
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { EUserRoles, IUser } from "../../entities";
+import { EPageType, EUserRoles, IUser } from "../../entities";
 import { Route, Switch } from "react-router";
 import { Navigation } from "../navigation";
 import { Footer } from "../footer";
@@ -51,7 +51,20 @@ export const WorkPanel = (props: INavigationProps) => {
                     <ControlPanel setPageTitle={setTitle} />
                 </Route>
                 <Route path={`${baseUrl}/pages`} exact>
-                    <Pages defaultLang={defaultLang} setPageTitle={setTitle} />
+                    <Pages
+                        defaultLang={defaultLang}
+                        setPageTitle={setTitle}
+                        type={EPageType.ORDINARY}
+                        title={"Страницы"}
+                    />
+                </Route>
+                <Route path={`${baseUrl}/cases`} exact>
+                    <Pages
+                        defaultLang={defaultLang}
+                        setPageTitle={setTitle}
+                        type={EPageType.CASE}
+                        title={"Кейсы"}
+                    />
                 </Route>
                 <Route path={`${baseUrl}/pages/:id`}>
                     <Page setPageTitle={setTitle} baseUrl={`${baseUrl}/pages`} lang={defaultLang} />

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { IHeader, TLang } from "../../entities";
+import { EPageType, IHeader, TLang } from "../../entities";
 import { LanguageTab } from "../../widgets/language-tab";
 import { HeaderPanel } from "../../widgets/header-panel";
 import { useFetchPages, useHeader } from "../../hooks";
@@ -17,7 +17,7 @@ export const Header = (props: IHeaderProps) => {
     const [language, setLanguage] = useState<TLang>(defaultLang);
 
     const { header, deleteLogo, uploadLogo, updateHeader } = useHeader(language);
-    const { pages } = useFetchPages(language);
+    const { pages } = useFetchPages(language, EPageType.ORDINARY);
     const { enqueueSnackbar } = useSnackbar();
 
     useEffect(() => setPageTitle("Хедер"), [setPageTitle]);

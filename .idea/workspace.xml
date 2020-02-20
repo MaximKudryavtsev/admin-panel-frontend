@@ -2,16 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/blocks/filter-page/FilterPage.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blocks/filter-page/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/blockList.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/blockList.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/draggable-image-block/DraggableImageBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/draggable-image-block/DraggableImageBlock.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/draggable-panel/DraggablePanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/draggable-panel/DraggablePanel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/select/Select.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/select/Select.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/block.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/block.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/filter-popup/FilterPopup.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/filter-popup/FilterPopup.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/navigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/navigation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/page.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/filter-page/FilterPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/filter-page/FilterPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/image-and-list/ImageAndListBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/image-and-list/ImageAndListBlock.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/pages.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/pages.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/page/useCreatePage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/page/useCreatePage.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/page/usePageList.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/page/usePageList.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useFetchPages.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useFetchPages.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useNavigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useNavigation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/header/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/pages-list/PagesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/pages-list/PagesList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/pages/Pages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/pages/Pages.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/work-panel/WorkPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/work-panel/WorkPanel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/preview-blocklist/preview-header/PreviewHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/preview-blocklist/preview-header/PreviewHeader.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,14 +189,7 @@
       <workItem from="1581766524456" duration="599000" />
       <workItem from="1581927719725" duration="1343000" />
       <workItem from="1582105433324" duration="8474000" />
-      <workItem from="1582183662853" duration="20408000" />
-    </task>
-    <task id="LOCAL-00081" summary="change clients logo">
-      <created>1580728175646</created>
-      <option name="number" value="00081" />
-      <option name="presentableId" value="LOCAL-00081" />
-      <option name="project" value="LOCAL" />
-      <updated>1580728175646</updated>
+      <workItem from="1582183662853" duration="27209000" />
     </task>
     <task id="LOCAL-00082" summary="refactoring">
       <created>1580733875472</created>
@@ -529,7 +527,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582113651822</updated>
     </task>
-    <option name="localTasksCounter" value="130" />
+    <task id="LOCAL-00130" summary="add block for portfolio block">
+      <created>1582208637884</created>
+      <option name="number" value="00130" />
+      <option name="presentableId" value="LOCAL-00130" />
+      <option name="project" value="LOCAL" />
+      <updated>1582208637884</updated>
+    </task>
+    <option name="localTasksCounter" value="131" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -546,7 +551,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="create general component for draggable card with image" />
     <MESSAGE value="create general component for draggable panel in block" />
     <MESSAGE value="replace duplicate code" />
     <MESSAGE value="add function for getting block data with files" />
@@ -571,7 +575,8 @@
     <MESSAGE value="add block for preview header" />
     <MESSAGE value="change styles for preview header" />
     <MESSAGE value="add showing filter data" />
-    <option name="LAST_COMMIT_MESSAGE" value="add showing filter data" />
+    <MESSAGE value="add block for portfolio block" />
+    <option name="LAST_COMMIT_MESSAGE" value="add block for portfolio block" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="182" key="#ESLint" timestamp="1578156507884">
@@ -599,18 +604,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580987630233" />
-    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1582113651312">
+    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1582226560555">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581683129061" />
     <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172968703" />
-    <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1582113651312" />
-    <state x="184" y="86" width="1536" height="840" key="DiffContextDialog" timestamp="1582113607565">
+    <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1582226560555" />
+    <state x="184" y="86" width="1536" height="840" key="DiffContextDialog" timestamp="1582226559313">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="184" y="85" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581683051895" />
     <state x="184" y="86" width="1536" height="840" key="DiffContextDialog/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172950313" />
-    <state x="184" y="86" key="DiffContextDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1582113607565" />
+    <state x="184" y="86" key="DiffContextDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1582226559313" />
     <state x="881" y="341" key="FileChooserDialogImpl" timestamp="1582114390644">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -642,12 +647,12 @@
     </state>
     <state x="461" y="155" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580712036506" />
     <state x="461" y="156" key="SettingsEditor/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1582114393039" />
-    <state x="552" y="257" key="Vcs.Push.Dialog.v2" timestamp="1582113657877">
+    <state x="552" y="257" key="Vcs.Push.Dialog.v2" timestamp="1582208643427">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="552" y="255" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581683136399" />
     <state x="552" y="257" key="Vcs.Push.Dialog.v2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172973521" />
-    <state x="552" y="257" key="Vcs.Push.Dialog.v2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1582113657877" />
+    <state x="552" y="257" key="Vcs.Push.Dialog.v2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1582208643427" />
     <state x="92" y="92" width="1736" height="866" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1578046510409">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -673,11 +678,11 @@
     </state>
     <state x="616" y="237" key="run.anything.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578145423257" />
     <state x="616" y="237" width="672" height="677" key="run.anything.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579939819522" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1582193712766">
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1582222784885">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="623" y="225" width="672" height="672" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581690699878" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578170577061" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1582193712766" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1582222784885" />
   </component>
 </project>
