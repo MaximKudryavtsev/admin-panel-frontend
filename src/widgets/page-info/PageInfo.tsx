@@ -13,7 +13,7 @@ import {
     Typography,
 } from "@material-ui/core";
 import { AccountCircle, Delete, Save } from "@material-ui/icons";
-import { formatData } from "../../utils";
+import { formatDate } from "../../utils";
 import { CustomForm } from "../../components/custom-form";
 import { TextField } from "../../components/text-field";
 import { Select } from "../../components/select";
@@ -154,7 +154,7 @@ export const PageInfo = (props: IPageInfoProps) => {
                                         margin-right: 5px !important;
                                     `}
                                 >
-                                    {formatData(page.createdAt, "DD.MM.YYYY HH:mm")}
+                                    {formatDate(page.createdAt, "DD.MM.YYYY HH:mm")}
                                 </Typography>
                             </div>
                             <div
@@ -175,7 +175,7 @@ export const PageInfo = (props: IPageInfoProps) => {
                                         margin-right: 5px !important;
                                     `}
                                 >
-                                    {formatData(page.updatedAt, "DD.MM.YYYY HH:mm")}
+                                    {formatDate(page.updatedAt, "DD.MM.YYYY HH:mm")}
                                 </Typography>
                             </div>
                             <Tooltip title={"Удалить страницу"} placement={"top"}>

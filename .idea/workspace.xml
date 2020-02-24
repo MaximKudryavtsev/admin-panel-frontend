@@ -3,11 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="add dividing pages by type">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/navigation/Navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/navigation/Navigation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/page/Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/page/Page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/block.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/block.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/ApiPaths.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/ApiPaths.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/block/useBlock.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/block/useBlock.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/pages-list/PagesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/pages-list/PagesList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/pages/Pages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/pages/Pages.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/work-panel/WorkPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/work-panel/WorkPanel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/date.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/date.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/page-info/PageInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/page-info/PageInfo.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,14 +186,7 @@
       <workItem from="1582299695006" duration="1225000" />
       <workItem from="1582438119796" duration="598000" />
       <workItem from="1582457593296" duration="3726000" />
-      <workItem from="1582527238451" duration="1066000" />
-    </task>
-    <task id="LOCAL-00083" summary="add uploading, deleting header">
-      <created>1580745161015</created>
-      <option name="number" value="00083" />
-      <option name="presentableId" value="LOCAL-00083" />
-      <option name="project" value="LOCAL" />
-      <updated>1580745161015</updated>
+      <workItem from="1582527238451" duration="6897000" />
     </task>
     <task id="LOCAL-00084" summary="update toggle button in navigation">
       <created>1580797978647</created>
@@ -530,7 +524,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582226725595</updated>
     </task>
-    <option name="localTasksCounter" value="132" />
+    <task id="LOCAL-00132" summary="add dividing pages by type">
+      <created>1582528864881</created>
+      <option name="number" value="00132" />
+      <option name="presentableId" value="LOCAL-00132" />
+      <option name="project" value="LOCAL" />
+      <updated>1582528864881</updated>
+    </task>
+    <option name="localTasksCounter" value="133" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -600,18 +601,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580987630233" />
-    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1582528280816">
+    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1582536510891">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581683129061" />
     <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172968703" />
-    <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1582528280816" />
-    <state x="184" y="86" width="1536" height="840" key="DiffContextDialog" timestamp="1582528270597">
+    <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1582536510891" />
+    <state x="184" y="86" width="1536" height="840" key="DiffContextDialog" timestamp="1582536509703">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="184" y="85" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581683051895" />
     <state x="184" y="86" width="1536" height="840" key="DiffContextDialog/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172950313" />
-    <state x="184" y="86" key="DiffContextDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1582528270597" />
+    <state x="184" y="86" key="DiffContextDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1582536509703" />
     <state x="881" y="341" key="FileChooserDialogImpl" timestamp="1582114390644">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>

@@ -20,8 +20,8 @@ export function useBlock(
     const [blocks, setBlocks] = useState<IBlock<any>[]>([]);
 
     const fetchTypes = useCallback(() => {
-        BlockAPI.fetchBlockTypes(transport).then((response) => setBlockTypes(response.data));
-    }, [transport]);
+        BlockAPI.fetchBlockTypes(transport, pageId).then((response) => setBlockTypes(response.data));
+    }, [transport, pageId]);
 
     const fetchList = useCallback(() => {
         BlockAPI.fetchBlocks(transport, pageId).then((response) => setBlocks(response.data));

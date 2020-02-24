@@ -6,7 +6,7 @@ import { EPageType, ICreatePageRequest, IPagesTableRow, TLang } from "../../enti
 import { CreatePagePopup } from "../../widgets/create-page-popup";
 import { useCreatePage } from "../../hooks/page";
 import { AppContext } from "../../context";
-import { formatData, getServerError } from "../../utils";
+import { formatDate, getServerError } from "../../utils";
 import { Transport } from "../../transport";
 
 interface IPageListProps {
@@ -60,7 +60,7 @@ export const PagesList = (props: IPageListProps) => {
                     setError(err?.title);
                 });
         },
-        [createPage],
+        [createPage, baseUrl],
     );
 
     const onClickRow = (id: string) => {
@@ -71,13 +71,7 @@ export const PagesList = (props: IPageListProps) => {
         <React.Fragment>
             <TableWrapper handler={onModalOpen}>
                 <Paper>
-                    <Table
-                        classes={{
-                            root: css`
-                                table-layout: fixed;
-                            `,
-                        }}
-                    >
+                    <Table classes={{ root: css`table-layout: fixed;`}}>
                         <TableHead>
                             <TableRow>
                                 <TableCell classes={{ root: classNames.headCell }}>Автор</TableCell>
@@ -117,10 +111,10 @@ export const PagesList = (props: IPageListProps) => {
                                     <TableCell>{item.title}</TableCell>
                                     <TableCell>{item.status.title}</TableCell>
                                     <TableCell>
-                                        {formatData(item.createdAt, "DD.MM.YYYY HH:mm")}
+                                        {formatDate(item.createdAt, "DD.MM.YYYY HH:mm")}
                                     </TableCell>
                                     <TableCell>
-                                        {formatData(item.updatedAt, "DD.MM.YYYY HH:mm")}
+                                        {formatDate(item.updatedAt, "DD.MM.YYYY HH:mm")}
                                     </TableCell>
                                 </TableRow>
                             ))}
