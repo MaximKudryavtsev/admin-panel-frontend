@@ -16,9 +16,7 @@ export const Navigation = (props: INavigationProps) => {
     useEffect(() => setPageTitle("Навигация"), [setPageTitle]);
     const [language, setLanguage] = useState<TLang>(defaultLang);
 
-    useEffect(() => {
-        setLanguage(defaultLang);
-    }, [defaultLang]);
+    useEffect(() => setLanguage(defaultLang), [defaultLang]);
 
     const {
         navigations,
@@ -29,7 +27,7 @@ export const Navigation = (props: INavigationProps) => {
         updateNavigation,
         createNavigation,
         getNavigation,
-        navigationsPages
+        navigationsPages,
     } = useNavigation(language, "navigation");
 
     return (

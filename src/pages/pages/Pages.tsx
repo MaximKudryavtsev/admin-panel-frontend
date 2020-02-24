@@ -9,12 +9,13 @@ interface IPagesProps {
     defaultLang: TLang;
     title: string;
     type: EPageType;
+    baseUrl: string;
 
     setPageTitle(title: string): void;
 }
 
 export const Pages = (props: IPagesProps) => {
-    const { setPageTitle, defaultLang, title, type } = props;
+    const { setPageTitle, defaultLang, title, type, baseUrl } = props;
     const [language, setLanguage] = useState<TLang>(defaultLang);
 
     useEffect(() => setPageTitle(title), [setPageTitle, title]);
@@ -26,8 +27,20 @@ export const Pages = (props: IPagesProps) => {
 
     return (
         <LanguageTab>
-            <PagesList setLanguage={setLanguage} lang={"ru"} body={pages} type={type} />
-            <PagesList setLanguage={setLanguage} lang={"en"} body={pages} type={type} />
+            <PagesList
+                setLanguage={setLanguage}
+                lang={"ru"}
+                body={pages}
+                type={type}
+                baseUrl={baseUrl}
+            />
+            <PagesList
+                setLanguage={setLanguage}
+                lang={"en"}
+                body={pages}
+                type={type}
+                baseUrl={baseUrl}
+            />
         </LanguageTab>
     );
 };

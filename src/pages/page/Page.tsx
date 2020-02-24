@@ -35,7 +35,6 @@ export const Page = (props: IPageProps) => {
     const { setPageTitle, baseUrl, lang } = props;
     const { id } = useParams();
     const [addBlockVisible, setAddBlockVisible] = useState(false);
-    const [fullscreen, setFullscreen] = useState(false);
     const transport = useMemo(() => Transport.create(), []);
 
     const { page, statuses, pageAuthor, updatePage, deletePage, buildPage } = usePage(
@@ -64,7 +63,7 @@ export const Page = (props: IPageProps) => {
     }
 
     const goToList = () => {
-        AppContext.getHistory().push("/pages");
+        AppContext.getHistory().push(baseUrl);
     };
 
     const onUpdatePage = (data: Partial<IPage>) => {
@@ -127,14 +126,12 @@ export const Page = (props: IPageProps) => {
     };
 
     const goToPreview = () => {
-        AppContext.getHistory().push(`/pages/${page?._id}/preview`);
+        AppContext.getHistory().push(`${baseUrl}/${page?._id}/preview`);
     };
 
     const onCloseFullScreenBlock = () => {
-        AppContext.getHistory().push(`/pages/${page?._id}`);
+        AppContext.getHistory().push(`${baseUrl}/${page?._id}`);
     };
-
-    const onOpenFullscreen = () => setFullscreen(true);
 
     return (
         <React.Fragment>
@@ -198,7 +195,6 @@ export const Page = (props: IPageProps) => {
                 onDeleteBlock={onDeleteBlock}
                 onUpdateBlock={onUpdateBlock}
                 baseUrl={`${baseUrl}/${page?._id}`}
-                onOpenFullscreen={onOpenFullscreen}
                 lang={lang}
             />
             <AddBlockPopup

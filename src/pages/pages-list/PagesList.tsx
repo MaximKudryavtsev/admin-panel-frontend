@@ -13,6 +13,7 @@ interface IPageListProps {
     body?: IPagesTableRow[];
     lang?: TLang;
     type?: EPageType;
+    baseUrl: string;
 
     setLanguage(lang: TLang): void;
 }
@@ -30,7 +31,7 @@ const classNames = {
 };
 
 export const PagesList = (props: IPageListProps) => {
-    const { body = [], setLanguage, lang = "ru", type = EPageType.ORDINARY } = props;
+    const { body = [], setLanguage, lang = "ru", type = EPageType.ORDINARY, baseUrl } = props;
 
     const [modalVisible, setModalVisible] = useState(false);
     const [error, setError] = useState<undefined | string>(undefined);
@@ -51,7 +52,7 @@ export const PagesList = (props: IPageListProps) => {
         (data: ICreatePageRequest) => {
             createPage(data)
                 .then((response) => {
-                    AppContext.getHistory().push(`/pages/${response.data._id}`);
+                    AppContext.getHistory().push(`${baseUrl}/${response.data._id}`);
                     setError(undefined);
                 })
                 .catch((error) => {
@@ -63,7 +64,7 @@ export const PagesList = (props: IPageListProps) => {
     );
 
     const onClickRow = (id: string) => {
-        AppContext.getHistory().push(`/pages/${id}`);
+        AppContext.getHistory().push(`${baseUrl}/${id}`);
     };
 
     return (

@@ -56,6 +56,7 @@ export const WorkPanel = (props: INavigationProps) => {
                         setPageTitle={setTitle}
                         type={EPageType.ORDINARY}
                         title={"Страницы"}
+                        baseUrl={`${baseUrl}/pages`}
                     />
                 </Route>
                 <Route path={`${baseUrl}/cases`} exact>
@@ -64,10 +65,14 @@ export const WorkPanel = (props: INavigationProps) => {
                         setPageTitle={setTitle}
                         type={EPageType.CASE}
                         title={"Кейсы"}
+                        baseUrl={`${baseUrl}/cases`}
                     />
                 </Route>
                 <Route path={`${baseUrl}/pages/:id`}>
                     <Page setPageTitle={setTitle} baseUrl={`${baseUrl}/pages`} lang={defaultLang} />
+                </Route>
+                <Route path={`${baseUrl}/cases/:id`}>
+                    <Page setPageTitle={setTitle} baseUrl={`${baseUrl}/cases`} lang={defaultLang} />
                 </Route>
                 <Route path={"/main"} exact>
                     <Main setPageTitle={setTitle} />

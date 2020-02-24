@@ -1,22 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="">
+    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="add dividing pages by type">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/navigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/navigation.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/page.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/filter-page/FilterPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/filter-page/FilterPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/image-and-list/ImageAndListBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/image-and-list/ImageAndListBlock.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/pages.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/pages.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/page/useCreatePage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/page/useCreatePage.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/page/usePageList.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/page/usePageList.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useFetchPages.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useFetchPages.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useNavigation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useNavigation.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/header/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/navigation/Navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/navigation/Navigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/page/Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/page/Page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/pages-list/PagesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/pages-list/PagesList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/pages/Pages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/pages/Pages.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/work-panel/WorkPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/work-panel/WorkPanel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/preview-blocklist/preview-header/PreviewHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/preview-blocklist/preview-header/PreviewHeader.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,19 +61,19 @@
     <property name="ts.external.directory.path" value="C:\omega\admin-panel-frontend\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\omega-admin-panel\admin-panel-frontend\src\hooks" />
-      <recent name="C:\omega-admin-panel\admin-panel-frontend\src\hooks\user" />
-      <recent name="C:\omega-admin-panel\admin-panel-frontend\src\hooks\page" />
-      <recent name="C:\omega-admin-panel\admin-panel-frontend\src\hooks\block" />
-      <recent name="C:\omega-admin-panel\admin-panel-frontend\src\components" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\omega-admin-panel\admin-panel-frontend\src\hooks\user" />
       <recent name="C:\omega-admin-panel\admin-panel-frontend\src\pages\preview-page" />
       <recent name="C:\omega-admin-panel\admin-panel-frontend\src\api" />
       <recent name="C:\omega-admin-panel\admin-panel-frontend\node_modules" />
       <recent name="C:\omega-admin-panel\admin-panel-frontend" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\omega-admin-panel\admin-panel-frontend\src\hooks" />
+      <recent name="C:\omega-admin-panel\admin-panel-frontend\src\hooks\user" />
+      <recent name="C:\omega-admin-panel\admin-panel-frontend\src\hooks\page" />
+      <recent name="C:\omega-admin-panel\admin-panel-frontend\src\hooks\block" />
+      <recent name="C:\omega-admin-panel\admin-panel-frontend\src\components" />
     </key>
   </component>
   <component name="RunManager" selected="npm.build">
@@ -189,14 +180,12 @@
       <workItem from="1581766524456" duration="599000" />
       <workItem from="1581927719725" duration="1343000" />
       <workItem from="1582105433324" duration="8474000" />
-      <workItem from="1582183662853" duration="27209000" />
-    </task>
-    <task id="LOCAL-00082" summary="refactoring">
-      <created>1580733875472</created>
-      <option name="number" value="00082" />
-      <option name="presentableId" value="LOCAL-00082" />
-      <option name="project" value="LOCAL" />
-      <updated>1580733875472</updated>
+      <workItem from="1582183662853" duration="27997000" />
+      <workItem from="1582283209066" duration="2172000" />
+      <workItem from="1582299695006" duration="1225000" />
+      <workItem from="1582438119796" duration="598000" />
+      <workItem from="1582457593296" duration="3726000" />
+      <workItem from="1582527238451" duration="1066000" />
     </task>
     <task id="LOCAL-00083" summary="add uploading, deleting header">
       <created>1580745161015</created>
@@ -534,7 +523,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582208637884</updated>
     </task>
-    <option name="localTasksCounter" value="131" />
+    <task id="LOCAL-00131" summary="add dividing pages by type">
+      <created>1582226725595</created>
+      <option name="number" value="00131" />
+      <option name="presentableId" value="LOCAL-00131" />
+      <option name="project" value="LOCAL" />
+      <updated>1582226725595</updated>
+    </task>
+    <option name="localTasksCounter" value="132" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -551,7 +547,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="create general component for draggable panel in block" />
     <MESSAGE value="replace duplicate code" />
     <MESSAGE value="add function for getting block data with files" />
     <MESSAGE value="add block for best achievements" />
@@ -576,7 +571,8 @@
     <MESSAGE value="change styles for preview header" />
     <MESSAGE value="add showing filter data" />
     <MESSAGE value="add block for portfolio block" />
-    <option name="LAST_COMMIT_MESSAGE" value="add block for portfolio block" />
+    <MESSAGE value="add dividing pages by type" />
+    <option name="LAST_COMMIT_MESSAGE" value="add dividing pages by type" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="182" key="#ESLint" timestamp="1578156507884">
@@ -604,18 +600,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580987630233" />
-    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1582226560555">
+    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1582528280816">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581683129061" />
     <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172968703" />
-    <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1582226560555" />
-    <state x="184" y="86" width="1536" height="840" key="DiffContextDialog" timestamp="1582226559313">
+    <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1582528280816" />
+    <state x="184" y="86" width="1536" height="840" key="DiffContextDialog" timestamp="1582528270597">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="184" y="85" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581683051895" />
     <state x="184" y="86" width="1536" height="840" key="DiffContextDialog/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172950313" />
-    <state x="184" y="86" key="DiffContextDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1582226559313" />
+    <state x="184" y="86" key="DiffContextDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1582528270597" />
     <state x="881" y="341" key="FileChooserDialogImpl" timestamp="1582114390644">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -647,12 +643,12 @@
     </state>
     <state x="461" y="155" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580712036506" />
     <state x="461" y="156" key="SettingsEditor/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1582114393039" />
-    <state x="552" y="257" key="Vcs.Push.Dialog.v2" timestamp="1582208643427">
+    <state x="552" y="257" key="Vcs.Push.Dialog.v2" timestamp="1582226730540">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="552" y="255" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581683136399" />
     <state x="552" y="257" key="Vcs.Push.Dialog.v2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172973521" />
-    <state x="552" y="257" key="Vcs.Push.Dialog.v2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1582208643427" />
+    <state x="552" y="257" key="Vcs.Push.Dialog.v2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1582226730540" />
     <state x="92" y="92" width="1736" height="866" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1578046510409">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -678,11 +674,11 @@
     </state>
     <state x="616" y="237" key="run.anything.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578145423257" />
     <state x="616" y="237" width="672" height="677" key="run.anything.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579939819522" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1582222784885">
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1582474591082">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="623" y="225" width="672" height="672" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581690699878" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578170577061" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1582222784885" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1582474591082" />
   </component>
 </project>
