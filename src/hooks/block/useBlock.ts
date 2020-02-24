@@ -13,9 +13,6 @@ export function useBlock(
     deleteBlock: (id: string) => Promise<void>;
     updateBlock: (id: string, data: IBlock<any>) => Promise<void>;
 } {
-    const tokenString = localStorage.getItem("token");
-    transport.setToken(JSON.parse(tokenString!));
-
     const [blockTypes, setBlockTypes] = useState<IDictionary[]>([]);
     const [blocks, setBlocks] = useState<IBlock<any>[]>([]);
 
