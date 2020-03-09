@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="">
+    <list default="true" id="d40bf49c-bc3d-4a2a-9a9b-36f14a9d9532" name="Default Changelist" comment="get block types by page type">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/block/useBlock.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/block/useBlock.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/filter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/filter.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/preview-blocklist/preview-image-and-list/PreviewImageAndList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/preview-blocklist/preview-image-and-list/PreviewImageAndList.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,6 +183,8 @@
       <workItem from="1582438119796" duration="598000" />
       <workItem from="1582457593296" duration="3726000" />
       <workItem from="1582527238451" duration="11865000" />
+      <workItem from="1583682492197" duration="1977000" />
+      <workItem from="1583784634495" duration="593000" />
     </task>
     <task id="LOCAL-00085" summary="add stub for preview page">
       <created>1580800111142</created>
@@ -596,12 +599,12 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580987630233" />
-    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1582536555117">
+    <state x="585" y="118" key="CommitChangelistDialog2" timestamp="1583682671194">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581683129061" />
     <state x="585" y="118" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578172968703" />
-    <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1582536555117" />
+    <state x="585" y="118" key="CommitChangelistDialog2/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1583682671194" />
     <state x="184" y="86" width="1536" height="840" key="DiffContextDialog" timestamp="1582536534634">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -660,21 +663,21 @@
     <state x="657" y="255" width="606" height="536" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581677207940" />
     <state x="657" y="257" width="606" height="536" key="find.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578166842732" />
     <state x="657" y="257" width="606" height="536" key="find.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1580331113592" />
-    <state x="632" y="315" key="git4idea.merge.GitPullDialog" timestamp="1581927997182">
+    <state x="632" y="315" key="git4idea.merge.GitPullDialog" timestamp="1583682675484">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="632" y="312" key="git4idea.merge.GitPullDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580886790425" />
-    <state x="632" y="315" key="git4idea.merge.GitPullDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1581927997182" />
+    <state x="632" y="315" key="git4idea.merge.GitPullDialog/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1583682675484" />
     <state x="616" y="237" width="672" height="677" key="run.anything.popup" timestamp="1579939819522">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="616" y="237" key="run.anything.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578145423257" />
     <state x="616" y="237" width="672" height="677" key="run.anything.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1579939819522" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1582537888166">
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1583688397591">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="623" y="225" width="672" height="672" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581690699878" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1080@0.0.1920.1050" timestamp="1578170577061" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1582537888166" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1583688397591" />
   </component>
 </project>

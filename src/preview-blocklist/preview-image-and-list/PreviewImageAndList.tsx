@@ -71,7 +71,7 @@ export const PreviewImageAndList = (props: { data: IImageAndListBlock }) => (
         ])}
     >
         {props.data.blocks.map((item, index) => (
-            <>
+            <React.Fragment key={index}>
                 {props.data.type === EImageAndListBlockType.DECISION && (
                     <div className={classNames.decisionItem}>
                         <img
@@ -108,7 +108,7 @@ export const PreviewImageAndList = (props: { data: IImageAndListBlock }) => (
                         </div>
                     </div>
                 )}
-            </>
+            </React.Fragment>
         ))}
     </div>
 );
