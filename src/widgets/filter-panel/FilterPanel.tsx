@@ -5,6 +5,8 @@ import { Fab, IconButton, Paper, Typography } from "@material-ui/core";
 import { Add, Delete, Edit } from "@material-ui/icons";
 import { ConfirmPopup } from "../../components/confirm-popup";
 import { FilterPopup } from "../filter-popup";
+import {getServerError} from "../../utils";
+import {useCustomSnackbar} from "../../hooks";
 
 interface IFilterPanelProps {
     lang: TLang;
@@ -17,9 +19,11 @@ interface IFilterPanelProps {
 
     updateFilter?(id: string, data: Partial<IFilter>): Promise<void>;
 
-    deleteFilter?(id: string): Promise<void>;
+    deleteFilterPack?(id: string): Promise<void>;
 
     setLanguage(language: TLang): void;
+
+    deleteFilter?(filterPackId: string, filterId: string): Promise<void>;
 }
 
 const classNames = {
@@ -65,15 +69,17 @@ export const FilterPanel = (props: IFilterPanelProps) => {
         filter,
         filters = [],
         createFilter,
-        deleteFilter,
+        deleteFilterPack,
         getFilter,
         setLanguage,
         updateFilter,
+        deleteFilter
     } = props;
     const [create, setCreate] = useState(false);
     const [update, setUpdate] = useState(false);
     const [deleteModal, setDeleteModal] = useState(false);
     const [currentId, setCurrentId] = useState<string | undefined>(undefined);
+    const { showErrorSnackbar, showSuccessSnackbar } = useCustomSnackbar();
 
     useEffect(() => setLanguage(lang), [lang, setLanguage]);
 
@@ -89,8 +95,14 @@ export const FilterPanel = (props: IFilterPanelProps) => {
     };
 
     const handleDelete = () => {
-        if (deleteFilter && currentId) {
-            deleteFilter(currentId).then(() => setDeleteModal(false));
+        if (deleteFilterPack && currentId) {
+            deleteFilterPack(currentId).then(() => setDeleteModal(false)).catch((error) => {
+                const e = getServerError(error);
+                if (e) {
+                    showErrorSnackbar(e.title);
+                    setDeleteModal(false);
+                }
+            });
         }
     };
 
@@ -129,7 +141,7 @@ export const FilterPanel = (props: IFilterPanelProps) => {
                 </Fab>
             </div>
             <ConfirmPopup
-                title={"Вы действительно хотите удалть фильтр?"}
+                title={"Вы действительно хотите удалить набор фильтров?"}
                 submitTitle={"Удалить"}
                 open={deleteModal}
                 onClose={() => setDeleteModal(false)}
@@ -147,6 +159,7 @@ export const FilterPanel = (props: IFilterPanelProps) => {
                 filter={filter}
                 onClose={() => setUpdate(false)}
                 onSubmit={handleUpdate}
+                onDeleteFilter={deleteFilter}
             />
         </div>
     );

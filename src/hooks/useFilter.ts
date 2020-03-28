@@ -12,7 +12,8 @@ export function useFilter(
     getFilter: (id: string) => Promise<void>;
     createFilter: (data: TCreateFilterRequest) => Promise<void>;
     updateFilter: (id: string, data: Partial<IFilter>) => Promise<void>;
-    deleteFilter: (id: string) => Promise<void>;
+    deleteFilterPack: (id: string) => Promise<void>;
+    deleteFilter: (filterPackId: string, filterId: string) => Promise<void>;
 } {
     const [filters, setFilters] = useState<IFilter[]>([]);
     const [filter, setFilter] = useState<IFilter | undefined>(undefined);
@@ -44,16 +45,20 @@ export function useFilter(
         [transport, getList],
     );
 
-    const deleteFilter = useCallback(
+    const deleteFilterPack = useCallback(
         (id: string) => {
-            return FilterAPI.deleteFilter(transport, id).then(getList);
+            return FilterAPI.deleteFilterPack(transport, id).then(getList);
         },
         [transport, getList],
     );
+
+    const deleteFilter = useCallback((filterPackId: string, filterId: string) => {
+        return FilterAPI.deleteFilter(transport, filterPackId, filterId).then(() => getFilter(filterPackId));
+    }, [transport]);
 
     useEffect(() => {
         getList();
     }, [getList]);
 
-    return { filter, filters, getFilter, createFilter, deleteFilter, updateFilter };
+    return { filter, filters, getFilter, createFilter, deleteFilterPack, updateFilter, deleteFilter };
 }

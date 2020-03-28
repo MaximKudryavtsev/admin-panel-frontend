@@ -15,7 +15,7 @@ export const Filters = (props: IFiltersProps) => {
     const { defaultLang, setPageTitle } = props;
     const [language, setLanguage] = useState<TLang>(defaultLang);
     const transport = useMemo(() => Transport.create(), []);
-    const { filter, filters, createFilter, deleteFilter, getFilter, updateFilter } = useFilter(
+    const { filter, filters, createFilter, deleteFilterPack, getFilter, updateFilter, deleteFilter } = useFilter(
         transport,
         language,
     );
@@ -33,6 +33,7 @@ export const Filters = (props: IFiltersProps) => {
                 createFilter={createFilter}
                 getFilter={getFilter}
                 updateFilter={updateFilter}
+                deleteFilterPack={deleteFilterPack}
                 deleteFilter={deleteFilter}
             />
             <FilterPanel
@@ -43,6 +44,7 @@ export const Filters = (props: IFiltersProps) => {
                 createFilter={createFilter}
                 getFilter={getFilter}
                 updateFilter={updateFilter}
+                deleteFilterPack={deleteFilterPack}
                 deleteFilter={deleteFilter}
             />
         </LanguageTab>

@@ -22,6 +22,10 @@ export function updateFilter(transport: Transport, id: string, data: Partial<IFi
     return transport.put<Partial<IFilter>, IIdResponse>(`${ApiPaths.FILTER}/${id}`, data);
 }
 
-export function deleteFilter(transport: Transport, id: string) {
+export function deleteFilterPack(transport: Transport, id: string) {
     return transport.delete(`${ApiPaths.FILTER}/${id}`);
+}
+
+export function deleteFilter(transport: Transport, filterPackId: string, filterId: string) {
+    return transport.delete(`${ApiPaths.FILTER}/${filterPackId}/${filterId}`);
 }
